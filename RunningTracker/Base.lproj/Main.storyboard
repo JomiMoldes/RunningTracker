@@ -1,13 +1,15 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6211" systemVersion="14A298i" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="BYZ-38-t0r">
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6204"/>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
     <scenes>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="RunningTracker" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="y3c-jy-aDJ"/>
                         <viewControllerLayoutGuide type="bottom" id="wfy-db-euE"/>
@@ -20,6 +22,74 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
+            <point key="canvasLocation" x="238" y="212"/>
+        </scene>
+        <!--Initial View Controller-->
+        <scene sceneID="7zc-Ff-fP3">
+            <objects>
+                <viewController storyboardIdentifier="InitialView" useStoryboardIdentifierAsRestorationIdentifier="YES" id="1Qj-cB-xA5" customClass="RTInitialViewController" customModule="RunningTracker" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="4bg-xJ-Uw6"/>
+                        <viewControllerLayoutGuide type="bottom" id="qBi-Ot-YFo"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="AE3-he-Cib">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ozF-iw-eKP" userLabel="MyActivitiesButton">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="300"/>
+                                <fontDescription key="fontDescription" name="Georgia" family="Georgia" pointSize="40"/>
+                                <state key="normal" title="MY ACTIVITIES" backgroundImage="MyTrackerBlue.png">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <state key="selected" backgroundImage="MyTrackerBlue.png"/>
+                                <state key="highlighted" backgroundImage="MyTrackerBlue.png"/>
+                            </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="W6d-QN-OEo" userLabel="StartView">
+                                <rect key="frame" x="0.0" y="300" width="600" height="300"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gg4-Kf-VHC" userLabel="StartButton">
+                                        <rect key="frame" x="0.0" y="0.0" width="600" height="300"/>
+                                        <fontDescription key="fontDescription" name="Georgia-Bold" family="Georgia" pointSize="40"/>
+                                        <state key="normal" title="START" backgroundImage="MyTrackerRed.png">
+                                            <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <state key="disabled" backgroundImage="MyTrackerGray.png"/>
+                                        <state key="selected" backgroundImage="MyTrackerRed.png"/>
+                                        <state key="highlighted" backgroundImage="MyTrackerRed.png"/>
+                                        <state key="focused" backgroundImage="MyTrackerRed.png"/>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="gg4-Kf-VHC" firstAttribute="height" secondItem="W6d-QN-OEo" secondAttribute="height" id="Wvl-bi-Fd8"/>
+                                    <constraint firstItem="gg4-Kf-VHC" firstAttribute="width" secondItem="W6d-QN-OEo" secondAttribute="width" id="Z46-Ju-stC"/>
+                                    <constraint firstItem="gg4-Kf-VHC" firstAttribute="centerY" secondItem="W6d-QN-OEo" secondAttribute="centerY" id="c3z-PN-m19"/>
+                                    <constraint firstItem="gg4-Kf-VHC" firstAttribute="centerX" secondItem="W6d-QN-OEo" secondAttribute="centerX" id="l0k-ak-mZw"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="ozF-iw-eKP" firstAttribute="centerX" secondItem="AE3-he-Cib" secondAttribute="centerX" id="2ch-U3-Ixs"/>
+                            <constraint firstItem="W6d-QN-OEo" firstAttribute="height" secondItem="AE3-he-Cib" secondAttribute="height" multiplier="0.5" id="7IS-Mt-X3U"/>
+                            <constraint firstItem="ozF-iw-eKP" firstAttribute="width" secondItem="AE3-he-Cib" secondAttribute="width" id="9Ma-aa-cdJ"/>
+                            <constraint firstItem="ozF-iw-eKP" firstAttribute="height" secondItem="AE3-he-Cib" secondAttribute="height" multiplier="0.5" id="EHI-R1-5UC"/>
+                            <constraint firstItem="W6d-QN-OEo" firstAttribute="width" secondItem="AE3-he-Cib" secondAttribute="width" id="KXN-Hj-0QP"/>
+                            <constraint firstItem="ozF-iw-eKP" firstAttribute="top" secondItem="4bg-xJ-Uw6" secondAttribute="bottom" constant="-20" id="cbz-2l-A4D"/>
+                            <constraint firstItem="W6d-QN-OEo" firstAttribute="centerX" secondItem="AE3-he-Cib" secondAttribute="centerX" id="clQ-sK-4cz"/>
+                            <constraint firstItem="qBi-Ot-YFo" firstAttribute="top" secondItem="W6d-QN-OEo" secondAttribute="bottom" id="qUO-IA-RCW"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="bO1-nL-nYp" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="875" y="212"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="MyTrackerBlue.png" width="800" height="600"/>
+        <image name="MyTrackerGray.png" width="800" height="600"/>
+        <image name="MyTrackerRed.png" width="800" height="600"/>
+    </resources>
 </document>
