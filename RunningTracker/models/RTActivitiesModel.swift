@@ -22,6 +22,8 @@ class RTActivitiesModel {
     private var currentActivityPausedAt : NSTimeInterval = 0
     private var currentActivityPausedTime : NSTimeInterval = 0
 
+    private init(){}
+
     func startActivity(){
         if currentActivity != nil {
             print("Trying to start activity before ending previous one")
