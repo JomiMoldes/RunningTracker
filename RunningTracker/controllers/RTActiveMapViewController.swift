@@ -97,6 +97,7 @@ class RTActiveMapViewController : UIViewController, CLLocationManagerDelegate {
     @IBAction func stopTouched(sender: UIButton) {
         RTActivitiesModel.sharedInstance.endActivity()
         invalidateTimer()
+        self.pauseButton.enabled = false
     }
     
     @IBAction func pauseTouched(sender: UIButton) {

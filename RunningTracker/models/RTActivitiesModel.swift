@@ -33,6 +33,7 @@ class RTActivitiesModel {
             return
         }
         currentActivity.endTime(NSDate().timeIntervalSinceReferenceDate)
+        currentActivity = nil
     }
 
     func addActivityLocation(activity:RTActivityLocation){

@@ -233,6 +233,7 @@
                                         <rect key="frame" x="300" y="0.0" width="300" height="94"/>
                                         <fontDescription key="fontDescription" name="Georgia-Bold" family="Georgia" pointSize="30"/>
                                         <state key="normal" title="PAUSE"/>
+                                        <state key="disabled" backgroundImage="MyTrackerGray.png"/>
                                         <connections>
                                             <action selector="pauseTouched:" destination="ulf-GS-jNF" eventType="touchUpInside" id="bfD-ts-jn5"/>
                                         </connections>
