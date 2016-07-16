@@ -29,6 +29,7 @@ class RTActiveMapViewController : UIViewController, CLLocationManagerDelegate {
     @IBOutlet weak var paceLabel: UILabel!
     
     @IBOutlet weak var pauseButton: UIButton!
+
     var locationManager : CLLocationManager!
     var locationsHistory : NSMutableArray!
 
@@ -136,9 +137,6 @@ class RTActiveMapViewController : UIViewController, CLLocationManagerDelegate {
         let activityLocation = RTActivityLocation(location: location, timestamp: NSDate().timeIntervalSinceReferenceDate)
 
         RTActivitiesModel.sharedInstance.addActivityLocation(activityLocation!)
-
-
-
     }
 
     func locationManager(manager: CLLocationManager, didFailWithError error: NSError){

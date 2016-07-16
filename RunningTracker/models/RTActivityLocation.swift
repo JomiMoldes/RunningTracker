@@ -14,8 +14,8 @@ struct ActivityLocationPropertyKey{
 
 class RTActivityLocation:NSObject , NSCoding {
 
-    public private(set) var location : CLLocation!
-    public private(set) var timestamp : Double = 0
+    private(set) var location : CLLocation!
+    private(set) var timestamp : Double = 0
     var distance : Double = 0
     var firstAfterResumed : Bool = false
 

@@ -18,7 +18,7 @@ class RTActivitiesModel {
 
     private var currentActivityPaused : Bool = false
     private var currentActivityJustResumed : Bool = false
-    public private(set) var activityRunning : Bool = false
+    private(set) var activityRunning : Bool = false
     private var currentActivityPausedAt : NSTimeInterval = 0
     private var currentActivityPausedTime : NSTimeInterval = 0
 
