@@ -9,6 +9,11 @@ class RTActivitiesModel {
 
     static let sharedInstance = RTActivitiesModel()
 
+    static let DocumentsDirectory = NSFileManager().URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask).first!
+    static let ArchiveURL = DocumentsDirectory.URLByAppendingPathComponent("activities")
+
+    private var activities:[RTActivity]!
+
     private var currentActivity : RTActivity!
 
     private var currentActivityPaused : Bool = false
@@ -16,15 +21,27 @@ class RTActivitiesModel {
     private var currentActivityPausedAt : NSTimeInterval = 0
     private var currentActivityPausedTime : NSTimeInterval = 0
 
-    private init(){}
-
     func startActivity(){
         if currentActivity != nil {
             print("Trying to start activity before ending previous one")
             return
         }
-        currentActivity = RTActivity()
-        currentActivity.startTime = NSDate().timeIntervalSinceReferenceDate
+        self.currentActivity = RTActivity(activities: [RTActivityLocation](), startTime: NSDate().timeIntervalSinceReferenceDate, endTime: nil)
+        activities.append(self.currentActivity)
+    }
+
+    func saveActivities() {
+        let isSuccessfulSave = NSKeyedArchiver.archiveRootObject(self.activities, toFile: RTActivitiesModel.ArchiveURL.path!)
+        if !isSuccessfulSave {
+            print("Failed to save")
+        }
+    }
+
+    func loadActivities() {
+        self.activities = NSKeyedUnarchiver.unarchiveObjectWithFile(RTActivitiesModel.ArchiveURL.path!) as? [RTActivity]
+        if self.activities == nil {
+            self.activities = [RTActivity]()
+        }
     }
 
     func endActivity(){
@@ -34,11 +51,19 @@ class RTActivitiesModel {
         }
         currentActivity.endTime(NSDate().timeIntervalSinceReferenceDate)
         currentActivity = nil
+        refreshValues()
+    }
+
+    func refreshValues() {
+        currentActivityPaused = false
+        currentActivityJustResumed = false
+        currentActivityPausedTime = 0
+        currentActivityPausedAt = 0
     }
 
     func addActivityLocation(activity:RTActivityLocation){
         if currentActivity == nil {
-            currentActivity = RTActivity()
+            currentActivity = RTActivity(activities: [RTActivityLocation](), startTime: NSDate().timeIntervalSinceReferenceDate, endTime: nil)
         }
         if currentActivityPaused {
             return

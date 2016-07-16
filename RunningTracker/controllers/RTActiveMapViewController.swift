@@ -96,6 +96,7 @@ class RTActiveMapViewController : UIViewController, CLLocationManagerDelegate {
 
     @IBAction func stopTouched(sender: UIButton) {
         RTActivitiesModel.sharedInstance.endActivity()
+        RTActivitiesModel.sharedInstance.saveActivities()
         invalidateTimer()
         self.pauseButton.enabled = false
     }
@@ -125,11 +126,9 @@ class RTActiveMapViewController : UIViewController, CLLocationManagerDelegate {
             path.addCoordinate(location.coordinate)
         }
 
-        let activityLocation = RTActivityLocation()
-        activityLocation.timestamp = NSDate().timeIntervalSince1970
-        activityLocation.location = location
+        let activityLocation = RTActivityLocation(location: location, timestamp: NSDate().timeIntervalSinceReferenceDate)
 
-        RTActivitiesModel.sharedInstance.addActivityLocation(activityLocation)
+        RTActivitiesModel.sharedInstance.addActivityLocation(activityLocation!)
 
         let polyline = GMSPolyline(path:path)
         polyline.strokeWidth = 5.0

@@ -23,20 +23,53 @@ class RTInitialViewController:UIViewController, CLLocationManagerDelegate {
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         self.startLocation()
+        RTActivitiesModel.sharedInstance.loadActivities()
     }
 
     func setupButtons(){
         self.myActivitiesButton.titleLabel?.numberOfLines = 1
         self.myActivitiesButton.titleLabel?.adjustsFontSizeToFitWidth = true
         self.myActivitiesButton.titleLabel?.lineBreakMode = NSLineBreakMode.ByClipping
-        
         self.startButton.enabled = false
     }
 
+    func startLocation(){
+        locationManager = CLLocationManager()
+        locationManager.delegate = self
+        switch (CLLocationManager.authorizationStatus()){
+        case .NotDetermined:
+            locationManager.requestWhenInUseAuthorization()
+            break
+        case .AuthorizedAlways, .Restricted, .Denied:
+            let alertController = UIAlertController(
+            title:"Location Access Disabled",
+                    message:"In order to track your paths, please open this app's settings and set location access to 'While using the app'",
+                    preferredStyle: .Alert)
 
-    // IBActions
+            let cancelAction = UIAlertAction(title:"Cancel", style: .Cancel, handler: nil)
+            alertController.addAction(cancelAction)
+
+            let openAction = UIAlertAction(title:"Open", style: .Default) {
+                (action) in
+                if let url = NSURL(string:UIApplicationOpenSettingsURLString) {
+                    UIApplication.sharedApplication().openURL(url)
+                }
+            }
+            alertController.addAction(openAction)
+
+            self.presentViewController(alertController, animated:true, completion:nil)
+
+            break
+        default:
+            break
+        }
+
+    }
+
+//MARK IBActions
 
     @IBAction func myActivitiesTouched(sender: UIButton) {
+
     }
 
     @IBAction func startTouched(sender: UIButton) {
@@ -45,40 +78,7 @@ class RTInitialViewController:UIViewController, CLLocationManagerDelegate {
         self.navigationController!.pushViewController(mapViewController!, animated:true)
     }
 
-    // Mark Location Manager
-
-    func startLocation(){
-        locationManager = CLLocationManager()
-        locationManager.delegate = self
-        switch (CLLocationManager.authorizationStatus()){
-            case .NotDetermined:
-                locationManager.requestWhenInUseAuthorization()
-            break
-            case .AuthorizedAlways, .Restricted, .Denied:
-                let alertController = UIAlertController(
-                    title:"Location Access Disabled",
-                            message:"In order to track your paths, please open this app's settings and set location access to 'While using the app'",
-                            preferredStyle: .Alert)
-
-                let cancelAction = UIAlertAction(title:"Cancel", style: .Cancel, handler: nil)
-                alertController.addAction(cancelAction)
-
-                let openAction = UIAlertAction(title:"Open", style: .Default) {
-                    (action) in
-                    if let url = NSURL(string:UIApplicationOpenSettingsURLString) {
-                        UIApplication.sharedApplication().openURL(url)
-                    }
-                }
-                alertController.addAction(openAction)
-
-                self.presentViewController(alertController, animated:true, completion:nil)
-
-            break
-            default:
-            break
-        }
-
-    }
+// MARK Location Manager
 
     func locationManager(manager: CLLocationManager, didChangeAuthorizationStatus status: CLAuthorizationStatus){
         if status == .AuthorizedWhenInUse {
