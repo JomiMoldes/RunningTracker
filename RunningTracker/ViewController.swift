@@ -19,7 +19,8 @@ class ViewController: UIViewController {
         super.viewDidAppear(animated)
         let storyBoard = UIStoryboard(name:"Main", bundle: nil)
         let initialViewcontroller = storyBoard.instantiateViewControllerWithIdentifier("InitialView")
-        self.presentViewController(initialViewcontroller, animated: true, completion: nil)
+//        self.presentViewController(initialViewcontroller, animated: true, completion: nil)
+        self.navigationController?.pushViewController(initialViewcontroller, animated: true )
     }
 
 

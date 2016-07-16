@@ -32,9 +32,16 @@
 	</array>
 	<key>UIRequiresFullScreen</key>
 	<true/>
+	<key>NSLocationWhenInUseUsageDescription</key>
+	<string>In order to track your path</string>
 	<key>UISupportedInterfaceOrientations</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>
+	</array>
+	<key>LSApplicationQueriesSchemes</key>
+	<array>
+		<string>googlechromes</string>
+		<string>comgooglemaps</string>
 	</array>
 </dict>
 </plist>
