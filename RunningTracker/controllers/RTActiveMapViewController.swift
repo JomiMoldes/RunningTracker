@@ -121,18 +121,23 @@ class RTActiveMapViewController : UIViewController, CLLocationManagerDelegate {
 
         self.mapView.animateToLocation(CLLocationCoordinate2DMake(location.coordinate.latitude, location.coordinate.longitude))
 
+        if !RTActivitiesModel.sharedInstance.activityRunning {
+           return
+        }
         let path = GMSMutablePath()
         for location:CLLocation in locations {
             path.addCoordinate(location.coordinate)
         }
 
+        let polyline = GMSPolyline(path:path)
+        polyline.strokeWidth = 5.0
+        polyline.map = self.mapView
+
         let activityLocation = RTActivityLocation(location: location, timestamp: NSDate().timeIntervalSinceReferenceDate)
 
         RTActivitiesModel.sharedInstance.addActivityLocation(activityLocation!)
 
-        let polyline = GMSPolyline(path:path)
-        polyline.strokeWidth = 5.0
-        polyline.map = self.mapView
+
 
     }
 

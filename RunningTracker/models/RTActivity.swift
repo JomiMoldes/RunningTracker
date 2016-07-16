@@ -19,12 +19,16 @@ class RTActivity:NSObject , NSCoding {
     var distance : Double = 0
 
     init?(activities:[RTActivityLocation], startTime:Double, endTime:Double?){
-        self.activities = activities
         self.startTime = startTime
         self.endTime = endTime
+        super.init()
+        for var i = 0; i < activities.count; i++ {
+            let activityLocation = activities[i]
+            addActivityLocation(activityLocation)
+        }
     }
 
-    func addActivityLocation(activityLocation:RTActivityLocation, withDistance:Bool = true){
+    func addActivityLocation(activityLocation:RTActivityLocation){
         var lastActivityLocation:RTActivityLocation?;
         if activities.count > 0 {
             lastActivityLocation = activities[activities.count - 1]
@@ -37,7 +41,7 @@ class RTActivity:NSObject , NSCoding {
         }
 
         activities.append(activityLocation)
-        if lastActivityLocation != nil && withDistance {
+        if lastActivityLocation != nil && !activityLocation.firstAfterResumed {
             let distanceDone = activityLocation.location.distanceFromLocation(lastActivityLocation!.location)
             distance += distanceDone
             activityLocation.distance = distanceDone

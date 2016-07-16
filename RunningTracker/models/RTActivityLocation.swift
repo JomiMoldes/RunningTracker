@@ -9,17 +9,21 @@ import CoreLocation
 struct ActivityLocationPropertyKey{
     static let locationKey = "location"
     static let timestampKey = "timestamp"
+    static  let firstAfterResumedKey = "firstAfterResumed"
 }
 
 class RTActivityLocation:NSObject , NSCoding {
 
-    var location : CLLocation!
-    var timestamp : Double = 0
+    public private(set) var location : CLLocation!
+    public private(set) var timestamp : Double = 0
     var distance : Double = 0
+    var firstAfterResumed : Bool = false
 
-    init?(location: CLLocation, timestamp: Double){
+    init?(location: CLLocation, timestamp: Double, firstAfterResumed:Bool = false){
         self.location = location
         self.timestamp = timestamp
+        self.firstAfterResumed = firstAfterResumed
+        super.init()
     }
 
 //MARK NSCoding
@@ -27,12 +31,14 @@ class RTActivityLocation:NSObject , NSCoding {
     required convenience init?(coder aDecoder: NSCoder) {
         let location = aDecoder.decodeObjectForKey(ActivityLocationPropertyKey.locationKey) as! CLLocation
         let timestamp = aDecoder.decodeDoubleForKey(ActivityLocationPropertyKey.timestampKey)
-        self.init(location: location, timestamp:timestamp)
+        let firstAfterResumed = aDecoder.decodeBoolForKey(ActivityLocationPropertyKey.firstAfterResumedKey)
+        self.init(location: location, timestamp:timestamp, firstAfterResumed:firstAfterResumed)
     }
 
     internal func encodeWithCoder(aCoder: NSCoder) {
         aCoder.encodeObject(location!, forKey:ActivityLocationPropertyKey.locationKey)
         aCoder.encodeDouble(timestamp, forKey:ActivityLocationPropertyKey.timestampKey)
+        aCoder.encodeBool(firstAfterResumed, forKey:ActivityLocationPropertyKey.firstAfterResumedKey)
     }
 
 }

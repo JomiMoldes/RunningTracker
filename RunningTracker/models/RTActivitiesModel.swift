@@ -18,6 +18,7 @@ class RTActivitiesModel {
 
     private var currentActivityPaused : Bool = false
     private var currentActivityJustResumed : Bool = false
+    public private(set) var activityRunning : Bool = false
     private var currentActivityPausedAt : NSTimeInterval = 0
     private var currentActivityPausedTime : NSTimeInterval = 0
 
@@ -28,6 +29,7 @@ class RTActivitiesModel {
         }
         self.currentActivity = RTActivity(activities: [RTActivityLocation](), startTime: NSDate().timeIntervalSinceReferenceDate, endTime: nil)
         activities.append(self.currentActivity)
+        activityRunning = true
     }
 
     func saveActivities() {
@@ -49,6 +51,7 @@ class RTActivitiesModel {
             print("Trying to end activity but there is none")
             return
         }
+        activityRunning = false
         currentActivity.endTime(NSDate().timeIntervalSinceReferenceDate)
         currentActivity = nil
         refreshValues()
@@ -62,19 +65,15 @@ class RTActivitiesModel {
     }
 
     func addActivityLocation(activity:RTActivityLocation){
-        if currentActivity == nil {
-            currentActivity = RTActivity(activities: [RTActivityLocation](), startTime: NSDate().timeIntervalSinceReferenceDate, endTime: nil)
-        }
-        if currentActivityPaused {
+        if currentActivityPaused || currentActivity == nil {
             return
         }
 
-        var withDistance:Bool = true
         if currentActivityJustResumed {
-            withDistance = false
             currentActivityJustResumed = false
+            activity.firstAfterResumed = true
         }
-        currentActivity.addActivityLocation(activity, withDistance: withDistance)
+        currentActivity.addActivityLocation(activity)
     }
 
     func getElapsedTime() -> NSTimeInterval {
