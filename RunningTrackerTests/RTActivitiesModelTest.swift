@@ -8,6 +8,7 @@
 
 import XCTest
 import Foundation
+import CoreLocation
 @testable import RunningTracker
 
 class RTActivitiesModelTest:XCTestCase{
@@ -31,14 +32,10 @@ class RTActivitiesModelTest:XCTestCase{
     func testStartActivity() {
         XCTAssertEqual(model.activitiesLenght(), 0)
         XCTAssertTrue(!model.isCurrentActivityDefined(), "currentActivity shouldn't be defined")
-        do{
-            try model.startActivity()
-        } catch {
-            XCTAssertTrue(false, "it should be possible to start activity")
-        }
+        mockStartActivity()
         XCTAssertTrue(model.isCurrentActivityDefined(), "currentActivity should be defined")
         do{
-            try model.startActivity()
+            try model.startActivity(NSDate().timeIntervalSinceReferenceDate)
             XCTAssertTrue(false, "it shouldn't be possible to start a new activity")
         } catch {}
         XCTAssertTrue(model.activityRunning, "activityRunning should be true")
@@ -47,11 +44,7 @@ class RTActivitiesModelTest:XCTestCase{
 
     func testEndActivity() {
         XCTAssertFalse(model.endActivity(), "you cannot end an activity when there is none active")
-        do{
-            try model.startActivity()
-        } catch {
-            XCTAssertTrue(false, "it should be possible to start activity")
-        }
+        mockStartActivity()
         XCTAssertTrue(model.activityRunning, "activityRunning should be true")
         model.endActivity()
         XCTAssertEqual(model.activitiesLenght(), 1)
@@ -62,22 +55,14 @@ class RTActivitiesModelTest:XCTestCase{
 
     func testSaveActivities() {
         XCTAssertEqual(model.activitiesLenght(), 0)
-        do{
-            try model.startActivity()
-        } catch {
-            XCTAssertTrue(false, "it should be possible to start activity")
-        }
+        mockStartActivity()
         model.endActivity()
         XCTAssertTrue(model.saveActivities(RTActivitiesModelTest.ArchiveURLTest.path!))
     }
 
     func testLoadActivities() {
         XCTAssertEqual(model.activitiesLenght(), 0)
-        do{
-            try model.startActivity()
-        } catch {
-            XCTAssertTrue(false, "it should be possible to start activity")
-        }
+        mockStartActivity()
         model.endActivity()
         XCTAssertTrue(model.saveActivities(RTActivitiesModelTest.ArchiveURLTest.path!))
         model.loadActivities(RTActivitiesModelTest.ArchiveURLTest.path!)
@@ -89,6 +74,82 @@ class RTActivitiesModelTest:XCTestCase{
         XCTAssertFalse(model.currentActivityJustResumed, "activity should not be just resumed")
         XCTAssertEqual(model.currentActivityPausedAt, 0)
         XCTAssertEqual(model.currentActivityPausedTime, 0)
+    }
+
+    func testAddActivityLocation() {
+        let location = CLLocation(latitude:1111.22, longitude: 3333.3)
+        let activityLocation : RTActivityLocation? = RTActivityLocation(location: location, timestamp: 100)
+
+        XCTAssertFalse(model.addActivityLocation(activityLocation!), "current activity is not set yet")
+
+        mockStartActivity()
+
+        model.pauseActivity(NSDate().timeIntervalSinceReferenceDate)
+        XCTAssertFalse(model.addActivityLocation(activityLocation!))
+
+        model.resumeActivity(NSDate().timeIntervalSinceReferenceDate)
+        XCTAssertTrue(model.addActivityLocation(activityLocation!))
+        XCTAssertTrue(activityLocation!.firstAfterResumed)
+
+        let location2 = CLLocation(latitude:221.22, longitude: 3322.3)
+        let activityLocation2 : RTActivityLocation? = RTActivityLocation(location: location2, timestamp: 100)
+        XCTAssertTrue(model.addActivityLocation(activityLocation2!))
+        XCTAssertFalse(activityLocation2!.firstAfterResumed)
+
+        XCTAssertEqual(model.currentActivitesLocationsLenght(), 2)
+    }
+
+
+
+    func testGetElapsedTime() {
+        let now = NSDate().timeIntervalSinceReferenceDate
+
+        do{
+            try model.startActivity(now)
+        } catch {
+            XCTAssertTrue(false, "it should be possible to start activity")
+        }
+
+        model.pauseActivity(now + 5)
+        model.resumeActivity(now + 10)
+        let result = model.getElapsedTime(now + 15)
+        XCTAssertEqual(result, 10)
+        XCTAssertEqual(model.getElapsedTime(now + 100), 95)
+    }
+
+    func testGetPaceLastKM() {
+        let now = NSDate().timeIntervalSinceReferenceDate
+
+        do{
+            try model.startActivity(now)
+        } catch {
+            XCTAssertTrue(false, "it should be possible to start activity")
+        }
+
+        let location1 = mockActivityLocation(now + 10, lat:12.55555, long:13)
+        let location2 = mockActivityLocation(now + 15, lat:12.55560, long:13)
+        model.addActivityLocation(location1)
+        model.addActivityLocation(location2)
+
+        let distance : Double = 5.5313383877970717
+        XCTAssertEqual(location2.distance, distance)
+
+        let pace = 1000 * 5 / distance
+        XCTAssertEqual(model.getPaceLastKM(), pace)
+    }
+
+    func mockStartActivity() {
+        do{
+            try model.startActivity(NSDate().timeIntervalSinceReferenceDate)
+        } catch {
+            XCTAssertTrue(false, "it should be possible to start activity")
+        }
+    }
+
+    func mockActivityLocation(now:NSTimeInterval, lat:Double = 111.22, long:Double = 333.3) -> RTActivityLocation {
+        let location = CLLocation(latitude:lat, longitude: long)
+        let activityLocation : RTActivityLocation? = RTActivityLocation(location: location, timestamp: now)
+        return activityLocation!
     }
 
 }

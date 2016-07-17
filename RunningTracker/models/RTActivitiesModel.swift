@@ -28,12 +28,12 @@ class RTActivitiesModel {
         self.activities = [RTActivity]()
     }
 
-    func startActivity() throws -> Bool {
+    func startActivity(now:NSTimeInterval) throws -> Bool {
         guard currentActivity == nil else {
             print("Trying to start activity before ending previous one")
             throw RTActivitiesError.RTActivityAlreadySet
         }
-        self.currentActivity = RTActivity(activities: [RTActivityLocation](), startTime: NSDate().timeIntervalSinceReferenceDate, endTime: nil)
+        self.currentActivity = RTActivity(activities: [RTActivityLocation](), startTime: now, endTime: nil)
         activityRunning = true
         return true
     }
@@ -73,9 +73,9 @@ class RTActivitiesModel {
         currentActivityPausedAt = 0
     }
 
-    func addActivityLocation(activity:RTActivityLocation){
+    func addActivityLocation(activity:RTActivityLocation) -> Bool {
         if currentActivityPaused || currentActivity == nil {
-            return
+            return false
         }
 
         if currentActivityJustResumed {
@@ -83,10 +83,11 @@ class RTActivitiesModel {
             activity.firstAfterResumed = true
         }
         currentActivity.addActivityLocation(activity)
+        return true
     }
 
-    func getElapsedTime() -> NSTimeInterval {
-        return NSDate().timeIntervalSinceReferenceDate - currentActivityPausedTime - currentActivity.startTime
+    func getElapsedTime(now:NSTimeInterval) -> NSTimeInterval {
+        return now - currentActivityPausedTime - currentActivity.startTime
     }
 
     func getDistanceDone() -> Double {
@@ -129,14 +130,14 @@ class RTActivitiesModel {
         return currentActivityPaused
     }
 
-    func pauseActivity(){
+    func pauseActivity(now:NSTimeInterval){
         currentActivityPaused = true
-        currentActivityPausedAt = NSDate().timeIntervalSinceReferenceDate
+        currentActivityPausedAt = now
     }
 
-    func resumeActivity(){
+    func resumeActivity(now:NSTimeInterval){
         currentActivityPaused = false
-        currentActivityPausedTime += NSDate().timeIntervalSinceReferenceDate - currentActivityPausedAt
+        currentActivityPausedTime += now - currentActivityPausedAt
         currentActivityPausedAt = 0
         currentActivityJustResumed = true
     }
@@ -147,6 +148,14 @@ class RTActivitiesModel {
 
     func activitiesLenght() -> Int {
         return self.activities.count
+    }
+
+    func currentActivitesLocationsLenght() -> Int {
+        return self.currentActivity.getActivities().count
+    }
+
+    func currentActivityStartTime() -> Double {
+        return self.currentActivity.startTime
     }
 
     func deleteAllActivities(){

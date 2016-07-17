@@ -29,7 +29,7 @@ class RTActivity:NSObject , NSCoding {
     }
 
     func addActivityLocation(activityLocation:RTActivityLocation){
-        var lastActivityLocation:RTActivityLocation?;
+        var lastActivityLocation:RTActivityLocation?
         if activities.count > 0 {
             lastActivityLocation = activities[activities.count - 1]
             if lastActivityLocation != nil{
