@@ -32,6 +32,7 @@ class RTActiveMapViewController : UIViewController, CLLocationManagerDelegate {
 
     var locationManager : CLLocationManager!
     var locationsHistory : NSMutableArray!
+    var activitiesModel: RTActivitiesModel!
 
     var mapView : GMSMapView!
     var timer : NSTimer!
@@ -64,7 +65,6 @@ class RTActiveMapViewController : UIViewController, CLLocationManagerDelegate {
     }
 
     func updateTime(){
-        let activitiesModel = RTActivitiesModel.sharedInstance
         let elapsedTime:NSTimeInterval = activitiesModel.getElapsedTime()
         let elapsedStr = elapsedTime.getHours() + ":" + elapsedTime.getMinutes() + ":" + elapsedTime.getSeconds()
         self.chronometerLabel.text = elapsedStr
@@ -96,20 +96,19 @@ class RTActiveMapViewController : UIViewController, CLLocationManagerDelegate {
     }
 
     @IBAction func stopTouched(sender: UIButton) {
-        RTActivitiesModel.sharedInstance.endActivity()
-        RTActivitiesModel.sharedInstance.saveActivities()
+        self.activitiesModel.endActivity()
+        self.activitiesModel.saveActivities(RTActivitiesModel.ArchiveURL.path!)
         invalidateTimer()
         self.pauseButton.enabled = false
     }
     
     @IBAction func pauseTouched(sender: UIButton) {
-        let activities = RTActivitiesModel.sharedInstance
-        if activities.isCurrentActivityPaused() {
-            activities.resumeActivity()
+        if self.activitiesModel.currentActivityPaused {
+            self.activitiesModel.resumeActivity()
             sender.setTitle("PAUSE", forState: UIControlState.Normal)
             setupTimer()
         }else{
-            activities.pauseActivity()
+            self.activitiesModel.pauseActivity()
             sender.setTitle("RESUME", forState: UIControlState.Normal)
             invalidateTimer()
         }
@@ -122,7 +121,7 @@ class RTActiveMapViewController : UIViewController, CLLocationManagerDelegate {
 
         self.mapView.animateToLocation(CLLocationCoordinate2DMake(location.coordinate.latitude, location.coordinate.longitude))
 
-        if !RTActivitiesModel.sharedInstance.activityRunning {
+        if !self.activitiesModel.activityRunning {
            return
         }
         let path = GMSMutablePath()
@@ -136,7 +135,7 @@ class RTActiveMapViewController : UIViewController, CLLocationManagerDelegate {
 
         let activityLocation = RTActivityLocation(location: location, timestamp: NSDate().timeIntervalSinceReferenceDate)
 
-        RTActivitiesModel.sharedInstance.addActivityLocation(activityLocation!)
+        self.activitiesModel.addActivityLocation(activityLocation!)
     }
 
     func locationManager(manager: CLLocationManager, didFailWithError error: NSError){

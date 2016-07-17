@@ -13,6 +13,7 @@
 		45BAF798A150E21E22FCA8C0 /* RTNumbersExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45BAFBF0DE4F01A4E9D9FBDE /* RTNumbersExtensions.swift */; };
 		45BAF98FED4665549212C685 /* RTActivityLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45BAF7D64C5B42DC4D6CFF92 /* RTActivityLocation.swift */; };
 		45BAFA63A080F2D499536142 /* RTActivitiesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45BAF9623FF8D4BDF06E463C /* RTActivitiesModel.swift */; };
+		48776CDB1D3BAA5100630A64 /* RTActivitiesModelTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48776CDA1D3BAA5100630A64 /* RTActivitiesModelTest.swift */; };
 		48E0E2E41D2EC7360036F56B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48E0E2E31D2EC7360036F56B /* AppDelegate.swift */; };
 		48E0E2E61D2EC7360036F56B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48E0E2E51D2EC7360036F56B /* ViewController.swift */; };
 		48E0E2E91D2EC7360036F56B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 48E0E2E71D2EC7360036F56B /* Main.storyboard */; };
@@ -50,6 +51,7 @@
 		45BAF9623FF8D4BDF06E463C /* RTActivitiesModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RTActivitiesModel.swift; sourceTree = "<group>"; };
 		45BAF9A0DF51888F7D92705D /* RTActiveMapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RTActiveMapViewController.swift; sourceTree = "<group>"; };
 		45BAFBF0DE4F01A4E9D9FBDE /* RTNumbersExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RTNumbersExtensions.swift; sourceTree = "<group>"; };
+		48776CDA1D3BAA5100630A64 /* RTActivitiesModelTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RTActivitiesModelTest.swift; sourceTree = "<group>"; };
 		48E0E2E01D2EC7360036F56B /* RunningTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RunningTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		48E0E2E31D2EC7360036F56B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		48E0E2E51D2EC7360036F56B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -189,6 +191,7 @@
 			children = (
 				48E0E2F81D2EC7360036F56B /* RunningTrackerTests.swift */,
 				48E0E2FA1D2EC7360036F56B /* Info.plist */,
+				48776CDA1D3BAA5100630A64 /* RTActivitiesModelTest.swift */,
 			);
 			path = RunningTrackerTests;
 			sourceTree = "<group>";
@@ -385,6 +388,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				48776CDB1D3BAA5100630A64 /* RTActivitiesModelTest.swift in Sources */,
 				48E0E2F91D2EC7360036F56B /* RunningTrackerTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

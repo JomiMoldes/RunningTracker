@@ -5,9 +5,11 @@
 
 import Foundation
 
-class RTActivitiesModel {
+enum RTActivitiesError:ErrorType {
+    case RTActivityAlreadySet
+}
 
-    static let sharedInstance = RTActivitiesModel()
+class RTActivitiesModel {
 
     static let DocumentsDirectory = NSFileManager().URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask).first!
     static let ArchiveURL = DocumentsDirectory.URLByAppendingPathComponent("activities")
@@ -16,47 +18,52 @@ class RTActivitiesModel {
 
     private var currentActivity : RTActivity!
 
-    private var currentActivityPaused : Bool = false
-    private var currentActivityJustResumed : Bool = false
+    private(set) var currentActivityPaused : Bool = false
+    private(set) var currentActivityJustResumed : Bool = false
     private(set) var activityRunning : Bool = false
-    private var currentActivityPausedAt : NSTimeInterval = 0
-    private var currentActivityPausedTime : NSTimeInterval = 0
+    private(set) var currentActivityPausedAt : NSTimeInterval = 0
+    private(set) var currentActivityPausedTime : NSTimeInterval = 0
 
-    private init(){}
+    init(){
+        self.activities = [RTActivity]()
+    }
 
-    func startActivity(){
-        if currentActivity != nil {
+    func startActivity() throws -> Bool {
+        guard currentActivity == nil else {
             print("Trying to start activity before ending previous one")
-            return
+            throw RTActivitiesError.RTActivityAlreadySet
         }
         self.currentActivity = RTActivity(activities: [RTActivityLocation](), startTime: NSDate().timeIntervalSinceReferenceDate, endTime: nil)
-        activities.append(self.currentActivity)
         activityRunning = true
+        return true
     }
 
-    func saveActivities() {
-        let isSuccessfulSave = NSKeyedArchiver.archiveRootObject(self.activities, toFile: RTActivitiesModel.ArchiveURL.path!)
-        if !isSuccessfulSave {
-            print("Failed to save")
+    func saveActivities(path:String) -> Bool {
+        if(self.activities.count == 0){
+            return false
         }
+        let isSuccessfulSave = NSKeyedArchiver.archiveRootObject(self.activities, toFile: path)
+        return isSuccessfulSave
     }
 
-    func loadActivities() {
-        self.activities = NSKeyedUnarchiver.unarchiveObjectWithFile(RTActivitiesModel.ArchiveURL.path!) as? [RTActivity]
+    func loadActivities(path:String) {
+        self.activities = NSKeyedUnarchiver.unarchiveObjectWithFile(path) as? [RTActivity]
         if self.activities == nil {
             self.activities = [RTActivity]()
         }
     }
 
-    func endActivity(){
+    func endActivity() -> Bool {
         if currentActivity == nil {
             print("Trying to end activity but there is none")
-            return
+            return false
         }
+        activities.append(self.currentActivity)
         activityRunning = false
         currentActivity.endTime(NSDate().timeIntervalSinceReferenceDate)
         currentActivity = nil
         refreshValues()
+        return true
     }
 
     func refreshValues() {
@@ -132,6 +139,18 @@ class RTActivitiesModel {
         currentActivityPausedTime += NSDate().timeIntervalSinceReferenceDate - currentActivityPausedAt
         currentActivityPausedAt = 0
         currentActivityJustResumed = true
+    }
+    
+    func isCurrentActivityDefined()-> Bool {
+        return currentActivity != nil
+    }
+
+    func activitiesLenght() -> Int {
+        return self.activities.count
+    }
+
+    func deleteAllActivities(){
+        self.activities = [RTActivity]()
     }
 
 }

@@ -19,6 +19,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         GMSServices.provideAPIKey("AIzaSyC0kuvM-3c5wcTd5WMKNhbo3xdf5G4U0aw")
         self.window = UIWindow(frame:UIScreen.mainScreen().bounds)
         let viewController = ViewController()
+        viewController.activitiesModel = RTActivitiesModel()
         let nav = UINavigationController(rootViewController: viewController )
         self.window?.rootViewController = nav;
         nav.setNavigationBarHidden(true, animated:false)

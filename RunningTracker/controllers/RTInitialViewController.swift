@@ -14,7 +14,8 @@ class RTInitialViewController:UIViewController, CLLocationManagerDelegate {
     
     @IBOutlet weak var gpsImageView: UIImageView!
     var locationManager : CLLocationManager!
-    
+    var activitiesModel : RTActivitiesModel!
+
     override func viewDidLoad() {
         super.viewDidLoad()
         self.setupButtons()
@@ -23,7 +24,7 @@ class RTInitialViewController:UIViewController, CLLocationManagerDelegate {
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         self.startLocation()
-        RTActivitiesModel.sharedInstance.loadActivities()
+        activitiesModel.loadActivities(RTActivitiesModel.ArchiveURL.path!)
     }
 
     func setupButtons(){
@@ -74,7 +75,16 @@ class RTInitialViewController:UIViewController, CLLocationManagerDelegate {
 
     @IBAction func startTouched(sender: UIButton) {
         let mapViewController = UIStoryboard(name:"Main", bundle:nil).instantiateViewControllerWithIdentifier("activeMapView") as? RTActiveMapViewController
-        RTActivitiesModel.sharedInstance.startActivity()
+        mapViewController!.activitiesModel = self.activitiesModel
+
+        do {
+            try self.activitiesModel.startActivity()
+        } catch {
+            print("the activity was not possible to start")
+            return
+        }
+
+
         self.navigationController!.pushViewController(mapViewController!, animated:true)
     }
 
