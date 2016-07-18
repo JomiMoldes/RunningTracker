@@ -78,7 +78,7 @@ class RTInitialViewController:UIViewController, CLLocationManagerDelegate {
         mapViewController!.activitiesModel = self.activitiesModel
 
         do {
-            try self.activitiesModel.startActivity(NSDate().timeIntervalSinceReferenceDate)
+            try self.activitiesModel.startActivity()
         } catch {
             print("the activity was not possible to start")
             return

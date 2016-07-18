@@ -35,7 +35,7 @@ class RTActivitiesModelTest:XCTestCase{
         mockStartActivity()
         XCTAssertTrue(model.isCurrentActivityDefined(), "currentActivity should be defined")
         do{
-            try model.startActivity(NSDate().timeIntervalSinceReferenceDate)
+            try model.startActivity()
             XCTAssertTrue(false, "it shouldn't be possible to start a new activity")
         } catch {}
         XCTAssertTrue(model.activityRunning, "activityRunning should be true")
@@ -84,10 +84,10 @@ class RTActivitiesModelTest:XCTestCase{
 
         mockStartActivity()
 
-        model.pauseActivity(NSDate().timeIntervalSinceReferenceDate)
+        model.pauseActivity()
         XCTAssertFalse(model.addActivityLocation(activityLocation!))
 
-        model.resumeActivity(NSDate().timeIntervalSinceReferenceDate)
+        model.resumeActivity()
         XCTAssertTrue(model.addActivityLocation(activityLocation!))
         XCTAssertTrue(activityLocation!.firstAfterResumed)
 
@@ -103,25 +103,34 @@ class RTActivitiesModelTest:XCTestCase{
 
     func testGetElapsedTime() {
         let now = NSDate().timeIntervalSinceReferenceDate
+        model.fakeNow = now
 
         do{
-            try model.startActivity(now)
+            try model.startActivity()
         } catch {
             XCTAssertTrue(false, "it should be possible to start activity")
         }
 
-        model.pauseActivity(now + 5)
-        model.resumeActivity(now + 10)
-        let result = model.getElapsedTime(now + 15)
+        model.fakeNow = now + 5
+        model.pauseActivity()
+
+        model.fakeNow = now + 10
+        model.resumeActivity()
+
+        model.fakeNow = now + 15
+        let result = model.getElapsedTime()
         XCTAssertEqual(result, 10)
-        XCTAssertEqual(model.getElapsedTime(now + 100), 95)
+
+        model.fakeNow = now + 100
+        XCTAssertEqual(model.getElapsedTime(), 95)
     }
 
     func testGetPaceLastKM() {
         let now = NSDate().timeIntervalSinceReferenceDate
+        model.fakeNow = now
 
         do{
-            try model.startActivity(now)
+            try model.startActivity()
         } catch {
             XCTAssertTrue(false, "it should be possible to start activity")
         }
@@ -140,7 +149,7 @@ class RTActivitiesModelTest:XCTestCase{
 
     func mockStartActivity() {
         do{
-            try model.startActivity(NSDate().timeIntervalSinceReferenceDate)
+            try model.startActivity()
         } catch {
             XCTAssertTrue(false, "it should be possible to start activity")
         }
@@ -157,6 +166,8 @@ class RTActivitiesModelTest:XCTestCase{
 class RTActivitiesModelFake:RTActivitiesModel{
 
     var valuesRefreshed:Bool = false
+
+    var fakeNow:NSTimeInterval = NSDate().timeIntervalSinceReferenceDate
     
     override init() {
         super.init()
@@ -165,6 +176,10 @@ class RTActivitiesModelFake:RTActivitiesModel{
     override func refreshValues() {
         valuesRefreshed = true
         super.refreshValues()
+    }
+
+    override func getNow() -> NSTimeInterval {
+        return fakeNow
     }
 
 }

@@ -28,12 +28,12 @@ class RTActivitiesModel {
         self.activities = [RTActivity]()
     }
 
-    func startActivity(now:NSTimeInterval) throws -> Bool {
+    func startActivity() throws -> Bool {
         guard currentActivity == nil else {
             print("Trying to start activity before ending previous one")
             throw RTActivitiesError.RTActivityAlreadySet
         }
-        self.currentActivity = RTActivity(activities: [RTActivityLocation](), startTime: now, endTime: nil)
+        self.currentActivity = RTActivity(activities: [RTActivityLocation](), startTime: getNow(), endTime: nil)
         activityRunning = true
         return true
     }
@@ -86,8 +86,8 @@ class RTActivitiesModel {
         return true
     }
 
-    func getElapsedTime(now:NSTimeInterval) -> NSTimeInterval {
-        return now - currentActivityPausedTime - currentActivity.startTime
+    func getElapsedTime() -> NSTimeInterval {
+        return getNow() - currentActivityPausedTime - currentActivity.startTime
     }
 
     func getDistanceDone() -> Double {
@@ -130,14 +130,14 @@ class RTActivitiesModel {
         return currentActivityPaused
     }
 
-    func pauseActivity(now:NSTimeInterval){
+    func pauseActivity(){
         currentActivityPaused = true
-        currentActivityPausedAt = now
+        currentActivityPausedAt = getNow()
     }
 
-    func resumeActivity(now:NSTimeInterval){
+    func resumeActivity(){
         currentActivityPaused = false
-        currentActivityPausedTime += now - currentActivityPausedAt
+        currentActivityPausedTime += getNow() - currentActivityPausedAt
         currentActivityPausedAt = 0
         currentActivityJustResumed = true
     }
@@ -160,6 +160,10 @@ class RTActivitiesModel {
 
     func deleteAllActivities(){
         self.activities = [RTActivity]()
+    }
+
+    func getNow() -> NSTimeInterval {
+        return NSDate().timeIntervalSinceReferenceDate
     }
 
 }

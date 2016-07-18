@@ -65,7 +65,7 @@ class RTActiveMapViewController : UIViewController, CLLocationManagerDelegate {
     }
 
     func updateTime(){
-        let elapsedTime:NSTimeInterval = activitiesModel.getElapsedTime(NSDate().timeIntervalSinceReferenceDate)
+        let elapsedTime:NSTimeInterval = activitiesModel.getElapsedTime()
         let elapsedStr = elapsedTime.getHours() + ":" + elapsedTime.getMinutes() + ":" + elapsedTime.getSeconds()
         self.chronometerLabel.text = elapsedStr
 
@@ -104,11 +104,11 @@ class RTActiveMapViewController : UIViewController, CLLocationManagerDelegate {
     
     @IBAction func pauseTouched(sender: UIButton) {
         if self.activitiesModel.currentActivityPaused {
-            self.activitiesModel.resumeActivity(NSDate().timeIntervalSinceReferenceDate)
+            self.activitiesModel.resumeActivity()
             sender.setTitle("PAUSE", forState: UIControlState.Normal)
             setupTimer()
         }else{
-            self.activitiesModel.pauseActivity(NSDate().timeIntervalSinceReferenceDate)
+            self.activitiesModel.pauseActivity()
             sender.setTitle("RESUME", forState: UIControlState.Normal)
             invalidateTimer()
         }
