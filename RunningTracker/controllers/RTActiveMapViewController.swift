@@ -37,6 +37,11 @@ class RTActiveMapViewController : UIViewController, CLLocationManagerDelegate {
     var mapView : GMSMapView!
     var timer : NSTimer!
 
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        self.activitiesModel = RTGlobalModels.sharedInstance.activitiesModel
+    }
+
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         self.locationsHistory = NSMutableArray()

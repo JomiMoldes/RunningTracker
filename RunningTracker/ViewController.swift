@@ -10,13 +10,10 @@ import UIKit
 
 class ViewController: UIViewController {
 
-    var activitiesModel:RTActivitiesModel!
-
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         let storyBoard = UIStoryboard(name:"Main", bundle: nil)
         let initialViewcontroller = storyBoard.instantiateViewControllerWithIdentifier("InitialView") as? RTInitialViewController
-        initialViewcontroller!.activitiesModel = self.activitiesModel
 
 //        self.presentViewController(initialViewcontroller, animated: true, completion: nil)
         self.navigationController?.pushViewController(initialViewcontroller!, animated: true )

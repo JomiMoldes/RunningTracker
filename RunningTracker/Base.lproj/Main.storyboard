@@ -279,6 +279,66 @@
             </objects>
             <point key="canvasLocation" x="1512" y="212"/>
         </scene>
+        <!--Activities View Controller-->
+        <scene sceneID="XjV-Z8-U0S">
+            <objects>
+                <viewController storyboardIdentifier="activitiesView" id="bTv-b6-vVZ" customClass="RTActivitiesViewController" customModule="RunningTracker" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="dpt-t0-9mw"/>
+                        <viewControllerLayoutGuide type="bottom" id="5Fg-22-bd8"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="5De-m0-jY4">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BFn-pT-Hqp" userLabel="topView">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="80"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yrJ-hw-zgk" userLabel="BackButton">
+                                        <rect key="frame" x="17" y="25" width="46" height="30"/>
+                                        <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="jeq-EN-pWl"/>
+                                            <constraint firstAttribute="width" constant="46" id="mJP-Hw-I4X"/>
+                                        </constraints>
+                                        <state key="normal" title="Back"/>
+                                        <connections>
+                                            <action selector="backTouched:" destination="bTv-b6-vVZ" eventType="touchUpInside" id="PvJ-9F-FbM"/>
+                                        </connections>
+                                    </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ACTIVITIES" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wvx-pc-Vya" userLabel="titleLabel">
+                                        <rect key="frame" x="90" y="8" width="420" height="64"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="64" id="2QM-8f-MsB"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="Georgia-Bold" family="Georgia" pointSize="44"/>
+                                        <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" red="1" green="0.051191160530000002" blue="0.17020857489999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstItem="yrJ-hw-zgk" firstAttribute="centerY" secondItem="BFn-pT-Hqp" secondAttribute="centerY" id="F3O-lZ-1TN"/>
+                                    <constraint firstItem="yrJ-hw-zgk" firstAttribute="leading" secondItem="BFn-pT-Hqp" secondAttribute="leading" constant="17" id="FJg-si-dxk"/>
+                                    <constraint firstAttribute="height" constant="80" id="Vvo-hs-cZE"/>
+                                    <constraint firstItem="Wvx-pc-Vya" firstAttribute="width" secondItem="BFn-pT-Hqp" secondAttribute="width" multiplier="0.7" id="YqT-aE-J8n"/>
+                                    <constraint firstItem="Wvx-pc-Vya" firstAttribute="centerY" secondItem="BFn-pT-Hqp" secondAttribute="centerY" id="goA-BC-tzu"/>
+                                    <constraint firstItem="Wvx-pc-Vya" firstAttribute="centerX" secondItem="BFn-pT-Hqp" secondAttribute="centerX" id="yIS-PD-qm2"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="BFn-pT-Hqp" firstAttribute="width" secondItem="5De-m0-jY4" secondAttribute="width" id="iPd-vR-X5W"/>
+                            <constraint firstItem="BFn-pT-Hqp" firstAttribute="top" secondItem="dpt-t0-9mw" secondAttribute="bottom" constant="-20" id="ikU-3u-GF7"/>
+                            <constraint firstItem="BFn-pT-Hqp" firstAttribute="centerX" secondItem="5De-m0-jY4" secondAttribute="centerX" id="ouM-IX-Tgv"/>
+                        </constraints>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="oEq-O4-JZD" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2148" y="214"/>
+        </scene>
     </scenes>
     <resources>
         <image name="GPSblack.png" width="50" height="50"/>

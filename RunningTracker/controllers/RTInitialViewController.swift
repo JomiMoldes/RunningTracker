@@ -17,6 +17,7 @@ class RTInitialViewController:UIViewController, CLLocationManagerDelegate {
     var activitiesModel : RTActivitiesModel!
 
     override func viewDidLoad() {
+        self.activitiesModel = RTGlobalModels.sharedInstance.activitiesModel
         super.viewDidLoad()
         self.setupButtons()
     }
@@ -70,12 +71,13 @@ class RTInitialViewController:UIViewController, CLLocationManagerDelegate {
 //MARK IBActions
 
     @IBAction func myActivitiesTouched(sender: UIButton) {
-
+        let activitiesController = UIStoryboard(name:"Main", bundle:nil).instantiateViewControllerWithIdentifier("activitiesView") as? RTActivitiesViewController
+        self.navigationController!.pushViewController(activitiesController!, animated:true)
     }
 
     @IBAction func startTouched(sender: UIButton) {
         let mapViewController = UIStoryboard(name:"Main", bundle:nil).instantiateViewControllerWithIdentifier("activeMapView") as? RTActiveMapViewController
-        mapViewController!.activitiesModel = self.activitiesModel
+//        mapViewController!.activitiesModel = self.activitiesModel
 
         do {
             try self.activitiesModel.startActivity()
@@ -83,7 +85,6 @@ class RTInitialViewController:UIViewController, CLLocationManagerDelegate {
             print("the activity was not possible to start")
             return
         }
-
 
         self.navigationController!.pushViewController(mapViewController!, animated:true)
     }

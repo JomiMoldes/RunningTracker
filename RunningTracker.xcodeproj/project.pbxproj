@@ -10,9 +10,11 @@
 		45BAF0DE930DFEAD5E238D9E /* RTActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45BAF0CB67C24E3DF1344558 /* RTActivity.swift */; };
 		45BAF2C92150C8AE7A10892A /* RTInitialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45BAF05862AA772DB523305A /* RTInitialViewController.swift */; };
 		45BAF35FF38665A31336D7CA /* RTActiveMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45BAF9A0DF51888F7D92705D /* RTActiveMapViewController.swift */; };
+		45BAF3F97EBCED19E1E145A3 /* RTGlobalModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45BAF71705BB05254A84B302 /* RTGlobalModels.swift */; };
 		45BAF798A150E21E22FCA8C0 /* RTNumbersExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45BAFBF0DE4F01A4E9D9FBDE /* RTNumbersExtensions.swift */; };
 		45BAF98FED4665549212C685 /* RTActivityLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45BAF7D64C5B42DC4D6CFF92 /* RTActivityLocation.swift */; };
 		45BAFA63A080F2D499536142 /* RTActivitiesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45BAF9623FF8D4BDF06E463C /* RTActivitiesModel.swift */; };
+		45BAFC1E17D04D6F678D3556 /* RTActivitiesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45BAF7E2708014ED6B2508B8 /* RTActivitiesViewController.swift */; };
 		48776CDB1D3BAA5100630A64 /* RTActivitiesModelTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48776CDA1D3BAA5100630A64 /* RTActivitiesModelTest.swift */; };
 		48E0E2E41D2EC7360036F56B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48E0E2E31D2EC7360036F56B /* AppDelegate.swift */; };
 		48E0E2E61D2EC7360036F56B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48E0E2E51D2EC7360036F56B /* ViewController.swift */; };
@@ -47,7 +49,9 @@
 		3601DCAABE1D4283238AB370 /* Pods_RunningTracker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RunningTracker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		45BAF05862AA772DB523305A /* RTInitialViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RTInitialViewController.swift; sourceTree = "<group>"; };
 		45BAF0CB67C24E3DF1344558 /* RTActivity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RTActivity.swift; sourceTree = "<group>"; };
+		45BAF71705BB05254A84B302 /* RTGlobalModels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RTGlobalModels.swift; sourceTree = "<group>"; };
 		45BAF7D64C5B42DC4D6CFF92 /* RTActivityLocation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RTActivityLocation.swift; sourceTree = "<group>"; };
+		45BAF7E2708014ED6B2508B8 /* RTActivitiesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RTActivitiesViewController.swift; sourceTree = "<group>"; };
 		45BAF9623FF8D4BDF06E463C /* RTActivitiesModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RTActivitiesModel.swift; sourceTree = "<group>"; };
 		45BAF9A0DF51888F7D92705D /* RTActiveMapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RTActiveMapViewController.swift; sourceTree = "<group>"; };
 		45BAFBF0DE4F01A4E9D9FBDE /* RTNumbersExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RTNumbersExtensions.swift; sourceTree = "<group>"; };
@@ -104,6 +108,7 @@
 				45BAF9623FF8D4BDF06E463C /* RTActivitiesModel.swift */,
 				45BAF7D64C5B42DC4D6CFF92 /* RTActivityLocation.swift */,
 				45BAF0CB67C24E3DF1344558 /* RTActivity.swift */,
+				45BAF71705BB05254A84B302 /* RTGlobalModels.swift */,
 			);
 			path = models;
 			sourceTree = "<group>";
@@ -136,6 +141,7 @@
 			children = (
 				45BAF05862AA772DB523305A /* RTInitialViewController.swift */,
 				45BAF9A0DF51888F7D92705D /* RTActiveMapViewController.swift */,
+				45BAF7E2708014ED6B2508B8 /* RTActivitiesViewController.swift */,
 			);
 			path = controllers;
 			sourceTree = "<group>";
@@ -381,6 +387,8 @@
 				45BAF98FED4665549212C685 /* RTActivityLocation.swift in Sources */,
 				45BAF0DE930DFEAD5E238D9E /* RTActivity.swift in Sources */,
 				45BAF798A150E21E22FCA8C0 /* RTNumbersExtensions.swift in Sources */,
+				45BAFC1E17D04D6F678D3556 /* RTActivitiesViewController.swift in Sources */,
+				45BAF3F97EBCED19E1E145A3 /* RTGlobalModels.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
