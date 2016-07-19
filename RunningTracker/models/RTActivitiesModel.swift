@@ -150,6 +150,14 @@ class RTActivitiesModel {
         return self.activities.count
     }
 
+    func getActivities()->[RTActivity]{
+        var copy = [RTActivity]()
+        for activity:RTActivity in activities {
+            copy.append(activity)
+        }
+        return copy
+    }
+
     func currentActivitesLocationsLenght() -> Int {
         return self.currentActivity.getActivities().count
     }

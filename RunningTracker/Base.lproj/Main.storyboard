@@ -292,10 +292,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="BFn-pT-Hqp" userLabel="topView">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="80"/>
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="90"/>
                                 <subviews>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yrJ-hw-zgk" userLabel="BackButton">
-                                        <rect key="frame" x="17" y="25" width="46" height="30"/>
+                                        <rect key="frame" x="17" y="30" width="46" height="30"/>
                                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="30" id="jeq-EN-pWl"/>
@@ -307,7 +307,7 @@
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ACTIVITIES" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Wvx-pc-Vya" userLabel="titleLabel">
-                                        <rect key="frame" x="90" y="8" width="420" height="64"/>
+                                        <rect key="frame" x="90" y="13" width="420" height="64"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="64" id="2QM-8f-MsB"/>
                                         </constraints>
@@ -320,20 +320,36 @@
                                 <constraints>
                                     <constraint firstItem="yrJ-hw-zgk" firstAttribute="centerY" secondItem="BFn-pT-Hqp" secondAttribute="centerY" id="F3O-lZ-1TN"/>
                                     <constraint firstItem="yrJ-hw-zgk" firstAttribute="leading" secondItem="BFn-pT-Hqp" secondAttribute="leading" constant="17" id="FJg-si-dxk"/>
-                                    <constraint firstAttribute="height" constant="80" id="Vvo-hs-cZE"/>
                                     <constraint firstItem="Wvx-pc-Vya" firstAttribute="width" secondItem="BFn-pT-Hqp" secondAttribute="width" multiplier="0.7" id="YqT-aE-J8n"/>
                                     <constraint firstItem="Wvx-pc-Vya" firstAttribute="centerY" secondItem="BFn-pT-Hqp" secondAttribute="centerY" id="goA-BC-tzu"/>
                                     <constraint firstItem="Wvx-pc-Vya" firstAttribute="centerX" secondItem="BFn-pT-Hqp" secondAttribute="centerX" id="yIS-PD-qm2"/>
                                 </constraints>
                             </view>
+                            <tableView clipsSubviews="YES" alpha="0.80000000000000004" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="XRh-9O-0PW">
+                                <rect key="frame" x="0.0" y="90" width="600" height="510"/>
+                                <color key="backgroundColor" red="0.52156862749999999" green="0.52156862749999999" blue="0.52156862749999999" alpha="1" colorSpace="calibratedRGB"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="bTv-b6-vVZ" id="Wgn-Ns-duk"/>
+                                    <outlet property="delegate" destination="bTv-b6-vVZ" id="qdh-oc-Nvw"/>
+                                </connections>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="XRh-9O-0PW" firstAttribute="centerX" secondItem="5De-m0-jY4" secondAttribute="centerX" id="Dzh-G3-m6P"/>
+                            <constraint firstItem="XRh-9O-0PW" firstAttribute="width" secondItem="5De-m0-jY4" secondAttribute="width" id="RLQ-bf-XJW"/>
+                            <constraint firstItem="XRh-9O-0PW" firstAttribute="height" secondItem="5De-m0-jY4" secondAttribute="height" multiplier="0.85" id="gfy-XD-K9X"/>
                             <constraint firstItem="BFn-pT-Hqp" firstAttribute="width" secondItem="5De-m0-jY4" secondAttribute="width" id="iPd-vR-X5W"/>
                             <constraint firstItem="BFn-pT-Hqp" firstAttribute="top" secondItem="dpt-t0-9mw" secondAttribute="bottom" constant="-20" id="ikU-3u-GF7"/>
                             <constraint firstItem="BFn-pT-Hqp" firstAttribute="centerX" secondItem="5De-m0-jY4" secondAttribute="centerX" id="ouM-IX-Tgv"/>
+                            <constraint firstItem="BFn-pT-Hqp" firstAttribute="height" secondItem="5De-m0-jY4" secondAttribute="height" multiplier="0.15" id="qKG-yd-MVl"/>
+                            <constraint firstItem="5Fg-22-bd8" firstAttribute="top" secondItem="XRh-9O-0PW" secondAttribute="bottom" id="tbl-Ov-Avb"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="tableView" destination="XRh-9O-0PW" id="7f2-Aa-sD2"/>
+                        <outlet property="titleLabel" destination="Wvx-pc-Vya" id="QUu-mG-9aF"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oEq-O4-JZD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
