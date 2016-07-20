@@ -108,7 +108,6 @@ class RTActivitiesModel {
 
         let maxValue = activityLocations.count - 1
         for i in maxValue.stride(through: 0, by: -1)  {
-            print(i)
             firstActivityLocation = activityLocations[i]
             let distance = firstActivityLocation!.distance
             totalDistance += distance
