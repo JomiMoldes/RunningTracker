@@ -65,7 +65,7 @@ class RTActiveMapViewController : UIViewController, CLLocationManagerDelegate {
     }
 
     func setupTimer(){
-        let aSelector:Selector = "updateTime"
+        let aSelector:Selector = #selector(RTActiveMapViewController.updateTime)
         self.timer = NSTimer.scheduledTimerWithTimeInterval(0.05, target:self, selector: aSelector, userInfo: nil, repeats: true)
     }
 

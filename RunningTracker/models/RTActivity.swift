@@ -22,7 +22,7 @@ class RTActivity:NSObject , NSCoding {
         self.startTime = startTime
         self.endTime = endTime
         super.init()
-        for var i = 0; i < activities.count; i++ {
+        for i in 0..<activities.count {
             let activityLocation = activities[i]
             addActivityLocation(activityLocation)
         }
