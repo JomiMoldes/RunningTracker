@@ -40,6 +40,7 @@ class RTActiveMapViewController : UIViewController, CLLocationManagerDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.activitiesModel = RTGlobalModels.sharedInstance.activitiesModel
+        self.setupLabels()
     }
 
     override func viewDidAppear(animated: Bool) {
@@ -69,6 +70,13 @@ class RTActiveMapViewController : UIViewController, CLLocationManagerDelegate {
         self.timer = NSTimer.scheduledTimerWithTimeInterval(0.05, target:self, selector: aSelector, userInfo: nil, repeats: true)
     }
 
+    func setupLabels() {
+        self.distanceLabel.numberOfLines = 1
+        self.distanceLabel.adjustsFontSizeToFitWidth = true
+        self.distanceLabel.lineBreakMode = NSLineBreakMode.ByClipping
+        self.distanceLabel.text = "0.00"
+    }
+
     func updateTime(){
         let elapsedTime:NSTimeInterval = activitiesModel.getElapsedTime()
         let elapsedStr = elapsedTime.getHours() + ":" + elapsedTime.getMinutes() + ":" + elapsedTime.getSeconds()
@@ -76,6 +84,7 @@ class RTActiveMapViewController : UIViewController, CLLocationManagerDelegate {
 
         let metersDone = activitiesModel.getDistanceDone()
         let strKMsDone:String = String(format:"%.2f", metersDone / 1000)
+
         self.distanceLabel.text = strKMsDone
 
         let paced:NSTimeInterval = activitiesModel.getPaceLastKM()

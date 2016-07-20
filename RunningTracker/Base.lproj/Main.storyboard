@@ -138,16 +138,13 @@
                                         <rect key="frame" x="32" y="75" width="256" height="63"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="15,21" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MgH-Pg-X2C" userLabel="DistanceLabel">
-                                                <rect key="frame" x="1" y="0.0" width="93" height="63"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="width" constant="93" id="GHc-Je-tzW"/>
-                                                </constraints>
-                                                <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="37"/>
+                                                <rect key="frame" x="1" y="0.0" width="102" height="63"/>
+                                                <fontDescription key="fontDescription" name="Helvetica-Bold" family="Helvetica" pointSize="42"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Kms" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="VTH-mY-5Gh" userLabel="KmsLabel">
-                                                <rect key="frame" x="92" y="20" width="50" height="33"/>
+                                                <rect key="frame" x="101" y="20" width="50" height="33"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="33" id="TGR-OO-9lX"/>
                                                     <constraint firstAttribute="width" constant="50" id="ndQ-LP-1La"/>
@@ -166,11 +163,12 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstItem="MgH-Pg-X2C" firstAttribute="centerY" secondItem="6eM-3J-8Wf" secondAttribute="centerY" id="3nX-b2-Ijr"/>
                                             <constraint firstItem="VTH-mY-5Gh" firstAttribute="leading" secondItem="MgH-Pg-X2C" secondAttribute="trailing" constant="-2" id="OZo-oO-ILR"/>
                                             <constraint firstAttribute="trailing" secondItem="JGK-wU-aGr" secondAttribute="trailing" id="Oyc-1l-j5r"/>
+                                            <constraint firstItem="MgH-Pg-X2C" firstAttribute="width" secondItem="6eM-3J-8Wf" secondAttribute="width" multiplier="0.4" id="Qhx-n6-6En"/>
                                             <constraint firstItem="JGK-wU-aGr" firstAttribute="centerY" secondItem="6eM-3J-8Wf" secondAttribute="centerY" id="SDS-8o-ev9"/>
                                             <constraint firstItem="MgH-Pg-X2C" firstAttribute="leading" secondItem="6eM-3J-8Wf" secondAttribute="leading" constant="1" id="XQ9-9r-NbS"/>
                                             <constraint firstAttribute="height" constant="63" id="ZgG-te-a74"/>
