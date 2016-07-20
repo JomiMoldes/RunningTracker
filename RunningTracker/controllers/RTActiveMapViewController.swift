@@ -103,6 +103,18 @@ class RTActiveMapViewController : UIViewController, CLLocationManagerDelegate {
         }
     }
 
+    func drawPath() {
+        let path = GMSMutablePath()
+        for activityLocation in self.activitiesModel.currentActivityLocations() {
+            path.addCoordinate(activityLocation.location.coordinate)
+        }
+
+        let polyline = GMSPolyline(path:path)
+        polyline.strokeWidth = 5.0
+        polyline.map = self.mapView
+
+    }
+
 // IBActions
 
     @IBAction func backTouched(sender: UIButton) {
@@ -138,18 +150,12 @@ class RTActiveMapViewController : UIViewController, CLLocationManagerDelegate {
         if !self.activitiesModel.activityRunning {
            return
         }
-        let path = GMSMutablePath()
-        for location:CLLocation in locations {
-            path.addCoordinate(location.coordinate)
-        }
-
-        let polyline = GMSPolyline(path:path)
-        polyline.strokeWidth = 5.0
-        polyline.map = self.mapView
 
         let activityLocation = RTActivityLocation(location: location, timestamp: NSDate().timeIntervalSinceReferenceDate)
 
         self.activitiesModel.addActivityLocation(activityLocation!)
+
+        self.drawPath()
     }
 
     func locationManager(manager: CLLocationManager, didFailWithError error: NSError){

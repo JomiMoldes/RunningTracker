@@ -99,7 +99,18 @@ class RTActivitiesModelTest:XCTestCase{
         XCTAssertEqual(model.currentActivitesLocationsLenght(), 2)
     }
 
-
+    func testCurrentActivityLocations() {
+        mockStartActivity()
+        var locations:[RTActivityLocation] = model.currentActivityLocations()
+        XCTAssertEqual(locations.count, 0)
+        let location = CLLocation(latitude:1111.22, longitude: 3333.3)
+        let activityLocation : RTActivityLocation? = RTActivityLocation(location: location, timestamp: 100)
+        model.addActivityLocation(activityLocation!)
+        
+        locations = model.currentActivityLocations()
+        
+        XCTAssertEqual(locations.count, 1)
+    }
 
     func testGetElapsedTime() {
         let now = NSDate().timeIntervalSinceReferenceDate

@@ -127,6 +127,10 @@ class RTActivitiesModel {
         return pace
     }
 
+    func currentActivityLocations() -> [RTActivityLocation] {
+        return self.currentActivity.getActivities()
+    }
+
     func isCurrentActivityPaused()->Bool{
         return currentActivityPaused
     }
