@@ -6,8 +6,12 @@
 import Foundation
 import UIKit
 
-class RTActivityHeaderViewCell : UITableViewCell {
+class RTActivityHeaderViewCell : UITableViewHeaderFooterView {
 
+    @IBOutlet weak var dateLabel: UILabel!
 
+    @IBOutlet weak var durationLabel: UILabel!
+    @IBOutlet weak var paceLabel: UILabel!
+    @IBOutlet weak var distanceLabel: UILabel!
 
 }

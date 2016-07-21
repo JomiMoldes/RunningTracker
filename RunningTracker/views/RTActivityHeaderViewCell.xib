@@ -1,61 +1,77 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="9531" systemVersion="15F34" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10117" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
     </dependencies>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
-        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="activityHeaderViewCell" selectionStyle="default" indentationWidth="10" rowHeight="84" id="GNY-nm-Zys" userLabel="Activity Header View Cell" customClass="RTActivityHeaderViewCell" customModule="RunningTracker" customModuleProvider="target">
+        <view contentMode="scaleToFill" restorationIdentifier="activityHeaderViewCell" id="ZVc-Fo-0Kx" customClass="RTActivityHeaderViewCell" customModule="RunningTracker" customModuleProvider="target">
             <rect key="frame" x="0.0" y="0.0" width="473" height="84"/>
-            <autoresizingMask key="autoresizingMask"/>
-            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="GNY-nm-Zys" id="39l-UT-AH4">
-                <rect key="frame" x="0.0" y="0.0" width="473" height="83"/>
-                <autoresizingMask key="autoresizingMask"/>
-                <subviews>
-                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="ABQ-5G-sPs">
-                        <rect key="frame" x="0.0" y="0.0" width="473" height="83"/>
-                        <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="02-07" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LfS-6v-qIy" userLabel="dateLabel">
-                                <rect key="frame" x="0.0" y="0.0" width="118" height="83"/>
-                                <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="05:30" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Gi-Lo-9lD" userLabel="durationLabel">
-                                <rect key="frame" x="118" y="0.0" width="119" height="83"/>
-                                <color key="backgroundColor" red="0.88234544839999995" green="0.82292303990000004" blue="0.64936792980000002" alpha="1" colorSpace="calibratedRGB"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="05:30" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p8g-ZX-5rh" userLabel="paceLabel">
-                                <rect key="frame" x="237" y="0.0" width="118" height="83"/>
-                                <color key="backgroundColor" red="1" green="0.051191160530000002" blue="0.17020857489999999" alpha="1" colorSpace="calibratedRGB"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="4,21 Kms" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pq3-hS-eyC" userLabel="distanceLabel">
-                                <rect key="frame" x="355" y="0.0" width="118" height="83"/>
-                                <color key="backgroundColor" red="0.2588235438" green="0.99607849120000003" blue="0.88627457620000005" alpha="1" colorSpace="deviceRGB"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                        </subviews>
-                    </stackView>
-                </subviews>
-                <constraints>
-                    <constraint firstItem="ABQ-5G-sPs" firstAttribute="centerX" secondItem="39l-UT-AH4" secondAttribute="centerX" id="EV9-40-Soj"/>
-                    <constraint firstItem="ABQ-5G-sPs" firstAttribute="width" secondItem="39l-UT-AH4" secondAttribute="width" id="Yjg-KZ-4Oy"/>
-                    <constraint firstItem="ABQ-5G-sPs" firstAttribute="centerY" secondItem="39l-UT-AH4" secondAttribute="centerY" id="dfz-pp-RlB"/>
-                    <constraint firstItem="ABQ-5G-sPs" firstAttribute="height" secondItem="39l-UT-AH4" secondAttribute="height" id="g9f-7j-0z3"/>
-                </constraints>
-            </tableViewCellContentView>
-            <point key="canvasLocation" x="298.5" y="327.5"/>
-        </tableViewCell>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ymi-lu-n51">
+                    <rect key="frame" x="0.0" y="0.0" width="473" height="84"/>
+                    <subviews>
+                        <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="ABQ-5G-sPs">
+                            <rect key="frame" x="0.0" y="0.0" width="473" height="84"/>
+                            <subviews>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Date" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LfS-6v-qIy" userLabel="dateLabel">
+                                    <rect key="frame" x="0.0" y="0.0" width="118" height="84"/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Duration" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Gi-Lo-9lD" userLabel="durationLabel">
+                                    <rect key="frame" x="118" y="0.0" width="119" height="84"/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Pace" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p8g-ZX-5rh" userLabel="paceLabel">
+                                    <rect key="frame" x="237" y="0.0" width="118" height="84"/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Distance" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Pq3-hS-eyC" userLabel="distanceLabel">
+                                    <rect key="frame" x="355" y="0.0" width="118" height="84"/>
+                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                    <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                            </subviews>
+                            <color key="backgroundColor" red="0.1675936341" green="0.32047340590000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                        </stackView>
+                    </subviews>
+                    <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstItem="ABQ-5G-sPs" firstAttribute="centerY" secondItem="Ymi-lu-n51" secondAttribute="centerY" id="Dgn-lI-RDS"/>
+                        <constraint firstItem="ABQ-5G-sPs" firstAttribute="width" secondItem="Ymi-lu-n51" secondAttribute="width" id="Rxo-Kn-J9V"/>
+                        <constraint firstItem="ABQ-5G-sPs" firstAttribute="centerX" secondItem="Ymi-lu-n51" secondAttribute="centerX" id="Y5C-mi-t6D"/>
+                        <constraint firstItem="ABQ-5G-sPs" firstAttribute="height" secondItem="Ymi-lu-n51" secondAttribute="height" id="j7N-Vk-Z30"/>
+                    </constraints>
+                </view>
+            </subviews>
+            <constraints>
+                <constraint firstItem="Ymi-lu-n51" firstAttribute="height" secondItem="ZVc-Fo-0Kx" secondAttribute="height" id="6QS-zM-wHm"/>
+                <constraint firstItem="Ymi-lu-n51" firstAttribute="centerX" secondItem="ZVc-Fo-0Kx" secondAttribute="centerX" id="84w-Pe-Rxi"/>
+                <constraint firstItem="Ymi-lu-n51" firstAttribute="centerY" secondItem="ZVc-Fo-0Kx" secondAttribute="centerY" id="Na9-JK-Jqi"/>
+                <constraint firstItem="Ymi-lu-n51" firstAttribute="width" secondItem="ZVc-Fo-0Kx" secondAttribute="width" id="Pzh-WQ-uKA"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="dateLabel" destination="LfS-6v-qIy" id="cXu-ne-F9e"/>
+                <outlet property="distanceLabel" destination="Pq3-hS-eyC" id="yKS-mU-hGJ"/>
+                <outlet property="durationLabel" destination="1Gi-Lo-9lD" id="9Jo-76-6Np"/>
+                <outlet property="paceLabel" destination="p8g-ZX-5rh" id="w9w-OM-UE1"/>
+            </connections>
+            <point key="canvasLocation" x="298.5" y="466"/>
+        </view>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
     </objects>
 </document>

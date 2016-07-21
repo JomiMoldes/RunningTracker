@@ -33,11 +33,13 @@ class RTActivitiesModelTest:XCTestCase{
         XCTAssertEqual(model.activitiesLenght(), 0)
         XCTAssertTrue(!model.isCurrentActivityDefined(), "currentActivity shouldn't be defined")
         mockStartActivity()
+
         XCTAssertTrue(model.isCurrentActivityDefined(), "currentActivity should be defined")
         do{
             try model.startActivity()
             XCTAssertTrue(false, "it shouldn't be possible to start a new activity")
         } catch {}
+
         XCTAssertTrue(model.activityRunning, "activityRunning should be true")
         XCTAssertEqual(model.activitiesLenght(), 0)
     }
@@ -45,12 +47,26 @@ class RTActivitiesModelTest:XCTestCase{
     func testEndActivity() {
         XCTAssertFalse(model.endActivity(), "you cannot end an activity when there is none active")
         mockStartActivity()
+
         XCTAssertTrue(model.activityRunning, "activityRunning should be true")
         model.endActivity()
+
         XCTAssertEqual(model.activitiesLenght(), 1)
         XCTAssertFalse(model.activityRunning, "activityRunning should be true")
         XCTAssertFalse(model.isCurrentActivityDefined(), "current activity should not be defined")
         XCTAssertTrue(model.valuesRefreshed)
+    }
+
+    func testResumeActivity() {
+        let now = NSDate().timeIntervalSinceReferenceDate
+        model.fakeNow = now
+        mockStartActivity()
+        model.fakeNow = now + 5
+        model.pauseActivity()
+        model.fakeNow = now + 10
+        model.resumeActivity()
+
+        XCTAssertEqual(model.getCurrentActivityPausedTime(), 5)
     }
 
     func testSaveActivities() {
@@ -73,7 +89,6 @@ class RTActivitiesModelTest:XCTestCase{
         XCTAssertFalse(model.currentActivityPaused, "activity should not be paused")
         XCTAssertFalse(model.currentActivityJustResumed, "activity should not be just resumed")
         XCTAssertEqual(model.currentActivityPausedAt, 0)
-        XCTAssertEqual(model.currentActivityPausedTime, 0)
     }
 
     func testAddActivityLocation() {

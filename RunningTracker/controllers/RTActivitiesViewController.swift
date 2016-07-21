@@ -30,7 +30,8 @@ class RTActivitiesViewController : UIViewController, UITableViewDelegate, UITabl
 
     func setupTable() {
         self.tableView.registerNib(UINib(nibName:"RTActivityViewCell", bundle:nil), forCellReuseIdentifier: "activityViewCell")
-        self.tableView.registerNib(UINib(nibName:"RTActivityHeaderViewCell", bundle:nil), forCellReuseIdentifier: "activityHeaderViewCell")
+        self.tableView.registerNib(UINib(nibName:"RTActivityHeaderViewCell", bundle:nil), forHeaderFooterViewReuseIdentifier: "activityHeaderViewCell")
+
         self.tableView.delegate = self
         self.tableView.dataSource = self
     }
@@ -43,14 +44,16 @@ class RTActivitiesViewController : UIViewController, UITableViewDelegate, UITabl
 
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell : UITableViewCell!
-        if(indexPath.item == 0){
-            cell = tableView.dequeueReusableCellWithIdentifier("activityHeaderViewCell", forIndexPath: indexPath) as! RTActivityHeaderViewCell
-        }else{
-            let activity = self.activities[indexPath.item - 1]
-            cell = tableView.dequeueReusableCellWithIdentifier("activityViewCell", forIndexPath: indexPath) as! RTActivityViewCell
-            (cell as! RTActivityViewCell).durationLabel.text = String(format:"%f", activity.distance)
-        }
+        let activity = self.activities[indexPath.item]
+        cell = tableView.dequeueReusableCellWithIdentifier("activityViewCell", forIndexPath: indexPath) as! RTActivityViewCell
+//        (cell as! RTActivityViewCell).durationLabel.text = String(format: "%f", activity.distance)
+        (cell as! RTActivityViewCell).setupInfo(activity)
 
+        return cell
+    }
+
+    func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+        let cell = tableView.dequeueReusableHeaderFooterViewWithIdentifier("activityHeaderViewCell")
         return cell
     }
 

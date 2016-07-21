@@ -14,8 +14,10 @@
 		45BAF3F97EBCED19E1E145A3 /* RTGlobalModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45BAF71705BB05254A84B302 /* RTGlobalModels.swift */; };
 		45BAF5FD1744B99E592A7E06 /* RTActivityHeaderViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45BAFF68ED584FDC0B44D139 /* RTActivityHeaderViewCell.swift */; };
 		45BAF798A150E21E22FCA8C0 /* RTNumbersExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45BAFBF0DE4F01A4E9D9FBDE /* RTNumbersExtensions.swift */; };
+		45BAF93B4E2030994CF73146 /* CachedDateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45BAF53B4EEA07F450845DC5 /* CachedDateFormatter.swift */; };
 		45BAF98FED4665549212C685 /* RTActivityLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45BAF7D64C5B42DC4D6CFF92 /* RTActivityLocation.swift */; };
 		45BAFA63A080F2D499536142 /* RTActivitiesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45BAF9623FF8D4BDF06E463C /* RTActivitiesModel.swift */; };
+		45BAFA89DE5B959EF495628A /* RTDateFormatterExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45BAF89C5CBD8617A2CACFD8 /* RTDateFormatterExtensions.swift */; };
 		45BAFC1E17D04D6F678D3556 /* RTActivitiesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45BAF7E2708014ED6B2508B8 /* RTActivitiesViewController.swift */; };
 		48776CDB1D3BAA5100630A64 /* RTActivitiesModelTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48776CDA1D3BAA5100630A64 /* RTActivitiesModelTest.swift */; };
 		48776CDD1D3D0BF000630A64 /* RTActivityViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 48776CDC1D3D0BF000630A64 /* RTActivityViewCell.xib */; };
@@ -54,9 +56,11 @@
 		45BAF05862AA772DB523305A /* RTInitialViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RTInitialViewController.swift; sourceTree = "<group>"; };
 		45BAF0CB67C24E3DF1344558 /* RTActivity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RTActivity.swift; sourceTree = "<group>"; };
 		45BAF26AFB3B64A8299D41E6 /* RTActivityViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RTActivityViewCell.swift; sourceTree = "<group>"; };
+		45BAF53B4EEA07F450845DC5 /* CachedDateFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CachedDateFormatter.swift; sourceTree = "<group>"; };
 		45BAF71705BB05254A84B302 /* RTGlobalModels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RTGlobalModels.swift; sourceTree = "<group>"; };
 		45BAF7D64C5B42DC4D6CFF92 /* RTActivityLocation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RTActivityLocation.swift; sourceTree = "<group>"; };
 		45BAF7E2708014ED6B2508B8 /* RTActivitiesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RTActivitiesViewController.swift; sourceTree = "<group>"; };
+		45BAF89C5CBD8617A2CACFD8 /* RTDateFormatterExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RTDateFormatterExtensions.swift; sourceTree = "<group>"; };
 		45BAF9623FF8D4BDF06E463C /* RTActivitiesModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RTActivitiesModel.swift; sourceTree = "<group>"; };
 		45BAF9A0DF51888F7D92705D /* RTActiveMapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RTActiveMapViewController.swift; sourceTree = "<group>"; };
 		45BAFBF0DE4F01A4E9D9FBDE /* RTNumbersExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RTNumbersExtensions.swift; sourceTree = "<group>"; };
@@ -144,6 +148,8 @@
 			isa = PBXGroup;
 			children = (
 				45BAFBF0DE4F01A4E9D9FBDE /* RTNumbersExtensions.swift */,
+				45BAF89C5CBD8617A2CACFD8 /* RTDateFormatterExtensions.swift */,
+				45BAF53B4EEA07F450845DC5 /* CachedDateFormatter.swift */,
 			);
 			path = utils;
 			sourceTree = "<group>";
@@ -406,6 +412,8 @@
 				45BAF3F97EBCED19E1E145A3 /* RTGlobalModels.swift in Sources */,
 				45BAF3AA3B5EDB612DB6646C /* RTActivityViewCell.swift in Sources */,
 				45BAF5FD1744B99E592A7E06 /* RTActivityHeaderViewCell.swift in Sources */,
+				45BAFA89DE5B959EF495628A /* RTDateFormatterExtensions.swift in Sources */,
+				45BAF93B4E2030994CF73146 /* CachedDateFormatter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

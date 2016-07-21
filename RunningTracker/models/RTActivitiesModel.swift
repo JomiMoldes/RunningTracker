@@ -22,7 +22,6 @@ class RTActivitiesModel {
     private(set) var currentActivityJustResumed : Bool = false
     private(set) var activityRunning : Bool = false
     private(set) var currentActivityPausedAt : NSTimeInterval = 0
-    private(set) var currentActivityPausedTime : NSTimeInterval = 0
 
     init(){
         self.activities = [RTActivity]()
@@ -33,7 +32,7 @@ class RTActivitiesModel {
             print("Trying to start activity before ending previous one")
             throw RTActivitiesError.RTActivityAlreadySet
         }
-        self.currentActivity = RTActivity(activities: [RTActivityLocation](), startTime: getNow(), endTime: nil)
+        self.currentActivity = RTActivity(activities: [RTActivityLocation](), startTime: getNow(), endTime: nil, pausedTime2: 0)
         activityRunning = true
         return true
     }
@@ -69,7 +68,6 @@ class RTActivitiesModel {
     func refreshValues() {
         currentActivityPaused = false
         currentActivityJustResumed = false
-        currentActivityPausedTime = 0
         currentActivityPausedAt = 0
     }
 
@@ -87,7 +85,7 @@ class RTActivitiesModel {
     }
 
     func getElapsedTime() -> NSTimeInterval {
-        return getNow() - currentActivityPausedTime - currentActivity.startTime
+        return getNow() - getCurrentActivityPausedTime() - currentActivity.startTime
     }
 
     func getDistanceDone() -> Double {
@@ -142,7 +140,7 @@ class RTActivitiesModel {
 
     func resumeActivity(){
         currentActivityPaused = false
-        currentActivityPausedTime += getNow() - currentActivityPausedAt
+        currentActivity.pausedTime += getNow() - currentActivityPausedAt
         currentActivityPausedAt = 0
         currentActivityJustResumed = true
     }
@@ -164,11 +162,24 @@ class RTActivitiesModel {
     }
 
     func currentActivitesLocationsLenght() -> Int {
+        if currentActivity == nil {
+            return 0
+        }
         return self.currentActivity.getActivities().count
     }
 
     func currentActivityStartTime() -> Double {
+        if currentActivity == nil {
+            return 0
+        }
         return self.currentActivity.startTime
+    }
+
+    func getCurrentActivityPausedTime() -> Double {
+        if currentActivity == nil {
+            return 0
+        }
+        return self.currentActivity.pausedTime
     }
 
     func deleteAllActivities(){
