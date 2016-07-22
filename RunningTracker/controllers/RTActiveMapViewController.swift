@@ -52,7 +52,7 @@ class RTActiveMapViewController : UIViewController, CLLocationManagerDelegate {
     }
 
     func setupMap(){
-        let camera = GMSCameraPosition.cameraWithLatitude(52.52356, longitude: 13.448896, zoom: 10)
+        let camera = GMSCameraPosition.cameraWithLatitude(52.52356, longitude: 13.45097995, zoom: 18)
         self.mapView = GMSMapView.mapWithFrame(CGRectMake(0,0,self.mapContainer.frame.size.width, self.mapContainer.frame.size.height), camera: camera)
         self.mapView.myLocationEnabled = true
         self.mapView.mapType = kGMSTypeSatellite
@@ -115,17 +115,22 @@ class RTActiveMapViewController : UIViewController, CLLocationManagerDelegate {
 
     }
 
-// IBActions
-
-    @IBAction func backTouched(sender: UIButton) {
-        self.navigationController!.popViewControllerAnimated(true)
-    }
-
-    @IBAction func stopTouched(sender: UIButton) {
+    func endActivity() {
         self.activitiesModel.endActivity()
         self.activitiesModel.saveActivities(RTActivitiesModel.ArchiveURL.path!)
         invalidateTimer()
         self.pauseButton.enabled = false
+    }
+
+// IBActions
+
+    @IBAction func backTouched(sender: UIButton) {
+        endActivity()
+        self.navigationController!.popViewControllerAnimated(true)
+    }
+
+    @IBAction func stopTouched(sender: UIButton) {
+        endActivity()
     }
     
     @IBAction func pauseTouched(sender: UIButton) {
@@ -143,6 +148,7 @@ class RTActiveMapViewController : UIViewController, CLLocationManagerDelegate {
 // Location Manager
 
     func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]){
+        print("location manager in active map")
         let location:CLLocation = locations[locations.count - 1]
 
         self.mapView.animateToLocation(CLLocationCoordinate2DMake(location.coordinate.latitude, location.coordinate.longitude))

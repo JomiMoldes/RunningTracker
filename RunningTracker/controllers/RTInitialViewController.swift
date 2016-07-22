@@ -28,6 +28,13 @@ class RTInitialViewController:UIViewController, CLLocationManagerDelegate {
         activitiesModel.loadActivities(RTActivitiesModel.ArchiveURL.path!)
     }
 
+    override func viewWillDisappear(animated: Bool) {
+        super.viewWillDisappear(animated)
+        locationManager.delegate = nil
+        locationManager = nil
+    }
+
+
     func setupButtons(){
         self.myActivitiesButton.titleLabel?.numberOfLines = 1
         self.myActivitiesButton.titleLabel?.adjustsFontSizeToFitWidth = true
@@ -40,9 +47,11 @@ class RTInitialViewController:UIViewController, CLLocationManagerDelegate {
         locationManager.delegate = self
         switch (CLLocationManager.authorizationStatus()){
         case .NotDetermined:
-            locationManager.requestWhenInUseAuthorization()
+//            locationManager.requestWhenInUseAuthorization()
+            locationManager.requestAlwaysAuthorization()
             break
-        case .AuthorizedAlways, .Restricted, .Denied:
+//        case .AuthorizedAlways, .Restricted, .Denied:
+        case .AuthorizedWhenInUse, .Restricted, .Denied:
             let alertController = UIAlertController(
             title:"Location Access Disabled",
                     message:"In order to track your paths, please open this app's settings and set location access to 'While using the app'",
@@ -77,7 +86,6 @@ class RTInitialViewController:UIViewController, CLLocationManagerDelegate {
 
     @IBAction func startTouched(sender: UIButton) {
         let mapViewController = UIStoryboard(name:"Main", bundle:nil).instantiateViewControllerWithIdentifier("activeMapView") as? RTActiveMapViewController
-//        mapViewController!.activitiesModel = self.activitiesModel
 
         do {
             try self.activitiesModel.startActivity()
@@ -92,12 +100,14 @@ class RTInitialViewController:UIViewController, CLLocationManagerDelegate {
 // MARK Location Manager
 
     func locationManager(manager: CLLocationManager, didChangeAuthorizationStatus status: CLAuthorizationStatus){
-        if status == .AuthorizedWhenInUse {
-            locationManager.requestLocation()
+        if status == .AuthorizedAlways {
+//        if status == .AuthorizedWhenInUse {
+            locationManager.startUpdatingLocation()
         }
     }
 
     func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]){
+        print("location in initial view")
         self.startButton.enabled = true
         gpsImageView.image = UIImage(named:"GPSgreen.png")
     }
@@ -105,8 +115,9 @@ class RTInitialViewController:UIViewController, CLLocationManagerDelegate {
     func locationManager(manager: CLLocationManager, didFailWithError error: NSError){
         self.startButton.enabled = false
         gpsImageView.image = UIImage(named:"GPSblack.png")
-        if(CLLocationManager.authorizationStatus() == .AuthorizedWhenInUse){
-           locationManager.requestLocation()
+        if(CLLocationManager.authorizationStatus() == .AuthorizedAlways){
+//        if(CLLocationManager.authorizationStatus() == .AuthorizedWhenInUse){
+           locationManager.startUpdatingLocation()
         }
     }
 

@@ -14,15 +14,12 @@ class ViewController: UIViewController {
         super.viewDidAppear(animated)
         let storyBoard = UIStoryboard(name:"Main", bundle: nil)
         let initialViewcontroller = storyBoard.instantiateViewControllerWithIdentifier("InitialView") as? RTInitialViewController
-
-//        self.presentViewController(initialViewcontroller, animated: true, completion: nil)
         self.navigationController?.pushViewController(initialViewcontroller!, animated: true )
     }
 
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
     }
 
 
