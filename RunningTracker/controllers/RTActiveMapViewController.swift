@@ -41,14 +41,19 @@ class RTActiveMapViewController : UIViewController, CLLocationManagerDelegate {
         super.viewDidLoad()
         self.activitiesModel = RTGlobalModels.sharedInstance.activitiesModel
         self.setupLabels()
+        setupMap()
     }
 
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         self.locationsHistory = NSMutableArray()
-        setupMap()
         setupLocationManager()
         setupTimer()
+    }
+
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        self.mapView.frame = CGRectMake(0,0,self.mapContainer.frame.size.width, self.mapContainer.frame.size.height)
     }
 
     func setupMap(){

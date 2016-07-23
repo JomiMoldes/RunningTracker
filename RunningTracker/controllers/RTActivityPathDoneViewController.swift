@@ -17,12 +17,17 @@ class RTActivityPathDoneViewController : UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupMap()
     }
 
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-        setupMap()
         drawPath()
+    }
+
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        self.mapView.frame = CGRectMake(0,0,self.mapContainer.frame.size.width, self.mapContainer.frame.size.height)
     }
 
     func setupMap() {
