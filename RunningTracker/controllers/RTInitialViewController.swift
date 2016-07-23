@@ -26,6 +26,7 @@ class RTInitialViewController:UIViewController, CLLocationManagerDelegate {
         super.viewDidAppear(animated)
         self.startLocation()
         activitiesModel.loadActivities(RTActivitiesModel.ArchiveURL.path!)
+        self.myActivitiesButton.enabled = activitiesModel.activitiesLenght() > 0
     }
 
     override func viewWillDisappear(animated: Bool) {
@@ -34,11 +35,11 @@ class RTInitialViewController:UIViewController, CLLocationManagerDelegate {
         locationManager = nil
     }
 
-
     func setupButtons(){
         self.myActivitiesButton.titleLabel?.numberOfLines = 1
         self.myActivitiesButton.titleLabel?.adjustsFontSizeToFitWidth = true
         self.myActivitiesButton.titleLabel?.lineBreakMode = NSLineBreakMode.ByClipping
+        self.myActivitiesButton.enabled = false
         self.startButton.enabled = false
     }
 
