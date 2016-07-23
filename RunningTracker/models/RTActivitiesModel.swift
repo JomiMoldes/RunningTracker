@@ -59,7 +59,7 @@ class RTActivitiesModel {
         }
         activities.append(self.currentActivity)
         activityRunning = false
-        currentActivity.endTime(NSDate().timeIntervalSinceReferenceDate)
+        currentActivity.endTime(NSDate().timeIntervalSince1970)
         currentActivity = nil
         refreshValues()
         return true
@@ -188,7 +188,7 @@ class RTActivitiesModel {
     }
 
     func getNow() -> NSTimeInterval {
-        return NSDate().timeIntervalSinceReferenceDate
+        return NSDate().timeIntervalSince1970
     }
 
 }

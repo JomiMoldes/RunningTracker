@@ -9,7 +9,7 @@ extension NSDateFormatter {
 
     func getDateWithFormat(format:String, time:NSTimeInterval) -> String {
         self.dateFormat = format
-        let date = NSDate(timeIntervalSinceReferenceDate: time)
+        let date = NSDate(timeIntervalSince1970: time)
         let str = stringFromDate(date)
         return str
     }

@@ -166,7 +166,7 @@ class RTActiveMapViewController : UIViewController, CLLocationManagerDelegate {
            return
         }
 
-        let activityLocation = RTActivityLocation(location: location, timestamp: NSDate().timeIntervalSinceReferenceDate)
+        let activityLocation = RTActivityLocation(location: location, timestamp: NSDate().timeIntervalSince1970)
 
         if self.activitiesModel.addActivityLocation(activityLocation!) {
             self.drawPath()

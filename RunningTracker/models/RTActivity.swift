@@ -77,7 +77,7 @@ class RTActivity:NSObject , NSCoding {
         var lastLocation:RTActivityLocation?
         for i in 0..<self.activities.count {
             let location:RTActivityLocation = self.activities[i]
-            if location.location.timestamp.timeIntervalSinceReferenceDate > activityLocation.location.timestamp.timeIntervalSinceReferenceDate {
+            if location.location.timestamp.timeIntervalSince1970 > activityLocation.location.timestamp.timeIntervalSince1970 {
                 return lastLocation
             }
             lastLocation = location

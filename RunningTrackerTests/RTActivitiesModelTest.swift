@@ -58,7 +58,7 @@ class RTActivitiesModelTest:XCTestCase{
     }
 
     func testResumeActivity() {
-        let now = NSDate().timeIntervalSinceReferenceDate
+        let now = NSDate().timeIntervalSince1970
         model.fakeNow = now
         mockStartActivity()
         model.fakeNow = now + 5
@@ -128,7 +128,7 @@ class RTActivitiesModelTest:XCTestCase{
     }
 
     func testGetElapsedTime() {
-        let now = NSDate().timeIntervalSinceReferenceDate
+        let now = NSDate().timeIntervalSince1970
         model.fakeNow = now
 
         do{
@@ -152,7 +152,7 @@ class RTActivitiesModelTest:XCTestCase{
     }
 
     func testGetPaceLastKM() {
-        let now = NSDate().timeIntervalSinceReferenceDate
+        let now = NSDate().timeIntervalSince1970
         model.fakeNow = now
 
         do{
@@ -193,7 +193,7 @@ class RTActivitiesModelFake:RTActivitiesModel{
 
     var valuesRefreshed:Bool = false
 
-    var fakeNow:NSTimeInterval = NSDate().timeIntervalSinceReferenceDate
+    var fakeNow:NSTimeInterval = NSDate().timeIntervalSince1970
     
     override init() {
         super.init()
