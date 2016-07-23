@@ -62,6 +62,11 @@ class RTActiveMapViewController : UIViewController, CLLocationManagerDelegate {
     func setupLocationManager(){
         locationManager = CLLocationManager()
         locationManager.delegate = self
+        locationManager.desiredAccuracy = kCLLocationAccuracyBestForNavigation
+        locationManager.distanceFilter = 20.0
+        locationManager.activityType = CLActivityType.Fitness
+        locationManager.allowsBackgroundLocationUpdates = true
+        locationManager.pausesLocationUpdatesAutomatically = false
         locationManager.startUpdatingLocation()
     }
 
@@ -148,7 +153,6 @@ class RTActiveMapViewController : UIViewController, CLLocationManagerDelegate {
 // Location Manager
 
     func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]){
-        print("location manager in active map")
         let location:CLLocation = locations[locations.count - 1]
 
         self.mapView.animateToLocation(CLLocationCoordinate2DMake(location.coordinate.latitude, location.coordinate.longitude))
@@ -159,9 +163,10 @@ class RTActiveMapViewController : UIViewController, CLLocationManagerDelegate {
 
         let activityLocation = RTActivityLocation(location: location, timestamp: NSDate().timeIntervalSinceReferenceDate)
 
-        self.activitiesModel.addActivityLocation(activityLocation!)
+        if self.activitiesModel.addActivityLocation(activityLocation!) {
+            self.drawPath()
+        }
 
-        self.drawPath()
     }
 
     func locationManager(manager: CLLocationManager, didFailWithError error: NSError){

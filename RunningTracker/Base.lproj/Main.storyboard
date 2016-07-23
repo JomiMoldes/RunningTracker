@@ -3,6 +3,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
     <scenes>
@@ -354,6 +355,53 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oEq-O4-JZD" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="2148" y="214"/>
+        </scene>
+        <!--Activity Path Done View Controller-->
+        <scene sceneID="hGe-CJ-Gdt">
+            <objects>
+                <viewController storyboardIdentifier="activityDoneMap" id="som-3E-6Bd" customClass="RTActivityPathDoneViewController" customModule="RunningTracker" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="Voi-QT-ye2"/>
+                        <viewControllerLayoutGuide type="bottom" id="blM-7p-I07"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="l5n-WW-Ait">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Bd0-TR-t4m" userLabel="mapContainer">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="13d-Qc-K9H" userLabel="BackButton">
+                                <rect key="frame" x="17" y="17" width="46" height="30"/>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="46" id="oDe-hf-gOe"/>
+                                    <constraint firstAttribute="height" constant="30" id="uqg-AA-gEq"/>
+                                </constraints>
+                                <state key="normal" title="Back"/>
+                                <connections>
+                                    <action selector="backTouched:" destination="som-3E-6Bd" eventType="touchUpInside" id="c5b-Fc-HV8"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="Bd0-TR-t4m" firstAttribute="centerY" secondItem="l5n-WW-Ait" secondAttribute="centerY" id="CmM-Zk-2QI"/>
+                            <constraint firstItem="Bd0-TR-t4m" firstAttribute="height" secondItem="l5n-WW-Ait" secondAttribute="height" id="QAH-Xc-WLY"/>
+                            <constraint firstItem="Bd0-TR-t4m" firstAttribute="centerX" secondItem="l5n-WW-Ait" secondAttribute="centerX" id="Uy0-Zj-SwI"/>
+                            <constraint firstItem="13d-Qc-K9H" firstAttribute="leading" secondItem="l5n-WW-Ait" secondAttribute="leadingMargin" constant="-3" id="WQC-Qh-niJ"/>
+                            <constraint firstItem="Bd0-TR-t4m" firstAttribute="width" secondItem="l5n-WW-Ait" secondAttribute="width" id="tqr-RL-jBq"/>
+                            <constraint firstItem="13d-Qc-K9H" firstAttribute="top" secondItem="Voi-QT-ye2" secondAttribute="bottom" constant="-3" id="y4U-vY-ViF"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="mapContainer" destination="Bd0-TR-t4m" id="Wiw-FC-Sfy"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="BFi-0l-ksT" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2796" y="211"/>
         </scene>
     </scenes>
     <resources>

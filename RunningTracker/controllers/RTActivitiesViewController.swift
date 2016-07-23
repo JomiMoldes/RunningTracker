@@ -46,7 +46,6 @@ class RTActivitiesViewController : UIViewController, UITableViewDelegate, UITabl
         let cell : UITableViewCell!
         let activity = self.activities[indexPath.item]
         cell = tableView.dequeueReusableCellWithIdentifier("activityViewCell", forIndexPath: indexPath) as! RTActivityViewCell
-//        (cell as! RTActivityViewCell).durationLabel.text = String(format: "%f", activity.distance)
         (cell as! RTActivityViewCell).setupInfo(activity)
 
         return cell
@@ -58,7 +57,12 @@ class RTActivitiesViewController : UIViewController, UITableViewDelegate, UITabl
     }
 
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        let activity = self.activities[indexPath.item]
 
+        let activityDoneMap = UIStoryboard(name:"Main", bundle:nil).instantiateViewControllerWithIdentifier("activityDoneMap") as? RTActivityPathDoneViewController
+        activityDoneMap!.activity = activity
+
+        self.navigationController!.pushViewController(activityDoneMap!, animated:true)
     }
 
 // IBActions

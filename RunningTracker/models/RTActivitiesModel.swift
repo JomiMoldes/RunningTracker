@@ -80,8 +80,7 @@ class RTActivitiesModel {
             currentActivityJustResumed = false
             activity.firstAfterResumed = true
         }
-        currentActivity.addActivityLocation(activity)
-        return true
+        return currentActivity.addActivityLocation(activity)
     }
 
     func getElapsedTime() -> NSTimeInterval {
@@ -94,6 +93,7 @@ class RTActivitiesModel {
 
     func getPaceLastKM() -> Double {
         var activityLocations = currentActivity.getActivities()
+
         guard activityLocations.count > 0 else {
             return 0.00
         }
@@ -106,6 +106,7 @@ class RTActivitiesModel {
 
         let maxValue = activityLocations.count - 1
         for i in maxValue.stride(through: 0, by: -1)  {
+
             firstActivityLocation = activityLocations[i]
             let distance = firstActivityLocation!.distance
             totalDistance += distance

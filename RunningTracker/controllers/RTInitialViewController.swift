@@ -47,10 +47,8 @@ class RTInitialViewController:UIViewController, CLLocationManagerDelegate {
         locationManager.delegate = self
         switch (CLLocationManager.authorizationStatus()){
         case .NotDetermined:
-//            locationManager.requestWhenInUseAuthorization()
             locationManager.requestAlwaysAuthorization()
             break
-//        case .AuthorizedAlways, .Restricted, .Denied:
         case .AuthorizedWhenInUse, .Restricted, .Denied:
             let alertController = UIAlertController(
             title:"Location Access Disabled",
@@ -101,13 +99,11 @@ class RTInitialViewController:UIViewController, CLLocationManagerDelegate {
 
     func locationManager(manager: CLLocationManager, didChangeAuthorizationStatus status: CLAuthorizationStatus){
         if status == .AuthorizedAlways {
-//        if status == .AuthorizedWhenInUse {
             locationManager.startUpdatingLocation()
         }
     }
 
     func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]){
-        print("location in initial view")
         self.startButton.enabled = true
         gpsImageView.image = UIImage(named:"GPSgreen.png")
     }
@@ -116,7 +112,6 @@ class RTInitialViewController:UIViewController, CLLocationManagerDelegate {
         self.startButton.enabled = false
         gpsImageView.image = UIImage(named:"GPSblack.png")
         if(CLLocationManager.authorizationStatus() == .AuthorizedAlways){
-//        if(CLLocationManager.authorizationStatus() == .AuthorizedWhenInUse){
            locationManager.startUpdatingLocation()
         }
     }

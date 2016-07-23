@@ -31,24 +31,58 @@ class RTActivity:NSObject , NSCoding {
         }
     }
 
-    func addActivityLocation(activityLocation:RTActivityLocation){
+    func addActivityLocation(activityLocation:RTActivityLocation) -> Bool{
+
+        if activityLocation.location.horizontalAccuracy > 20 {
+            return false
+        }
+
         var lastActivityLocation:RTActivityLocation?
         if activities.count > 0 {
             lastActivityLocation = activities[activities.count - 1]
+
+//            if let previousActivityLocation = getPreviousLocation(activityLocation) {
+//                lastActivityLocation = previousActivityLocation
+//                let coords = lastActivityLocation!.location.coordinate
+//                if coords.latitude == activityLocation.location.coordinate.latitude && coords.longitude == activityLocation.location.coordinate.longitude {
+//                    return
+//                }
+//            }
+
+
+//            lastActivityLocation? = getPreviousLocation(activityLocation)
             if lastActivityLocation != nil{
                 let coords = lastActivityLocation!.location.coordinate
                 if coords.latitude == activityLocation.location.coordinate.latitude && coords.longitude == activityLocation.location.coordinate.longitude {
-                    return
+                    return false
                 }
             }
         }
 
-        activities.append(activityLocation)
+//        if lastActivityLocation != nil {
+//            activities.insert(activityLocation, atIndex:activities.indexOf(lastActivityLocation!)! + 1)
+//        }else{
+            activities.append(activityLocation)
+//        }
         if lastActivityLocation != nil && !activityLocation.firstAfterResumed {
             let distanceDone = activityLocation.location.distanceFromLocation(lastActivityLocation!.location)
             distance += distanceDone
+
             activityLocation.distance = distanceDone
         }
+        return true
+    }
+
+    func getPreviousLocation(activityLocation:RTActivityLocation) -> RTActivityLocation? {
+        var lastLocation:RTActivityLocation?
+        for i in 0..<self.activities.count {
+            let location:RTActivityLocation = self.activities[i]
+            if location.location.timestamp.timeIntervalSinceReferenceDate > activityLocation.location.timestamp.timeIntervalSinceReferenceDate {
+                return lastLocation
+            }
+            lastLocation = location
+        }
+        return lastLocation
     }
 
     func endTime(time:NSTimeInterval){
