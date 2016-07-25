@@ -130,10 +130,6 @@ class RTActivitiesModel {
         return self.currentActivity.getActivities()
     }
 
-    func isCurrentActivityPaused()->Bool{
-        return currentActivityPaused
-    }
-
     func pauseActivity(){
         currentActivityPaused = true
         currentActivityPausedAt = getNow()

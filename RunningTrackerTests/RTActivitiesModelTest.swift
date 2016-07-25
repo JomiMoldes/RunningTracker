@@ -151,15 +151,26 @@ class RTActivitiesModelTest:XCTestCase{
         XCTAssertEqual(model.getElapsedTime(), 95)
     }
 
+    func testGetDistanceDone() {
+        let now = NSDate().timeIntervalSince1970
+        model.fakeNow = now
+
+        mockStartActivity()
+
+        let location1 = mockActivityLocation(now + 10, lat:12.55555, long:13)
+        let location2 = mockActivityLocation(now + 15, lat:12.55560, long:13)
+        model.addActivityLocation(location1)
+        model.addActivityLocation(location2)
+
+        let distance : Double = 5.5313383877970717
+        XCTAssertEqual(model.getDistanceDone(), distance)
+    }
+
     func testGetPaceLastKM() {
         let now = NSDate().timeIntervalSince1970
         model.fakeNow = now
 
-        do{
-            try model.startActivity()
-        } catch {
-            XCTAssertTrue(false, "it should be possible to start activity")
-        }
+        mockStartActivity()
 
         let location1 = mockActivityLocation(now + 10, lat:12.55555, long:13)
         let location2 = mockActivityLocation(now + 15, lat:12.55560, long:13)
@@ -171,6 +182,39 @@ class RTActivitiesModelTest:XCTestCase{
 
         let pace = 1000 * 5 / distance
         XCTAssertEqual(model.getPaceLastKM(), pace)
+    }
+
+    func testPauseActivity() {
+        let now = NSDate().timeIntervalSince1970
+        model.fakeNow = now
+        mockStartActivity()
+        
+        model.fakeNow = now + 5
+        model.pauseActivity()
+
+        XCTAssertEqual(model.currentActivityPausedAt, now + 5)
+        XCTAssertTrue(model.currentActivityPaused)
+    }
+
+    func testActivitiesLenght() {
+        XCTAssertEqual(model.activitiesLenght(), 0)
+        mockStartActivity()
+        model.endActivity()
+        XCTAssertEqual(model.activitiesLenght(), 1)
+    }
+
+    func testGetActivities() {
+        let now = NSDate().timeIntervalSince1970
+        model.fakeNow = now
+        mockStartActivity()
+        model.endActivity()
+        model.fakeNow = now + 20
+        mockStartActivity()
+        model.endActivity()
+        let activities = model.getActivities()
+        XCTAssertEqual(2, activities.count)
+        XCTAssertEqual(activities[0].startTime, now)
+        XCTAssertEqual(activities[1].startTime, now + 20)
     }
 
     func mockStartActivity() {
