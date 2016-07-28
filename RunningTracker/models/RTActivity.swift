@@ -41,16 +41,6 @@ class RTActivity:NSObject , NSCoding {
         if activities.count > 0 {
             lastActivityLocation = activities[activities.count - 1]
 
-//            if let previousActivityLocation = getPreviousLocation(activityLocation) {
-//                lastActivityLocation = previousActivityLocation
-//                let coords = lastActivityLocation!.location.coordinate
-//                if coords.latitude == activityLocation.location.coordinate.latitude && coords.longitude == activityLocation.location.coordinate.longitude {
-//                    return
-//                }
-//            }
-
-
-//            lastActivityLocation? = getPreviousLocation(activityLocation)
             if lastActivityLocation != nil{
                 let coords = lastActivityLocation!.location.coordinate
                 if coords.latitude == activityLocation.location.coordinate.latitude && coords.longitude == activityLocation.location.coordinate.longitude {
@@ -59,11 +49,7 @@ class RTActivity:NSObject , NSCoding {
             }
         }
 
-//        if lastActivityLocation != nil {
-//            activities.insert(activityLocation, atIndex:activities.indexOf(lastActivityLocation!)! + 1)
-//        }else{
-            activities.append(activityLocation)
-//        }
+        activities.append(activityLocation)
         if lastActivityLocation != nil && !activityLocation.firstAfterResumed {
             let distanceDone = activityLocation.location.distanceFromLocation(lastActivityLocation!.location)
             distance += distanceDone
@@ -71,18 +57,6 @@ class RTActivity:NSObject , NSCoding {
             activityLocation.distance = distanceDone
         }
         return true
-    }
-
-    func getPreviousLocation(activityLocation:RTActivityLocation) -> RTActivityLocation? {
-        var lastLocation:RTActivityLocation?
-        for i in 0..<self.activities.count {
-            let location:RTActivityLocation = self.activities[i]
-            if location.location.timestamp.timeIntervalSince1970 > activityLocation.location.timestamp.timeIntervalSince1970 {
-                return lastLocation
-            }
-            lastLocation = location
-        }
-        return lastLocation
     }
 
     func endTime(time:NSTimeInterval){
