@@ -17,13 +17,13 @@ class RTActivity:NSObject , NSCoding {
     private var activities = [RTActivityLocation]()
     var startTime : Double = 0
     var pausedTime : Double = 0
-    private var endTime : Double? = 0
+    private(set) var finishTime : Double = 0
     var distance : Double = 0
 
-    init?(activities:[RTActivityLocation], startTime:Double, endTime:Double?, pausedTime2:Double?){
+    init?(activities:[RTActivityLocation], startTime:Double, finishTime:Double, pausedTime2:Double){
         self.startTime = startTime
-        self.endTime = endTime
-        self.pausedTime = pausedTime2!
+        self.finishTime = finishTime
+        self.pausedTime = pausedTime2
         super.init()
         for i in 0..<activities.count {
             let activityLocation = activities[i]
@@ -59,8 +59,8 @@ class RTActivity:NSObject , NSCoding {
         return true
     }
 
-    func endTime(time:NSTimeInterval){
-        self.endTime = time;
+    func activityFinished(time:NSTimeInterval){
+        self.finishTime = time
     }
 
     func getActivities()->[RTActivityLocation]{
@@ -72,11 +72,11 @@ class RTActivity:NSObject , NSCoding {
     }
 
     func getDuration() -> Double {
-        return self.endTime! - self.pausedTime - self.startTime
+        return self.finishTime - self.pausedTime - self.startTime
     }
 
     func getPace() -> Double {
-        let totalTime = endTime! - startTime
+        let totalTime = self.finishTime - startTime
         if totalTime <= 0 || distance <= 0 {
             return 0.00
         }
@@ -89,7 +89,7 @@ class RTActivity:NSObject , NSCoding {
 
     internal func encodeWithCoder(aCoder: NSCoder){
         aCoder.encodeDouble(startTime, forKey:ActivityPropertyKey.startTimeKey)
-        aCoder.encodeDouble(endTime!, forKey:ActivityPropertyKey.endTimeKey)
+        aCoder.encodeDouble(finishTime, forKey:ActivityPropertyKey.endTimeKey)
         aCoder.encodeDouble(pausedTime, forKey:ActivityPropertyKey.pausedTimeKey)
         aCoder.encodeObject(activities, forKey:ActivityPropertyKey.locationsKey)
     }
@@ -99,7 +99,7 @@ class RTActivity:NSObject , NSCoding {
         let startTime = aDecoder.decodeDoubleForKey(ActivityPropertyKey.startTimeKey)
         let endTime = aDecoder.decodeDoubleForKey(ActivityPropertyKey.endTimeKey)
         let pausedTime = aDecoder.decodeDoubleForKey(ActivityPropertyKey.pausedTimeKey)
-        self.init(activities: activities, startTime:startTime, endTime:endTime, pausedTime2: pausedTime)
+        self.init(activities: activities, startTime:startTime, finishTime:endTime, pausedTime2: pausedTime)
     }
 
 }

@@ -32,7 +32,7 @@ class RTActivitiesModel {
             print("Trying to start activity before ending previous one")
             throw RTActivitiesError.RTActivityAlreadySet
         }
-        self.currentActivity = RTActivity(activities: [RTActivityLocation](), startTime: getNow(), endTime: nil, pausedTime2: 0)
+        self.currentActivity = RTActivity(activities: [RTActivityLocation](), startTime: getNow(), finishTime: 0, pausedTime2: 0)
         activityRunning = true
         return true
     }
@@ -59,7 +59,7 @@ class RTActivitiesModel {
         }
         activities.append(self.currentActivity)
         activityRunning = false
-        currentActivity.endTime(NSDate().timeIntervalSince1970)
+        currentActivity.activityFinished(NSDate().timeIntervalSince1970)
         currentActivity = nil
         refreshValues()
         return true
