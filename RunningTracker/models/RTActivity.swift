@@ -4,6 +4,7 @@
 //
 
 import Foundation
+import CoreLocation
 
 struct ActivityPropertyKey{
     static let locationsKey = "locations"
@@ -83,6 +84,22 @@ class RTActivity:NSObject , NSCoding {
 
         let pace = 1000 * totalTime / distance
         return pace
+    }
+
+    func getActivityId() -> Int {
+        if self.activities.count == 0 {
+
+            let now = NSDate().timeIntervalSince1970
+            let location = CLLocation(coordinate:CLLocationCoordinate2DMake(CLLocationDegrees(12.55560), CLLocationDegrees(13)), altitude: 10.0, horizontalAccuracy: 5, verticalAccuracy: 50, timestamp: NSDate())
+            let activityLocation : RTActivityLocation? = RTActivityLocation(location: location, timestamp: now)
+            self.addActivityLocation(activityLocation!)
+        }
+        let location = self.activities[0].location
+        let long = Int(location.coordinate.longitude)
+        let lat = Int(location.coordinate.latitude)
+
+        let activityId = Int(String(format: "%d%d%d", Int(self.startTime), long, lat))
+        return activityId!
     }
 
 // MARK NSCoding

@@ -16,16 +16,19 @@ class RTActivitiesModelTest:XCTestCase{
     static let ArchiveURLTest = RTActivitiesModel.DocumentsDirectory.URLByAppendingPathComponent("activitiesTest")
     
     var model:RTActivitiesModelFake!
+    var storeManager : RTStoreActivitiesManager!
     
     override func setUp() {
         super.setUp()
         model = RTActivitiesModelFake()
+        storeManager = RTStoreActivitiesManager()
     }
     
     override func tearDown() {
         model.deleteAllActivities()
-        model.saveActivities(RTActivitiesModelTest.ArchiveURLTest.path!)
+        model.saveActivities(RTActivitiesModelTest.ArchiveURLTest.path!, storeManager: storeManager)
         model.valuesRefreshed = false
+        storeManager = nil
         super.tearDown()
     }
     
@@ -47,14 +50,21 @@ class RTActivitiesModelTest:XCTestCase{
     func testEndActivity() {
         XCTAssertFalse(model.endActivity(), "you cannot end an activity when there is none active")
         mockStartActivity()
+        addLocationToCurrentActivity()
 
         XCTAssertTrue(model.activityRunning, "activityRunning should be true")
         model.endActivity()
 
         XCTAssertEqual(model.activitiesLenght(), 1)
-        XCTAssertFalse(model.activityRunning, "activityRunning should be true")
+        XCTAssertFalse(model.activityRunning, "activityRunning should be false")
         XCTAssertFalse(model.isCurrentActivityDefined(), "current activity should not be defined")
         XCTAssertTrue(model.valuesRefreshed)
+    }
+    
+    func addLocationToCurrentActivity() {
+        let location = CLLocation(latitude:1111.22, longitude: 3333.3)
+        let activityLocation : RTActivityLocation? = RTActivityLocation(location: location, timestamp: 100)
+        model.addActivityLocation(activityLocation!)
     }
 
     func testResumeActivity() {
@@ -69,7 +79,7 @@ class RTActivitiesModelTest:XCTestCase{
         XCTAssertEqual(model.getCurrentActivityPausedTime(), 5)
     }
 
-    func testSaveActivities() {
+    /*func testSaveActivities() {
         XCTAssertEqual(model.activitiesLenght(), 0)
         mockStartActivity()
         model.endActivity()
@@ -83,7 +93,7 @@ class RTActivitiesModelTest:XCTestCase{
         XCTAssertTrue(model.saveActivities(RTActivitiesModelTest.ArchiveURLTest.path!))
         model.loadActivities(RTActivitiesModelTest.ArchiveURLTest.path!)
         XCTAssertEqual(model.activitiesLenght(), 1)
-    }
+    }   */
 
     func testRefreshValues() {
         XCTAssertFalse(model.currentActivityPaused, "activity should not be paused")
@@ -200,16 +210,31 @@ class RTActivitiesModelTest:XCTestCase{
         XCTAssertEqual(model.activitiesLenght(), 0)
         mockStartActivity()
         model.endActivity()
+        XCTAssertEqual(model.activitiesLenght(), 0)
+        
+        let now = NSDate().timeIntervalSince1970
+        model.fakeNow = now
+        mockStartActivity()
+        let location1 = mockActivityLocation(now + 10, lat:12.55555, long:13)
+        model.addActivityLocation(location1)
+        model.endActivity()
         XCTAssertEqual(model.activitiesLenght(), 1)
+        
     }
 
     func testGetActivities() {
         let now = NSDate().timeIntervalSince1970
         model.fakeNow = now
+        
+        let location1 = mockActivityLocation(now + 10, lat:12.55555, long:13)
+
         mockStartActivity()
+        model.addActivityLocation(location1)
         model.endActivity()
         model.fakeNow = now + 20
+        let location2 = mockActivityLocation(now, lat:12.55560, long:13)
         mockStartActivity()
+        model.addActivityLocation(location2)
         model.endActivity()
         let activities = model.getActivities()
         XCTAssertEqual(2, activities.count)
@@ -224,6 +249,8 @@ class RTActivitiesModelTest:XCTestCase{
             XCTAssertTrue(false, "it should be possible to start activity")
         }
     }
+    
+    
 
     func mockActivityLocation(now:NSTimeInterval, lat:Double = 111.22, long:Double = 333.3) -> RTActivityLocation {
         let location = CLLocation(latitude:lat, longitude: long)

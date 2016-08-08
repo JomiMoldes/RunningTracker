@@ -127,7 +127,7 @@ class RTActiveMapViewController : UIViewController, CLLocationManagerDelegate {
 
     func endActivity() {
         self.activitiesModel.endActivity()
-        self.activitiesModel.saveActivities(RTActivitiesModel.ArchiveURL.path!)
+        self.activitiesModel.saveActivities(RTActivitiesModel.ArchiveURL.path!, storeManager: RTGlobalModels.sharedInstance.storeActivitiesManager)
         invalidateTimer()
         self.pauseButton.enabled = false
     }
@@ -135,7 +135,9 @@ class RTActiveMapViewController : UIViewController, CLLocationManagerDelegate {
 // IBActions
 
     @IBAction func backTouched(sender: UIButton) {
-        endActivity()
+        if self.activitiesModel.isCurrentActivityDefined() {
+            endActivity()
+        }
         self.navigationController!.popViewControllerAnimated(true)
     }
 

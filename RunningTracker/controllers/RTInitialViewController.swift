@@ -9,6 +9,7 @@ import CoreLocation
 
 class RTInitialViewController:UIViewController, CLLocationManagerDelegate {
 
+    @IBOutlet weak var fetchAlarmView: UIView!
     @IBOutlet weak var myActivitiesButton: UIButton!
     @IBOutlet weak var startButton: UIButton!
     
@@ -20,19 +21,28 @@ class RTInitialViewController:UIViewController, CLLocationManagerDelegate {
         self.activitiesModel = RTGlobalModels.sharedInstance.activitiesModel
         super.viewDidLoad()
         self.setupButtons()
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(activitiesLoaded), name: "activitiesLoaded", object: nil)
+        activitiesModel.loadActivities(RTActivitiesModel.ArchiveURL.path!, storeManager: RTGlobalModels.sharedInstance.storeActivitiesManager)
     }
 
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
+        self.myActivitiesButton.enabled = self.activitiesModel.activitiesLenght() > 0
+        self.startButton.enabled = false
         self.startLocation()
-        activitiesModel.loadActivities(RTActivitiesModel.ArchiveURL.path!)
-        self.myActivitiesButton.enabled = activitiesModel.activitiesLenght() > 0
     }
 
     override func viewWillDisappear(animated: Bool) {
         super.viewWillDisappear(animated)
         locationManager.delegate = nil
         locationManager = nil
+    }
+
+    func activitiesLoaded(notification:NSNotification) {
+        dispatch_async(dispatch_get_main_queue(), {
+            self.fetchAlarmView.hidden = true
+            self.myActivitiesButton.enabled = self.activitiesModel.activitiesLenght() > 0
+        })
     }
 
     func setupButtons(){
@@ -74,6 +84,11 @@ class RTInitialViewController:UIViewController, CLLocationManagerDelegate {
             break
         }
 
+    }
+
+    override func viewDidDisappear(animated: Bool) {
+        NSNotificationCenter.defaultCenter().removeObserver(self)
+        super.viewDidDisappear(animated)
     }
 
 //MARK IBActions

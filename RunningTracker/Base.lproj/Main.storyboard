@@ -18,7 +18,7 @@
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.1675936341" green="0.32047340590000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -95,22 +95,57 @@
                                     <constraint firstItem="gg4-Kf-VHC" firstAttribute="centerX" secondItem="W6d-QN-OEo" secondAttribute="centerX" id="l0k-ak-mZw"/>
                                 </constraints>
                             </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="WzF-K9-WsZ" userLabel="FetchView">
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zSi-ed-zdG">
+                                        <rect key="frame" x="150" y="210" width="300" height="180"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Fetching activities from iCloud" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Rsq-bJ-YAQ">
+                                                <rect key="frame" x="15" y="0.0" width="270" height="180"/>
+                                                <fontDescription key="fontDescription" name="Georgia-Bold" family="Georgia" pointSize="24"/>
+                                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstItem="Rsq-bJ-YAQ" firstAttribute="centerY" secondItem="zSi-ed-zdG" secondAttribute="centerY" id="Gp1-Xu-WM8"/>
+                                            <constraint firstItem="Rsq-bJ-YAQ" firstAttribute="width" secondItem="zSi-ed-zdG" secondAttribute="width" multiplier="0.9" id="ZQw-5Z-Xa5"/>
+                                            <constraint firstItem="Rsq-bJ-YAQ" firstAttribute="centerX" secondItem="zSi-ed-zdG" secondAttribute="centerX" id="wqc-AQ-iie"/>
+                                            <constraint firstItem="Rsq-bJ-YAQ" firstAttribute="height" secondItem="zSi-ed-zdG" secondAttribute="height" id="x5b-H3-u9g"/>
+                                        </constraints>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstItem="zSi-ed-zdG" firstAttribute="width" secondItem="WzF-K9-WsZ" secondAttribute="width" multiplier="0.5" id="48i-F4-86F"/>
+                                    <constraint firstItem="zSi-ed-zdG" firstAttribute="centerY" secondItem="WzF-K9-WsZ" secondAttribute="centerY" id="YEj-Aq-nmV"/>
+                                    <constraint firstItem="zSi-ed-zdG" firstAttribute="centerX" secondItem="WzF-K9-WsZ" secondAttribute="centerX" id="mzi-AP-gLN"/>
+                                    <constraint firstItem="zSi-ed-zdG" firstAttribute="height" secondItem="WzF-K9-WsZ" secondAttribute="height" multiplier="0.3" id="p1m-aR-eXl"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="ozF-iw-eKP" firstAttribute="centerX" secondItem="AE3-he-Cib" secondAttribute="centerX" id="2ch-U3-Ixs"/>
                             <constraint firstItem="W6d-QN-OEo" firstAttribute="height" secondItem="AE3-he-Cib" secondAttribute="height" multiplier="0.5" id="7IS-Mt-X3U"/>
                             <constraint firstItem="ozF-iw-eKP" firstAttribute="width" secondItem="AE3-he-Cib" secondAttribute="width" id="9Ma-aa-cdJ"/>
+                            <constraint firstItem="WzF-K9-WsZ" firstAttribute="centerY" secondItem="AE3-he-Cib" secondAttribute="centerY" id="DW6-ml-V0H"/>
                             <constraint firstItem="ozF-iw-eKP" firstAttribute="height" secondItem="AE3-he-Cib" secondAttribute="height" multiplier="0.5" id="EHI-R1-5UC"/>
                             <constraint firstItem="W6d-QN-OEo" firstAttribute="width" secondItem="AE3-he-Cib" secondAttribute="width" id="KXN-Hj-0QP"/>
+                            <constraint firstItem="WzF-K9-WsZ" firstAttribute="height" secondItem="AE3-he-Cib" secondAttribute="height" id="OW0-00-zd4"/>
+                            <constraint firstItem="WzF-K9-WsZ" firstAttribute="centerX" secondItem="AE3-he-Cib" secondAttribute="centerX" id="PVp-6t-dx4"/>
                             <constraint firstItem="Jtk-By-Bhf" firstAttribute="centerX" secondItem="AE3-he-Cib" secondAttribute="centerX" id="avv-fz-j2p"/>
                             <constraint firstItem="ozF-iw-eKP" firstAttribute="top" secondItem="4bg-xJ-Uw6" secondAttribute="bottom" constant="-20" id="cbz-2l-A4D"/>
                             <constraint firstItem="W6d-QN-OEo" firstAttribute="centerX" secondItem="AE3-he-Cib" secondAttribute="centerX" id="clQ-sK-4cz"/>
                             <constraint firstItem="qBi-Ot-YFo" firstAttribute="top" secondItem="W6d-QN-OEo" secondAttribute="bottom" id="qUO-IA-RCW"/>
                             <constraint firstItem="qBi-Ot-YFo" firstAttribute="top" secondItem="Jtk-By-Bhf" secondAttribute="bottom" constant="19" id="vJd-Is-Siu"/>
+                            <constraint firstItem="WzF-K9-WsZ" firstAttribute="width" secondItem="AE3-he-Cib" secondAttribute="width" id="y9M-l5-WlC"/>
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="fetchAlarmView" destination="WzF-K9-WsZ" id="aZV-rE-JBH"/>
                         <outlet property="gpsImageView" destination="oaB-tN-15d" id="z2g-pa-9bl"/>
                         <outlet property="myActivitiesButton" destination="ozF-iw-eKP" id="Qfo-SX-874"/>
                         <outlet property="startButton" destination="gg4-Kf-VHC" id="CYA-ym-HkA"/>

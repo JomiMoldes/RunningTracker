@@ -4,6 +4,7 @@
 //
 
 import Foundation
+import CloudKit
 
 enum RTActivitiesError:ErrorType {
     case RTActivityAlreadySet
@@ -12,7 +13,11 @@ enum RTActivitiesError:ErrorType {
 class RTActivitiesModel {
 
     static let DocumentsDirectory = NSFileManager().URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask).first!
+#if DEBUG
+    static let ArchiveURL = DocumentsDirectory.URLByAppendingPathComponent("debug_activities")
+#else
     static let ArchiveURL = DocumentsDirectory.URLByAppendingPathComponent("activities")
+#endif
 
     private var activities:[RTActivity]!
 
@@ -37,19 +42,47 @@ class RTActivitiesModel {
         return true
     }
 
-    func saveActivities(path:String) -> Bool {
+    func saveActivities(path:String, storeManager:RTStoreActivitiesManager) -> Bool {
         if(self.activities.count == 0){
             return false
         }
-        let isSuccessfulSave = NSKeyedArchiver.archiveRootObject(self.activities, toFile: path)
-        return isSuccessfulSave
+
+        storeManager.saveActivities(self.activities, completion: {
+            activities in
+            self.activities = activities
+            NSNotificationCenter.defaultCenter().postNotification(NSNotification(name:"activitiesLoaded", object:nil))
+        })
+
+        return true
     }
 
-    func loadActivities(path:String) {
-        self.activities = NSKeyedUnarchiver.unarchiveObjectWithFile(path) as? [RTActivity]
-        if self.activities == nil {
-            self.activities = [RTActivity]()
-        }
+    func saveOnICloud() {
+        let container = CKContainer.defaultContainer()
+        let privateDatabase = container.privateCloudDatabase
+        let record = CKRecord(recordType: "Activities")
+        record.setValue(12333, forKey: "endtime")
+        record.setValue(12000, forKey: "starttime")
+        record.setValue(10, forKey: "pausedtime")
+        record.setValue("12333", forKey: "locationsid")
+
+        privateDatabase.saveRecord(record, completionHandler: {record, error in
+            if error != nil {
+                print ("there was an error trying to save the activity")
+            }else{
+                print ("record has been saved")
+            }
+        })
+
+        print("trying to save in private database")
+    }
+
+    func loadActivities(path:String, storeManager:RTStoreActivitiesManager) {
+        storeManager.start(path, completion: {
+            activities in
+            self.activities = activities
+            NSNotificationCenter.defaultCenter().postNotification(NSNotification(name:"activitiesLoaded", object:nil))
+        })
+        return
     }
 
     func endActivity() -> Bool {
@@ -57,7 +90,17 @@ class RTActivitiesModel {
             print("Trying to end activity but there is none")
             return false
         }
-        activities.append(self.currentActivity)
+
+//        if currentActivitesLocationsLenght() == 0 {
+//            let now = NSDate().timeIntervalSince1970
+//            let location = CLLocation(coordinate:CLLocationCoordinate2DMake(CLLocationDegrees(12.9), CLLocationDegrees(13)), altitude: 10.0, horizontalAccuracy: 5, verticalAccuracy: 50, timestamp: NSDate())
+//            let activityLocation : RTActivityLocation? = RTActivityLocation(location: location, timestamp: now)
+//            self.addActivityLocation(activityLocation!)
+//        }
+
+        if self.currentActivitesLocationsLenght() > 0 {
+            activities.append(self.currentActivity)
+        }
         activityRunning = false
         currentActivity.activityFinished(NSDate().timeIntervalSince1970)
         currentActivity = nil
