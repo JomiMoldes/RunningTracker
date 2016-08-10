@@ -77,6 +77,7 @@ class RTActivitiesModelTest:XCTestCase{
         model.resumeActivity()
 
         XCTAssertEqual(model.getCurrentActivityPausedTime(), 5)
+
     }
 
     /*func testSaveActivities() {
