@@ -50,7 +50,7 @@ class RTActivitiesModel {
         storeManager.saveActivities(self.activities, completion: {
             activities in
             self.activities = activities
-            NSNotificationCenter.defaultCenter().postNotification(NSNotification(name:"activitiesLoaded", object:nil))
+            NSNotificationCenter.defaultCenter().postNotification(NSNotification(name:"activitiesSaved", object:nil))
         })
 
         return true

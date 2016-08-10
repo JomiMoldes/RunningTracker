@@ -16,12 +16,12 @@ class RTActivitiesModelTest:XCTestCase{
     static let ArchiveURLTest = RTActivitiesModel.DocumentsDirectory.URLByAppendingPathComponent("activitiesTest")
     
     var model:RTActivitiesModelFake!
-    var storeManager : RTStoreActivitiesManager!
+    var storeManager : RTSoreManagerFake!
     
     override func setUp() {
         super.setUp()
         model = RTActivitiesModelFake()
-        storeManager = RTStoreActivitiesManager()
+        storeManager = RTSoreManagerFake()
     }
     
     override func tearDown() {
@@ -80,21 +80,40 @@ class RTActivitiesModelTest:XCTestCase{
 
     }
 
-    /*func testSaveActivities() {
+    func testSaveActivities() {
         XCTAssertEqual(model.activitiesLenght(), 0)
+        XCTAssertFalse(model.saveActivities(RTActivitiesModelTest.ArchiveURLTest.path!, storeManager: storeManager))
         mockStartActivity()
+        addLocationToCurrentActivity()
         model.endActivity()
-        XCTAssertTrue(model.saveActivities(RTActivitiesModelTest.ArchiveURLTest.path!))
+        
+        let sub = NSNotificationCenter.defaultCenter().addObserverForName("activitiesSaved", object: nil, queue: nil) { (not) -> Void in
+            XCTAssertEqual(self.model.activitiesLenght(), 0)
+        }
+        expectationForNotification("activitiesSaved", object: nil, handler: nil)
+        XCTAssertTrue(model.saveActivities(RTActivitiesModelTest.ArchiveURLTest.path!, storeManager: storeManager))
+        waitForExpectationsWithTimeout(0.1, handler: nil)
+        
+        NSNotificationCenter.defaultCenter().removeObserver(sub)
     }
 
     func testLoadActivities() {
         XCTAssertEqual(model.activitiesLenght(), 0)
         mockStartActivity()
+        addLocationToCurrentActivity()
         model.endActivity()
-        XCTAssertTrue(model.saveActivities(RTActivitiesModelTest.ArchiveURLTest.path!))
-        model.loadActivities(RTActivitiesModelTest.ArchiveURLTest.path!)
-        XCTAssertEqual(model.activitiesLenght(), 1)
-    }   */
+        
+        let sub = NSNotificationCenter.defaultCenter().addObserverForName("activitiesSaved", object: nil, queue: nil) { (not) -> Void in
+            self.expectationForNotification("activitiesLoaded", object: nil, handler: nil)
+            self.model.loadActivities(RTActivitiesModelTest.ArchiveURLTest.path!, storeManager: self.storeManager)
+            
+            self.waitForExpectationsWithTimeout(0.1, handler: nil)
+        }        
+        
+        XCTAssertTrue(model.saveActivities(RTActivitiesModelTest.ArchiveURLTest.path!, storeManager: storeManager))
+        
+        NSNotificationCenter.defaultCenter().removeObserver(sub)
+    }
 
     func testRefreshValues() {
         XCTAssertFalse(model.currentActivityPaused, "activity should not be paused")
@@ -280,6 +299,18 @@ class RTActivitiesModelFake:RTActivitiesModel{
         return fakeNow
     }
 
+}
+
+class RTSoreManagerFake:RTStoreActivitiesManager {
+    
+    override func start(path: String, completion: ([RTActivity]) -> Void) -> Bool {
+        completion([RTActivity]())
+        return true
+    }
+    
+    override func saveActivities(activities: [RTActivity], completion: ([RTActivity]) -> Void) {
+        completion([RTActivity]())
+    }
 }
 
 

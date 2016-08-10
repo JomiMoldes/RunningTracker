@@ -22,6 +22,7 @@ class RTInitialViewController:UIViewController, CLLocationManagerDelegate {
         super.viewDidLoad()
         self.setupButtons()
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(activitiesLoaded), name: "activitiesLoaded", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(activitiesLoaded), name: "activitiesSaved", object: nil)
         activitiesModel.loadActivities(RTActivitiesModel.ArchiveURL.path!, storeManager: RTGlobalModels.sharedInstance.storeActivitiesManager)
     }
 
