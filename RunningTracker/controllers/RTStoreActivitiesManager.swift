@@ -59,14 +59,14 @@ class RTStoreActivitiesManager {
         syncAndSaveICloud()
     }
 
-    func synchronisationDone() {
+    private func synchronisationDone() {
         self.completion!(self.activitiesSavedLocally!)
     }
 
 
 
 
-    func syncAndSaveLocally() {
+    private func syncAndSaveLocally() {
         for activityRecord in self.allActivitiesRecords {
             let activityId = activityRecord["starttime"] as! Int
             if !activityAlreadySavedLocally(activityId) {
@@ -105,7 +105,7 @@ class RTStoreActivitiesManager {
         }
     }
 
-    func activityAlreadySavedLocally(id:Int) -> Bool {
+    private func activityAlreadySavedLocally(id:Int) -> Bool {
         for activity:RTActivity in self.activitiesSavedLocally! {
             if Int(activity.startTime) == id {
                 return true
@@ -114,7 +114,7 @@ class RTStoreActivitiesManager {
         return false
     }
 
-    func activityAlreadySavedOnICloud(id:Int) -> Bool {
+    private func activityAlreadySavedOnICloud(id:Int) -> Bool {
         for activity:CKRecord in self.allActivitiesRecords {
             let recordId = activity["starttime"] as! Int
             if recordId == id {
@@ -124,7 +124,7 @@ class RTStoreActivitiesManager {
         return false
     }
 
-    func getLocationsForActivityRecord(activityId:Int) -> [RTActivityLocation] {
+    private func getLocationsForActivityRecord(activityId:Int) -> [RTActivityLocation] {
         var locations = [RTActivityLocation]()
         for locationRecord in self.allLocationsRecords {
             let recordId = locationRecord["activityid"] as! Int
@@ -191,7 +191,7 @@ class RTStoreActivitiesManager {
         self.activitiesSavedLocally = activities
     }
 
-    func getLocationRecords(locations:[RTActivityLocation], activityId:Int) -> [CKRecord] {
+    private func getLocationRecords(locations:[RTActivityLocation], activityId:Int) -> [CKRecord] {
         var locationRecords = [CKRecord]()
         for location in locations {
             let record = CKRecord(recordType: "Locations")
@@ -204,12 +204,12 @@ class RTStoreActivitiesManager {
         return locationRecords
     }
 
-    func saveLocally() -> Bool {
+    private func saveLocally() -> Bool {
         let isSuccessfulSaved = NSKeyedArchiver.archiveRootObject(self.activitiesSavedLocally!, toFile: self.localPath!)
         return isSuccessfulSaved
     }
 
-    func createRecordByActivity(activity:RTActivity) -> CKRecord {
+    private func createRecordByActivity(activity:RTActivity) -> CKRecord {
         let record = CKRecord(recordType: "Activities")
         record.setValue(Int(activity.startTime), forKey: "starttime")
         record.setValue(Int(activity.finishTime), forKey: "endtime")
