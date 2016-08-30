@@ -11,8 +11,18 @@ import CloudKit
 
 class ViewController: UIViewController {
 
+    @IBOutlet weak var logoView: UIView!
+
+    static let  timeToShowInitialScreen = 3
+
+    var timeChecking = 0.0
+
+    var activitiesModel : RTActivitiesModel!
+
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.activitiesModel = RTGlobalModels.sharedInstance.activitiesModel
+        self.timeChecking = NSDate().timeIntervalSinceReferenceDate
         checkForICloud()
     }
 
@@ -22,8 +32,28 @@ class ViewController: UIViewController {
 
     func loadInitialView() {
         let storyBoard = UIStoryboard(name:"Main", bundle: nil)
-        let initialViewcontroller = storyBoard.instantiateViewControllerWithIdentifier("InitialView") as? RTInitialViewController
-        self.navigationController?.pushViewController(initialViewcontroller!, animated: true )
+        let initialViewController = storyBoard.instantiateViewControllerWithIdentifier("InitialView") as? RTInitialViewController
+        self.navigationController?.pushViewController(initialViewController!, animated: true )
+    }
+
+    func iCloudReady() {
+        print("iCloudReady")
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(activitiesFromICloudLoaded), name: "activitiesLoaded", object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(activitiesFromICloudLoaded), name: "activitiesSaved", object: nil)
+        activitiesModel.loadActivities(RTActivitiesModel.ArchiveURL.path!, storeManager: RTGlobalModels.sharedInstance.storeActivitiesManager)
+    }
+
+    func activitiesFromICloudLoaded(notification:NSNotification){
+        print("activiitesFroICloudLoaded")
+        NSNotificationCenter.defaultCenter().removeObserver(self)
+        var diff = NSDate().timeIntervalSinceReferenceDate - self.timeChecking
+        diff = (diff > Double(ViewController.timeToShowInitialScreen)) ? 0 : Double(ViewController.timeToShowInitialScreen) - diff
+        let delayTime = dispatch_time(DISPATCH_TIME_NOW, Int64(diff * Double(NSEC_PER_SEC)))
+
+        dispatch_after(delayTime, dispatch_get_main_queue()) {
+            self.loadInitialView()
+        }
+
     }
 
     override func didReceiveMemoryWarning() {
@@ -65,7 +95,7 @@ class ViewController: UIViewController {
                                 break
                             }
 
-                            self.loadInitialView()
+                            self.iCloudReady()
                         })
                     })
                     break

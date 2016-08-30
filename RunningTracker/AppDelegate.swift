@@ -18,10 +18,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         GMSServices.provideAPIKey("AIzaSyBxz-aX7rUCM_YhKVHsAuv-oae6ivkGtmk")
         self.window = UIWindow(frame:UIScreen.mainScreen().bounds)
-        let viewController = ViewController()
-        let nav = UINavigationController(rootViewController: viewController )
-        self.window?.rootViewController = nav;
+//        let viewController = ViewController()
+        let storyBoard = UIStoryboard(name:"Main", bundle: nil)
+        let viewController = storyBoard.instantiateViewControllerWithIdentifier("ViewController") as? ViewController
+        let nav = UINavigationController(rootViewController: viewController! )
         nav.setNavigationBarHidden(true, animated:false)
+        self.window?.rootViewController = nav;
+//        self.window?.backgroundColor = UIColor.clearColor()
+
         return true
     }
 

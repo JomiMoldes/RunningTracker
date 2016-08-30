@@ -56,6 +56,17 @@
 		48E0E3201D313C4E0036F56B /* GPSgreen.png in Resources */ = {isa = PBXBuildFile; fileRef = 48E0E31E1D313C4E0036F56B /* GPSgreen.png */; };
 		48E0E3211D313C4E0036F56B /* GPSgrey.png in Resources */ = {isa = PBXBuildFile; fileRef = 48E0E31F1D313C4E0036F56B /* GPSgrey.png */; };
 		48E0E3231D313D550036F56B /* GPSblack.png in Resources */ = {isa = PBXBuildFile; fileRef = 48E0E3221D313D550036F56B /* GPSblack.png */; };
+		48E4C0F21D7583670086AE54 /* background_ui.png in Resources */ = {isa = PBXBuildFile; fileRef = 48E4C0E71D7583670086AE54 /* background_ui.png */; };
+		48E4C0F31D7583670086AE54 /* button_background.png in Resources */ = {isa = PBXBuildFile; fileRef = 48E4C0E81D7583670086AE54 /* button_background.png */; };
+		48E4C0F41D7583670086AE54 /* icon_controls_pause.png in Resources */ = {isa = PBXBuildFile; fileRef = 48E4C0E91D7583670086AE54 /* icon_controls_pause.png */; };
+		48E4C0F51D7583670086AE54 /* icon_ui_clock.png in Resources */ = {isa = PBXBuildFile; fileRef = 48E4C0EA1D7583670086AE54 /* icon_ui_clock.png */; };
+		48E4C0F61D7583670086AE54 /* ui_bg_start_recording.png in Resources */ = {isa = PBXBuildFile; fileRef = 48E4C0EB1D7583670086AE54 /* ui_bg_start_recording.png */; };
+		48E4C0F71D7583670086AE54 /* logo.png in Resources */ = {isa = PBXBuildFile; fileRef = 48E4C0EC1D7583670086AE54 /* logo.png */; };
+		48E4C0F81D7583670086AE54 /* icon_controls_play.png in Resources */ = {isa = PBXBuildFile; fileRef = 48E4C0ED1D7583670086AE54 /* icon_controls_play.png */; };
+		48E4C0F91D7583670086AE54 /* icon_ui_start_recording.png in Resources */ = {isa = PBXBuildFile; fileRef = 48E4C0EE1D7583670086AE54 /* icon_ui_start_recording.png */; };
+		48E4C0FA1D7583670086AE54 /* icon_ui_button_back.png in Resources */ = {isa = PBXBuildFile; fileRef = 48E4C0EF1D7583670086AE54 /* icon_ui_button_back.png */; };
+		48E4C0FB1D7583670086AE54 /* icon_controls_stop.png in Resources */ = {isa = PBXBuildFile; fileRef = 48E4C0F01D7583670086AE54 /* icon_controls_stop.png */; };
+		48E4C0FC1D7583670086AE54 /* isologo.png in Resources */ = {isa = PBXBuildFile; fileRef = 48E4C0F11D7583670086AE54 /* isologo.png */; };
 		676DCD32EEE4824ACDD6C224 /* Pods_RunningTracker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3601DCAABE1D4283238AB370 /* Pods_RunningTracker.framework */; };
 		B9BE95B7CD5ED6CB8A3FA802 /* Pods_RunningTrackerTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1315FDBE7333EC72080A4E18 /* Pods_RunningTrackerTests.framework */; };
 /* End PBXBuildFile section */
@@ -129,6 +140,17 @@
 		48E0E31E1D313C4E0036F56B /* GPSgreen.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = GPSgreen.png; sourceTree = "<group>"; };
 		48E0E31F1D313C4E0036F56B /* GPSgrey.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = GPSgrey.png; sourceTree = "<group>"; };
 		48E0E3221D313D550036F56B /* GPSblack.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = GPSblack.png; sourceTree = "<group>"; };
+		48E4C0E71D7583670086AE54 /* background_ui.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = background_ui.png; sourceTree = "<group>"; };
+		48E4C0E81D7583670086AE54 /* button_background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = button_background.png; sourceTree = "<group>"; };
+		48E4C0E91D7583670086AE54 /* icon_controls_pause.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_controls_pause.png; sourceTree = "<group>"; };
+		48E4C0EA1D7583670086AE54 /* icon_ui_clock.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_ui_clock.png; sourceTree = "<group>"; };
+		48E4C0EB1D7583670086AE54 /* ui_bg_start_recording.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ui_bg_start_recording.png; sourceTree = "<group>"; };
+		48E4C0EC1D7583670086AE54 /* logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo.png; sourceTree = "<group>"; };
+		48E4C0ED1D7583670086AE54 /* icon_controls_play.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_controls_play.png; sourceTree = "<group>"; };
+		48E4C0EE1D7583670086AE54 /* icon_ui_start_recording.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_ui_start_recording.png; sourceTree = "<group>"; };
+		48E4C0EF1D7583670086AE54 /* icon_ui_button_back.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_ui_button_back.png; sourceTree = "<group>"; };
+		48E4C0F01D7583670086AE54 /* icon_controls_stop.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = icon_controls_stop.png; sourceTree = "<group>"; };
+		48E4C0F11D7583670086AE54 /* isologo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = isologo.png; sourceTree = "<group>"; };
 		A086E0DB99F2A930C0AA1253 /* Pods-RunningTrackerTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RunningTrackerTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RunningTrackerTests/Pods-RunningTrackerTests.debug.xcconfig"; sourceTree = "<group>"; };
 		D1CB825CE456C4D9EFD8A49A /* Pods-RunningTrackerTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RunningTrackerTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-RunningTrackerTests/Pods-RunningTrackerTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -179,6 +201,17 @@
 		45BAF8A918FC0E09EDE8CA29 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				48E4C0E71D7583670086AE54 /* background_ui.png */,
+				48E4C0E81D7583670086AE54 /* button_background.png */,
+				48E4C0E91D7583670086AE54 /* icon_controls_pause.png */,
+				48E4C0EA1D7583670086AE54 /* icon_ui_clock.png */,
+				48E4C0EB1D7583670086AE54 /* ui_bg_start_recording.png */,
+				48E4C0EC1D7583670086AE54 /* logo.png */,
+				48E4C0ED1D7583670086AE54 /* icon_controls_play.png */,
+				48E4C0EE1D7583670086AE54 /* icon_ui_start_recording.png */,
+				48E4C0EF1D7583670086AE54 /* icon_ui_button_back.png */,
+				48E4C0F01D7583670086AE54 /* icon_controls_stop.png */,
+				48E4C0F11D7583670086AE54 /* isologo.png */,
 				48650E811D6DEF36006BE423 /* OpenSans-Bold.ttf */,
 				48650E821D6DEF36006BE423 /* OpenSans-BoldItalic.ttf */,
 				48650E831D6DEF36006BE423 /* OpenSans-ExtraBold.ttf */,
@@ -404,27 +437,38 @@
 				48776CDF1D3D1DDE00630A64 /* RTActivityHeaderViewCell.xib in Resources */,
 				48E0E31B1D311B390036F56B /* MyTrackerBlueSelected.png in Resources */,
 				48650E8B1D6DEF36006BE423 /* OpenSans-Bold.ttf in Resources */,
+				48E4C0F51D7583670086AE54 /* icon_ui_clock.png in Resources */,
 				48776CDD1D3D0BF000630A64 /* RTActivityViewCell.xib in Resources */,
 				48E0E3231D313D550036F56B /* GPSblack.png in Resources */,
 				487BE86B1D6AF37300ABC1ED /* Flag_icon.png in Resources */,
 				48650E941D6DEF36006BE423 /* OpenSans-SemiboldItalic.ttf in Resources */,
 				48E0E31D1D3122B20036F56B /* MyTrackerRedSelected.png in Resources */,
+				48E4C0FA1D7583670086AE54 /* icon_ui_button_back.png in Resources */,
 				48650E8C1D6DEF36006BE423 /* OpenSans-BoldItalic.ttf in Resources */,
 				48E0E2EE1D2EC7360036F56B /* LaunchScreen.storyboard in Resources */,
 				48650E901D6DEF36006BE423 /* OpenSans-Light.ttf in Resources */,
+				48E4C0F41D7583670086AE54 /* icon_controls_pause.png in Resources */,
 				48E0E3211D313C4E0036F56B /* GPSgrey.png in Resources */,
 				48E0E2EB1D2EC7360036F56B /* Assets.xcassets in Resources */,
+				48E4C0F61D7583670086AE54 /* ui_bg_start_recording.png in Resources */,
+				48E4C0F71D7583670086AE54 /* logo.png in Resources */,
+				48E4C0F31D7583670086AE54 /* button_background.png in Resources */,
+				48E4C0F21D7583670086AE54 /* background_ui.png in Resources */,
 				48650E931D6DEF36006BE423 /* OpenSans-Semibold.ttf in Resources */,
 				48650E8E1D6DEF36006BE423 /* OpenSans-ExtraBoldItalic.ttf in Resources */,
 				48650E8D1D6DEF36006BE423 /* OpenSans-ExtraBold.ttf in Resources */,
+				48E4C0F91D7583670086AE54 /* icon_ui_start_recording.png in Resources */,
 				48650E8F1D6DEF36006BE423 /* OpenSans-Italic.ttf in Resources */,
 				48E0E3191D2ECD2B0036F56B /* MyTrackerRed.png in Resources */,
+				48E4C0FC1D7583670086AE54 /* isologo.png in Resources */,
 				48650E911D6DEF36006BE423 /* OpenSans-LightItalic.ttf in Resources */,
 				48E0E3181D2ECD2B0036F56B /* MyTrackerGray.png in Resources */,
+				48E4C0F81D7583670086AE54 /* icon_controls_play.png in Resources */,
 				487BE86C1D6AF37300ABC1ED /* Km_icon.png in Resources */,
 				48E0E3171D2ECD2B0036F56B /* MyTrackerBlue.png in Resources */,
 				48E0E3201D313C4E0036F56B /* GPSgreen.png in Resources */,
 				48E0E2E91D2EC7360036F56B /* Main.storyboard in Resources */,
+				48E4C0FB1D7583670086AE54 /* icon_controls_stop.png in Resources */,
 				48650E921D6DEF36006BE423 /* OpenSans-Regular.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
