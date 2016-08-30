@@ -28,7 +28,7 @@ class RTInitialViewController:UIViewController, CLLocationManagerDelegate {
 
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-        self.myActivitiesButton.enabled = self.activitiesModel.activitiesLenght() > 0
+        self.myActivitiesButton.enabled = self.activitiesModel.activitiesLength() > 0
         self.startButton.enabled = false
         self.startLocation()
     }
@@ -42,7 +42,7 @@ class RTInitialViewController:UIViewController, CLLocationManagerDelegate {
     func activitiesLoaded(notification:NSNotification) {
         dispatch_async(dispatch_get_main_queue(), {
             self.fetchAlarmView.hidden = true
-            self.myActivitiesButton.enabled = self.activitiesModel.activitiesLenght() > 0
+            self.myActivitiesButton.enabled = self.activitiesModel.activitiesLength() > 0
         })
     }
 

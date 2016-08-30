@@ -17,7 +17,7 @@ class RTActivitiesViewController : UIViewController, UITableViewDelegate, UITabl
     override func viewDidLoad() {
         super.viewDidLoad()
         self.activitiesModel = RTGlobalModels.sharedInstance.activitiesModel
-        self.activities = self.activitiesModel.getActivities()
+        self.activities = self.activitiesModel.getActivitiesCopy()
         setupTitle()
         setupTable()
     }
@@ -39,7 +39,7 @@ class RTActivitiesViewController : UIViewController, UITableViewDelegate, UITabl
 // UITable delegate and source data
 
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.activitiesModel.activitiesLenght()
+        return self.activitiesModel.activitiesLength()
     }
 
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {

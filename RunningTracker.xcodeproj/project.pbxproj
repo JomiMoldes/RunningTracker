@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		45BAF0DE930DFEAD5E238D9E /* RTActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45BAF0CB67C24E3DF1344558 /* RTActivity.swift */; };
 		45BAF25DD41B74D53B77D2A5 /* RTActivityTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45BAFC31489610B135A32E38 /* RTActivityTest.swift */; };
+		45BAF2C2EB8DEBE5CC1BF1F8 /* RTMapMarkersManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45BAFA7969CD4F51B9558C45 /* RTMapMarkersManager.swift */; };
 		45BAF2C92150C8AE7A10892A /* RTInitialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45BAF05862AA772DB523305A /* RTInitialViewController.swift */; };
 		45BAF3121985B64F8A7CBC3E /* RTStoreActivitiesManagerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45BAFFD865067F8BF0CE76C5 /* RTStoreActivitiesManagerTest.swift */; };
 		45BAF35FF38665A31336D7CA /* RTActiveMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45BAF9A0DF51888F7D92705D /* RTActiveMapViewController.swift */; };
@@ -22,12 +23,25 @@
 		45BAF98FED4665549212C685 /* RTActivityLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45BAF7D64C5B42DC4D6CFF92 /* RTActivityLocation.swift */; };
 		45BAFA63A080F2D499536142 /* RTActivitiesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45BAF9623FF8D4BDF06E463C /* RTActivitiesModel.swift */; };
 		45BAFA89DE5B959EF495628A /* RTDateFormatterExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45BAF89C5CBD8617A2CACFD8 /* RTDateFormatterExtensions.swift */; };
+		45BAFB4954F5FC35FE3BDF03 /* RTUIImageExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45BAF26DFA84631ED88E908D /* RTUIImageExtensions.swift */; };
 		45BAFC1E17D04D6F678D3556 /* RTActivitiesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45BAF7E2708014ED6B2508B8 /* RTActivitiesViewController.swift */; };
 		45BAFDB74A04267B17CF9E29 /* RTActivityLocationTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45BAF28DA446F982A3545F62 /* RTActivityLocationTest.swift */; };
+		48650E8B1D6DEF36006BE423 /* OpenSans-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 48650E811D6DEF36006BE423 /* OpenSans-Bold.ttf */; };
+		48650E8C1D6DEF36006BE423 /* OpenSans-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 48650E821D6DEF36006BE423 /* OpenSans-BoldItalic.ttf */; };
+		48650E8D1D6DEF36006BE423 /* OpenSans-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 48650E831D6DEF36006BE423 /* OpenSans-ExtraBold.ttf */; };
+		48650E8E1D6DEF36006BE423 /* OpenSans-ExtraBoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 48650E841D6DEF36006BE423 /* OpenSans-ExtraBoldItalic.ttf */; };
+		48650E8F1D6DEF36006BE423 /* OpenSans-Italic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 48650E851D6DEF36006BE423 /* OpenSans-Italic.ttf */; };
+		48650E901D6DEF36006BE423 /* OpenSans-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 48650E861D6DEF36006BE423 /* OpenSans-Light.ttf */; };
+		48650E911D6DEF36006BE423 /* OpenSans-LightItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 48650E871D6DEF36006BE423 /* OpenSans-LightItalic.ttf */; };
+		48650E921D6DEF36006BE423 /* OpenSans-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 48650E881D6DEF36006BE423 /* OpenSans-Regular.ttf */; };
+		48650E931D6DEF36006BE423 /* OpenSans-Semibold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 48650E891D6DEF36006BE423 /* OpenSans-Semibold.ttf */; };
+		48650E941D6DEF36006BE423 /* OpenSans-SemiboldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 48650E8A1D6DEF36006BE423 /* OpenSans-SemiboldItalic.ttf */; };
 		48776CDB1D3BAA5100630A64 /* RTActivitiesModelTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48776CDA1D3BAA5100630A64 /* RTActivitiesModelTest.swift */; };
 		48776CDD1D3D0BF000630A64 /* RTActivityViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 48776CDC1D3D0BF000630A64 /* RTActivityViewCell.xib */; };
 		48776CDF1D3D1DDE00630A64 /* RTActivityHeaderViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 48776CDE1D3D1DDE00630A64 /* RTActivityHeaderViewCell.xib */; };
 		487BE8661D55F01D00ABC1ED /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 487BE8651D55F01D00ABC1ED /* CloudKit.framework */; };
+		487BE86B1D6AF37300ABC1ED /* Flag_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 487BE8691D6AF37300ABC1ED /* Flag_icon.png */; };
+		487BE86C1D6AF37300ABC1ED /* Km_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 487BE86A1D6AF37300ABC1ED /* Km_icon.png */; };
 		48E0E2E41D2EC7360036F56B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48E0E2E31D2EC7360036F56B /* AppDelegate.swift */; };
 		48E0E2E61D2EC7360036F56B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48E0E2E51D2EC7360036F56B /* ViewController.swift */; };
 		48E0E2E91D2EC7360036F56B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 48E0E2E71D2EC7360036F56B /* Main.storyboard */; };
@@ -43,6 +57,7 @@
 		48E0E3211D313C4E0036F56B /* GPSgrey.png in Resources */ = {isa = PBXBuildFile; fileRef = 48E0E31F1D313C4E0036F56B /* GPSgrey.png */; };
 		48E0E3231D313D550036F56B /* GPSblack.png in Resources */ = {isa = PBXBuildFile; fileRef = 48E0E3221D313D550036F56B /* GPSblack.png */; };
 		676DCD32EEE4824ACDD6C224 /* Pods_RunningTracker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3601DCAABE1D4283238AB370 /* Pods_RunningTracker.framework */; };
+		B9BE95B7CD5ED6CB8A3FA802 /* Pods_RunningTrackerTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1315FDBE7333EC72080A4E18 /* Pods_RunningTrackerTests.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,12 +71,14 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1315FDBE7333EC72080A4E18 /* Pods_RunningTrackerTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RunningTrackerTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		189B33394D6AEC0A54BD5BAD /* Pods-RunningTracker.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RunningTracker.release.xcconfig"; path = "Pods/Target Support Files/Pods-RunningTracker/Pods-RunningTracker.release.xcconfig"; sourceTree = "<group>"; };
 		3130775CFE5E16821CEF094A /* Pods-RunningTracker.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RunningTracker.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RunningTracker/Pods-RunningTracker.debug.xcconfig"; sourceTree = "<group>"; };
 		3601DCAABE1D4283238AB370 /* Pods_RunningTracker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RunningTracker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		45BAF05862AA772DB523305A /* RTInitialViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RTInitialViewController.swift; sourceTree = "<group>"; };
 		45BAF0CB67C24E3DF1344558 /* RTActivity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RTActivity.swift; sourceTree = "<group>"; };
 		45BAF26AFB3B64A8299D41E6 /* RTActivityViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RTActivityViewCell.swift; sourceTree = "<group>"; };
+		45BAF26DFA84631ED88E908D /* RTUIImageExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RTUIImageExtensions.swift; sourceTree = "<group>"; };
 		45BAF28DA446F982A3545F62 /* RTActivityLocationTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RTActivityLocationTest.swift; sourceTree = "<group>"; };
 		45BAF53B4EEA07F450845DC5 /* CachedDateFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CachedDateFormatter.swift; sourceTree = "<group>"; };
 		45BAF70584E78946E836A5AD /* RTStoreActivitiesManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RTStoreActivitiesManager.swift; sourceTree = "<group>"; };
@@ -72,15 +89,28 @@
 		45BAF89C5CBD8617A2CACFD8 /* RTDateFormatterExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RTDateFormatterExtensions.swift; sourceTree = "<group>"; };
 		45BAF9623FF8D4BDF06E463C /* RTActivitiesModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RTActivitiesModel.swift; sourceTree = "<group>"; };
 		45BAF9A0DF51888F7D92705D /* RTActiveMapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RTActiveMapViewController.swift; sourceTree = "<group>"; };
+		45BAFA7969CD4F51B9558C45 /* RTMapMarkersManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RTMapMarkersManager.swift; sourceTree = "<group>"; };
 		45BAFBF0DE4F01A4E9D9FBDE /* RTNumbersExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RTNumbersExtensions.swift; sourceTree = "<group>"; };
 		45BAFC31489610B135A32E38 /* RTActivityTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RTActivityTest.swift; sourceTree = "<group>"; };
 		45BAFF68ED584FDC0B44D139 /* RTActivityHeaderViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RTActivityHeaderViewCell.swift; sourceTree = "<group>"; };
 		45BAFFD865067F8BF0CE76C5 /* RTStoreActivitiesManagerTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RTStoreActivitiesManagerTest.swift; sourceTree = "<group>"; };
+		48650E811D6DEF36006BE423 /* OpenSans-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Bold.ttf"; sourceTree = "<group>"; };
+		48650E821D6DEF36006BE423 /* OpenSans-BoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-BoldItalic.ttf"; sourceTree = "<group>"; };
+		48650E831D6DEF36006BE423 /* OpenSans-ExtraBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-ExtraBold.ttf"; sourceTree = "<group>"; };
+		48650E841D6DEF36006BE423 /* OpenSans-ExtraBoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-ExtraBoldItalic.ttf"; sourceTree = "<group>"; };
+		48650E851D6DEF36006BE423 /* OpenSans-Italic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Italic.ttf"; sourceTree = "<group>"; };
+		48650E861D6DEF36006BE423 /* OpenSans-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Light.ttf"; sourceTree = "<group>"; };
+		48650E871D6DEF36006BE423 /* OpenSans-LightItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-LightItalic.ttf"; sourceTree = "<group>"; };
+		48650E881D6DEF36006BE423 /* OpenSans-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Regular.ttf"; sourceTree = "<group>"; };
+		48650E891D6DEF36006BE423 /* OpenSans-Semibold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Semibold.ttf"; sourceTree = "<group>"; };
+		48650E8A1D6DEF36006BE423 /* OpenSans-SemiboldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-SemiboldItalic.ttf"; sourceTree = "<group>"; };
 		48776CDA1D3BAA5100630A64 /* RTActivitiesModelTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RTActivitiesModelTest.swift; sourceTree = "<group>"; };
 		48776CDC1D3D0BF000630A64 /* RTActivityViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RTActivityViewCell.xib; sourceTree = "<group>"; };
 		48776CDE1D3D1DDE00630A64 /* RTActivityHeaderViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RTActivityHeaderViewCell.xib; sourceTree = "<group>"; };
 		487BE8651D55F01D00ABC1ED /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
 		487BE8681D55F11000ABC1ED /* RunningTracker.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = RunningTracker.entitlements; sourceTree = "<group>"; };
+		487BE8691D6AF37300ABC1ED /* Flag_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Flag_icon.png; sourceTree = "<group>"; };
+		487BE86A1D6AF37300ABC1ED /* Km_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Km_icon.png; sourceTree = "<group>"; };
 		48E0E2E01D2EC7360036F56B /* RunningTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RunningTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		48E0E2E31D2EC7360036F56B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		48E0E2E51D2EC7360036F56B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -99,6 +129,8 @@
 		48E0E31E1D313C4E0036F56B /* GPSgreen.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = GPSgreen.png; sourceTree = "<group>"; };
 		48E0E31F1D313C4E0036F56B /* GPSgrey.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = GPSgrey.png; sourceTree = "<group>"; };
 		48E0E3221D313D550036F56B /* GPSblack.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = GPSblack.png; sourceTree = "<group>"; };
+		A086E0DB99F2A930C0AA1253 /* Pods-RunningTrackerTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RunningTrackerTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RunningTrackerTests/Pods-RunningTrackerTests.debug.xcconfig"; sourceTree = "<group>"; };
+		D1CB825CE456C4D9EFD8A49A /* Pods-RunningTrackerTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RunningTrackerTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-RunningTrackerTests/Pods-RunningTrackerTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,6 +147,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				B9BE95B7CD5ED6CB8A3FA802 /* Pods_RunningTrackerTests.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -146,6 +179,18 @@
 		45BAF8A918FC0E09EDE8CA29 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				48650E811D6DEF36006BE423 /* OpenSans-Bold.ttf */,
+				48650E821D6DEF36006BE423 /* OpenSans-BoldItalic.ttf */,
+				48650E831D6DEF36006BE423 /* OpenSans-ExtraBold.ttf */,
+				48650E841D6DEF36006BE423 /* OpenSans-ExtraBoldItalic.ttf */,
+				48650E851D6DEF36006BE423 /* OpenSans-Italic.ttf */,
+				48650E861D6DEF36006BE423 /* OpenSans-Light.ttf */,
+				48650E871D6DEF36006BE423 /* OpenSans-LightItalic.ttf */,
+				48650E881D6DEF36006BE423 /* OpenSans-Regular.ttf */,
+				48650E891D6DEF36006BE423 /* OpenSans-Semibold.ttf */,
+				48650E8A1D6DEF36006BE423 /* OpenSans-SemiboldItalic.ttf */,
+				487BE8691D6AF37300ABC1ED /* Flag_icon.png */,
+				487BE86A1D6AF37300ABC1ED /* Km_icon.png */,
 				48E0E3221D313D550036F56B /* GPSblack.png */,
 				48E0E31E1D313C4E0036F56B /* GPSgreen.png */,
 				48E0E31F1D313C4E0036F56B /* GPSgrey.png */,
@@ -164,6 +209,7 @@
 				45BAFBF0DE4F01A4E9D9FBDE /* RTNumbersExtensions.swift */,
 				45BAF89C5CBD8617A2CACFD8 /* RTDateFormatterExtensions.swift */,
 				45BAF53B4EEA07F450845DC5 /* CachedDateFormatter.swift */,
+				45BAF26DFA84631ED88E908D /* RTUIImageExtensions.swift */,
 			);
 			path = utils;
 			sourceTree = "<group>";
@@ -176,6 +222,7 @@
 				45BAF7E2708014ED6B2508B8 /* RTActivitiesViewController.swift */,
 				45BAF73453970E94E1200727 /* RTActivityPathDoneViewController.swift */,
 				45BAF70584E78946E836A5AD /* RTStoreActivitiesManager.swift */,
+				45BAFA7969CD4F51B9558C45 /* RTMapMarkersManager.swift */,
 			);
 			path = controllers;
 			sourceTree = "<group>";
@@ -245,6 +292,7 @@
 			children = (
 				487BE8651D55F01D00ABC1ED /* CloudKit.framework */,
 				3601DCAABE1D4283238AB370 /* Pods_RunningTracker.framework */,
+				1315FDBE7333EC72080A4E18 /* Pods_RunningTrackerTests.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -254,6 +302,8 @@
 			children = (
 				3130775CFE5E16821CEF094A /* Pods-RunningTracker.debug.xcconfig */,
 				189B33394D6AEC0A54BD5BAD /* Pods-RunningTracker.release.xcconfig */,
+				A086E0DB99F2A930C0AA1253 /* Pods-RunningTrackerTests.debug.xcconfig */,
+				D1CB825CE456C4D9EFD8A49A /* Pods-RunningTrackerTests.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -285,9 +335,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 48E0E3001D2EC7360036F56B /* Build configuration list for PBXNativeTarget "RunningTrackerTests" */;
 			buildPhases = (
+				8CEBCC99501D820FFB2D612C /* [CP] Check Pods Manifest.lock */,
 				48E0E2F01D2EC7360036F56B /* Sources */,
 				48E0E2F11D2EC7360036F56B /* Frameworks */,
 				48E0E2F21D2EC7360036F56B /* Resources */,
+				A4CB5CCB7D42829538EF9BEC /* [CP] Embed Pods Frameworks */,
+				08C011BBF2B3D4C02F5485B9 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -350,17 +403,29 @@
 			files = (
 				48776CDF1D3D1DDE00630A64 /* RTActivityHeaderViewCell.xib in Resources */,
 				48E0E31B1D311B390036F56B /* MyTrackerBlueSelected.png in Resources */,
+				48650E8B1D6DEF36006BE423 /* OpenSans-Bold.ttf in Resources */,
 				48776CDD1D3D0BF000630A64 /* RTActivityViewCell.xib in Resources */,
 				48E0E3231D313D550036F56B /* GPSblack.png in Resources */,
+				487BE86B1D6AF37300ABC1ED /* Flag_icon.png in Resources */,
+				48650E941D6DEF36006BE423 /* OpenSans-SemiboldItalic.ttf in Resources */,
 				48E0E31D1D3122B20036F56B /* MyTrackerRedSelected.png in Resources */,
+				48650E8C1D6DEF36006BE423 /* OpenSans-BoldItalic.ttf in Resources */,
 				48E0E2EE1D2EC7360036F56B /* LaunchScreen.storyboard in Resources */,
+				48650E901D6DEF36006BE423 /* OpenSans-Light.ttf in Resources */,
 				48E0E3211D313C4E0036F56B /* GPSgrey.png in Resources */,
 				48E0E2EB1D2EC7360036F56B /* Assets.xcassets in Resources */,
+				48650E931D6DEF36006BE423 /* OpenSans-Semibold.ttf in Resources */,
+				48650E8E1D6DEF36006BE423 /* OpenSans-ExtraBoldItalic.ttf in Resources */,
+				48650E8D1D6DEF36006BE423 /* OpenSans-ExtraBold.ttf in Resources */,
+				48650E8F1D6DEF36006BE423 /* OpenSans-Italic.ttf in Resources */,
 				48E0E3191D2ECD2B0036F56B /* MyTrackerRed.png in Resources */,
+				48650E911D6DEF36006BE423 /* OpenSans-LightItalic.ttf in Resources */,
 				48E0E3181D2ECD2B0036F56B /* MyTrackerGray.png in Resources */,
+				487BE86C1D6AF37300ABC1ED /* Km_icon.png in Resources */,
 				48E0E3171D2ECD2B0036F56B /* MyTrackerBlue.png in Resources */,
 				48E0E3201D313C4E0036F56B /* GPSgreen.png in Resources */,
 				48E0E2E91D2EC7360036F56B /* Main.storyboard in Resources */,
+				48650E921D6DEF36006BE423 /* OpenSans-Regular.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -374,6 +439,21 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
+		08C011BBF2B3D4C02F5485B9 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-RunningTrackerTests/Pods-RunningTrackerTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
 		18447DC681624EA750F7E2AC /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
@@ -402,6 +482,36 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		8CEBCC99501D820FFB2D612C /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		A4CB5CCB7D42829538EF9BEC /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-RunningTrackerTests/Pods-RunningTrackerTests-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		E21E8B7EB018CF81BA4C3908 /* [CP] Embed Pods Frameworks */ = {
@@ -442,6 +552,8 @@
 				45BAF93B4E2030994CF73146 /* CachedDateFormatter.swift in Sources */,
 				45BAF88F47593901FEED1DE0 /* RTActivityPathDoneViewController.swift in Sources */,
 				45BAF62B7E5F040F28EAEB33 /* RTStoreActivitiesManager.swift in Sources */,
+				45BAFB4954F5FC35FE3BDF03 /* RTUIImageExtensions.swift in Sources */,
+				45BAF2C2EB8DEBE5CC1BF1F8 /* RTMapMarkersManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -611,6 +723,7 @@
 		};
 		48E0E3011D2EC7360036F56B /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = A086E0DB99F2A930C0AA1253 /* Pods-RunningTrackerTests.debug.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				INFOPLIST_FILE = RunningTrackerTests/Info.plist;
@@ -624,6 +737,7 @@
 		};
 		48E0E3021D2EC7360036F56B /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = D1CB825CE456C4D9EFD8A49A /* Pods-RunningTrackerTests.release.xcconfig */;
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				INFOPLIST_FILE = RunningTrackerTests/Info.plist;

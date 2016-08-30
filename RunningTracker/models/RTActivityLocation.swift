@@ -9,7 +9,8 @@ import CoreLocation
 struct ActivityLocationPropertyKey{
     static let locationKey = "location"
     static let timestampKey = "timestamp"
-    static  let firstAfterResumedKey = "firstAfterResumed"
+    static let firstAfterResumedKey = "firstAfterResumed"
+    static let distanceKey = "distance"
 }
 
 class RTActivityLocation:NSObject , NSCoding {
@@ -19,10 +20,11 @@ class RTActivityLocation:NSObject , NSCoding {
     var distance : Double = 0
     var firstAfterResumed : Bool = false
 
-    init?(location: CLLocation, timestamp: Double, firstAfterResumed:Bool = false){
+    init?(location: CLLocation, timestamp: Double, firstAfterResumed:Bool = false, distance:Double = 0.0){
         self.location = location
         self.timestamp = timestamp
         self.firstAfterResumed = firstAfterResumed
+        self.distance = distance
         super.init()
     }
 
@@ -31,13 +33,15 @@ class RTActivityLocation:NSObject , NSCoding {
     required convenience init?(coder aDecoder: NSCoder) {
         let location = aDecoder.decodeObjectForKey(ActivityLocationPropertyKey.locationKey) as! CLLocation
         let timestamp = aDecoder.decodeDoubleForKey(ActivityLocationPropertyKey.timestampKey)
+        let distance = aDecoder.decodeDoubleForKey(ActivityLocationPropertyKey.distanceKey)
         let firstAfterResumed = aDecoder.decodeBoolForKey(ActivityLocationPropertyKey.firstAfterResumedKey)
-        self.init(location: location, timestamp:timestamp, firstAfterResumed:firstAfterResumed)
+        self.init(location: location, timestamp:timestamp, firstAfterResumed:firstAfterResumed, distance:distance)
     }
 
     internal func encodeWithCoder(aCoder: NSCoder) {
         aCoder.encodeObject(location!, forKey:ActivityLocationPropertyKey.locationKey)
         aCoder.encodeDouble(timestamp, forKey:ActivityLocationPropertyKey.timestampKey)
+        aCoder.encodeDouble(distance, forKey:ActivityLocationPropertyKey.distanceKey)
         aCoder.encodeBool(firstAfterResumed, forKey:ActivityLocationPropertyKey.firstAfterResumedKey)
     }
 

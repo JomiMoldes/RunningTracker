@@ -36,7 +36,7 @@ class RTStoreActivitiesManager {
         let activityId = Int(activity.startTime)
         let newRecord = self.createRecordByActivity(activity)
         recordsToAdd.append(newRecord)
-        recordsToAdd += self.getLocationRecords(activity.getActivities(), activityId:activityId)
+        recordsToAdd += self.getLocationRecords(activity.getActivitiesCopy(), activityId:activityId)
         self.saveRecords(recordsToAdd, completion:{
             self.startSync()
         })
@@ -46,11 +46,23 @@ class RTStoreActivitiesManager {
         self.allActivitiesRecords = [CKRecord]()
         self.allLocationsRecords = [CKRecord]()
         self.fetchingFromICloudSucceeded = true
+
+        /*if  deleteAll {
+//            fetchActivitiesFromICloud()
+            self.fetchLocations()
+               return
+        } */
         fetchActivitiesLocal()
         fetchActivitiesFromICloud()
     }
 
     private func fetchFromICloudDone() {
+       /* if  deleteAll {
+            self.deleteAll(self.allLocationsRecords)
+            self.deleteAll(self.allActivitiesRecords)
+            return
+        }*/
+
         syncLocalAndICloudData()
     }
 
@@ -62,9 +74,6 @@ class RTStoreActivitiesManager {
     private func synchronisationDone() {
         self.completion!(self.activitiesSavedLocally!)
     }
-
-
-
 
     private func syncAndSaveLocally() {
         for activityRecord in self.allActivitiesRecords {
@@ -93,7 +102,7 @@ class RTStoreActivitiesManager {
             if !activityAlreadySavedOnICloud(activityId) {
                 let newRecord = self.createRecordByActivity(activity)
                 recordsToAdd.append(newRecord)
-                recordsToAdd += self.getLocationRecords(activity.getActivities(), activityId:activityId)
+                recordsToAdd += self.getLocationRecords(activity.getActivitiesCopy(), activityId:activityId)
             }
         }
         if recordsToAdd.count > 0 {
@@ -192,6 +201,7 @@ class RTStoreActivitiesManager {
     }
 
     private func getLocationRecords(locations:[RTActivityLocation], activityId:Int) -> [CKRecord] {
+        print (locations.count)
         var locationRecords = [CKRecord]()
         for location in locations {
             let record = CKRecord(recordType: "Locations")
@@ -217,6 +227,17 @@ class RTStoreActivitiesManager {
         return record
     }
 
+    private func deleteAll(records:[CKRecord]){
+        let container = CKContainer.defaultContainer()
+        let privateDatabase = container.privateCloudDatabase
+
+        for record in records {
+            privateDatabase.deleteRecordWithID(record.recordID, completionHandler: {
+                record, error in
+            })
+        }
+    }
+
     private func saveRecords(records:[CKRecord], completion:()->Void) {
         let container = CKContainer.defaultContainer()
         let privateDatabase = container.privateCloudDatabase
@@ -227,7 +248,6 @@ class RTStoreActivitiesManager {
         uploadOperation.database = privateDatabase
 
         uploadOperation.modifyRecordsCompletionBlock = { (savedRecords: [CKRecord]?, deletedRecords: [CKRecordID]?, operationError: NSError?) -> Void in
-//            self.synchronisationDone()
             completion()
         }
 

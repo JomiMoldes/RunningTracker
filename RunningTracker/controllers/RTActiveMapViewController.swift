@@ -18,7 +18,7 @@ enum TimeMeasurement {
     case Millisecond
 }
 
-class RTActiveMapViewController : UIViewController, CLLocationManagerDelegate {
+class RTActiveMapViewController : UIViewController, CLLocationManagerDelegate, GMSMapViewDelegate {
 
     @IBOutlet weak var mapContainer: UIView!
 
@@ -30,18 +30,24 @@ class RTActiveMapViewController : UIViewController, CLLocationManagerDelegate {
     
     @IBOutlet weak var pauseButton: UIButton!
 
+    let initialZoom : Float = 18.0
+    var lastZoom : Float = 18.0
+
     var locationManager : CLLocationManager!
     var locationsHistory : NSMutableArray!
     var activitiesModel: RTActivitiesModel!
 
     var mapView : GMSMapView!
     var timer : NSTimer!
+    var mapMarkersManager : RTMapMarkersManager!
 
     override func viewDidLoad() {
         super.viewDidLoad()
         self.activitiesModel = RTGlobalModels.sharedInstance.activitiesModel
         self.setupLabels()
+        addObservers()
         setupMap()
+        setupMapMarkers()
     }
 
     override func viewDidAppear(animated: Bool) {
@@ -56,15 +62,42 @@ class RTActiveMapViewController : UIViewController, CLLocationManagerDelegate {
         self.mapView.frame = CGRectMake(0,0,self.mapContainer.frame.size.width, self.mapContainer.frame.size.height)
     }
 
-    func setupMap(){
-        let camera = GMSCameraPosition.cameraWithLatitude(52.52356, longitude: 13.45097995, zoom: 18)
-        self.mapView = GMSMapView.mapWithFrame(CGRectMake(0,0,self.mapContainer.frame.size.width, self.mapContainer.frame.size.height), camera: camera)
-        self.mapView.myLocationEnabled = true
-        self.mapView.mapType = kGMSTypeSatellite
-        mapContainer.addSubview(self.mapView)
+    private func addObservers() {
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(addMarker), name: "addKMMarker", object: nil)
     }
 
-    func setupLocationManager(){
+    func addMarker(notification:NSNotification) {
+        let location = notification.userInfo!["location"] as! CLLocation
+        let index = notification.userInfo!["km"] as! Int
+
+        dispatch_async(dispatch_get_main_queue()) {
+            let image = UIImage(named: "Km_icon")
+            self.mapMarkersManager.addMarkerWithLocation(location, km: index, markImage: image)
+        }
+    }
+
+    func addEndFlagMarker(){
+        let location = self.activitiesModel.getCurrentActivityCopy()!.getActivitiesCopy().last!.location
+        dispatch_async(dispatch_get_main_queue()) {
+            let image = UIImage(named: "Flag_icon")
+            self.mapMarkersManager.addMarkerWithLocation(location, km: -1, markImage: image)
+        }
+    }
+
+    private func setupMap(){
+        let camera = GMSCameraPosition.cameraWithLatitude(52.52356, longitude: 13.45097995, zoom: initialZoom)
+        self.mapView = GMSMapView.mapWithFrame(CGRectMake(0,0,self.mapContainer.frame.size.width, self.mapContainer.frame.size.height), camera: camera)
+        self.mapView.myLocationEnabled = true
+        self.mapView.mapType = kGMSTypeNormal
+        mapContainer.addSubview(self.mapView)
+        self.mapView.delegate = self
+    }
+
+    private func setupMapMarkers() {
+        self.mapMarkersManager = RTMapMarkersManager(mapView: self.mapView)
+    }
+
+    private func setupLocationManager(){
         locationManager = CLLocationManager()
         locationManager.delegate = self
         locationManager.desiredAccuracy = kCLLocationAccuracyBestForNavigation
@@ -75,12 +108,12 @@ class RTActiveMapViewController : UIViewController, CLLocationManagerDelegate {
         locationManager.startUpdatingLocation()
     }
 
-    func setupTimer(){
+    private func setupTimer(){
         let aSelector:Selector = #selector(RTActiveMapViewController.updateTime)
         self.timer = NSTimer.scheduledTimerWithTimeInterval(0.05, target:self, selector: aSelector, userInfo: nil, repeats: true)
     }
 
-    func setupLabels() {
+    private func setupLabels() {
         self.distanceLabel.numberOfLines = 1
         self.distanceLabel.adjustsFontSizeToFitWidth = true
         self.distanceLabel.lineBreakMode = NSLineBreakMode.ByClipping
@@ -104,32 +137,37 @@ class RTActiveMapViewController : UIViewController, CLLocationManagerDelegate {
     override func viewDidDisappear(animated: Bool) {
         super.viewDidDisappear(animated)
         invalidateTimer()
+        NSNotificationCenter.defaultCenter().removeObserver(self)
     }
 
-    func invalidateTimer(){
+    private func invalidateTimer(){
         if self.timer != nil {
             self.timer.invalidate()
             self.timer = nil
         }
     }
 
-    func drawPath() {
-        let path = GMSMutablePath()
-        for activityLocation in self.activitiesModel.currentActivityLocations() {
-            path.addCoordinate(activityLocation.location.coordinate)
+    private func drawPath() {
+        if let activityToDraw = self.activitiesModel.getCurrentActivityCopy() {
+            self.mapMarkersManager.drawPath(activityToDraw)
         }
-
-        let polyline = GMSPolyline(path:path)
-        polyline.strokeWidth = 5.0
-        polyline.map = self.mapView
-
     }
 
-    func endActivity() {
+    private func drawCheckMarks() {
+        if let activity = self.activitiesModel.getCurrentActivityCopy() {
+            self.mapMarkersManager.redrawMarkers(activity.checkMarks)
+        }
+        if self.activitiesModel.activityRunning == false {
+            self.addEndFlagMarker()
+        }
+    }
+
+    private func endActivity() {
         self.activitiesModel.endActivity()
         self.activitiesModel.saveActivities(RTActivitiesModel.ArchiveURL.path!, storeManager: RTGlobalModels.sharedInstance.storeActivitiesManager)
         invalidateTimer()
         self.pauseButton.enabled = false
+        self.addEndFlagMarker()
     }
 
 // IBActions
@@ -179,6 +217,20 @@ class RTActiveMapViewController : UIViewController, CLLocationManagerDelegate {
     func locationManager(manager: CLLocationManager, didFailWithError error: NSError){
         if CLLocationManager.authorizationStatus() == .AuthorizedWhenInUse {
             locationManager.startUpdatingLocation()
+        }
+    }
+
+// Map View Delegate
+
+    func mapView(mapView: GMSMapView, didChangeCameraPosition position: GMSCameraPosition) {
+        let zoom = self.mapView.camera.zoom
+        if zoom != lastZoom {
+            lastZoom = zoom
+            dispatch_async(dispatch_get_main_queue()) {
+                self.mapView.clear()
+                self.drawPath()
+                self.drawCheckMarks()
+            }
         }
     }
 

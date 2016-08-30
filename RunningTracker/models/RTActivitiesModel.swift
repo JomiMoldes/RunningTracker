@@ -5,9 +5,12 @@
 
 import Foundation
 import CloudKit
+import CoreLocation
 
 enum RTActivitiesError:ErrorType {
     case RTActivityAlreadySet
+    case RTActivityNotSet
+
 }
 
 class RTActivitiesModel {
@@ -22,11 +25,13 @@ class RTActivitiesModel {
     private var activities:[RTActivity]!
 
     private var currentActivity : RTActivity!
+    private(set) var checkMarks = [Int:CLLocation]()
 
     private(set) var currentActivityPaused : Bool = false
     private(set) var currentActivityJustResumed : Bool = false
     private(set) var activityRunning : Bool = false
     private(set) var currentActivityPausedAt : NSTimeInterval = 0
+    private var nextMarker = 1000
 
     init(){
         self.activities = [RTActivity]()
@@ -56,26 +61,6 @@ class RTActivitiesModel {
         return true
     }
 
-    func saveOnICloud() {
-        let container = CKContainer.defaultContainer()
-        let privateDatabase = container.privateCloudDatabase
-        let record = CKRecord(recordType: "Activities")
-        record.setValue(12333, forKey: "endtime")
-        record.setValue(12000, forKey: "starttime")
-        record.setValue(10, forKey: "pausedtime")
-        record.setValue("12333", forKey: "locationsid")
-
-        privateDatabase.saveRecord(record, completionHandler: {record, error in
-            if error != nil {
-                print ("there was an error trying to save the activity")
-            }else{
-                print ("record has been saved")
-            }
-        })
-
-        print("trying to save in private database")
-    }
-
     func loadActivities(path:String, storeManager:RTStoreActivitiesManager) {
         storeManager.start(path, completion: {
             activities in
@@ -98,7 +83,7 @@ class RTActivitiesModel {
 //            self.addActivityLocation(activityLocation!)
 //        }
 
-        if self.currentActivitesLocationsLenght() > 0 {
+        if self.currentActivitiesLocationsLength() > 0 {
             activities.append(self.currentActivity)
         }
         activityRunning = false
@@ -123,11 +108,15 @@ class RTActivitiesModel {
             currentActivityJustResumed = false
             activity.firstAfterResumed = true
         }
-        return currentActivity.addActivityLocation(activity)
+        return currentActivity.addActivityLocation(activity, checkMarkers: true)
     }
 
     func getElapsedTime() -> NSTimeInterval {
-        return getNow() - getCurrentActivityPausedTime() - currentActivity.startTime
+        var elapsedTime = 0.0
+        if let activity = currentActivity {
+            elapsedTime = activity.pausedTime + activity.startTime
+        }
+        return getNow() - elapsedTime
     }
 
     func getDistanceDone() -> Double {
@@ -135,7 +124,7 @@ class RTActivitiesModel {
     }
 
     func getPaceLastKM() -> Double {
-        var activityLocations = currentActivity.getActivities()
+        var activityLocations = currentActivity.getActivitiesCopy()
 
         guard activityLocations.count > 0 else {
             return 0.00
@@ -169,10 +158,6 @@ class RTActivitiesModel {
         return pace
     }
 
-    func currentActivityLocations() -> [RTActivityLocation] {
-        return self.currentActivity.getActivities()
-    }
-
     func pauseActivity(){
         currentActivityPaused = true
         currentActivityPausedAt = getNow()
@@ -189,37 +174,31 @@ class RTActivitiesModel {
         return currentActivity != nil
     }
 
-    func activitiesLenght() -> Int {
+    func activitiesLength() -> Int {
         return self.activities.count
     }
 
-    func getActivities()->[RTActivity]{
-        var copy = [RTActivity]()
-        for activity:RTActivity in activities {
-            copy.append(activity)
-        }
-        return copy
+    func getActivitiesCopy()->[RTActivity]{
+        let copyArray : [RTActivity] = NSKeyedUnarchiver.unarchiveObjectWithData(NSKeyedArchiver.archivedDataWithRootObject(activities)) as! [RTActivity]
+        return copyArray
     }
 
-    func currentActivitesLocationsLenght() -> Int {
+    func getCurrentActivityCopy() -> RTActivity? {
+        if self.currentActivity == nil {
+            guard self.getActivitiesCopy().count > 0 else {
+                return nil
+            }
+            return self.getActivitiesCopy().last!
+        }
+        let copyActivity : RTActivity = NSKeyedUnarchiver.unarchiveObjectWithData(NSKeyedArchiver.archivedDataWithRootObject(self.currentActivity)) as! RTActivity
+        return copyActivity
+    }
+
+    private func currentActivitiesLocationsLength() -> Int {
         if currentActivity == nil {
             return 0
         }
-        return self.currentActivity.getActivities().count
-    }
-
-    func currentActivityStartTime() -> Double {
-        if currentActivity == nil {
-            return 0
-        }
-        return self.currentActivity.startTime
-    }
-
-    func getCurrentActivityPausedTime() -> Double {
-        if currentActivity == nil {
-            return 0
-        }
-        return self.currentActivity.pausedTime
+        return self.currentActivity.getActivitiesCopy().count
     }
 
     func deleteAllActivities(){

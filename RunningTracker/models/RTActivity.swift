@@ -15,11 +15,13 @@ struct ActivityPropertyKey{
 
 class RTActivity:NSObject , NSCoding {
 
-    private var activities = [RTActivityLocation]()
+    private(set) var activities = [RTActivityLocation]()
     var startTime : Double = 0
     var pausedTime : Double = 0
     private(set) var finishTime : Double = 0
     var distance : Double = 0
+    private(set) var checkMarks = [Int:CLLocation]()
+    private var nextMarker = 1000
 
     init?(activities:[RTActivityLocation], startTime:Double, finishTime:Double, pausedTime2:Double){
         self.startTime = startTime
@@ -28,11 +30,11 @@ class RTActivity:NSObject , NSCoding {
         super.init()
         for i in 0..<activities.count {
             let activityLocation = activities[i]
-            addActivityLocation(activityLocation)
+            addActivityLocation(activityLocation, checkMarkers:false)
         }
     }
 
-    func addActivityLocation(activityLocation:RTActivityLocation) -> Bool{
+    func addActivityLocation(activityLocation:RTActivityLocation, checkMarkers:Bool) -> Bool{
 
         if activityLocation.location.horizontalAccuracy > 20 {
             return false
@@ -57,19 +59,47 @@ class RTActivity:NSObject , NSCoding {
 
             activityLocation.distance = distanceDone
         }
+        self.checkMarkers(checkMarkers)
         return true
+    }
+
+    private func checkMarkers(drawLastMarker:Bool) {
+        var location : CLLocation!
+        var index : Int = -1
+        let activitiesLocations = activities
+
+        if activitiesLocations.count == 1 {
+            location = activitiesLocations[0].location
+            index = 0
+        }
+        if Int(distance) >= nextMarker {
+            location = activitiesLocations.last!.location
+            index = Int(nextMarker / 1000)
+            nextMarker = nextMarker + 1000
+        }
+        if index > -1 {
+            checkMarks[index] = CLLocation(latitude: location.coordinate.latitude, longitude: location.coordinate.longitude)
+            if drawLastMarker {
+                self.drawMarker(["location": location, "km":index])
+            }
+        }
+    }
+
+    private func drawMarker(userInfo:[NSObject:AnyObject]?) {
+        NSNotificationCenter.defaultCenter().postNotificationName("addKMMarker", object: nil, userInfo: userInfo)
     }
 
     func activityFinished(time:NSTimeInterval){
         self.finishTime = time
     }
 
-    func getActivities()->[RTActivityLocation]{
-        var copy = [RTActivityLocation]()
+    func getActivitiesCopy()->[RTActivityLocation]{
+        var copyList = [RTActivityLocation]()
         for activity:RTActivityLocation in activities {
-            copy.append(activity)
+            let copyActivity : RTActivityLocation = NSKeyedUnarchiver.unarchiveObjectWithData(NSKeyedArchiver.archivedDataWithRootObject(activity)) as! RTActivityLocation
+            copyList.append(copyActivity)
         }
-        return copy
+        return copyList
     }
 
     func getDuration() -> Double {
@@ -86,7 +116,7 @@ class RTActivity:NSObject , NSCoding {
         return pace
     }
 
-    func getActivityId() -> Int {
+    /*func getActivityId() -> Int {
         if self.activities.count == 0 {
 
             let now = NSDate().timeIntervalSince1970
@@ -100,7 +130,8 @@ class RTActivity:NSObject , NSCoding {
 
         let activityId = Int(String(format: "%d%d%d", Int(self.startTime), long, lat))
         return activityId!
-    }
+    }   */
+
 
 // MARK NSCoding
 
