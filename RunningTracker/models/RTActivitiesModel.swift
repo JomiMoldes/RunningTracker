@@ -71,6 +71,7 @@ class RTActivitiesModel {
     }
 
     func endActivity() -> Bool {
+        var success = false
         if currentActivity == nil {
             print("Trying to end activity but there is none")
             return false
@@ -85,12 +86,13 @@ class RTActivitiesModel {
 
         if self.currentActivitiesLocationsLength() > 0 {
             activities.append(self.currentActivity)
+            success = true
         }
         activityRunning = false
         currentActivity.activityFinished(NSDate().timeIntervalSince1970)
         currentActivity = nil
         refreshValues()
-        return true
+        return success
     }
 
     func refreshValues() {

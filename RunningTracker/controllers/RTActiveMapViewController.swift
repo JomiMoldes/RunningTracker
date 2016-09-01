@@ -163,11 +163,12 @@ class RTActiveMapViewController : UIViewController, CLLocationManagerDelegate, G
     }
 
     private func endActivity() {
-        self.activitiesModel.endActivity()
-        self.activitiesModel.saveActivities(RTActivitiesModel.ArchiveURL.path!, storeManager: RTGlobalModels.sharedInstance.storeActivitiesManager)
+        if self.activitiesModel.endActivity() {
+            self.activitiesModel.saveActivities(RTActivitiesModel.ArchiveURL.path!, storeManager: RTGlobalModels.sharedInstance.storeActivitiesManager)
+            self.addEndFlagMarker()
+        }
         invalidateTimer()
         self.pauseButton.enabled = false
-        self.addEndFlagMarker()
     }
 
 // IBActions

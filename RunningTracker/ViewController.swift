@@ -37,14 +37,12 @@ class ViewController: UIViewController {
     }
 
     func iCloudReady() {
-        print("iCloudReady")
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(activitiesFromICloudLoaded), name: "activitiesLoaded", object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(activitiesFromICloudLoaded), name: "activitiesSaved", object: nil)
         activitiesModel.loadActivities(RTActivitiesModel.ArchiveURL.path!, storeManager: RTGlobalModels.sharedInstance.storeActivitiesManager)
     }
 
     func activitiesFromICloudLoaded(notification:NSNotification){
-        print("activiitesFroICloudLoaded")
         NSNotificationCenter.defaultCenter().removeObserver(self)
         var diff = NSDate().timeIntervalSinceReferenceDate - self.timeChecking
         diff = (diff > Double(ViewController.timeToShowInitialScreen)) ? 0 : Double(ViewController.timeToShowInitialScreen) - diff
@@ -53,7 +51,6 @@ class ViewController: UIViewController {
         dispatch_after(delayTime, dispatch_get_main_queue()) {
             self.loadInitialView()
         }
-
     }
 
     override func didReceiveMemoryWarning() {
