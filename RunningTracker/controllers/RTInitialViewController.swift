@@ -12,8 +12,14 @@ class RTInitialViewController:UIViewController, CLLocationManagerDelegate {
 //    @IBOutlet weak var fetchAlarmView: UIView!
     @IBOutlet weak var myActivitiesButton: UIButton!
     @IBOutlet weak var startButton: UIButton!
+    @IBOutlet weak var bestDistanceView: UIView!
+    @IBOutlet weak var bestPaceView: UIView!
+    @IBOutlet weak var bestDistanceBGImageView: UIImageView!
+    @IBOutlet weak var bestPaceBGImageView: UIImageView!
     
     @IBOutlet weak var gpsImageView: UIImageView!
+    @IBOutlet weak var startViewBGImageView: UIImageView!
+
     var locationManager : CLLocationManager!
     var activitiesModel : RTActivitiesModel!
 
@@ -33,10 +39,25 @@ class RTInitialViewController:UIViewController, CLLocationManagerDelegate {
         self.startLocation()
     }
 
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        setupWhiteBackgrounds()
+
+    }
+
     override func viewWillDisappear(animated: Bool) {
         super.viewWillDisappear(animated)
         locationManager.delegate = nil
         locationManager = nil
+    }
+
+    func setupWhiteBackgrounds() {
+        let insetSize = CGFloat(15.0)
+        let insets = UIEdgeInsets(top: insetSize, left: insetSize, bottom: insetSize, right: insetSize)
+        let bgImage = UIImage(named: "white_background.png")
+        self.startViewBGImageView.image = bgImage!.resizableImageWithCapInsets(insets, resizingMode: .Stretch)
+        self.bestDistanceBGImageView.image = bgImage!.resizableImageWithCapInsets(insets, resizingMode: .Stretch)
+        self.bestPaceBGImageView.image = bgImage!.resizableImageWithCapInsets(insets, resizingMode: .Stretch)
     }
 
     func activitiesLoaded(notification:NSNotification) {

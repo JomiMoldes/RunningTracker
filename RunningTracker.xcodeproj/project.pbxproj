@@ -71,6 +71,9 @@
 		48FFAFF61D75C4830005906A /* triangle.png in Resources */ = {isa = PBXBuildFile; fileRef = 48FFAFF41D75C4830005906A /* triangle.png */; };
 		48FFAFF81D770F770005906A /* empty_button.png in Resources */ = {isa = PBXBuildFile; fileRef = 48FFAFF71D770F760005906A /* empty_button.png */; };
 		48FFAFFA1D77111F0005906A /* show_activ_button_bg.png in Resources */ = {isa = PBXBuildFile; fileRef = 48FFAFF91D77111F0005906A /* show_activ_button_bg.png */; };
+		48FFAFFC1D789F320005906A /* white_background.png in Resources */ = {isa = PBXBuildFile; fileRef = 48FFAFFB1D789F320005906A /* white_background.png */; };
+		48FFAFFF1D78A7EB0005906A /* distance_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 48FFAFFD1D78A7EB0005906A /* distance_icon.png */; };
+		48FFB0001D78A7EB0005906A /* pace_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 48FFAFFE1D78A7EB0005906A /* pace_icon.png */; };
 		676DCD32EEE4824ACDD6C224 /* Pods_RunningTracker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3601DCAABE1D4283238AB370 /* Pods_RunningTracker.framework */; };
 		B9BE95B7CD5ED6CB8A3FA802 /* Pods_RunningTrackerTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1315FDBE7333EC72080A4E18 /* Pods_RunningTrackerTests.framework */; };
 /* End PBXBuildFile section */
@@ -159,6 +162,9 @@
 		48FFAFF41D75C4830005906A /* triangle.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = triangle.png; sourceTree = "<group>"; };
 		48FFAFF71D770F760005906A /* empty_button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = empty_button.png; sourceTree = "<group>"; };
 		48FFAFF91D77111F0005906A /* show_activ_button_bg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = show_activ_button_bg.png; sourceTree = "<group>"; };
+		48FFAFFB1D789F320005906A /* white_background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = white_background.png; sourceTree = "<group>"; };
+		48FFAFFD1D78A7EB0005906A /* distance_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = distance_icon.png; sourceTree = "<group>"; };
+		48FFAFFE1D78A7EB0005906A /* pace_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pace_icon.png; sourceTree = "<group>"; };
 		A086E0DB99F2A930C0AA1253 /* Pods-RunningTrackerTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RunningTrackerTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RunningTrackerTests/Pods-RunningTrackerTests.debug.xcconfig"; sourceTree = "<group>"; };
 		D1CB825CE456C4D9EFD8A49A /* Pods-RunningTrackerTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RunningTrackerTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-RunningTrackerTests/Pods-RunningTrackerTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -209,6 +215,9 @@
 		45BAF8A918FC0E09EDE8CA29 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				48FFAFFD1D78A7EB0005906A /* distance_icon.png */,
+				48FFAFFE1D78A7EB0005906A /* pace_icon.png */,
+				48FFAFFB1D789F320005906A /* white_background.png */,
 				48FFAFF91D77111F0005906A /* show_activ_button_bg.png */,
 				48FFAFF71D770F760005906A /* empty_button.png */,
 				48FFAFF31D75C4830005906A /* start_button_bg.png */,
@@ -465,8 +474,10 @@
 				48E4C0F41D7583670086AE54 /* icon_controls_pause.png in Resources */,
 				48E0E3211D313C4E0036F56B /* GPSgrey.png in Resources */,
 				48E0E2EB1D2EC7360036F56B /* Assets.xcassets in Resources */,
+				48FFAFFF1D78A7EB0005906A /* distance_icon.png in Resources */,
 				48E4C0F61D7583670086AE54 /* ui_bg_start_recording.png in Resources */,
 				48E4C0F71D7583670086AE54 /* logo.png in Resources */,
+				48FFB0001D78A7EB0005906A /* pace_icon.png in Resources */,
 				48E4C0F31D7583670086AE54 /* start_button_background.png in Resources */,
 				48E4C0F21D7583670086AE54 /* background_ui.png in Resources */,
 				48650E931D6DEF36006BE423 /* OpenSans-Semibold.ttf in Resources */,
@@ -477,6 +488,7 @@
 				48E0E3191D2ECD2B0036F56B /* MyTrackerRed.png in Resources */,
 				48E4C0FC1D7583670086AE54 /* isologo.png in Resources */,
 				48650E911D6DEF36006BE423 /* OpenSans-LightItalic.ttf in Resources */,
+				48FFAFFC1D789F320005906A /* white_background.png in Resources */,
 				48E0E3181D2ECD2B0036F56B /* MyTrackerGray.png in Resources */,
 				48E4C0F81D7583670086AE54 /* icon_controls_play.png in Resources */,
 				487BE86C1D6AF37300ABC1ED /* Km_icon.png in Resources */,
