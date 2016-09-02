@@ -17,6 +17,7 @@
 		45BAF3F97EBCED19E1E145A3 /* RTGlobalModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45BAF71705BB05254A84B302 /* RTGlobalModels.swift */; };
 		45BAF5FD1744B99E592A7E06 /* RTActivityHeaderViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45BAFF68ED584FDC0B44D139 /* RTActivityHeaderViewCell.swift */; };
 		45BAF62B7E5F040F28EAEB33 /* RTStoreActivitiesManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45BAF70584E78946E836A5AD /* RTStoreActivitiesManager.swift */; };
+		45BAF6FD0CBB7477BB11BF56 /* background_ui.png in Resources */ = {isa = PBXBuildFile; fileRef = 48E4C0E71D7583670086AE54 /* background_ui.png */; };
 		45BAF798A150E21E22FCA8C0 /* RTNumbersExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45BAFBF0DE4F01A4E9D9FBDE /* RTNumbersExtensions.swift */; };
 		45BAF88F47593901FEED1DE0 /* RTActivityPathDoneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45BAF73453970E94E1200727 /* RTActivityPathDoneViewController.swift */; };
 		45BAF93B4E2030994CF73146 /* CachedDateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45BAF53B4EEA07F450845DC5 /* CachedDateFormatter.swift */; };
@@ -46,7 +47,6 @@
 		48E0E2E61D2EC7360036F56B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48E0E2E51D2EC7360036F56B /* ViewController.swift */; };
 		48E0E2E91D2EC7360036F56B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 48E0E2E71D2EC7360036F56B /* Main.storyboard */; };
 		48E0E2EB1D2EC7360036F56B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 48E0E2EA1D2EC7360036F56B /* Assets.xcassets */; };
-		48E0E2EE1D2EC7360036F56B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 48E0E2EC1D2EC7360036F56B /* LaunchScreen.storyboard */; };
 		48E0E2F91D2EC7360036F56B /* RunningTrackerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48E0E2F81D2EC7360036F56B /* RunningTrackerTests.swift */; };
 		48E0E3171D2ECD2B0036F56B /* MyTrackerBlue.png in Resources */ = {isa = PBXBuildFile; fileRef = 48E0E3141D2ECD2B0036F56B /* MyTrackerBlue.png */; };
 		48E0E3181D2ECD2B0036F56B /* MyTrackerGray.png in Resources */ = {isa = PBXBuildFile; fileRef = 48E0E3151D2ECD2B0036F56B /* MyTrackerGray.png */; };
@@ -56,7 +56,6 @@
 		48E0E3201D313C4E0036F56B /* GPSgreen.png in Resources */ = {isa = PBXBuildFile; fileRef = 48E0E31E1D313C4E0036F56B /* GPSgreen.png */; };
 		48E0E3211D313C4E0036F56B /* GPSgrey.png in Resources */ = {isa = PBXBuildFile; fileRef = 48E0E31F1D313C4E0036F56B /* GPSgrey.png */; };
 		48E0E3231D313D550036F56B /* GPSblack.png in Resources */ = {isa = PBXBuildFile; fileRef = 48E0E3221D313D550036F56B /* GPSblack.png */; };
-		48E4C0F21D7583670086AE54 /* background_ui.png in Resources */ = {isa = PBXBuildFile; fileRef = 48E4C0E71D7583670086AE54 /* background_ui.png */; };
 		48E4C0F31D7583670086AE54 /* start_button_background.png in Resources */ = {isa = PBXBuildFile; fileRef = 48E4C0E81D7583670086AE54 /* start_button_background.png */; };
 		48E4C0F41D7583670086AE54 /* icon_controls_pause.png in Resources */ = {isa = PBXBuildFile; fileRef = 48E4C0E91D7583670086AE54 /* icon_controls_pause.png */; };
 		48E4C0F51D7583670086AE54 /* icon_ui_clock.png in Resources */ = {isa = PBXBuildFile; fileRef = 48E4C0EA1D7583670086AE54 /* icon_ui_clock.png */; };
@@ -74,6 +73,7 @@
 		48FFAFFC1D789F320005906A /* white_background.png in Resources */ = {isa = PBXBuildFile; fileRef = 48FFAFFB1D789F320005906A /* white_background.png */; };
 		48FFAFFF1D78A7EB0005906A /* distance_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 48FFAFFD1D78A7EB0005906A /* distance_icon.png */; };
 		48FFB0001D78A7EB0005906A /* pace_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 48FFAFFE1D78A7EB0005906A /* pace_icon.png */; };
+		48FFB0021D79C46D0005906A /* LaunchScreen2.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 48FFB0011D79C46D0005906A /* LaunchScreen2.storyboard */; };
 		676DCD32EEE4824ACDD6C224 /* Pods_RunningTracker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3601DCAABE1D4283238AB370 /* Pods_RunningTracker.framework */; };
 		B9BE95B7CD5ED6CB8A3FA802 /* Pods_RunningTrackerTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1315FDBE7333EC72080A4E18 /* Pods_RunningTrackerTests.framework */; };
 /* End PBXBuildFile section */
@@ -134,7 +134,6 @@
 		48E0E2E51D2EC7360036F56B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		48E0E2E81D2EC7360036F56B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		48E0E2EA1D2EC7360036F56B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		48E0E2ED1D2EC7360036F56B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		48E0E2EF1D2EC7360036F56B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		48E0E2F41D2EC7360036F56B /* RunningTrackerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RunningTrackerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		48E0E2F81D2EC7360036F56B /* RunningTrackerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RunningTrackerTests.swift; sourceTree = "<group>"; };
@@ -165,6 +164,7 @@
 		48FFAFFB1D789F320005906A /* white_background.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = white_background.png; sourceTree = "<group>"; };
 		48FFAFFD1D78A7EB0005906A /* distance_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = distance_icon.png; sourceTree = "<group>"; };
 		48FFAFFE1D78A7EB0005906A /* pace_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pace_icon.png; sourceTree = "<group>"; };
+		48FFB0011D79C46D0005906A /* LaunchScreen2.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen2.storyboard; sourceTree = "<group>"; };
 		A086E0DB99F2A930C0AA1253 /* Pods-RunningTrackerTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RunningTrackerTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RunningTrackerTests/Pods-RunningTrackerTests.debug.xcconfig"; sourceTree = "<group>"; };
 		D1CB825CE456C4D9EFD8A49A /* Pods-RunningTrackerTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RunningTrackerTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-RunningTrackerTests/Pods-RunningTrackerTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -317,13 +317,13 @@
 				48E0E2E51D2EC7360036F56B /* ViewController.swift */,
 				48E0E2E71D2EC7360036F56B /* Main.storyboard */,
 				48E0E2EA1D2EC7360036F56B /* Assets.xcassets */,
-				48E0E2EC1D2EC7360036F56B /* LaunchScreen.storyboard */,
 				48E0E2EF1D2EC7360036F56B /* Info.plist */,
 				45BAFD006F4F33F9B8250D1E /* controllers */,
 				45BAF66256242D52BA8F83A8 /* models */,
 				45BAF5FF9E1DC19E42D24E9C /* views */,
 				45BAFE536185AB5CE113720E /* Material */,
 				45BAFA37A848EFBEC1405556 /* utils */,
+				48FFB0011D79C46D0005906A /* LaunchScreen2.storyboard */,
 			);
 			path = RunningTracker;
 			sourceTree = "<group>";
@@ -469,7 +469,6 @@
 				48E4C0FA1D7583670086AE54 /* icon_ui_button_back.png in Resources */,
 				48650E8C1D6DEF36006BE423 /* OpenSans-BoldItalic.ttf in Resources */,
 				48FFAFFA1D77111F0005906A /* show_activ_button_bg.png in Resources */,
-				48E0E2EE1D2EC7360036F56B /* LaunchScreen.storyboard in Resources */,
 				48650E901D6DEF36006BE423 /* OpenSans-Light.ttf in Resources */,
 				48E4C0F41D7583670086AE54 /* icon_controls_pause.png in Resources */,
 				48E0E3211D313C4E0036F56B /* GPSgrey.png in Resources */,
@@ -479,7 +478,6 @@
 				48E4C0F71D7583670086AE54 /* logo.png in Resources */,
 				48FFB0001D78A7EB0005906A /* pace_icon.png in Resources */,
 				48E4C0F31D7583670086AE54 /* start_button_background.png in Resources */,
-				48E4C0F21D7583670086AE54 /* background_ui.png in Resources */,
 				48650E931D6DEF36006BE423 /* OpenSans-Semibold.ttf in Resources */,
 				48650E8E1D6DEF36006BE423 /* OpenSans-ExtraBoldItalic.ttf in Resources */,
 				48650E8D1D6DEF36006BE423 /* OpenSans-ExtraBold.ttf in Resources */,
@@ -495,9 +493,11 @@
 				48E0E3171D2ECD2B0036F56B /* MyTrackerBlue.png in Resources */,
 				48E0E3201D313C4E0036F56B /* GPSgreen.png in Resources */,
 				48E0E2E91D2EC7360036F56B /* Main.storyboard in Resources */,
+				48FFB0021D79C46D0005906A /* LaunchScreen2.storyboard in Resources */,
 				48E4C0FB1D7583670086AE54 /* icon_controls_stop.png in Resources */,
 				48650E921D6DEF36006BE423 /* OpenSans-Regular.ttf in Resources */,
 				48FFAFF81D770F770005906A /* empty_button.png in Resources */,
+				45BAF6FD0CBB7477BB11BF56 /* background_ui.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -660,14 +660,6 @@
 			name = Main.storyboard;
 			sourceTree = "<group>";
 		};
-		48E0E2EC1D2EC7360036F56B /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				48E0E2ED1D2EC7360036F56B /* Base */,
-			);
-			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
@@ -758,7 +750,6 @@
 			baseConfigurationReference = 3130775CFE5E16821CEF094A /* Pods-RunningTracker.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-1";
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "Brand Assets";
 				CODE_SIGN_ENTITLEMENTS = RunningTracker/RunningTracker.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer: JOSE MOLDES (79RZ4K8975)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: JOSE MOLDES (79RZ4K8975)";
@@ -778,7 +769,6 @@
 			baseConfigurationReference = 189B33394D6AEC0A54BD5BAD /* Pods-RunningTracker.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-1";
-				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = "Brand Assets";
 				CODE_SIGN_ENTITLEMENTS = RunningTracker/RunningTracker.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: JOSE MOLDES (2G24Q5X34D)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: JOSE MOLDES (2G24Q5X34D)";
