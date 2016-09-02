@@ -89,7 +89,7 @@ class RTActivitiesModel {
             success = true
         }
         activityRunning = false
-        currentActivity.activityFinished(NSDate().timeIntervalSince1970)
+        currentActivity.activityFinished(getNow())
         currentActivity = nil
         refreshValues()
         return success
@@ -209,6 +209,25 @@ class RTActivitiesModel {
 
     func getNow() -> NSTimeInterval {
         return NSDate().timeIntervalSince1970
+    }
+
+    func getBestPace() -> Double {
+        var bestPace = 0.0
+        for activity : RTActivity in activities {
+            let pace = activity.getPace()
+            bestPace = (bestPace == 0.0) ? pace : bestPace
+            bestPace = (pace < bestPace) ? pace : bestPace
+        }
+        return bestPace
+    }
+
+    func getLongestDistance() -> Double {
+        var longest = 0.0
+        for activity : RTActivity in activities {
+            let distance = activity.distance
+            longest = (distance > longest) ? distance : longest
+        }
+        return longest
     }
 
 }

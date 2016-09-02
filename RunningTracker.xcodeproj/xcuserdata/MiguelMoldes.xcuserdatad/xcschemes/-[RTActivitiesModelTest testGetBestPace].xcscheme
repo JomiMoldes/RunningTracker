@@ -65,6 +65,9 @@
                   Identifier = "RTActivitiesModelTest/testResumeActivity()">
                </Test>
                <Test
+                  Identifier = "RTActivitiesModelTest/testSaveActivities()">
+               </Test>
+               <Test
                   Identifier = "RTActivitiesModelTest/testStartActivity()">
                </Test>
                <Test

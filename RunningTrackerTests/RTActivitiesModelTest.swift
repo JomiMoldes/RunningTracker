@@ -227,6 +227,75 @@ class RTActivitiesModelTest:XCTestCase{
         XCTAssertTrue(model.currentActivityPaused)
     }
 
+    func testGetBestPace() {
+
+        var now = NSDate().timeIntervalSince1970
+        model.fakeNow = now
+
+        mockStartActivity()
+
+        let location1 = mockActivityLocation(now, lat:12.55555, long:13)
+        let location2 = mockActivityLocation(now + 15, lat:12.55560, long:13)
+        model.addActivityLocation(location1)
+        model.addActivityLocation(location2)
+
+        let pace1 = model.getPaceLastKM()
+        model.fakeNow = now + 15
+        model.endActivity()
+
+        now = now + 20
+        model.fakeNow = now
+
+        mockStartActivity()
+
+        let location3 = mockActivityLocation(now, lat:12.55555, long:13)
+        let location4 = mockActivityLocation(now + 11, lat:12.55560, long:13)
+        model.addActivityLocation(location3)
+        model.addActivityLocation(location4)
+
+        let pace2 = model.getPaceLastKM()
+        model.fakeNow = now + 11
+        model.endActivity()
+
+        let pace : Double = model.getBestPace()
+        XCTAssertEqual(pace, pace2)
+    }
+
+    func testGetLongestDistance() {
+
+        var now = NSDate().timeIntervalSince1970
+        model.fakeNow = now
+
+        mockStartActivity()
+
+        let location1 = mockActivityLocation(now, lat:12.55555, long:13)
+        let location2 = mockActivityLocation(now + 15, lat:12.55560, long:13)
+        model.addActivityLocation(location1)
+        model.addActivityLocation(location2)
+
+        let distance1 = location2.distance
+        model.fakeNow = now + 15
+        model.endActivity()
+
+        now = now + 20
+        model.fakeNow = now
+
+        mockStartActivity()
+
+        let location3 = mockActivityLocation(now, lat:12.55555, long:13)
+        let location4 = mockActivityLocation(now + 11, lat:12.55600, long:13)
+        model.addActivityLocation(location3)
+        model.addActivityLocation(location4)
+
+        let distance2 = location4.distance
+        model.fakeNow = now + 11
+        model.endActivity()
+
+        let distance = model.getLongestDistance()
+        XCTAssertEqual(distance, distance2)
+
+    }
+
     func testActivitiesLenght() {
         XCTAssertEqual(model.activitiesLength(), 0)
         mockStartActivity()
@@ -312,6 +381,16 @@ class RTSoreManagerFake:RTStoreActivitiesManager {
     override func saveActivities(activities: [RTActivity], completion: ([RTActivity]) -> Void) {
         completion([RTActivity]())
     }
+}
+
+class RTActivityFake:RTActivity {
+
+    var fakePace = 0.0
+
+    override func getPace() -> Double {
+        return fakePace
+    }
+
 }
 
 

@@ -6,6 +6,7 @@
 import Foundation
 import UIKit
 import CoreLocation
+import CoreImage
 
 class RTInitialViewController:UIViewController, CLLocationManagerDelegate {
 
@@ -16,6 +17,11 @@ class RTInitialViewController:UIViewController, CLLocationManagerDelegate {
     @IBOutlet weak var bestPaceView: UIView!
     @IBOutlet weak var bestDistanceBGImageView: UIImageView!
     @IBOutlet weak var bestPaceBGImageView: UIImageView!
+    @IBOutlet weak var distanceLabel: UILabel!
+    @IBOutlet weak var distanceDescLabel: UILabel!
+    @IBOutlet weak var paceLabel: UILabel!
+    @IBOutlet weak var paceDescLabel: UILabel!
+    @IBOutlet weak var turnOnGPSLabel: UILabel!
     
     @IBOutlet weak var gpsImageView: UIImageView!
     @IBOutlet weak var startViewBGImageView: UIImageView!
@@ -26,7 +32,8 @@ class RTInitialViewController:UIViewController, CLLocationManagerDelegate {
     override func viewDidLoad() {
         self.activitiesModel = RTGlobalModels.sharedInstance.activitiesModel
         super.viewDidLoad()
-        self.setupButtons()
+        setupButtons()
+        updateTexts()
 //        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(activitiesLoaded), name: "activitiesLoaded", object: nil)
 //        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(activitiesLoaded), name: "activitiesSaved", object: nil)
 //        activitiesModel.loadActivities(RTActivitiesModel.ArchiveURL.path!, storeManager: RTGlobalModels.sharedInstance.storeActivitiesManager)
@@ -36,13 +43,14 @@ class RTInitialViewController:UIViewController, CLLocationManagerDelegate {
         super.viewDidAppear(animated)
         self.myActivitiesButton.enabled = self.activitiesModel.activitiesLength() > 0
         self.startButton.enabled = false
+        self.turnOnGPSLabel.hidden = true
         self.startLocation()
     }
 
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         setupWhiteBackgrounds()
-
+        updateTexts()
     }
 
     override func viewWillDisappear(animated: Bool) {
@@ -60,6 +68,21 @@ class RTInitialViewController:UIViewController, CLLocationManagerDelegate {
         self.bestPaceBGImageView.image = bgImage!.resizableImageWithCapInsets(insets, resizingMode: .Stretch)
     }
 
+    func updateTexts() {
+        self.distanceDescLabel.adjustsFontSizeToFitWidth = true
+        self.paceDescLabel.adjustsFontSizeToFitWidth = true
+
+        let pace = self.activitiesModel.getBestPace()
+        let paceString = pace.getMinutes() + ":" + pace.getSeconds()
+        self.paceLabel.text = paceString
+        let distance = self.activitiesModel.getLongestDistance()
+        let distanceString = String(format:"%.2f km", distance / 1000)
+        self.distanceLabel.adjustsFontSizeToFitWidth = true
+        self.distanceLabel.text = distanceString
+        self.turnOnGPSLabel.adjustsFontSizeToFitWidth = true
+    }
+
+
     func activitiesLoaded(notification:NSNotification) {
         dispatch_async(dispatch_get_main_queue(), {
 //            self.fetchAlarmView.hidden = true
@@ -74,8 +97,25 @@ class RTInitialViewController:UIViewController, CLLocationManagerDelegate {
         self.myActivitiesButton.titleLabel?.lineBreakMode = NSLineBreakMode.ByClipping
         self.myActivitiesButton.titleLabel?.textAlignment = NSTextAlignment.Center
         self.myActivitiesButton.enabled = false
+
         self.startButton.enabled = false
         self.startButton.backgroundColor = UIColor.clearColor()
+
+        if let bgImage = self.startButton.currentBackgroundImage {
+            let rect = CGRect(x: 0, y: 0, width: bgImage.size.width, height: bgImage.size.height)
+
+            UIGraphicsBeginImageContextWithOptions(bgImage.size, true, 0)
+            let context = UIGraphicsGetCurrentContext()
+
+            CGContextSetFillColorWithColor(context, UIColor.whiteColor().CGColor)
+            CGContextFillRect(context, rect)
+            bgImage.drawInRect(rect, blendMode: .Luminosity, alpha: 1)
+
+            let newUIImage = UIGraphicsGetImageFromCurrentImageContext()
+            UIGraphicsEndImageContext()
+
+            self.startButton.setBackgroundImage(newUIImage, forState: UIControlState.Disabled)
+        }
     }
 
     func startLocation(){
@@ -147,11 +187,13 @@ class RTInitialViewController:UIViewController, CLLocationManagerDelegate {
     func locationManager(manager: CLLocationManager, didUpdateLocations locations: [CLLocation]){
         self.startButton.enabled = true
         gpsImageView.image = UIImage(named:"GPSgreen.png")
+        self.turnOnGPSLabel.hidden = true
     }
 
     func locationManager(manager: CLLocationManager, didFailWithError error: NSError){
         self.startButton.enabled = false
         gpsImageView.image = UIImage(named:"GPSblack.png")
+        self.turnOnGPSLabel.hidden = false
         if(CLLocationManager.authorizationStatus() == .AuthorizedAlways){
            locationManager.startUpdatingLocation()
         }
