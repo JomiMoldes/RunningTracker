@@ -76,6 +76,7 @@
 		48FFB0001D78A7EB0005906A /* pace_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 48FFAFFE1D78A7EB0005906A /* pace_icon.png */; };
 		48FFB0021D79C46D0005906A /* LaunchScreen2.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 48FFB0011D79C46D0005906A /* LaunchScreen2.storyboard */; };
 		48FFB0041D79E7020005906A /* RTBackButtonView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 48FFB0031D79E7020005906A /* RTBackButtonView.xib */; };
+		48FFB0061D7AF7DC0005906A /* triangle2.png in Resources */ = {isa = PBXBuildFile; fileRef = 48FFB0051D7AF7DC0005906A /* triangle2.png */; };
 		676DCD32EEE4824ACDD6C224 /* Pods_RunningTracker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3601DCAABE1D4283238AB370 /* Pods_RunningTracker.framework */; };
 		B9BE95B7CD5ED6CB8A3FA802 /* Pods_RunningTrackerTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1315FDBE7333EC72080A4E18 /* Pods_RunningTrackerTests.framework */; };
 /* End PBXBuildFile section */
@@ -169,6 +170,7 @@
 		48FFAFFE1D78A7EB0005906A /* pace_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pace_icon.png; sourceTree = "<group>"; };
 		48FFB0011D79C46D0005906A /* LaunchScreen2.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen2.storyboard; sourceTree = "<group>"; };
 		48FFB0031D79E7020005906A /* RTBackButtonView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RTBackButtonView.xib; sourceTree = "<group>"; };
+		48FFB0051D7AF7DC0005906A /* triangle2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = triangle2.png; sourceTree = "<group>"; };
 		A086E0DB99F2A930C0AA1253 /* Pods-RunningTrackerTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RunningTrackerTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RunningTrackerTests/Pods-RunningTrackerTests.debug.xcconfig"; sourceTree = "<group>"; };
 		D1CB825CE456C4D9EFD8A49A /* Pods-RunningTrackerTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RunningTrackerTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-RunningTrackerTests/Pods-RunningTrackerTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -221,6 +223,7 @@
 		45BAF8A918FC0E09EDE8CA29 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				48FFB0051D7AF7DC0005906A /* triangle2.png */,
 				48FFAFFD1D78A7EB0005906A /* distance_icon.png */,
 				48FFAFFE1D78A7EB0005906A /* pace_icon.png */,
 				48FFAFFB1D789F320005906A /* white_background.png */,
@@ -480,6 +483,7 @@
 				48E4C0F41D7583670086AE54 /* icon_controls_pause.png in Resources */,
 				48E0E3211D313C4E0036F56B /* GPSgrey.png in Resources */,
 				48E0E2EB1D2EC7360036F56B /* Assets.xcassets in Resources */,
+				48FFB0061D7AF7DC0005906A /* triangle2.png in Resources */,
 				48FFAFFF1D78A7EB0005906A /* distance_icon.png in Resources */,
 				48E4C0F61D7583670086AE54 /* ui_bg_start_recording.png in Resources */,
 				48E4C0F71D7583670086AE54 /* logo.png in Resources */,

@@ -21,14 +21,15 @@ enum TimeMeasurement {
 class RTActiveMapViewController : UIViewController, CLLocationManagerDelegate, GMSMapViewDelegate {
 
     @IBOutlet weak var mapContainer: UIView!
-
+    @IBOutlet weak var backButtonView: RTBackButtonView!
     @IBOutlet weak var chronometerLabel: UILabel!
-    
     @IBOutlet weak var distanceLabel: UILabel!
-    
     @IBOutlet weak var paceLabel: UILabel!
-    
     @IBOutlet weak var pauseButton: UIButton!
+    @IBOutlet weak var topBarView: UIView!
+    @IBOutlet weak var bottomBarView: UIView!
+    @IBOutlet weak var paceDescLabel: UILabel!
+    @IBOutlet weak var distDescLabel: UILabel!
 
     let initialZoom : Float = 18.0
     var lastZoom : Float = 18.0
@@ -48,6 +49,9 @@ class RTActiveMapViewController : UIViewController, CLLocationManagerDelegate, G
         addObservers()
         setupMap()
         setupMapMarkers()
+        setupBackButton()
+        setupTopBar()
+        setupBottomBar()
     }
 
     override func viewDidAppear(animated: Bool) {
@@ -60,10 +64,43 @@ class RTActiveMapViewController : UIViewController, CLLocationManagerDelegate, G
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         self.mapView.frame = CGRectMake(0,0,self.mapContainer.frame.size.width, self.mapContainer.frame.size.height)
+        let mapFrame = self.mapContainer.frame
+        let bottomFrame = self.bottomBarView.frame
+        let bottomYPos = mapFrame.origin.y + mapFrame.size.height - (bottomFrame.size.height / 2)
+        self.bottomBarView.frame = CGRectMake(bottomFrame.origin.x, bottomYPos, bottomFrame.size.width, bottomFrame.size.height)
+
+        let topFrame = self.topBarView.frame
+        let topYPos = mapFrame.origin.y - (topFrame.size.height / 2)
+        self.topBarView.frame = CGRectMake(topFrame.origin.x, topYPos, topFrame.size.width, topFrame.size.height)
     }
 
     private func addObservers() {
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(addMarker), name: "addKMMarker", object: nil)
+    }
+
+    func setupBackButton() {
+        let gesture = UITapGestureRecognizer(target: self, action: #selector(backTouched))
+        self.backButtonView.addGestureRecognizer(gesture)
+    }
+
+    func setupTopBar() {
+        self.topBarView.userInteractionEnabled = false
+        self.chronometerLabel.adjustsFontSizeToFitWidth = true
+    }
+
+    func setupBottomBar() {
+        self.bottomBarView.userInteractionEnabled = false
+        self.distanceLabel.adjustsFontSizeToFitWidth = true
+        self.distDescLabel.adjustsFontSizeToFitWidth = true
+        self.paceLabel.adjustsFontSizeToFitWidth = true
+        self.paceDescLabel.adjustsFontSizeToFitWidth = true
+    }
+
+    func backTouched(sender:UITapGestureRecognizer){
+        if self.activitiesModel.isCurrentActivityDefined() {
+            endActivity()
+        }
+        self.navigationController!.popViewControllerAnimated(true)
     }
 
     func addMarker(notification:NSNotification) {
@@ -173,13 +210,6 @@ class RTActiveMapViewController : UIViewController, CLLocationManagerDelegate, G
 
 // IBActions
 
-    @IBAction func backTouched(sender: UIButton) {
-        if self.activitiesModel.isCurrentActivityDefined() {
-            endActivity()
-        }
-        self.navigationController!.popViewControllerAnimated(true)
-    }
-
     @IBAction func stopTouched(sender: UIButton) {
         endActivity()
     }
@@ -187,11 +217,19 @@ class RTActiveMapViewController : UIViewController, CLLocationManagerDelegate, G
     @IBAction func pauseTouched(sender: UIButton) {
         if self.activitiesModel.currentActivityPaused {
             self.activitiesModel.resumeActivity()
-            sender.setTitle("PAUSE", forState: UIControlState.Normal)
+            let bgImage = UIImage(named: "icon_controls_pause.png")
+            sender.setBackgroundImage(bgImage, forState: UIControlState.Disabled)
+            sender.setBackgroundImage(bgImage, forState: UIControlState.Selected)
+            sender.setBackgroundImage(bgImage, forState: UIControlState.Highlighted)
+            sender.setBackgroundImage(bgImage, forState: UIControlState.Normal)
             setupTimer()
         }else{
             self.activitiesModel.pauseActivity()
-            sender.setTitle("RESUME", forState: UIControlState.Normal)
+            let bgResumeImage = UIImage(named: "icon_controls_play.png")
+//            sender.setBackgroundImage(bgResumeImage, forState: UIControlState.Disabled)
+            sender.setBackgroundImage(bgResumeImage, forState: UIControlState.Selected)
+            sender.setBackgroundImage(bgResumeImage, forState: UIControlState.Highlighted)
+            sender.setBackgroundImage(bgResumeImage, forState: UIControlState.Normal)
             invalidateTimer()
         }
     }
