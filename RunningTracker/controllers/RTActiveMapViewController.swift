@@ -25,11 +25,11 @@ class RTActiveMapViewController : UIViewController, CLLocationManagerDelegate, G
     @IBOutlet weak var chronometerLabel: UILabel!
     @IBOutlet weak var distanceLabel: UILabel!
     @IBOutlet weak var paceLabel: UILabel!
+    @IBOutlet weak var paceDescLabel: UILabel!
+    @IBOutlet weak var distDescLabel: UILabel!
     @IBOutlet weak var pauseButton: UIButton!
     @IBOutlet weak var topBarView: UIView!
     @IBOutlet weak var bottomBarView: UIView!
-    @IBOutlet weak var paceDescLabel: UILabel!
-    @IBOutlet weak var distDescLabel: UILabel!
 
     let initialZoom : Float = 18.0
     var lastZoom : Float = 18.0

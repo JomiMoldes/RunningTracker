@@ -11,6 +11,14 @@ import GoogleMaps
 class RTActivityPathDoneViewController : UIViewController, GMSMapViewDelegate {
 
     @IBOutlet weak var mapContainer: UIView!
+    @IBOutlet weak var backButtonView: RTBackButtonView!
+    @IBOutlet weak var topBarView: UIView!
+    @IBOutlet weak var bottomBarView: UIView!
+    @IBOutlet weak var chronometerLabel: UILabel!
+    @IBOutlet weak var distanceLabel: UILabel!
+    @IBOutlet weak var paceLabel: UILabel!
+    @IBOutlet weak var paceDescLabel: UILabel!
+    @IBOutlet weak var distDescLabel: UILabel!
 
     var activity:RTActivity!
     var mapView : GMSMapView!
@@ -23,6 +31,10 @@ class RTActivityPathDoneViewController : UIViewController, GMSMapViewDelegate {
         super.viewDidLoad()
         setupMap()
         setupMapMarkers()
+        setupBackButton()
+        setupTopBar()
+        setupBottomBar()
+        updateInfo()
     }
 
     override func viewDidAppear(animated: Bool) {
@@ -35,6 +47,15 @@ class RTActivityPathDoneViewController : UIViewController, GMSMapViewDelegate {
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         self.mapView.frame = CGRectMake(0,0,self.mapContainer.frame.size.width, self.mapContainer.frame.size.height)
+
+        let mapFrame = self.mapContainer.frame
+        let bottomFrame = self.bottomBarView.frame
+        let bottomYPos = mapFrame.origin.y + mapFrame.size.height - (bottomFrame.size.height / 2)
+        self.bottomBarView.frame = CGRectMake(bottomFrame.origin.x, bottomYPos, bottomFrame.size.width, bottomFrame.size.height)
+
+        let topFrame = self.topBarView.frame
+        let topYPos = mapFrame.origin.y - (topFrame.size.height / 2)
+        self.topBarView.frame = CGRectMake(topFrame.origin.x, topYPos, topFrame.size.width, topFrame.size.height)
     }
 
     func setupMap() {
@@ -43,13 +64,51 @@ class RTActivityPathDoneViewController : UIViewController, GMSMapViewDelegate {
         let camera = GMSCameraPosition.cameraWithLatitude(activityLocation.location.coordinate.latitude, longitude: activityLocation.location.coordinate.longitude, zoom: initialZoom)
         self.mapView = GMSMapView.mapWithFrame(CGRectMake(0,0,self.mapContainer.frame.size.width, self.mapContainer.frame.size.height), camera: camera)
         self.mapView.myLocationEnabled = false
-        self.mapView.mapType = kGMSTypeSatellite
+        self.mapView.mapType = kGMSTypeNormal
         mapContainer.addSubview(self.mapView)
         self.mapView.delegate = self
     }
 
     private func setupMapMarkers() {
         self.mapMarkersManager = RTMapMarkersManager(mapView: self.mapView)
+    }
+
+    func setupBackButton() {
+        let gesture = UITapGestureRecognizer(target: self, action: #selector(backTouched))
+        self.backButtonView.addGestureRecognizer(gesture)
+    }
+
+    func setupTopBar() {
+        self.topBarView.userInteractionEnabled = false
+        self.chronometerLabel.adjustsFontSizeToFitWidth = true
+    }
+
+    func updateInfo() {
+        let duration = activity.getDuration()
+        let durationString = duration.getHours() + ":" + duration.getMinutes() + ":" + duration.getSeconds()
+        self.chronometerLabel.text = durationString
+
+        let pace = activity.getPace()
+        let paceString = pace.getMinutes() + ":" + pace.getSeconds()
+
+        let distanceString = String(format:"%.2f", activity.distance / 1000)
+
+        self.paceLabel.adjustsFontSizeToFitWidth = true
+        self.distanceLabel.adjustsFontSizeToFitWidth = true
+        self.paceLabel.text = paceString
+        self.distanceLabel.text = distanceString
+    }
+
+    func setupBottomBar() {
+        self.bottomBarView.userInteractionEnabled = false
+        self.distanceLabel.adjustsFontSizeToFitWidth = true
+        self.distDescLabel.adjustsFontSizeToFitWidth = true
+        self.paceLabel.adjustsFontSizeToFitWidth = true
+        self.paceDescLabel.adjustsFontSizeToFitWidth = true
+    }
+
+    func backTouched(sender:UITapGestureRecognizer){
+        self.navigationController!.popViewControllerAnimated(true)
     }
 
     private func drawPath() {
@@ -73,12 +132,6 @@ class RTActivityPathDoneViewController : UIViewController, GMSMapViewDelegate {
 
     private func drawMarkers() {
         self.mapMarkersManager.redrawMarkers(self.activity.checkMarks)
-    }
-
-//IBActions
-
-    @IBAction func backTouched(sender: UIButton) {
-        self.navigationController!.popViewControllerAnimated(true)
     }
 
 // Map View Delegate
