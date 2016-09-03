@@ -9,26 +9,29 @@ import UIKit
 class RTActivityViewCell : UITableViewCell {
 
 
-    @IBOutlet weak var dateLabel: UILabel!
-    @IBOutlet weak var durationLabel: UILabel!
     @IBOutlet weak var paceLabel: UILabel!
     @IBOutlet weak var distanceLabel: UILabel!
+    @IBOutlet weak var seeMapButton: UIButton!
 
 
     func setupInfo(activity:RTActivity) {
         let formatter = CachedDateFormatter.sharedInstance.formatterWith("dd/MM/YY")
-        self.dateLabel.text = formatter.getDateWithFormat("dd/MM/YY", time:activity.startTime)
+        let dateString = formatter.getDateWithFormat("dd/MM/YY", time:activity.startTime)
 
         let duration = activity.getDuration()
         let durationString = duration.getHours() + ":" + duration.getMinutes() + ":" + duration.getSeconds()
-        self.durationLabel.text = durationString
 
         let pace = activity.getPace()
         let paceString = pace.getMinutes() + ":" + pace.getSeconds()
-        self.paceLabel.text = paceString
 
         let distanceString = String(format:"%.2f", activity.distance / 1000)
-        self.distanceLabel.text = distanceString
+
+        self.paceLabel.adjustsFontSizeToFitWidth = true
+        self.distanceLabel.adjustsFontSizeToFitWidth = true
+        self.paceLabel.text = "\(dateString) - Pace: \(paceString)"
+        self.distanceLabel.text = "\(distanceString) km - \(durationString)"
+
+        self.seeMapButton.enabled = false
     }
 
 

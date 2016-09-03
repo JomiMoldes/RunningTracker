@@ -8,8 +8,8 @@ import UIKit
 
 class RTActivitiesViewController : UIViewController, UITableViewDelegate, UITableViewDataSource {
 
-    @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var tableView: UITableView!
+    @IBOutlet weak var backButtonView: RTBackButtonView!
 
     var activitiesModel : RTActivitiesModel!
     var activities:[RTActivity] = [RTActivity]()
@@ -18,20 +18,22 @@ class RTActivitiesViewController : UIViewController, UITableViewDelegate, UITabl
         super.viewDidLoad()
         self.activitiesModel = RTGlobalModels.sharedInstance.activitiesModel
         self.activities = self.activitiesModel.getActivitiesCopy()
-        setupTitle()
+        self.activities = self.activities.reverse()
         setupTable()
+        setupBackButton()
     }
 
-    func setupTitle() {
-        titleLabel.numberOfLines = 1
-        titleLabel.adjustsFontSizeToFitWidth = true
-        titleLabel.lineBreakMode = NSLineBreakMode.ByClipping
+    func setupBackButton() {
+        let gesture = UITapGestureRecognizer(target: self, action: #selector(backTouched))
+        self.backButtonView.addGestureRecognizer(gesture)
+    }
+
+    func backTouched(sender:UITapGestureRecognizer){
+        self.navigationController!.popViewControllerAnimated(true)
     }
 
     func setupTable() {
         self.tableView.registerNib(UINib(nibName:"RTActivityViewCell", bundle:nil), forCellReuseIdentifier: "activityViewCell")
-        self.tableView.registerNib(UINib(nibName:"RTActivityHeaderViewCell", bundle:nil), forHeaderFooterViewReuseIdentifier: "activityHeaderViewCell")
-
         self.tableView.delegate = self
         self.tableView.dataSource = self
     }
@@ -47,28 +49,20 @@ class RTActivitiesViewController : UIViewController, UITableViewDelegate, UITabl
         let activity = self.activities[indexPath.item]
         cell = tableView.dequeueReusableCellWithIdentifier("activityViewCell", forIndexPath: indexPath) as! RTActivityViewCell
         (cell as! RTActivityViewCell).setupInfo(activity)
+        cell.backgroundColor = UIColor.clearColor()
 
-        return cell
-    }
+        let backgroundView = UIView()
+        backgroundView.backgroundColor = UIColor.clearColor()
+        cell.selectedBackgroundView = backgroundView
 
-    func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let cell = tableView.dequeueReusableHeaderFooterViewWithIdentifier("activityHeaderViewCell")
         return cell
     }
 
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         let activity = self.activities[indexPath.item]
-
         let activityDoneMap = UIStoryboard(name:"Main", bundle:nil).instantiateViewControllerWithIdentifier("activityDoneMap") as? RTActivityPathDoneViewController
         activityDoneMap!.activity = activity
-
         self.navigationController!.pushViewController(activityDoneMap!, animated:true)
-    }
-
-// IBActions
-
-    @IBAction func backTouched(sender: UIButton) {
-        self.navigationController!.popViewControllerAnimated(true)
     }
 
 }

@@ -3,66 +3,100 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <mutableArray key="OpenSans-Light.ttf">
+            <string>OpenSans-Light</string>
+            <string>OpenSans-Light</string>
+        </mutableArray>
+        <mutableArray key="OpenSans-Semibold.ttf">
+            <string>OpenSans-Semibold</string>
+        </mutableArray>
+    </customFonts>
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
-        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="activityViewCell" selectionStyle="default" indentationWidth="10" rowHeight="84" id="cRw-Zz-E4c" customClass="RTActivityViewCell" customModule="RunningTracker" customModuleProvider="target">
-            <rect key="frame" x="0.0" y="0.0" width="473" height="84"/>
+        <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="activityViewCell" selectionStyle="default" indentationWidth="10" rowHeight="36" id="cRw-Zz-E4c" customClass="RTActivityViewCell" customModule="RunningTracker" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="473" height="71"/>
             <autoresizingMask key="autoresizingMask"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="cRw-Zz-E4c" id="MUc-zm-xRh">
-                <rect key="frame" x="0.0" y="0.0" width="473" height="83"/>
+                <rect key="frame" x="0.0" y="0.0" width="473" height="70"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="oSr-87-5Rm">
-                        <rect key="frame" x="0.0" y="0.0" width="473" height="83"/>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="64d-OT-9Ig" userLabel="LabelContainers">
+                        <rect key="frame" x="72" y="18" width="313" height="35"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="02-07" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="NO9-Nc-bNR" userLabel="dateLabel">
-                                <rect key="frame" x="0.0" y="0.0" width="118" height="83"/>
-                                <color key="backgroundColor" red="1" green="0.051191160530000002" blue="0.17020857489999999" alpha="1" colorSpace="calibratedRGB"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="4,21 Kms" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QEH-S7-DNI" userLabel="distanceLabel">
+                                <rect key="frame" x="0.0" y="0.0" width="313" height="17"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="20"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="05:30" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="idV-wJ-WzJ" userLabel="durationLabel">
-                                <rect key="frame" x="118" y="0.0" width="119" height="83"/>
-                                <color key="backgroundColor" red="0.2588235438" green="0.99607849120000003" blue="0.88627457620000005" alpha="1" colorSpace="deviceRGB"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="05:30" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MXA-sX-cQa" userLabel="paceLabel">
-                                <rect key="frame" x="237" y="0.0" width="118" height="83"/>
-                                <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="4,21 Kms" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QEH-S7-DNI" userLabel="distanceLabel">
-                                <rect key="frame" x="355" y="0.0" width="118" height="83"/>
-                                <color key="backgroundColor" red="1" green="0.89578303690000005" blue="0.45409825669999998" alpha="1" colorSpace="calibratedRGB"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="05:30" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MXA-sX-cQa" userLabel="paceLabel">
+                                <rect key="frame" x="0.0" y="17" width="313" height="18"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" name="OpenSans-Light" family="Open Sans" pointSize="13"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                    </stackView>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="QEH-S7-DNI" firstAttribute="width" secondItem="64d-OT-9Ig" secondAttribute="width" id="7P8-Im-EQL"/>
+                            <constraint firstItem="MXA-sX-cQa" firstAttribute="width" secondItem="64d-OT-9Ig" secondAttribute="width" id="A4m-1H-nr0"/>
+                            <constraint firstItem="QEH-S7-DNI" firstAttribute="top" secondItem="64d-OT-9Ig" secondAttribute="top" id="KdU-aU-dbL"/>
+                            <constraint firstAttribute="bottom" secondItem="MXA-sX-cQa" secondAttribute="bottom" id="R7G-58-T9O"/>
+                            <constraint firstItem="MXA-sX-cQa" firstAttribute="centerX" secondItem="64d-OT-9Ig" secondAttribute="centerX" id="Tv5-gy-oN8"/>
+                            <constraint firstItem="MXA-sX-cQa" firstAttribute="height" secondItem="64d-OT-9Ig" secondAttribute="height" multiplier="0.5" id="Wm0-He-BWG"/>
+                            <constraint firstItem="QEH-S7-DNI" firstAttribute="centerX" secondItem="64d-OT-9Ig" secondAttribute="centerX" id="cs7-93-TmH"/>
+                            <constraint firstItem="QEH-S7-DNI" firstAttribute="height" secondItem="64d-OT-9Ig" secondAttribute="height" multiplier="0.5" id="ufc-CJ-1zb"/>
+                        </constraints>
+                    </view>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon_ui_clock.png" translatesAutoresizingMaskIntoConstraints="NO" id="tnV-bI-xSS" userLabel="timeIcon">
+                        <rect key="frame" x="12" y="17" width="43" height="37"/>
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="tnV-bI-xSS" secondAttribute="height" multiplier="73:62" id="DeT-mq-IHA"/>
+                        </constraints>
+                    </imageView>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7d3-yR-bWV">
+                        <rect key="frame" x="380" y="14" width="75" height="42"/>
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="7d3-yR-bWV" secondAttribute="height" multiplier="77:43" id="epb-Ph-qUh"/>
+                        </constraints>
+                        <fontDescription key="fontDescription" name="OpenSans-Light" family="Open Sans" pointSize="15"/>
+                        <state key="normal" title="See map" backgroundImage="show_activ_button_bg.png">
+                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        </state>
+                    </button>
                 </subviews>
-                <color key="backgroundColor" red="0.98039215690000003" green="0.94117647059999998" blue="0.62745098040000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                 <constraints>
-                    <constraint firstItem="oSr-87-5Rm" firstAttribute="height" secondItem="MUc-zm-xRh" secondAttribute="height" id="LUa-FA-xUE"/>
-                    <constraint firstItem="oSr-87-5Rm" firstAttribute="width" secondItem="MUc-zm-xRh" secondAttribute="width" id="NuS-h7-gfF"/>
-                    <constraint firstItem="oSr-87-5Rm" firstAttribute="centerX" secondItem="MUc-zm-xRh" secondAttribute="centerX" id="ewg-fL-n8n"/>
-                    <constraint firstItem="oSr-87-5Rm" firstAttribute="centerY" secondItem="MUc-zm-xRh" secondAttribute="centerY" id="nPy-b5-AdJ"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="7d3-yR-bWV" secondAttribute="trailing" constant="10" id="Cej-dX-atx"/>
+                    <constraint firstItem="7d3-yR-bWV" firstAttribute="height" secondItem="MUc-zm-xRh" secondAttribute="height" multiplier="0.6" id="HXL-s8-f5A"/>
+                    <constraint firstItem="7d3-yR-bWV" firstAttribute="centerY" secondItem="MUc-zm-xRh" secondAttribute="centerY" id="I1T-gf-Hdf"/>
+                    <constraint firstItem="tnV-bI-xSS" firstAttribute="height" secondItem="MUc-zm-xRh" secondAttribute="height" multiplier="0.52" id="PpK-JQ-fUf"/>
+                    <constraint firstItem="64d-OT-9Ig" firstAttribute="centerY" secondItem="MUc-zm-xRh" secondAttribute="centerY" id="YNx-4b-pbG"/>
+                    <constraint firstItem="64d-OT-9Ig" firstAttribute="height" secondItem="MUc-zm-xRh" secondAttribute="height" multiplier="0.5" id="jby-3Y-j7i"/>
+                    <constraint firstItem="tnV-bI-xSS" firstAttribute="leading" secondItem="MUc-zm-xRh" secondAttribute="leadingMargin" constant="4" id="n09-NG-qNc"/>
+                    <constraint firstItem="64d-OT-9Ig" firstAttribute="leading" secondItem="tnV-bI-xSS" secondAttribute="trailing" constant="17" id="rSw-bb-Lyu"/>
+                    <constraint firstItem="tnV-bI-xSS" firstAttribute="centerY" secondItem="MUc-zm-xRh" secondAttribute="centerY" id="rc8-RB-JWP"/>
+                    <constraint firstItem="7d3-yR-bWV" firstAttribute="leading" secondItem="64d-OT-9Ig" secondAttribute="trailing" constant="-5" id="vSQ-T6-Yc2"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
-                <outlet property="dateLabel" destination="NO9-Nc-bNR" id="c8c-lM-quc"/>
                 <outlet property="distanceLabel" destination="QEH-S7-DNI" id="Utc-IU-ycj"/>
-                <outlet property="durationLabel" destination="idV-wJ-WzJ" id="8IS-Ri-5o1"/>
                 <outlet property="paceLabel" destination="MXA-sX-cQa" id="uaT-xp-kzF"/>
+                <outlet property="seeMapButton" destination="7d3-yR-bWV" id="GxH-pf-nmy"/>
             </connections>
-            <point key="canvasLocation" x="298.5" y="197"/>
+            <point key="canvasLocation" x="298.5" y="203.5"/>
         </tableViewCell>
     </objects>
+    <resources>
+        <image name="icon_ui_clock.png" width="108" height="111"/>
+        <image name="show_activ_button_bg.png" width="720" height="180"/>
+    </resources>
 </document>
