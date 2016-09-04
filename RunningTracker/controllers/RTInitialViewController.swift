@@ -10,19 +10,20 @@ import CoreImage
 
 class RTInitialViewController:UIViewController, CLLocationManagerDelegate {
 
-//    @IBOutlet weak var fetchAlarmView: UIView!
     @IBOutlet weak var myActivitiesButton: UIButton!
     @IBOutlet weak var startButton: UIButton!
+
     @IBOutlet weak var bestDistanceView: UIView!
     @IBOutlet weak var bestPaceView: UIView!
-    @IBOutlet weak var bestDistanceBGImageView: UIImageView!
-    @IBOutlet weak var bestPaceBGImageView: UIImageView!
+
     @IBOutlet weak var distanceLabel: UILabel!
     @IBOutlet weak var distanceDescLabel: UILabel!
     @IBOutlet weak var paceLabel: UILabel!
     @IBOutlet weak var paceDescLabel: UILabel!
     @IBOutlet weak var turnOnGPSLabel: UILabel!
-    
+
+    @IBOutlet weak var bestDistanceBGImageView: UIImageView!
+    @IBOutlet weak var bestPaceBGImageView: UIImageView!
     @IBOutlet weak var gpsImageView: UIImageView!
     @IBOutlet weak var startViewBGImageView: UIImageView!
 
@@ -34,14 +35,10 @@ class RTInitialViewController:UIViewController, CLLocationManagerDelegate {
         super.viewDidLoad()
         setupButtons()
         updateTexts()
-//        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(activitiesLoaded), name: "activitiesLoaded", object: nil)
-//        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(activitiesLoaded), name: "activitiesSaved", object: nil)
-//        activitiesModel.loadActivities(RTActivitiesModel.ArchiveURL.path!, storeManager: RTGlobalModels.sharedInstance.storeActivitiesManager)
     }
 
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
-        self.myActivitiesButton.enabled = self.activitiesModel.activitiesLength() > 0
         self.startButton.enabled = false
         self.turnOnGPSLabel.hidden = true
         self.startLocation()
@@ -82,21 +79,12 @@ class RTInitialViewController:UIViewController, CLLocationManagerDelegate {
         self.turnOnGPSLabel.adjustsFontSizeToFitWidth = true
     }
 
-
-    func activitiesLoaded(notification:NSNotification) {
-        dispatch_async(dispatch_get_main_queue(), {
-//            self.fetchAlarmView.hidden = true
-            self.myActivitiesButton.enabled = self.activitiesModel.activitiesLength() > 0
-        })
-    }
-
     func setupButtons(){
         self.myActivitiesButton.titleLabel?.numberOfLines = 1
         self.myActivitiesButton.titleEdgeInsets = UIEdgeInsets(top: 0.0, left: 15.0, bottom: 0.0, right: 15.0)
         self.myActivitiesButton.titleLabel?.adjustsFontSizeToFitWidth = true
         self.myActivitiesButton.titleLabel?.lineBreakMode = NSLineBreakMode.ByClipping
         self.myActivitiesButton.titleLabel?.textAlignment = NSTextAlignment.Center
-        self.myActivitiesButton.enabled = false
 
         self.startButton.enabled = false
         self.startButton.backgroundColor = UIColor.clearColor()

@@ -35,6 +35,7 @@
         <mutableArray key="OpenSans-Semibold.ttf">
             <string>OpenSans-Semibold</string>
             <string>OpenSans-Semibold</string>
+            <string>OpenSans-Semibold</string>
         </mutableArray>
     </customFonts>
     <scenes>
@@ -679,11 +680,22 @@
                                     <outlet property="delegate" destination="bTv-b6-vVZ" id="qdh-oc-Nvw"/>
                                 </connections>
                             </tableView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You have no activities yet." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UvP-Xz-Bz6" userLabel="NoActivities">
+                                <rect key="frame" x="18" y="116" width="329" height="28"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="28" id="YVL-gC-Sju"/>
+                                    <constraint firstAttribute="width" constant="329" id="x1a-Jf-7kF"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="20"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="EdN-jH-IcJ" firstAttribute="height" secondItem="5De-m0-jY4" secondAttribute="height" id="0Ci-jD-dUp"/>
                             <constraint firstItem="q6c-LV-rdn" firstAttribute="width" secondItem="5De-m0-jY4" secondAttribute="width" id="3Yu-c7-b3G"/>
+                            <constraint firstItem="UvP-Xz-Bz6" firstAttribute="top" secondItem="dpt-t0-9mw" secondAttribute="bottom" constant="96" id="3xb-W0-bLc"/>
                             <constraint firstItem="XRh-9O-0PW" firstAttribute="top" secondItem="q6c-LV-rdn" secondAttribute="bottom" constant="16" id="4Be-Co-KcH">
                                 <variation key="heightClass=compact-widthClass=compact" constant="-1"/>
                             </constraint>
@@ -693,12 +705,14 @@
                             <constraint firstItem="EdN-jH-IcJ" firstAttribute="width" secondItem="5De-m0-jY4" secondAttribute="width" id="R1s-56-0mC"/>
                             <constraint firstItem="XRh-9O-0PW" firstAttribute="width" secondItem="5De-m0-jY4" secondAttribute="width" id="RLQ-bf-XJW"/>
                             <constraint firstItem="q6c-LV-rdn" firstAttribute="top" secondItem="dpt-t0-9mw" secondAttribute="bottom" constant="20" id="hOv-mg-qgR"/>
+                            <constraint firstItem="UvP-Xz-Bz6" firstAttribute="leading" secondItem="5De-m0-jY4" secondAttribute="leadingMargin" constant="-2" id="iIs-ok-C9R"/>
                             <constraint firstItem="q6c-LV-rdn" firstAttribute="centerX" secondItem="5De-m0-jY4" secondAttribute="centerX" id="pRc-9N-4t3"/>
                             <constraint firstItem="5Fg-22-bd8" firstAttribute="top" secondItem="XRh-9O-0PW" secondAttribute="bottom" constant="10" id="tbl-Ov-Avb"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="backButtonView" destination="gAB-Rs-WEg" id="Ywd-uA-mlO"/>
+                        <outlet property="noActivitiesLabel" destination="UvP-Xz-Bz6" id="fyp-NP-Fbm"/>
                         <outlet property="tableView" destination="XRh-9O-0PW" id="7f2-Aa-sD2"/>
                     </connections>
                 </viewController>

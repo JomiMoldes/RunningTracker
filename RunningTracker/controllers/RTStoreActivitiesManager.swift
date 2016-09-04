@@ -47,7 +47,7 @@ class RTStoreActivitiesManager {
         self.allLocationsRecords = [CKRecord]()
         self.fetchingFromICloudSucceeded = true
 
-        /*if  deleteAll {
+        /*if  true {
 //            fetchActivitiesFromICloud()
             self.fetchLocations()
                return
@@ -57,11 +57,11 @@ class RTStoreActivitiesManager {
     }
 
     private func fetchFromICloudDone() {
-       /* if  deleteAll {
+        /*if  true {
             self.deleteAll(self.allLocationsRecords)
             self.deleteAll(self.allActivitiesRecords)
             return
-        }*/
+        } */
 
         syncLocalAndICloudData()
     }

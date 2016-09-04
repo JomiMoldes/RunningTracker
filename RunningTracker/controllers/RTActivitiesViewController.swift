@@ -10,6 +10,7 @@ class RTActivitiesViewController : UIViewController, UITableViewDelegate, UITabl
 
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var backButtonView: RTBackButtonView!
+    @IBOutlet weak var noActivitiesLabel: UILabel!
 
     var activitiesModel : RTActivitiesModel!
     var activities:[RTActivity] = [RTActivity]()
@@ -21,6 +22,7 @@ class RTActivitiesViewController : UIViewController, UITableViewDelegate, UITabl
         self.activities = self.activities.reverse()
         setupTable()
         setupBackButton()
+        noActivitiesLabel.hidden = self.activities.count > 0
     }
 
     func setupBackButton() {
@@ -33,6 +35,7 @@ class RTActivitiesViewController : UIViewController, UITableViewDelegate, UITabl
     }
 
     func setupTable() {
+        self.tableView.hidden = self.activities.count == 0
         self.tableView.registerNib(UINib(nibName:"RTActivityViewCell", bundle:nil), forCellReuseIdentifier: "activityViewCell")
         self.tableView.delegate = self
         self.tableView.dataSource = self
