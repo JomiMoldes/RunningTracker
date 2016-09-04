@@ -265,7 +265,6 @@ class RTStoreActivitiesManager {
         for record in records {
             privateDatabase.deleteRecordWithID(record.recordID, completionHandler: {
                 record, error in
-                print(error)
             })
         }
     }
