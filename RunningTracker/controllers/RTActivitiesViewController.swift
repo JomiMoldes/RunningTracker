@@ -14,6 +14,7 @@ class RTActivitiesViewController : UIViewController, UITableViewDelegate, UITabl
 
     var activitiesModel : RTActivitiesModel!
     var activities:[RTActivity] = [RTActivity]()
+    var longPressGesture : UILongPressGestureRecognizer!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,6 +35,12 @@ class RTActivitiesViewController : UIViewController, UITableViewDelegate, UITabl
         self.navigationController!.popViewControllerAnimated(true)
     }
 
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        noActivitiesLabel.hidden = self.activities.count > 0
+    }
+
+
     func setupTable() {
         self.tableView.hidden = self.activities.count == 0
         self.tableView.registerNib(UINib(nibName:"RTActivityViewCell", bundle:nil), forCellReuseIdentifier: "activityViewCell")
@@ -44,7 +51,7 @@ class RTActivitiesViewController : UIViewController, UITableViewDelegate, UITabl
 // UITable delegate and source data
 
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.activitiesModel.activitiesLength()
+        return self.activities.count
     }
 
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -66,6 +73,16 @@ class RTActivitiesViewController : UIViewController, UITableViewDelegate, UITabl
         let activityDoneMap = UIStoryboard(name:"Main", bundle:nil).instantiateViewControllerWithIdentifier("activityDoneMap") as? RTActivityPathDoneViewController
         activityDoneMap!.activity = activity
         self.navigationController!.pushViewController(activityDoneMap!, animated:true)
+    }
+
+    func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
+        if editingStyle == UITableViewCellEditingStyle.Delete {
+            let activity = self.activities[indexPath.item]
+            self.activitiesModel.deleteActivity(activity, storeManager: RTGlobalModels.sharedInstance.storeActivitiesManager)
+            self.activities.removeAtIndex(indexPath.row)
+            self.tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Automatic)
+            self.view.setNeedsUpdateConstraints()
+        }
     }
 
 }

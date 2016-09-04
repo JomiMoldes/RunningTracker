@@ -31,6 +31,35 @@ class RTStoreActivitiesManager {
         self.saveActivityOnICloud(activities[activities.count - 1])
     }
 
+    func deleteActivity(activity:RTActivity) {
+        for localActivity:RTActivity in self.activitiesSavedLocally! {
+            if Int(localActivity.startTime) == Int(activity.startTime) {
+                let index = self.activitiesSavedLocally!.indexOf(localActivity)
+                self.activitiesSavedLocally!.removeAtIndex(index!)
+                saveLocally()
+            }
+        }
+
+        var recordsToDelete : [CKRecord] = [CKRecord]()
+        let activityId = Int(activity.startTime)
+        for record : CKRecord in self.allActivitiesRecords {
+            let recordId = record.valueForKey("starttime") as! Int
+            if  recordId == activityId {
+                recordsToDelete.append(record)
+                break
+            }
+        }
+
+        for location : CKRecord in self.allLocationsRecords {
+            let recordId = location.valueForKey("activityid") as! Int
+            if recordId == activityId {
+                recordsToDelete.append(location)
+            }
+        }
+
+        deleteAll(recordsToDelete)
+    }
+
     private func saveActivityOnICloud(activity:RTActivity) {
         var recordsToAdd = [CKRecord]()
         let activityId = Int(activity.startTime)
@@ -38,7 +67,10 @@ class RTStoreActivitiesManager {
         recordsToAdd.append(newRecord)
         recordsToAdd += self.getLocationRecords(activity.getActivitiesCopy(), activityId:activityId)
         self.saveRecords(recordsToAdd, completion:{
-            self.startSync()
+            let delayTime = dispatch_time(DISPATCH_TIME_NOW, Int64(2 * Double(NSEC_PER_SEC)))
+            dispatch_after(delayTime, dispatch_get_main_queue()) {
+                self.startSync()
+            }
         })
     }
 
@@ -201,7 +233,6 @@ class RTStoreActivitiesManager {
     }
 
     private func getLocationRecords(locations:[RTActivityLocation], activityId:Int) -> [CKRecord] {
-        print (locations.count)
         var locationRecords = [CKRecord]()
         for location in locations {
             let record = CKRecord(recordType: "Locations")
@@ -234,6 +265,7 @@ class RTStoreActivitiesManager {
         for record in records {
             privateDatabase.deleteRecordWithID(record.recordID, completionHandler: {
                 record, error in
+                print(error)
             })
         }
     }

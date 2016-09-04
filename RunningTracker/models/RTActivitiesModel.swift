@@ -61,6 +61,17 @@ class RTActivitiesModel {
         return true
     }
 
+    func deleteActivity(activityToDelete:RTActivity, storeManager:RTStoreActivitiesManager) {
+        for activity:RTActivity in self.activities {
+            if activity.startTime == activityToDelete.startTime {
+                storeManager.deleteActivity(activityToDelete)
+                self.activities.removeAtIndex(self.activities.indexOf(activity)!)
+                return
+            }
+        }
+
+    }
+
     func loadActivities(path:String, storeManager:RTStoreActivitiesManager) {
         storeManager.start(path, completion: {
             activities in
