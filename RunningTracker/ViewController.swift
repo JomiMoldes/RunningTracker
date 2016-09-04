@@ -26,10 +26,6 @@ class ViewController: UIViewController {
         checkForICloud()
     }
 
-    override func viewDidAppear(animated: Bool) {
-        super.viewDidAppear(animated)
-    }
-
     func loadInitialView() {
         let storyBoard = UIStoryboard(name:"Main", bundle: nil)
         let initialViewController = storyBoard.instantiateViewControllerWithIdentifier("InitialView") as? RTInitialViewController

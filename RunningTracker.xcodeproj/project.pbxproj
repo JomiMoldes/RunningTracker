@@ -28,6 +28,8 @@
 		45BAFB4954F5FC35FE3BDF03 /* RTUIImageExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45BAF26DFA84631ED88E908D /* RTUIImageExtensions.swift */; };
 		45BAFC1E17D04D6F678D3556 /* RTActivitiesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45BAF7E2708014ED6B2508B8 /* RTActivitiesViewController.swift */; };
 		45BAFDB74A04267B17CF9E29 /* RTActivityLocationTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45BAF28DA446F982A3545F62 /* RTActivityLocationTest.swift */; };
+		4805D4781D7CBE4B00A04879 /* AFNetworking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4805D4701D7CBB7C00A04879 /* AFNetworking.framework */; };
+		4805D4791D7CBE5100A04879 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 487BE8651D55F01D00ABC1ED /* CloudKit.framework */; };
 		48650E8B1D6DEF36006BE423 /* OpenSans-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 48650E811D6DEF36006BE423 /* OpenSans-Bold.ttf */; };
 		48650E8C1D6DEF36006BE423 /* OpenSans-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 48650E821D6DEF36006BE423 /* OpenSans-BoldItalic.ttf */; };
 		48650E8D1D6DEF36006BE423 /* OpenSans-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 48650E831D6DEF36006BE423 /* OpenSans-ExtraBold.ttf */; };
@@ -41,7 +43,6 @@
 		48776CDB1D3BAA5100630A64 /* RTActivitiesModelTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48776CDA1D3BAA5100630A64 /* RTActivitiesModelTest.swift */; };
 		48776CDD1D3D0BF000630A64 /* RTActivityViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 48776CDC1D3D0BF000630A64 /* RTActivityViewCell.xib */; };
 		48776CDF1D3D1DDE00630A64 /* RTActivityHeaderViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 48776CDE1D3D1DDE00630A64 /* RTActivityHeaderViewCell.xib */; };
-		487BE8661D55F01D00ABC1ED /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 487BE8651D55F01D00ABC1ED /* CloudKit.framework */; };
 		487BE86B1D6AF37300ABC1ED /* Flag_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 487BE8691D6AF37300ABC1ED /* Flag_icon.png */; };
 		487BE86C1D6AF37300ABC1ED /* Km_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 487BE86A1D6AF37300ABC1ED /* Km_icon.png */; };
 		48E0E2E41D2EC7360036F56B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48E0E2E31D2EC7360036F56B /* AppDelegate.swift */; };
@@ -77,7 +78,7 @@
 		48FFB0021D79C46D0005906A /* LaunchScreen2.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 48FFB0011D79C46D0005906A /* LaunchScreen2.storyboard */; };
 		48FFB0041D79E7020005906A /* RTBackButtonView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 48FFB0031D79E7020005906A /* RTBackButtonView.xib */; };
 		48FFB0061D7AF7DC0005906A /* triangle2.png in Resources */ = {isa = PBXBuildFile; fileRef = 48FFB0051D7AF7DC0005906A /* triangle2.png */; };
-		676DCD32EEE4824ACDD6C224 /* Pods_RunningTracker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3601DCAABE1D4283238AB370 /* Pods_RunningTracker.framework */; };
+		B904FB9CCD7A05DC9417E2F1 /* Pods_RunningTracker.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 3601DCAABE1D4283238AB370 /* Pods_RunningTracker.framework */; };
 		B9BE95B7CD5ED6CB8A3FA802 /* Pods_RunningTrackerTests.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 1315FDBE7333EC72080A4E18 /* Pods_RunningTrackerTests.framework */; };
 /* End PBXBuildFile section */
 
@@ -93,8 +94,6 @@
 
 /* Begin PBXFileReference section */
 		1315FDBE7333EC72080A4E18 /* Pods_RunningTrackerTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RunningTrackerTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		189B33394D6AEC0A54BD5BAD /* Pods-RunningTracker.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RunningTracker.release.xcconfig"; path = "Pods/Target Support Files/Pods-RunningTracker/Pods-RunningTracker.release.xcconfig"; sourceTree = "<group>"; };
-		3130775CFE5E16821CEF094A /* Pods-RunningTracker.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RunningTracker.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RunningTracker/Pods-RunningTracker.debug.xcconfig"; sourceTree = "<group>"; };
 		3601DCAABE1D4283238AB370 /* Pods_RunningTracker.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_RunningTracker.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		45BAF05862AA772DB523305A /* RTInitialViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RTInitialViewController.swift; sourceTree = "<group>"; };
 		45BAF0CB67C24E3DF1344558 /* RTActivity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RTActivity.swift; sourceTree = "<group>"; };
@@ -116,6 +115,7 @@
 		45BAFC31489610B135A32E38 /* RTActivityTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RTActivityTest.swift; sourceTree = "<group>"; };
 		45BAFF68ED584FDC0B44D139 /* RTActivityHeaderViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RTActivityHeaderViewCell.swift; sourceTree = "<group>"; };
 		45BAFFD865067F8BF0CE76C5 /* RTStoreActivitiesManagerTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RTStoreActivitiesManagerTest.swift; sourceTree = "<group>"; };
+		4805D4701D7CBB7C00A04879 /* AFNetworking.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AFNetworking.framework; path = "../../../../Library/Developer/Xcode/DerivedData/RunningTracker-cyobtvdaneufctbpnvgqhgylaxzi/Build/Products/Debug-iphonesimulator/AFNetworking/AFNetworking.framework"; sourceTree = "<group>"; };
 		48650E811D6DEF36006BE423 /* OpenSans-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Bold.ttf"; sourceTree = "<group>"; };
 		48650E821D6DEF36006BE423 /* OpenSans-BoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-BoldItalic.ttf"; sourceTree = "<group>"; };
 		48650E831D6DEF36006BE423 /* OpenSans-ExtraBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-ExtraBold.ttf"; sourceTree = "<group>"; };
@@ -171,6 +171,8 @@
 		48FFB0011D79C46D0005906A /* LaunchScreen2.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = LaunchScreen2.storyboard; sourceTree = "<group>"; };
 		48FFB0031D79E7020005906A /* RTBackButtonView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RTBackButtonView.xib; sourceTree = "<group>"; };
 		48FFB0051D7AF7DC0005906A /* triangle2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = triangle2.png; sourceTree = "<group>"; };
+		4CCDA7C6B5A5FEE4AD7A9B38 /* Pods-RunningTracker.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RunningTracker.release.xcconfig"; path = "Pods/Target Support Files/Pods-RunningTracker/Pods-RunningTracker.release.xcconfig"; sourceTree = "<group>"; };
+		5E0FD7823B68FED4D62177B9 /* Pods-RunningTracker.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RunningTracker.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RunningTracker/Pods-RunningTracker.debug.xcconfig"; sourceTree = "<group>"; };
 		A086E0DB99F2A930C0AA1253 /* Pods-RunningTrackerTests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RunningTrackerTests.debug.xcconfig"; path = "Pods/Target Support Files/Pods-RunningTrackerTests/Pods-RunningTrackerTests.debug.xcconfig"; sourceTree = "<group>"; };
 		D1CB825CE456C4D9EFD8A49A /* Pods-RunningTrackerTests.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-RunningTrackerTests.release.xcconfig"; path = "Pods/Target Support Files/Pods-RunningTrackerTests/Pods-RunningTrackerTests.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -180,8 +182,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				676DCD32EEE4824ACDD6C224 /* Pods_RunningTracker.framework in Frameworks */,
-				487BE8661D55F01D00ABC1ED /* CloudKit.framework in Frameworks */,
+				4805D4791D7CBE5100A04879 /* CloudKit.framework in Frameworks */,
+				4805D4781D7CBE4B00A04879 /* AFNetworking.framework in Frameworks */,
+				B904FB9CCD7A05DC9417E2F1 /* Pods_RunningTracker.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -353,6 +356,7 @@
 		C4662212F9EF6B1EE38B9415 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				4805D4701D7CBB7C00A04879 /* AFNetworking.framework */,
 				487BE8651D55F01D00ABC1ED /* CloudKit.framework */,
 				3601DCAABE1D4283238AB370 /* Pods_RunningTracker.framework */,
 				1315FDBE7333EC72080A4E18 /* Pods_RunningTrackerTests.framework */,
@@ -363,10 +367,10 @@
 		E679CA978652F2E555905FFE /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				3130775CFE5E16821CEF094A /* Pods-RunningTracker.debug.xcconfig */,
-				189B33394D6AEC0A54BD5BAD /* Pods-RunningTracker.release.xcconfig */,
 				A086E0DB99F2A930C0AA1253 /* Pods-RunningTrackerTests.debug.xcconfig */,
 				D1CB825CE456C4D9EFD8A49A /* Pods-RunningTrackerTests.release.xcconfig */,
+				5E0FD7823B68FED4D62177B9 /* Pods-RunningTracker.debug.xcconfig */,
+				4CCDA7C6B5A5FEE4AD7A9B38 /* Pods-RunningTracker.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -384,6 +388,7 @@
 				48E0E2DE1D2EC7360036F56B /* Resources */,
 				E21E8B7EB018CF81BA4C3908 /* [CP] Embed Pods Frameworks */,
 				18447DC681624EA750F7E2AC /* [CP] Copy Pods Resources */,
+				48C771BA1D7CA4140017A71F /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -551,6 +556,19 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-RunningTracker/Pods-RunningTracker-resources.sh\"\n";
 			showEnvVarsInLog = 0;
+		};
+		48C771BA1D7CA4140017A71F /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Fabric/run\" b0a7d2d24b9c7892a256a07e1aa72672da3cbb70 6ba00f21dd28ca2bef52b1e86ea8e9dad8f551cdb0c6f1df3a5ec8b28e679dd9";
 		};
 		5B581C3ACB5C1068C87B02E7 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
@@ -759,17 +777,17 @@
 		};
 		48E0E2FE1D2EC7360036F56B /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 3130775CFE5E16821CEF094A /* Pods-RunningTracker.debug.xcconfig */;
+			baseConfigurationReference = 5E0FD7823B68FED4D62177B9 /* Pods-RunningTracker.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-1";
 				CODE_SIGN_ENTITLEMENTS = RunningTracker/RunningTracker.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer: JOSE MOLDES (79RZ4K8975)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: JOSE MOLDES (79RZ4K8975)";
-				EMBEDDED_CONTENT_CONTAINS_SWIFT = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				INFOPLIST_FILE = RunningTracker/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_SWIFT_FLAGS = "-DDEBUG";
-				PRODUCT_BUNDLE_IDENTIFIER = com.runningtracker.dev;
+				PRODUCT_BUNDLE_IDENTIFIER = com.runningtracker.prod;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
@@ -778,16 +796,15 @@
 		};
 		48E0E2FF1D2EC7360036F56B /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 189B33394D6AEC0A54BD5BAD /* Pods-RunningTracker.release.xcconfig */;
+			baseConfigurationReference = 4CCDA7C6B5A5FEE4AD7A9B38 /* Pods-RunningTracker.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = "AppIcon-1";
 				CODE_SIGN_ENTITLEMENTS = RunningTracker/RunningTracker.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: JOSE MOLDES (2G24Q5X34D)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: JOSE MOLDES (2G24Q5X34D)";
-				EMBEDDED_CONTENT_CONTAINS_SWIFT = NO;
 				INFOPLIST_FILE = RunningTracker/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.runningtracker.dev;
+				PRODUCT_BUNDLE_IDENTIFIER = com.runningtracker.prod;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_INTERFACE_HEADER_NAME = "$(SWIFT_MODULE_NAME)-Swift.h";

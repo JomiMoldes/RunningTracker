@@ -21,7 +21,7 @@
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>3.3</string>
+	<string>3.4</string>
 	<key>CFBundleSignature</key>
 	<string>????</string>
 	<key>CFBundleURLTypes</key>
@@ -37,6 +37,21 @@
 	</array>
 	<key>CFBundleVersion</key>
 	<string>1</string>
+	<key>Fabric</key>
+	<dict>
+		<key>APIKey</key>
+		<string>b0a7d2d24b9c7892a256a07e1aa72672da3cbb70</string>
+		<key>Kits</key>
+		<array>
+			<dict>
+				<key>Item 0</key>
+				<dict>
+					<key>KitName</key>
+					<string>Crashlytics</string>
+				</dict>
+			</dict>
+		</array>
+	</dict>
 	<key>ITSAppUsesNonExemptEncryption</key>
 	<false/>
 	<key>LSApplicationQueriesSchemes</key>
