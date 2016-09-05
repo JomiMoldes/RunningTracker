@@ -35,12 +35,12 @@ class RTInitialViewController:UIViewController, CLLocationManagerDelegate {
         super.viewDidLoad()
         setupButtons()
         updateTexts()
+        self.turnOnGPSLabel.hidden = true
     }
 
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
         self.startButton.enabled = false
-        self.turnOnGPSLabel.hidden = true
         self.startLocation()
     }
 
