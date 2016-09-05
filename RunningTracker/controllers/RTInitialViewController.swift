@@ -84,7 +84,6 @@ class RTInitialViewController:UIViewController, CLLocationManagerDelegate {
         self.myActivitiesButton.titleLabel?.numberOfLines = 1
         let sideInsetsForActivitiesButton = CGFloat(Int(55 * self.view.frame.size.width / 414))
         self.myActivitiesButton.titleEdgeInsets = UIEdgeInsets(top: 0.0, left: sideInsetsForActivitiesButton, bottom: 0.0, right: sideInsetsForActivitiesButton)
-//        self.myActivitiesButton.titleLabel?.adjustsFontSizeToFitWidth = true
         self.myActivitiesButton.titleLabel?.lineBreakMode = NSLineBreakMode.ByClipping
         self.myActivitiesButton.titleLabel?.textAlignment = NSTextAlignment.Center
 

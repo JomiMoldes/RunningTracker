@@ -14,15 +14,15 @@ extension UILabel {
         var attributedString = NSAttributedString(string: self.text!, attributes: [NSFontAttributeName: UIFont(name: self.font!.familyName, size: fontSize)!])
 
         let currentSize = self.frame.size
-        let constarinsSize = CGSizeMake(1000.0, 1000.0)
+        let constrainsSize = CGSizeMake(1000.0, 1000.0)
 
-        var myFrame = attributedString.boundingRectWithSize(constarinsSize, options: NSStringDrawingOptions.UsesLineFragmentOrigin, context: nil)
+        var myFrame = attributedString.boundingRectWithSize(constrainsSize, options: NSStringDrawingOptions.UsesLineFragmentOrigin, context: nil)
         success = myFrame.size.width <= currentSize.width
 
         while !success {
             fontSize = fontSize - 1
             attributedString = NSAttributedString(string: self.text!, attributes: [NSFontAttributeName: UIFont(name: self.font!.familyName, size: fontSize )!])
-            myFrame = attributedString.boundingRectWithSize(constarinsSize, options: NSStringDrawingOptions.UsesLineFragmentOrigin, context: nil)
+            myFrame = attributedString.boundingRectWithSize(constrainsSize, options: NSStringDrawingOptions.UsesLineFragmentOrigin, context: nil)
             success = myFrame.size.width <= currentSize.width
         }
         self.attributedText = attributedString
