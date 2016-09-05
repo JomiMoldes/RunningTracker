@@ -48,6 +48,7 @@ class RTInitialViewController:UIViewController, CLLocationManagerDelegate {
         super.viewDidLayoutSubviews()
         setupWhiteBackgrounds()
         updateTexts()
+        updateButtonsLabels()
     }
 
     override func viewWillDisappear(animated: Bool) {
@@ -81,13 +82,17 @@ class RTInitialViewController:UIViewController, CLLocationManagerDelegate {
 
     func setupButtons(){
         self.myActivitiesButton.titleLabel?.numberOfLines = 1
-        self.myActivitiesButton.titleEdgeInsets = UIEdgeInsets(top: 0.0, left: 25.0, bottom: 0.0, right: 25.0)
-        self.myActivitiesButton.titleLabel?.adjustsFontSizeToFitWidth = true
+        let sideInsetsForActivitiesButton = CGFloat(Int(55 * self.view.frame.size.width / 414))
+        self.myActivitiesButton.titleEdgeInsets = UIEdgeInsets(top: 0.0, left: sideInsetsForActivitiesButton, bottom: 0.0, right: sideInsetsForActivitiesButton)
+//        self.myActivitiesButton.titleLabel?.adjustsFontSizeToFitWidth = true
         self.myActivitiesButton.titleLabel?.lineBreakMode = NSLineBreakMode.ByClipping
         self.myActivitiesButton.titleLabel?.textAlignment = NSTextAlignment.Center
 
         self.startButton.enabled = false
         self.startButton.backgroundColor = UIColor.clearColor()
+
+        let sideInsets = CGFloat(Int(45 * self.view.frame.size.width / 414))
+        self.startButton.titleEdgeInsets = UIEdgeInsets(top:15.0, left: sideInsets, bottom: 15.0, right: sideInsets)
 
         if let bgImage = self.startButton.currentBackgroundImage {
             let rect = CGRect(x: 0, y: 0, width: bgImage.size.width, height: bgImage.size.height)
@@ -103,6 +108,17 @@ class RTInitialViewController:UIViewController, CLLocationManagerDelegate {
             UIGraphicsEndImageContext()
 
             self.startButton.setBackgroundImage(newUIImage, forState: UIControlState.Disabled)
+        }
+    }
+
+    func updateButtonsLabels() {
+        let label = self.startButton.titleLabel!
+        if label.frame.size.width > 0 {
+            label.shrinkFont()
+        }
+        let activitiesLabel = self.myActivitiesButton.titleLabel!
+        if activitiesLabel.frame.size.width > 0 {
+            activitiesLabel.shrinkFont()
         }
     }
 

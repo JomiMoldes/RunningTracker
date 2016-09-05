@@ -179,7 +179,7 @@
                                                         <variation key="widthClass=compact" constant="26.928571428571445"/>
                                                     </constraint>
                                                 </constraints>
-                                                <fontDescription key="fontDescription" name="OpenSans-Light" family="Open Sans" pointSize="25"/>
+                                                <fontDescription key="fontDescription" name="OpenSans-Light" family="Open Sans" pointSize="26"/>
                                                 <state key="normal" title="Start Recording" backgroundImage="start_button_background.png">
                                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                 </state>
@@ -249,7 +249,7 @@
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="ozF-iw-eKP" secondAttribute="height" multiplier="4:1" id="lWo-ba-wGS"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" name="OpenSans-Light" family="Open Sans" pointSize="24"/>
+                                        <fontDescription key="fontDescription" name="OpenSans-Light" family="Open Sans" pointSize="21"/>
                                         <state key="normal" title="Show activities" backgroundImage="show_activ_button_bg.png">
                                             <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
