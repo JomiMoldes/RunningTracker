@@ -57,9 +57,9 @@ class RTInitialViewController:UIViewController, CLLocationManagerDelegate {
     }
 
     func setupWhiteBackgrounds() {
-        let insetSize = CGFloat(15.0)
+        let insetSize = CGFloat(20.0)
         let insets = UIEdgeInsets(top: insetSize, left: insetSize, bottom: insetSize, right: insetSize)
-        let bgImage = UIImage(named: "white_background.png")
+        let bgImage = UIImage(named: "white_background")
         self.startViewBGImageView.image = bgImage!.resizableImageWithCapInsets(insets, resizingMode: .Stretch)
         self.bestDistanceBGImageView.image = bgImage!.resizableImageWithCapInsets(insets, resizingMode: .Stretch)
         self.bestPaceBGImageView.image = bgImage!.resizableImageWithCapInsets(insets, resizingMode: .Stretch)
@@ -81,7 +81,7 @@ class RTInitialViewController:UIViewController, CLLocationManagerDelegate {
 
     func setupButtons(){
         self.myActivitiesButton.titleLabel?.numberOfLines = 1
-        self.myActivitiesButton.titleEdgeInsets = UIEdgeInsets(top: 0.0, left: 15.0, bottom: 0.0, right: 15.0)
+        self.myActivitiesButton.titleEdgeInsets = UIEdgeInsets(top: 0.0, left: 25.0, bottom: 0.0, right: 25.0)
         self.myActivitiesButton.titleLabel?.adjustsFontSizeToFitWidth = true
         self.myActivitiesButton.titleLabel?.lineBreakMode = NSLineBreakMode.ByClipping
         self.myActivitiesButton.titleLabel?.textAlignment = NSTextAlignment.Center

@@ -30,6 +30,8 @@
 		45BAFDB74A04267B17CF9E29 /* RTActivityLocationTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45BAF28DA446F982A3545F62 /* RTActivityLocationTest.swift */; };
 		4805D4781D7CBE4B00A04879 /* AFNetworking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4805D4701D7CBB7C00A04879 /* AFNetworking.framework */; };
 		4805D4791D7CBE5100A04879 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 487BE8651D55F01D00ABC1ED /* CloudKit.framework */; };
+		4805D4861D7D8CEC00A04879 /* white_background@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4805D4841D7D8CEC00A04879 /* white_background@2x.png */; };
+		4805D4871D7D8CEC00A04879 /* white_background@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4805D4851D7D8CEC00A04879 /* white_background@3x.png */; };
 		48650E8B1D6DEF36006BE423 /* OpenSans-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 48650E811D6DEF36006BE423 /* OpenSans-Bold.ttf */; };
 		48650E8C1D6DEF36006BE423 /* OpenSans-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 48650E821D6DEF36006BE423 /* OpenSans-BoldItalic.ttf */; };
 		48650E8D1D6DEF36006BE423 /* OpenSans-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 48650E831D6DEF36006BE423 /* OpenSans-ExtraBold.ttf */; };
@@ -116,6 +118,8 @@
 		45BAFF68ED584FDC0B44D139 /* RTActivityHeaderViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RTActivityHeaderViewCell.swift; sourceTree = "<group>"; };
 		45BAFFD865067F8BF0CE76C5 /* RTStoreActivitiesManagerTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RTStoreActivitiesManagerTest.swift; sourceTree = "<group>"; };
 		4805D4701D7CBB7C00A04879 /* AFNetworking.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AFNetworking.framework; path = "../../../../Library/Developer/Xcode/DerivedData/RunningTracker-cyobtvdaneufctbpnvgqhgylaxzi/Build/Products/Debug-iphonesimulator/AFNetworking/AFNetworking.framework"; sourceTree = "<group>"; };
+		4805D4841D7D8CEC00A04879 /* white_background@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "white_background@2x.png"; sourceTree = "<group>"; };
+		4805D4851D7D8CEC00A04879 /* white_background@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "white_background@3x.png"; sourceTree = "<group>"; };
 		48650E811D6DEF36006BE423 /* OpenSans-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Bold.ttf"; sourceTree = "<group>"; };
 		48650E821D6DEF36006BE423 /* OpenSans-BoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-BoldItalic.ttf"; sourceTree = "<group>"; };
 		48650E831D6DEF36006BE423 /* OpenSans-ExtraBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-ExtraBold.ttf"; sourceTree = "<group>"; };
@@ -226,6 +230,8 @@
 		45BAF8A918FC0E09EDE8CA29 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				4805D4841D7D8CEC00A04879 /* white_background@2x.png */,
+				4805D4851D7D8CEC00A04879 /* white_background@3x.png */,
 				48FFB0051D7AF7DC0005906A /* triangle2.png */,
 				48FFAFFD1D78A7EB0005906A /* distance_icon.png */,
 				48FFAFFE1D78A7EB0005906A /* pace_icon.png */,
@@ -499,6 +505,8 @@
 				48650E8D1D6DEF36006BE423 /* OpenSans-ExtraBold.ttf in Resources */,
 				48E4C0F91D7583670086AE54 /* icon_ui_start_recording.png in Resources */,
 				48650E8F1D6DEF36006BE423 /* OpenSans-Italic.ttf in Resources */,
+				4805D4871D7D8CEC00A04879 /* white_background@3x.png in Resources */,
+				4805D4861D7D8CEC00A04879 /* white_background@2x.png in Resources */,
 				48E0E3191D2ECD2B0036F56B /* MyTrackerRed.png in Resources */,
 				48E4C0FC1D7583670086AE54 /* isologo.png in Resources */,
 				48650E911D6DEF36006BE423 /* OpenSans-LightItalic.ttf in Resources */,
