@@ -34,5 +34,24 @@ class RTActivityViewCell : UITableViewCell {
         self.seeMapButton.enabled = false
     }
 
+    override func layoutSubviews ()
+    {
+        super.layoutSubviews()
+        let width = CGRectGetWidth( frame )
+        if width > 0 {
+            let buttonSize = self.seeMapButton.frame.size
+            let insetsSize = CGFloat(10.0)
+            self.seeMapButton.titleLabel!.frame = CGRectMake(0.0, 0.0, buttonSize.width - insetsSize * 2, buttonSize.height)
+
+            let insets = UIEdgeInsets(top: 0.0, left: insetsSize, bottom: 0.0, right: insetsSize)
+            self.seeMapButton.titleEdgeInsets = insets
+            self.seeMapButton.titleLabel?.lineBreakMode = NSLineBreakMode.ByClipping
+            self.seeMapButton.titleLabel?.textAlignment = NSTextAlignment.Center
+
+            self.seeMapButton.titleLabel!.shrinkFont()
+
+        }
+    }
+
 
 }

@@ -254,7 +254,6 @@
                                             <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
                                         <state key="disabled" backgroundImage="show_activ_button_bg.png"/>
-                                        <state key="selected" backgroundImage="show_activ_button_bg.png"/>
                                         <state key="highlighted" backgroundImage="show_activ_button_bg.png"/>
                                         <state key="focused" backgroundImage="show_activ_button_bg.png"/>
                                         <connections>
@@ -893,7 +892,7 @@
         <image name="isologo.png" width="812" height="89"/>
         <image name="logo.png" width="570" height="361"/>
         <image name="pace_icon.png" width="314" height="279"/>
-        <image name="show_activ_button_bg.png" width="720" height="180"/>
+        <image name="show_activ_button_bg.png" width="240" height="60"/>
         <image name="start_button_background.png" width="825" height="173"/>
         <image name="triangle.png" width="1242" height="414"/>
         <image name="triangle2.png" width="1242" height="414"/>

@@ -62,29 +62,30 @@
                             <constraint firstAttribute="width" secondItem="tnV-bI-xSS" secondAttribute="height" multiplier="73:62" id="DeT-mq-IHA"/>
                         </constraints>
                     </imageView>
-                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7d3-yR-bWV">
-                        <rect key="frame" x="380" y="14" width="75" height="42"/>
+                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7d3-yR-bWV">
+                        <rect key="frame" x="393" y="16" width="64" height="40"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstAttribute="width" secondItem="7d3-yR-bWV" secondAttribute="height" multiplier="77:43" id="epb-Ph-qUh"/>
+                            <constraint firstAttribute="width" secondItem="7d3-yR-bWV" secondAttribute="height" multiplier="8:5" id="iJN-cs-57N"/>
                         </constraints>
                         <fontDescription key="fontDescription" name="OpenSans-Light" family="Open Sans" pointSize="15"/>
-                        <state key="normal" title="See map" backgroundImage="show_activ_button_bg.png">
+                        <state key="normal" title="See map" backgroundImage="see_map_bg.png">
                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         </state>
                     </button>
                 </subviews>
                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                 <constraints>
-                    <constraint firstAttribute="trailingMargin" secondItem="7d3-yR-bWV" secondAttribute="trailing" constant="10" id="Cej-dX-atx"/>
-                    <constraint firstItem="7d3-yR-bWV" firstAttribute="height" secondItem="MUc-zm-xRh" secondAttribute="height" multiplier="0.6" id="HXL-s8-f5A"/>
-                    <constraint firstItem="7d3-yR-bWV" firstAttribute="centerY" secondItem="MUc-zm-xRh" secondAttribute="centerY" id="I1T-gf-Hdf"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="7d3-yR-bWV" secondAttribute="trailing" constant="8" id="Cej-dX-atx"/>
+                    <constraint firstItem="7d3-yR-bWV" firstAttribute="height" secondItem="MUc-zm-xRh" secondAttribute="height" multiplier="0.6" constant="-2" id="HXL-s8-f5A"/>
+                    <constraint firstItem="7d3-yR-bWV" firstAttribute="centerY" secondItem="MUc-zm-xRh" secondAttribute="centerY" constant="1" id="I1T-gf-Hdf"/>
                     <constraint firstItem="tnV-bI-xSS" firstAttribute="height" secondItem="MUc-zm-xRh" secondAttribute="height" multiplier="0.52" id="PpK-JQ-fUf"/>
                     <constraint firstItem="64d-OT-9Ig" firstAttribute="centerY" secondItem="MUc-zm-xRh" secondAttribute="centerY" id="YNx-4b-pbG"/>
                     <constraint firstItem="64d-OT-9Ig" firstAttribute="height" secondItem="MUc-zm-xRh" secondAttribute="height" multiplier="0.5" id="jby-3Y-j7i"/>
                     <constraint firstItem="tnV-bI-xSS" firstAttribute="leading" secondItem="MUc-zm-xRh" secondAttribute="leadingMargin" constant="4" id="n09-NG-qNc"/>
                     <constraint firstItem="64d-OT-9Ig" firstAttribute="leading" secondItem="tnV-bI-xSS" secondAttribute="trailing" constant="17" id="rSw-bb-Lyu"/>
                     <constraint firstItem="tnV-bI-xSS" firstAttribute="centerY" secondItem="MUc-zm-xRh" secondAttribute="centerY" id="rc8-RB-JWP"/>
-                    <constraint firstItem="7d3-yR-bWV" firstAttribute="leading" secondItem="64d-OT-9Ig" secondAttribute="trailing" constant="-5" id="vSQ-T6-Yc2"/>
+                    <constraint firstItem="7d3-yR-bWV" firstAttribute="leading" secondItem="64d-OT-9Ig" secondAttribute="trailing" constant="8" id="zTS-zd-84t"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>
@@ -97,6 +98,6 @@
     </objects>
     <resources>
         <image name="icon_ui_clock.png" width="108" height="111"/>
-        <image name="show_activ_button_bg.png" width="720" height="180"/>
+        <image name="see_map_bg.png" width="96" height="60"/>
     </resources>
 </document>
