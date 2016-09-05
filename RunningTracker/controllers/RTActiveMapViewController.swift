@@ -205,30 +205,52 @@ class RTActiveMapViewController : UIViewController, CLLocationManagerDelegate, G
             self.addEndFlagMarker()
         }
         invalidateTimer()
-        self.pauseButton.enabled = false
     }
+
+    func showStopOptions() {
+        let alert = UIAlertController(title: nil, message: "Are you sure you want to finish?", preferredStyle: .ActionSheet)
+        let cancelAction = UIAlertAction(title:"No! Keep going!", style: .Cancel) {
+            (action) in
+        }
+        alert.addAction(cancelAction)
+
+        let okAction = UIAlertAction(title:"Yes, I'm done.", style: .Default) {
+            (action) in
+            self.endActivity()
+        }
+        alert.addAction(okAction)
+
+        self.presentViewController(alert, animated: true, completion:nil)
+    }
+
+
 
 // IBActions
 
     @IBAction func stopTouched(sender: UIButton) {
-        endActivity()
+        if self.activitiesModel.activityRunning {
+            showStopOptions()
+        }
     }
     
     @IBAction func pauseTouched(sender: UIButton) {
+        if !self.activitiesModel.activityRunning {
+            return
+        }
         if self.activitiesModel.currentActivityPaused {
             self.activitiesModel.resumeActivity()
             let bgImage = UIImage(named: "icon_controls_pause.png")
-            sender.setBackgroundImage(bgImage, forState: UIControlState.Disabled)
-            sender.setBackgroundImage(bgImage, forState: UIControlState.Selected)
-            sender.setBackgroundImage(bgImage, forState: UIControlState.Highlighted)
+//            sender.setBackgroundImage(bgImage, forState: UIControlState.Disabled)
+//            sender.setBackgroundImage(bgImage, forState: UIControlState.Selected)
+//            sender.setBackgroundImage(bgImage, forState: UIControlState.Highlighted)
             sender.setBackgroundImage(bgImage, forState: UIControlState.Normal)
             setupTimer()
         }else{
             self.activitiesModel.pauseActivity()
             let bgResumeImage = UIImage(named: "icon_controls_play.png")
 //            sender.setBackgroundImage(bgResumeImage, forState: UIControlState.Disabled)
-            sender.setBackgroundImage(bgResumeImage, forState: UIControlState.Selected)
-            sender.setBackgroundImage(bgResumeImage, forState: UIControlState.Highlighted)
+//            sender.setBackgroundImage(bgResumeImage, forState: UIControlState.Selected)
+//            sender.setBackgroundImage(bgResumeImage, forState: UIControlState.Highlighted)
             sender.setBackgroundImage(bgResumeImage, forState: UIControlState.Normal)
             invalidateTimer()
         }

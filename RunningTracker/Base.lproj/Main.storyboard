@@ -560,7 +560,6 @@
                                         <state key="normal" backgroundImage="icon_controls_pause.png"/>
                                         <state key="disabled" backgroundImage="icon_controls_pause.png"/>
                                         <state key="selected" backgroundImage="icon_controls_pause.png"/>
-                                        <state key="focused" backgroundImage="icon_controls_pause.png"/>
                                         <variation key="heightClass=regular-widthClass=compact" misplaced="YES">
                                             <rect key="frame" x="158" y="25" width="92" height="95"/>
                                         </variation>
