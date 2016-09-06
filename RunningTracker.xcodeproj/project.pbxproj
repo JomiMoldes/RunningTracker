@@ -41,6 +41,10 @@
 		4805D4951D7DFDED00A04879 /* see_map_bg@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4805D4931D7DFDED00A04879 /* see_map_bg@3x.png */; };
 		4805D4981D7F05C200A04879 /* white_borders_bg@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4805D4961D7F05C200A04879 /* white_borders_bg@2x.png */; };
 		4805D4991D7F05C200A04879 /* white_borders_bg@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4805D4971D7F05C200A04879 /* white_borders_bg@3x.png */; };
+		4805D4A61D7F3A8800A04879 /* Flag_icon_end@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4805D4A21D7F3A8800A04879 /* Flag_icon_end@2x.png */; };
+		4805D4A71D7F3A8800A04879 /* Flag_icon_end@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4805D4A31D7F3A8800A04879 /* Flag_icon_end@3x.png */; };
+		4805D4A81D7F3A8800A04879 /* Flag_icon_KM@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4805D4A41D7F3A8800A04879 /* Flag_icon_KM@2x.png */; };
+		4805D4A91D7F3A8800A04879 /* Flag_icon_KM@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4805D4A51D7F3A8800A04879 /* Flag_icon_KM@3x.png */; };
 		48650E8B1D6DEF36006BE423 /* OpenSans-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 48650E811D6DEF36006BE423 /* OpenSans-Bold.ttf */; };
 		48650E8C1D6DEF36006BE423 /* OpenSans-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 48650E821D6DEF36006BE423 /* OpenSans-BoldItalic.ttf */; };
 		48650E8D1D6DEF36006BE423 /* OpenSans-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 48650E831D6DEF36006BE423 /* OpenSans-ExtraBold.ttf */; };
@@ -134,6 +138,10 @@
 		4805D4931D7DFDED00A04879 /* see_map_bg@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "see_map_bg@3x.png"; sourceTree = "<group>"; };
 		4805D4961D7F05C200A04879 /* white_borders_bg@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "white_borders_bg@2x.png"; sourceTree = "<group>"; };
 		4805D4971D7F05C200A04879 /* white_borders_bg@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "white_borders_bg@3x.png"; sourceTree = "<group>"; };
+		4805D4A21D7F3A8800A04879 /* Flag_icon_end@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Flag_icon_end@2x.png"; sourceTree = "<group>"; };
+		4805D4A31D7F3A8800A04879 /* Flag_icon_end@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Flag_icon_end@3x.png"; sourceTree = "<group>"; };
+		4805D4A41D7F3A8800A04879 /* Flag_icon_KM@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Flag_icon_KM@2x.png"; sourceTree = "<group>"; };
+		4805D4A51D7F3A8800A04879 /* Flag_icon_KM@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Flag_icon_KM@3x.png"; sourceTree = "<group>"; };
 		48650E811D6DEF36006BE423 /* OpenSans-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Bold.ttf"; sourceTree = "<group>"; };
 		48650E821D6DEF36006BE423 /* OpenSans-BoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-BoldItalic.ttf"; sourceTree = "<group>"; };
 		48650E831D6DEF36006BE423 /* OpenSans-ExtraBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-ExtraBold.ttf"; sourceTree = "<group>"; };
@@ -240,6 +248,10 @@
 		45BAF8A918FC0E09EDE8CA29 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				4805D4A21D7F3A8800A04879 /* Flag_icon_end@2x.png */,
+				4805D4A31D7F3A8800A04879 /* Flag_icon_end@3x.png */,
+				4805D4A41D7F3A8800A04879 /* Flag_icon_KM@2x.png */,
+				4805D4A51D7F3A8800A04879 /* Flag_icon_KM@3x.png */,
 				4805D4961D7F05C200A04879 /* white_borders_bg@2x.png */,
 				4805D4971D7F05C200A04879 /* white_borders_bg@3x.png */,
 				4805D4921D7DFDED00A04879 /* see_map_bg@2x.png */,
@@ -528,13 +540,17 @@
 				48650E911D6DEF36006BE423 /* OpenSans-LightItalic.ttf in Resources */,
 				48FFAFFC1D789F320005906A /* white_background.png in Resources */,
 				48E0E3181D2ECD2B0036F56B /* MyTrackerGray.png in Resources */,
+				4805D4A91D7F3A8800A04879 /* Flag_icon_KM@3x.png in Resources */,
 				48E4C0F81D7583670086AE54 /* icon_controls_play.png in Resources */,
 				487BE86C1D6AF37300ABC1ED /* Km_icon.png in Resources */,
 				48E0E3171D2ECD2B0036F56B /* MyTrackerBlue.png in Resources */,
+				4805D4A71D7F3A8800A04879 /* Flag_icon_end@3x.png in Resources */,
 				48E0E3201D313C4E0036F56B /* GPSgreen.png in Resources */,
 				48E0E2E91D2EC7360036F56B /* Main.storyboard in Resources */,
 				48FFB0021D79C46D0005906A /* LaunchScreen2.storyboard in Resources */,
+				4805D4A81D7F3A8800A04879 /* Flag_icon_KM@2x.png in Resources */,
 				48E4C0FB1D7583670086AE54 /* icon_controls_stop.png in Resources */,
+				4805D4A61D7F3A8800A04879 /* Flag_icon_end@2x.png in Resources */,
 				48650E921D6DEF36006BE423 /* OpenSans-Regular.ttf in Resources */,
 				48FFAFF81D770F770005906A /* empty_button.png in Resources */,
 				45BAF6FD0CBB7477BB11BF56 /* background_ui.png in Resources */,

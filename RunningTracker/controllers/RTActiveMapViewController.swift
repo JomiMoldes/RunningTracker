@@ -108,7 +108,7 @@ class RTActiveMapViewController : UIViewController, CLLocationManagerDelegate, G
         let index = notification.userInfo!["km"] as! Int
 
         dispatch_async(dispatch_get_main_queue()) {
-            let image = UIImage(named: "Km_icon")
+            let image = UIImage(named: "Flag_icon_KM")
             self.mapMarkersManager.addMarkerWithLocation(location, km: index, markImage: image)
         }
     }
@@ -116,7 +116,7 @@ class RTActiveMapViewController : UIViewController, CLLocationManagerDelegate, G
     func addEndFlagMarker(){
         let location = self.activitiesModel.getCurrentActivityCopy()!.getActivitiesCopy().last!.location
         dispatch_async(dispatch_get_main_queue()) {
-            let image = UIImage(named: "Flag_icon")
+            let image = UIImage(named: "Flag_icon_end")
             self.mapMarkersManager.addMarkerWithLocation(location, km: -1, markImage: image)
         }
     }

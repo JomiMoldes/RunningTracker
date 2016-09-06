@@ -27,12 +27,12 @@ class RTMapMarkersManager {
 
         if km > -1 {
             let kmLabel = UILabel()
-            kmLabel.frame = CGRectMake(0, 0, icon.frame.size.width, CGFloat(icon.frame.size.height * 0.7))
+            kmLabel.frame = CGRectMake(0, 2, icon.frame.size.width, CGFloat(icon.frame.size.height * 0.7))
             kmLabel.textAlignment = .Center
             icon.addSubview(kmLabel)
 
-            let labelFont =  UIFont(name: "OpenSans-Bold", size: 40)
-            let stringAttributes = [ NSForegroundColorAttributeName: UIColor.redColor(), NSFontAttributeName: labelFont! ]
+            let labelFont =  UIFont(name: "OpenSans-Semibold", size: 20)
+            let stringAttributes = [ NSForegroundColorAttributeName: UIColor.whiteColor(), NSFontAttributeName: labelFont! ]
             let attString = NSAttributedString(string: String(format: "%ld", km), attributes: stringAttributes)
             kmLabel.attributedText = attString
         }
@@ -61,7 +61,7 @@ class RTMapMarkersManager {
     }
 
     func redrawMarkers(markers:[Int:CLLocation]) {
-        let image = UIImage(named: "Km_icon")
+        let image = UIImage(named: "Flag_icon_KM")
         for (km, location) in markers {
             addMarkerWithLocation(location, km: km, markImage: image)
         }

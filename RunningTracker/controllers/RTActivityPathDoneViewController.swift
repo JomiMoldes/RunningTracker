@@ -126,7 +126,7 @@ class RTActivityPathDoneViewController : UIViewController, GMSMapViewDelegate {
 
     private func drawEndFlag() {
         let location = self.activity.getActivitiesCopy().last!.location
-        let image = UIImage(named: "Flag_icon")
+        let image = UIImage(named: "Flag_icon_end")
         self.mapMarkersManager.addMarkerWithLocation(location, km: -1, markImage: image)
     }
 
