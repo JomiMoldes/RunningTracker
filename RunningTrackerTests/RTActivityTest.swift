@@ -110,7 +110,7 @@ class RTActivityTest : XCTestCase {
         self.activity.addActivityLocation(location1, checkMarkers:false)
         self.activity.addActivityLocation(location2, checkMarkers:false)
 
-        let distance : Double = 5.5313383877970717
+        let distance : Double = 5.531338377508936
         let totalTime : Double = 20
         let pace = 1000 * totalTime / distance
 
@@ -129,7 +129,7 @@ class RTActivityTest : XCTestCase {
         self.activity.addActivityLocation(location1, checkMarkers:false)
         self.activity.addActivityLocation(location2, checkMarkers:false)
 
-        let distance : Double = 5.5313383877970717
+        let distance : Double = 5.531338377508936
         XCTAssertEqual(self.activity.distance, distance)
         XCTAssertEqual(location1.distance, 0)
         XCTAssertEqual(location2.distance, distance)

@@ -35,16 +35,22 @@
                   Identifier = "RTActivitiesModelTest/testAddActivityLocation()">
                </Test>
                <Test
-                  Identifier = "RTActivitiesModelTest/testEndActivity()">
+                  Identifier = "RTActivitiesModelTest/testCurrentActivityLocations()">
                </Test>
                <Test
                   Identifier = "RTActivitiesModelTest/testGetActivities()">
+               </Test>
+               <Test
+                  Identifier = "RTActivitiesModelTest/testGetBestPace()">
                </Test>
                <Test
                   Identifier = "RTActivitiesModelTest/testGetDistanceDone()">
                </Test>
                <Test
                   Identifier = "RTActivitiesModelTest/testGetElapsedTime()">
+               </Test>
+               <Test
+                  Identifier = "RTActivitiesModelTest/testGetLongestDistance()">
                </Test>
                <Test
                   Identifier = "RTActivitiesModelTest/testGetPaceLastKM()">

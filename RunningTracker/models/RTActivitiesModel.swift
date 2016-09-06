@@ -95,7 +95,7 @@ class RTActivitiesModel {
 //            self.addActivityLocation(activityLocation!)
 //        }
 
-        if self.currentActivitiesLocationsLength() > 0 {
+        if self.currentActivitiesLocationsLength() > 1 {
             activities.append(self.currentActivity)
             success = true
         }

@@ -49,10 +49,14 @@ class RTActivitiesModelTest:XCTestCase{
 
     func testEndActivity() {
         XCTAssertFalse(model.endActivity(), "you cannot end an activity when there is none active")
+        let now = NSDate().timeIntervalSince1970
+        model.fakeNow = now
         mockStartActivity()
         addLocationToCurrentActivity()
-
+        let location2 = mockActivityLocation(now + 11, lat:12.55560, long:14)
+        model.addActivityLocation(location2)
         XCTAssertTrue(model.activityRunning, "activityRunning should be true")
+
         model.endActivity()
 
         XCTAssertEqual(model.activitiesLength(), 1)
@@ -81,10 +85,15 @@ class RTActivitiesModelTest:XCTestCase{
     }
 
     func testSaveActivities() {
+        let now = NSDate().timeIntervalSince1970
+        model.fakeNow = now
         XCTAssertEqual(model.activitiesLength(), 0)
         XCTAssertFalse(model.saveActivities(RTActivitiesModelTest.ArchiveURLTest.path!, storeManager: storeManager))
         mockStartActivity()
-        addLocationToCurrentActivity()
+        let location1 = mockActivityLocation(now + 10, lat:12.55555, long:13)
+        let location2 = mockActivityLocation(now + 15, lat:12.55555, long:14)
+        model.addActivityLocation(location1)
+        model.addActivityLocation(location2)
         model.endActivity()
         
         let sub = NSNotificationCenter.defaultCenter().addObserverForName("activitiesSaved", object: nil, queue: nil) { (not) -> Void in
@@ -98,9 +107,14 @@ class RTActivitiesModelTest:XCTestCase{
     }
 
     func testLoadActivities() {
+        let now = NSDate().timeIntervalSince1970
+        model.fakeNow = now
         XCTAssertEqual(model.activitiesLength(), 0)
         mockStartActivity()
-        addLocationToCurrentActivity()
+        let location1 = mockActivityLocation(now + 10, lat:12.55555, long:13)
+        let location2 = mockActivityLocation(now + 15, lat:12.55555, long:14)
+        model.addActivityLocation(location1)
+        model.addActivityLocation(location2)
         model.endActivity()
         
         let sub = NSNotificationCenter.defaultCenter().addObserverForName("activitiesSaved", object: nil, queue: nil) { (not) -> Void in
@@ -193,7 +207,7 @@ class RTActivitiesModelTest:XCTestCase{
         model.addActivityLocation(location1)
         model.addActivityLocation(location2)
 
-        let distance : Double = 5.5313383877970717
+        let distance : Double = 5.531338377508936
         XCTAssertEqual(model.getDistanceDone(), distance)
     }
 
@@ -208,7 +222,7 @@ class RTActivitiesModelTest:XCTestCase{
         model.addActivityLocation(location1)
         model.addActivityLocation(location2)
 
-        let distance : Double = 5.5313383877970717
+        let distance : Double = 5.531338377508936
         XCTAssertEqual(location2.distance, distance)
 
         let pace = 1000 * 5 / distance
@@ -306,7 +320,9 @@ class RTActivitiesModelTest:XCTestCase{
         model.fakeNow = now
         mockStartActivity()
         let location1 = mockActivityLocation(now + 10, lat:12.55555, long:13)
+        let location2 = mockActivityLocation(now + 15, lat:12.55555, long:14)
         model.addActivityLocation(location1)
+        model.addActivityLocation(location2)
         model.endActivity()
         XCTAssertEqual(model.activitiesLength(), 1)
         
@@ -317,14 +333,18 @@ class RTActivitiesModelTest:XCTestCase{
         model.fakeNow = now
         
         let location1 = mockActivityLocation(now + 10, lat:12.55555, long:13)
+        let location2 = mockActivityLocation(now + 11, lat:12.55560, long:14)
 
         mockStartActivity()
         model.addActivityLocation(location1)
+        model.addActivityLocation(location2)
         model.endActivity()
         model.fakeNow = now + 20
-        let location2 = mockActivityLocation(now, lat:12.55560, long:13)
+        let location3 = mockActivityLocation(now, lat:12.55560, long:13)
+        let location4 = mockActivityLocation(now, lat:12.55565, long:15)
         mockStartActivity()
-        model.addActivityLocation(location2)
+        model.addActivityLocation(location3)
+        model.addActivityLocation(location4)
         model.endActivity()
         let activities = model.getActivitiesCopy()
         XCTAssertEqual(2, activities.count)
