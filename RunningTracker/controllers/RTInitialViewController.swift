@@ -49,6 +49,7 @@ class RTInitialViewController:UIViewController, CLLocationManagerDelegate {
         setupWhiteBackgrounds()
         updateTexts()
         updateButtonsLabels()
+        updateButtons()
     }
 
     override func viewWillDisappear(animated: Bool) {
@@ -108,6 +109,12 @@ class RTInitialViewController:UIViewController, CLLocationManagerDelegate {
 
             self.startButton.setBackgroundImage(newUIImage, forState: UIControlState.Disabled)
         }
+    }
+
+    func updateButtons() {
+        let button = self.myActivitiesButton
+        let insets = UIEdgeInsets(top: 0.0, left: 20.0, bottom: 0.0, right: 20.0)
+        button.setBackgroundImage(UIImage(named: "white_borders_bg")!.resizableImageWithCapInsets(insets, resizingMode: .Stretch), forState: .Normal)
     }
 
     func updateButtonsLabels() {

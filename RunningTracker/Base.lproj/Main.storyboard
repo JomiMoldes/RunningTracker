@@ -184,9 +184,6 @@
                                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                 </state>
                                                 <state key="disabled" backgroundImage="start_button_background.png"/>
-                                                <state key="selected" backgroundImage="start_button_background.png"/>
-                                                <state key="highlighted" backgroundImage="start_button_background.png"/>
-                                                <state key="focused" backgroundImage="start_button_background.png"/>
                                                 <variation key="heightClass=regular" misplaced="YES">
                                                     <rect key="frame" x="108" y="292" width="324" height="44"/>
                                                 </variation>
@@ -250,12 +247,9 @@
                                             <constraint firstAttribute="width" secondItem="ozF-iw-eKP" secondAttribute="height" multiplier="4:1" id="lWo-ba-wGS"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="OpenSans-Light" family="Open Sans" pointSize="21"/>
-                                        <state key="normal" title="Show activities" backgroundImage="show_activ_button_bg.png">
+                                        <state key="normal" title="Show activities">
                                             <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
-                                        <state key="disabled" backgroundImage="show_activ_button_bg.png"/>
-                                        <state key="highlighted" backgroundImage="show_activ_button_bg.png"/>
-                                        <state key="focused" backgroundImage="show_activ_button_bg.png"/>
                                         <connections>
                                             <action selector="myActivitiesTouched:" destination="1Qj-cB-xA5" eventType="touchUpInside" id="96A-6W-9PC"/>
                                         </connections>
@@ -892,7 +886,6 @@
         <image name="isologo.png" width="812" height="89"/>
         <image name="logo.png" width="570" height="361"/>
         <image name="pace_icon.png" width="314" height="279"/>
-        <image name="show_activ_button_bg.png" width="240" height="60"/>
         <image name="start_button_background.png" width="825" height="173"/>
         <image name="triangle.png" width="1242" height="414"/>
         <image name="triangle2.png" width="1242" height="414"/>
