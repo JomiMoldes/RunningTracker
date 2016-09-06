@@ -171,6 +171,13 @@ class RTActiveMapViewController : UIViewController, CLLocationManagerDelegate, G
         self.paceLabel.text = paced.getMinutes() + ":" + paced.getSeconds()
     }
 
+    func updatePaceLabel(){
+        let currentActivity = self.activitiesModel.getCurrentActivityCopy()!
+        let pace = currentActivity.getPace()
+        let paceString = pace.getMinutes() + ":" + pace.getSeconds()
+        self.paceLabel.text = paceString
+    }
+
     override func viewDidDisappear(animated: Bool) {
         super.viewDidDisappear(animated)
         invalidateTimer()
@@ -203,6 +210,7 @@ class RTActiveMapViewController : UIViewController, CLLocationManagerDelegate, G
         if self.activitiesModel.endActivity() {
             self.activitiesModel.saveActivities(RTActivitiesModel.ArchiveURL.path!, storeManager: RTGlobalModels.sharedInstance.storeActivitiesManager)
             self.addEndFlagMarker()
+            updatePaceLabel()
         }
         invalidateTimer()
     }
