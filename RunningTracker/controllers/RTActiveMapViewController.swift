@@ -96,13 +96,6 @@ class RTActiveMapViewController : UIViewController, CLLocationManagerDelegate, G
         self.paceDescLabel.adjustsFontSizeToFitWidth = true
     }
 
-    func backTouched(sender:UITapGestureRecognizer){
-        if self.activitiesModel.isCurrentActivityDefined() {
-            endActivity()
-        }
-        self.navigationController!.popViewControllerAnimated(true)
-    }
-
     func addMarker(notification:NSNotification) {
         let location = notification.userInfo!["location"] as! CLLocation
         let index = notification.userInfo!["km"] as! Int
@@ -229,6 +222,14 @@ class RTActiveMapViewController : UIViewController, CLLocationManagerDelegate, G
         alert.addAction(okAction)
 
         self.presentViewController(alert, animated: true, completion:nil)
+    }
+
+    func backTouched(sender:UITapGestureRecognizer){
+        if self.activitiesModel.activityRunning {
+            showStopOptions()
+            return
+        }
+        self.navigationController!.popViewControllerAnimated(true)
     }
 
 
