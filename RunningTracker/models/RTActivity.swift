@@ -28,8 +28,10 @@ class RTActivity:NSObject , NSCoding {
         self.finishTime = finishTime
         self.pausedTime = pausedTime2
         super.init()
-        for i in 0..<activities.count {
-            let activityLocation = activities[i]
+
+        var sortedActivities = activities.sort({$0.timestamp < $1.timestamp})
+        for i in 0..<sortedActivities.count {
+            let activityLocation = sortedActivities[i]
             addActivityLocation(activityLocation, checkMarkers:false)
         }
     }
