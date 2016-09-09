@@ -68,29 +68,7 @@ class ViewController: UIViewController {
             dispatch_async(main, {
                 switch status {
                 case .Available:
-                    container.requestApplicationPermission(CKApplicationPermissions.UserDiscoverability, completionHandler: {
-                        applicationPermissionStatus, error in
-                        dispatch_async(dispatch_get_main_queue(), {
-                            if error != nil {
-                                print("couldn't request iCloud permission")
-                            }
-                            switch applicationPermissionStatus {
-                            case .InitialState:
-                                break
-                            case .Denied:
-                                print("user has denied iCloud permissions")
-                                break
-                            case .CouldNotComplete:
-                                print("user could not complete iCloud permissions")
-                                break
-                            case .Granted:
-                                print("all good with iCloud")
-                                break
-                            }
-
-                            self.iCloudReady()
-                        })
-                    })
+                    self.iCloudReady()
                     break
                 case .Restricted:
                     print("access to iCloud is restricted")
