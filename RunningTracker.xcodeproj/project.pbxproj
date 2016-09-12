@@ -8,14 +8,17 @@
 
 /* Begin PBXBuildFile section */
 		45BAF0DE930DFEAD5E238D9E /* RTActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45BAF0CB67C24E3DF1344558 /* RTActivity.swift */; };
+		45BAF21B280B8DFDAD002E56 /* RTArrayExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45BAF95328EB8149682DB631 /* RTArrayExtensions.swift */; };
 		45BAF25DD41B74D53B77D2A5 /* RTActivityTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45BAFC31489610B135A32E38 /* RTActivityTest.swift */; };
 		45BAF29F13374069ABF9F333 /* RTUILabelExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45BAF899D03FA99C60DD92B9 /* RTUILabelExtensions.swift */; };
 		45BAF2C2EB8DEBE5CC1BF1F8 /* RTMapMarkersManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45BAFA7969CD4F51B9558C45 /* RTMapMarkersManager.swift */; };
 		45BAF2C92150C8AE7A10892A /* RTInitialViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45BAF05862AA772DB523305A /* RTInitialViewController.swift */; };
 		45BAF3121985B64F8A7CBC3E /* RTStoreActivitiesManagerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45BAFFD865067F8BF0CE76C5 /* RTStoreActivitiesManagerTest.swift */; };
+		45BAF31E32A64C527D59D42B /* RTDeleteRecordsOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45BAFB2F7A1A7D71317B8061 /* RTDeleteRecordsOperation.swift */; };
 		45BAF35FF38665A31336D7CA /* RTActiveMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45BAF9A0DF51888F7D92705D /* RTActiveMapViewController.swift */; };
 		45BAF3F97EBCED19E1E145A3 /* RTGlobalModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45BAF71705BB05254A84B302 /* RTGlobalModels.swift */; };
 		45BAF5820B27B8BED654057D /* RTBackButtonView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 45BAFA08C9349AD313AF6194 /* RTBackButtonView.xib */; };
+		45BAF5B446C1FB6B2E0EB8EF /* RTSaveRecordsOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45BAFDEB4685EAE4A5C307D5 /* RTSaveRecordsOperation.swift */; };
 		45BAF62B7E5F040F28EAEB33 /* RTStoreActivitiesManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45BAF70584E78946E836A5AD /* RTStoreActivitiesManager.swift */; };
 		45BAF6FD0CBB7477BB11BF56 /* background_ui.png in Resources */ = {isa = PBXBuildFile; fileRef = 48E4C0E71D7583670086AE54 /* background_ui.png */; };
 		45BAF798A150E21E22FCA8C0 /* RTNumbersExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45BAFBF0DE4F01A4E9D9FBDE /* RTNumbersExtensions.swift */; };
@@ -120,15 +123,18 @@
 		45BAF7E2708014ED6B2508B8 /* RTActivitiesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RTActivitiesViewController.swift; sourceTree = "<group>"; };
 		45BAF899D03FA99C60DD92B9 /* RTUILabelExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RTUILabelExtensions.swift; sourceTree = "<group>"; };
 		45BAF89C5CBD8617A2CACFD8 /* RTDateFormatterExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RTDateFormatterExtensions.swift; sourceTree = "<group>"; };
+		45BAF95328EB8149682DB631 /* RTArrayExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RTArrayExtensions.swift; sourceTree = "<group>"; };
 		45BAF9536E3085FF4F532AFE /* RTActivityHeaderViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RTActivityHeaderViewCell.swift; sourceTree = "<group>"; };
 		45BAF9623FF8D4BDF06E463C /* RTActivitiesModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RTActivitiesModel.swift; sourceTree = "<group>"; };
 		45BAF9A0DF51888F7D92705D /* RTActiveMapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RTActiveMapViewController.swift; sourceTree = "<group>"; };
 		45BAFA08C9349AD313AF6194 /* RTBackButtonView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RTBackButtonView.xib; sourceTree = "<group>"; };
 		45BAFA7969CD4F51B9558C45 /* RTMapMarkersManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RTMapMarkersManager.swift; sourceTree = "<group>"; };
+		45BAFB2F7A1A7D71317B8061 /* RTDeleteRecordsOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RTDeleteRecordsOperation.swift; sourceTree = "<group>"; };
 		45BAFBF0DE4F01A4E9D9FBDE /* RTNumbersExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RTNumbersExtensions.swift; sourceTree = "<group>"; };
 		45BAFC31489610B135A32E38 /* RTActivityTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RTActivityTest.swift; sourceTree = "<group>"; };
 		45BAFD57B853AA77BDE7B464 /* RTActivityViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RTActivityViewCell.xib; sourceTree = "<group>"; };
 		45BAFDE23DCDD457E4FD1821 /* RTBackButtonView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RTBackButtonView.swift; sourceTree = "<group>"; };
+		45BAFDEB4685EAE4A5C307D5 /* RTSaveRecordsOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RTSaveRecordsOperation.swift; sourceTree = "<group>"; };
 		45BAFFD865067F8BF0CE76C5 /* RTStoreActivitiesManagerTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RTStoreActivitiesManagerTest.swift; sourceTree = "<group>"; };
 		4805D4701D7CBB7C00A04879 /* AFNetworking.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AFNetworking.framework; path = "../../../../Library/Developer/Xcode/DerivedData/RunningTracker-cyobtvdaneufctbpnvgqhgylaxzi/Build/Products/Debug-iphonesimulator/AFNetworking/AFNetworking.framework"; sourceTree = "<group>"; };
 		4805D4841D7D8CEC00A04879 /* white_background@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "white_background@2x.png"; sourceTree = "<group>"; };
@@ -228,6 +234,8 @@
 				45BAF7D64C5B42DC4D6CFF92 /* RTActivityLocation.swift */,
 				45BAF0CB67C24E3DF1344558 /* RTActivity.swift */,
 				45BAF71705BB05254A84B302 /* RTGlobalModels.swift */,
+				45BAFDEB4685EAE4A5C307D5 /* RTSaveRecordsOperation.swift */,
+				45BAFB2F7A1A7D71317B8061 /* RTDeleteRecordsOperation.swift */,
 			);
 			path = models;
 			sourceTree = "<group>";
@@ -309,6 +317,7 @@
 				45BAF53B4EEA07F450845DC5 /* CachedDateFormatter.swift */,
 				45BAF26DFA84631ED88E908D /* RTUIImageExtensions.swift */,
 				45BAF899D03FA99C60DD92B9 /* RTUILabelExtensions.swift */,
+				45BAF95328EB8149682DB631 /* RTArrayExtensions.swift */,
 			);
 			path = utils;
 			sourceTree = "<group>";
@@ -700,6 +709,9 @@
 				45BAFAF03CBD364BF7879A65 /* RTActivityViewCell.swift in Sources */,
 				45BAF8F4C078A9C15FB32890 /* RTActivityHeaderViewCell.swift in Sources */,
 				45BAFF27CFB9B02E5CEAB8CE /* RTBackButtonView.swift in Sources */,
+				45BAF5B446C1FB6B2E0EB8EF /* RTSaveRecordsOperation.swift in Sources */,
+				45BAF21B280B8DFDAD002E56 /* RTArrayExtensions.swift in Sources */,
+				45BAF31E32A64C527D59D42B /* RTDeleteRecordsOperation.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -831,7 +843,7 @@
 				INFOPLIST_FILE = RunningTracker/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				OTHER_SWIFT_FLAGS = "-DDEBUG";
-				PRODUCT_BUNDLE_IDENTIFIER = com.runningtracker.prod;
+				PRODUCT_BUNDLE_IDENTIFIER = com.runningtracker.dev;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				TARGETED_DEVICE_FAMILY = 1;
@@ -848,7 +860,7 @@
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: JOSE MOLDES (2G24Q5X34D)";
 				INFOPLIST_FILE = RunningTracker/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.runningtracker.prod;
+				PRODUCT_BUNDLE_IDENTIFIER = com.runningtracker.dev;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_INTERFACE_HEADER_NAME = "$(SWIFT_MODULE_NAME)-Swift.h";

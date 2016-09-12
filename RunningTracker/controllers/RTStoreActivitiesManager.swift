@@ -16,6 +16,7 @@ class RTStoreActivitiesManager {
     var localPath : String?
     var activitiesToSave : [RTActivity]?
     var fetchingFromICloudSucceeded : Bool = true
+    var recordFetched = 0
 
     func start(path:String, completion:([RTActivity])->Void) -> Bool {
         self.completion = completion
@@ -182,23 +183,28 @@ class RTStoreActivitiesManager {
         let container = CKContainer.defaultContainer()
         let privateDatabase = container.privateCloudDatabase
         let query = CKQuery(recordType: "Activities", predicate: NSPredicate(format: "TRUEPREDICATE", argumentArray: nil))
-        privateDatabase.performQuery(query, inZoneWithID: nil, completionHandler: {
-            records, error in
+
+        let queryOperation = CKQueryOperation(query: query)
+
+        queryOperation.recordFetchedBlock = fetchedActivitiesRecord
+        queryOperation.qualityOfService = .UserInitiated
+        queryOperation.queryCompletionBlock = { [weak self] (cursor: CKQueryCursor?, error: NSError?) in
             if error != nil {
                 print(error)
-                self.fetchingFromICloudSucceeded = false
-                self.fetchFromICloudDone()
+                self!.fetchingFromICloudSucceeded = false
+                self!.fetchFromICloudDone()
                 return
             }
-
-            if records != nil && records!.count > 0 {
-                self.allActivitiesRecords = records!
-                self.fetchLocations()
-            }else {
-                self.fetchingFromICloudSucceeded = false
-                self.fetchFromICloudDone()
+            if cursor != nil {
+                self!.fetchRecordsWithCursor(cursor!, recordBlock:self!.fetchedActivitiesRecord, completionBlock: self!.fetchLocations)
+            } else if self!.allActivitiesRecords.count > 0 {
+                self!.fetchLocations()
+            } else {
+                self!.fetchFromICloudDone()
             }
-        })
+        }
+
+        privateDatabase.addOperation(queryOperation)
     }
 
     private func fetchLocations() {
@@ -206,22 +212,55 @@ class RTStoreActivitiesManager {
         let privateDatabase = container.privateCloudDatabase
         let query = CKQuery(recordType: "Locations", predicate: NSPredicate(format: "TRUEPREDICATE", argumentArray: nil))
 
-        privateDatabase.performQuery(query, inZoneWithID: nil, completionHandler: {
-            records, error in
+        let queryOperation = CKQueryOperation(query: query)
 
-            if error != nil || records == nil {
-                self.fetchingFromICloudSucceeded = false
-                self.fetchFromICloudDone()
+        queryOperation.recordFetchedBlock = fetchedLocationsRecord
+        queryOperation.qualityOfService = .UserInitiated
+        queryOperation.queryCompletionBlock = { [weak self] (cursor: CKQueryCursor?, error: NSError?) in
+            if error != nil {
+                print(error)
+                self!.fetchingFromICloudSucceeded = false
+                self!.fetchFromICloudDone()
                 return
             }
-
-            if  records != nil {
-                self.allLocationsRecords = records!
-            }else {
-                self.fetchingFromICloudSucceeded = false
+            if cursor != nil {
+                self!.fetchRecordsWithCursor(cursor!, recordBlock:self!.fetchedLocationsRecord, completionBlock: self!.fetchFromICloudDone)
+            } else {
+                self!.fetchFromICloudDone()
             }
-            self.fetchFromICloudDone()
-        })
+        }
+
+        privateDatabase.addOperation(queryOperation)
+    }
+
+    func fetchedActivitiesRecord(record: CKRecord!) {
+        recordFetched = recordFetched + 1
+        print("\(NSDate().timeIntervalSinceReferenceDate*1000) \(recordFetched)")
+        self.allActivitiesRecords.append(record)
+    }
+
+    func fetchedLocationsRecord(record: CKRecord!) {
+        recordFetched = recordFetched + 1
+        print("\(NSDate().timeIntervalSinceReferenceDate*1000) \(recordFetched)")
+        self.allLocationsRecords.append(record)
+    }
+
+    private func fetchRecordsWithCursor(cursor:CKQueryCursor, recordBlock:(CKRecord) -> Void, completionBlock:()->Void){
+        let database = CKContainer.defaultContainer().privateCloudDatabase
+        let queryOperation = CKQueryOperation(cursor: cursor)
+        queryOperation.qualityOfService = .UserInitiated
+        queryOperation.recordFetchedBlock = recordBlock
+
+        queryOperation.queryCompletionBlock = { cursor, error in
+
+            if cursor != nil {
+                self.fetchRecordsWithCursor(cursor!, recordBlock: recordBlock, completionBlock: completionBlock)
+            } else {
+                completionBlock()
+            }
+        }
+
+        database.addOperation(queryOperation)
     }
 
     private func fetchActivitiesLocal() {
@@ -270,19 +309,8 @@ class RTStoreActivitiesManager {
     }
 
     private func saveRecords(records:[CKRecord], completion:()->Void) {
-        let container = CKContainer.defaultContainer()
-        let privateDatabase = container.privateCloudDatabase
-
-        let uploadOperation = CKModifyRecordsOperation(recordsToSave: records, recordIDsToDelete: nil)
-
-        uploadOperation.atomic = false
-        uploadOperation.database = privateDatabase
-
-        uploadOperation.modifyRecordsCompletionBlock = { (savedRecords: [CKRecord]?, deletedRecords: [CKRecordID]?, operationError: NSError?) -> Void in
-            completion()
-        }
-
-        NSOperationQueue().addOperation(uploadOperation)
+        let saveOperation = RTSaveRecordsOperation()
+        saveOperation.saveRecord(records, completion: completion)
     }
 
 }
