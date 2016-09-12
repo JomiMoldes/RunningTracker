@@ -9,7 +9,7 @@ import CloudKit
 class RTSaveRecordsOperation {
 
     let maxRetryTimes = 3
-    var batchSize = 500
+    var batchSize = 400
     var allBatchedRecords = [[CKRecord]]()
     var allSavedRecords = [CKRecord]()
     var allRecords = [CKRecord]()
@@ -77,7 +77,7 @@ class RTSaveRecordsOperation {
     }
 
     private func rebatch(){
-        self.batchSize = Int(self.batchSize / 2)
+        self.batchSize = self.batchSize >= 200 ? self.batchSize - 100 : self.batchSize
         var recordsToSave = [CKRecord]()
         for recordsBatch in self.allBatchedRecords {
             for record in recordsBatch {

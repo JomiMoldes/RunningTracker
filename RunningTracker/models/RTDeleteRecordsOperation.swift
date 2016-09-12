@@ -34,9 +34,9 @@ class RTDeleteRecordsOperation {
         uploadOperation.modifyRecordsCompletionBlock = { (savedRecords: [CKRecord]?, deletedRecords: [CKRecordID]?, operationError: NSError?) -> Void in
             self.removeDeletedElements(deletedRecords)
             if let error = operationError {
-
                 switch error.code {
                 case CKErrorCode.LimitExceeded.rawValue:
+                    print("Limit exceeded")
                     self.rebatch()
                     self.retryDeleting()
                     break
@@ -45,7 +45,7 @@ class RTDeleteRecordsOperation {
                     break
                 }
 
-                print(operationError)
+                print(error)
                 return
             }
 
@@ -54,6 +54,7 @@ class RTDeleteRecordsOperation {
             if self.allBatchedRecords.count == 0 {
                 return
             }
+
             self.deleteBatch()
         }
 
