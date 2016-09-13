@@ -132,31 +132,31 @@ class RTInitialViewController:UIViewController, CLLocationManagerDelegate {
         locationManager = CLLocationManager()
         locationManager.delegate = self
         switch (CLLocationManager.authorizationStatus()){
-        case .NotDetermined:
-            locationManager.requestAlwaysAuthorization()
-            break
-        case .AuthorizedWhenInUse, .Restricted, .Denied:
-            let alertController = UIAlertController(
-            title:"Location Access Disabled",
-                    message:"In order to track your paths, please open this app's settings and set location access to 'While using the app'",
-                    preferredStyle: .Alert)
+            case .NotDetermined:
+                locationManager.requestWhenInUseAuthorization()
+                break
+            case .AuthorizedAlways, .Restricted, .Denied:
+                let alertController = UIAlertController(
+                title:"Location Access Disabled",
+                        message:"In order to track your paths, please open this app's settings and set location access to 'While using the app'",
+                        preferredStyle: .Alert)
 
-            let cancelAction = UIAlertAction(title:"Cancel", style: .Cancel, handler: nil)
-            alertController.addAction(cancelAction)
+                let cancelAction = UIAlertAction(title:"Cancel", style: .Cancel, handler: nil)
+                alertController.addAction(cancelAction)
 
-            let openAction = UIAlertAction(title:"Open", style: .Default) {
-                (action) in
-                if let url = NSURL(string:UIApplicationOpenSettingsURLString) {
-                    UIApplication.sharedApplication().openURL(url)
+                let openAction = UIAlertAction(title:"Open", style: .Default) {
+                    (action) in
+                    if let url = NSURL(string:UIApplicationOpenSettingsURLString) {
+                        UIApplication.sharedApplication().openURL(url)
+                    }
                 }
-            }
-            alertController.addAction(openAction)
+                alertController.addAction(openAction)
 
-            self.presentViewController(alertController, animated:true, completion:nil)
+                self.presentViewController(alertController, animated:true, completion:nil)
 
-            break
-        default:
-            break
+                break
+            default:
+                break
         }
 
     }
@@ -189,7 +189,7 @@ class RTInitialViewController:UIViewController, CLLocationManagerDelegate {
 // MARK Location Manager
 
     func locationManager(manager: CLLocationManager, didChangeAuthorizationStatus status: CLAuthorizationStatus){
-        if status == .AuthorizedAlways {
+        if status == .AuthorizedWhenInUse {
             locationManager.startUpdatingLocation()
         }
     }
@@ -204,7 +204,7 @@ class RTInitialViewController:UIViewController, CLLocationManagerDelegate {
         self.startButton.enabled = false
         gpsImageView.image = UIImage(named:"GPSblack.png")
         self.turnOnGPSLabel.hidden = false
-        if(CLLocationManager.authorizationStatus() == .AuthorizedAlways){
+        if(CLLocationManager.authorizationStatus() == .AuthorizedWhenInUse){
            locationManager.startUpdatingLocation()
         }
     }

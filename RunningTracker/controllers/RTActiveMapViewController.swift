@@ -232,8 +232,6 @@ class RTActiveMapViewController : UIViewController, CLLocationManagerDelegate, G
         self.navigationController!.popViewControllerAnimated(true)
     }
 
-
-
 // IBActions
 
     @IBAction func stopTouched(sender: UIButton) {
