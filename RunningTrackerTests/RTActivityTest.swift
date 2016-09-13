@@ -25,7 +25,7 @@ class RTActivityTest : XCTestCase {
         let now = NSDate().timeIntervalSince1970
         let locations : [RTActivityLocation] = []
 
-        self.activity = RTActivity(activities:locations, startTime: now, finishTime: 0.00, pausedTime2: 0.00)
+        self.activity = RTActivity(activities:locations, startTime: now, finishTime: 0.00, pausedTime2: 0.00, distance: 0, locationsAfterResumed: [CLLocation]())
         XCTAssertEqual(self.activity.finishTime, 0.00)
 
     }
@@ -37,7 +37,7 @@ class RTActivityTest : XCTestCase {
         let location3 = mockActivityLocation(now + 20, lat:12.55565, long:13)
         let locations : [RTActivityLocation] = [location1, location2, location3]
 
-        self.activity = RTActivity(activities:locations, startTime: now, finishTime: 0.00, pausedTime2: 0.00)
+        self.activity = RTActivity(activities:locations, startTime: now, finishTime: 0.00, pausedTime2: 0.00, distance: 0, locationsAfterResumed: [CLLocation]())
 
         let activities = self.activity.getActivitiesCopy()
         XCTAssertEqual(activities.count, 3)
@@ -63,7 +63,7 @@ class RTActivityTest : XCTestCase {
     func testAddActivityLocation() {
         let now = NSDate().timeIntervalSince1970
         let locations : [RTActivityLocation] = []
-        self.activity = RTActivity(activities:locations, startTime: now, finishTime: 0.00, pausedTime2: 0.00)
+        self.activity = RTActivity(activities:locations, startTime: now, finishTime: 0.00, pausedTime2: 0.00, distance: 0, locationsAfterResumed: [CLLocation]())
         let location1 = mockActivityLocation(now + 10, lat:12.55555, long:13)
         XCTAssertEqual(self.activity.getActivitiesCopy().count, 0)
         self.activity.addActivityLocation(location1, checkMarkers:false)
@@ -87,7 +87,7 @@ class RTActivityTest : XCTestCase {
     func testActivityFinished() {
         let now = NSDate().timeIntervalSince1970
         let locations : [RTActivityLocation] = []
-        self.activity = RTActivity(activities:locations, startTime: now, finishTime: 0.00, pausedTime2: 0.00)
+        self.activity = RTActivity(activities:locations, startTime: now, finishTime: 0.00, pausedTime2: 0.00, distance: 0, locationsAfterResumed: [CLLocation]())
         self.activity.activityFinished(now + 5)
         XCTAssertEqual(self.activity.finishTime, now + 5)
     }
@@ -95,7 +95,7 @@ class RTActivityTest : XCTestCase {
     func testGetDuration() {
         let now = NSDate().timeIntervalSince1970
         let locations : [RTActivityLocation] = []
-        self.activity = RTActivity(activities:locations, startTime: now, finishTime: 0.00, pausedTime2: 0.00)
+        self.activity = RTActivity(activities:locations, startTime: now, finishTime: 0.00, pausedTime2: 0.00, distance: 0, locationsAfterResumed: [CLLocation]())
         self.activity.pausedTime = 5
         self.activity.activityFinished(now + 10)
         XCTAssertEqual(self.activity.getDuration(), 5)
@@ -104,7 +104,7 @@ class RTActivityTest : XCTestCase {
     func testGetPace() {
         let now = NSDate().timeIntervalSince1970
         let locations : [RTActivityLocation] = []
-        self.activity = RTActivity(activities:locations, startTime: now, finishTime: 0.00, pausedTime2: 0.00)
+        self.activity = RTActivity(activities:locations, startTime: now, finishTime: 0.00, pausedTime2: 0.00, distance: 0, locationsAfterResumed: [CLLocation]())
         let location1 = mockActivityLocation(now + 10, lat:12.55555, long:13)
         let location2 = mockActivityLocation(now + 15, lat:12.55560, long:13)
         self.activity.addActivityLocation(location1, checkMarkers:false)
@@ -123,7 +123,7 @@ class RTActivityTest : XCTestCase {
     func testDistance() {
         let now = NSDate().timeIntervalSince1970
         let locations : [RTActivityLocation] = []
-        self.activity = RTActivity(activities:locations, startTime: now, finishTime: 0.00, pausedTime2: 0.00)
+        self.activity = RTActivity(activities:locations, startTime: now, finishTime: 0.00, pausedTime2: 0.00, distance: 0, locationsAfterResumed: [CLLocation]())
         let location1 = mockActivityLocation(now + 10, lat:12.55555, long:13)
         let location2 = mockActivityLocation(now + 15, lat:12.55560, long:13)
         self.activity.addActivityLocation(location1, checkMarkers:false)

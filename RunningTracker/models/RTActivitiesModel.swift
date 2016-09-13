@@ -42,7 +42,8 @@ class RTActivitiesModel {
             print("Trying to start activity before ending previous one")
             throw RTActivitiesError.RTActivityAlreadySet
         }
-        self.currentActivity = RTActivity(activities: [RTActivityLocation](), startTime: getNow(), finishTime: 0, pausedTime2: 0)
+//        self.currentActivity = RTActivity(activities: [RTActivityLocation](), startTime: getNow(), finishTime: 0, pausedTime2: 0, distance: 0, locationsAfterResumed: [CLLocation]())
+        self.currentActivity = RTActivity(startTime:getNow())
         activityRunning = true
         return true
     }

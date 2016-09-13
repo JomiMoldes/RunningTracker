@@ -20,7 +20,8 @@ class RTActivitiesViewController : UIViewController, UITableViewDelegate, UITabl
         super.viewDidLoad()
         self.activitiesModel = RTGlobalModels.sharedInstance.activitiesModel
         self.activities = self.activitiesModel.getActivitiesCopy()
-        self.activities = self.activities.reverse()
+
+        self.activities = self.activities.sort({$0.startTime > $1.startTime})
         setupTable()
         setupBackButton()
         noActivitiesLabel.hidden = self.activities.count > 0

@@ -63,10 +63,9 @@ class RTStoreActivitiesManager {
 
     private func saveActivityOnICloud(activity:RTActivity) {
         var recordsToAdd = [CKRecord]()
-        let activityId = Int(activity.startTime)
         let newRecord = self.createRecordByActivity(activity)
         recordsToAdd.append(newRecord)
-        recordsToAdd += self.getLocationRecords(activity.getActivitiesCopy(), activityId:activityId)
+        recordsToAdd += self.getLocationRecords(activity)
         self.saveRecords(recordsToAdd, completion:{
             let delayTime = dispatch_time(DISPATCH_TIME_NOW, Int64(2 * Double(NSEC_PER_SEC)))
             dispatch_after(delayTime, dispatch_get_main_queue()) {
@@ -113,11 +112,17 @@ class RTStoreActivitiesManager {
             let activityId = activityRecord["starttime"] as! Int
             if !activityAlreadySavedLocally(activityId) {
 
-                let activityLocations = self.getLocationsForActivityRecord(activityId)
+                let locations = self.getAfterResumedLocations(activityId)
+
+                let activityLocations = locations.activities
+                let afterResumedLocations = locations.afterLocations
+
                 let activity = RTActivity(activities:activityLocations,
                         startTime: activityRecord["starttime"] as! Double,
                         finishTime: activityRecord["endtime"] as! Double,
-                        pausedTime2: activityRecord["pausedtime"] as! Double)
+                        pausedTime2: activityRecord["pausedtime"] as! Double,
+                        distance: activityRecord["distance"] as! Double,
+                        locationsAfterResumed:afterResumedLocations)
                 self.activitiesSavedLocally!.append(activity!)
             }
         }
@@ -135,7 +140,7 @@ class RTStoreActivitiesManager {
             if !activityAlreadySavedOnICloud(activityId) {
                 let newRecord = self.createRecordByActivity(activity)
                 recordsToAdd.append(newRecord)
-                recordsToAdd += self.getLocationRecords(activity.getActivitiesCopy(), activityId:activityId)
+                recordsToAdd += self.getLocationRecords(activity)
             }
         }
         if recordsToAdd.count > 0 {
@@ -166,23 +171,29 @@ class RTStoreActivitiesManager {
         return false
     }
 
-    private func getLocationsForActivityRecord(activityId:Int) -> [RTActivityLocation] {
+    private func getAfterResumedLocations(activityId:Int) -> (activities:[RTActivityLocation],afterLocations:[CLLocation]) {
         var locations = [RTActivityLocation]()
+        var afterResumedList = [CLLocation]()
         for locationRecord in self.allLocationsRecords {
             let recordId = locationRecord["activityid"] as! Int
             if recordId == activityId {
-                let firstAfterResumed : Bool = locationRecord["firstafterresumed"] as! Bool
-                let locationActivity = RTActivityLocation(location: locationRecord["location"] as! CLLocation, timestamp: locationRecord["timestamp"] as! Double, firstAfterResumed: firstAfterResumed)
-                locations.append(locationActivity!)
+                let locationsList = locationRecord["locationslist"] as! [CLLocation]
+                afterResumedList = locationRecord["locationsafterresumed"] as! [CLLocation]
+                for location : CLLocation in locationsList{
+                    let firstAfterResumed : Bool = afterResumedList.contains(location)
+                    let locationActivity = RTActivityLocation(location: location, timestamp: location.timestamp.timeIntervalSince1970, firstAfterResumed: firstAfterResumed)
+                    locations.append(locationActivity!)
+                }
+                break
             }
         }
-        return locations
+        return (locations, afterResumedList)
     }
 
     private func fetchActivitiesFromICloud() {
         let container = CKContainer.defaultContainer()
         let privateDatabase = container.privateCloudDatabase
-        let query = CKQuery(recordType: "Activities", predicate: NSPredicate(format: "TRUEPREDICATE", argumentArray: nil))
+        let query = CKQuery(recordType: "Activities2", predicate: NSPredicate(format: "TRUEPREDICATE", argumentArray: nil))
 
         let queryOperation = CKQueryOperation(query: query)
 
@@ -211,7 +222,6 @@ class RTStoreActivitiesManager {
         privateDatabase.addOperation(queryOperation)
     }
 
-
     private func checkIfThereAreNewActivities(){
         var recordsIds = [Int]()
 
@@ -234,7 +244,7 @@ class RTStoreActivitiesManager {
         let container = CKContainer.defaultContainer()
         let privateDatabase = container.privateCloudDatabase
         let predicate = NSPredicate(format: "activityid IN %@", ids)
-        let query = CKQuery(recordType: "Locations", predicate:predicate )
+        let query = CKQuery(recordType: "Locations2", predicate:predicate )
 
         let queryOperation = CKQueryOperation(query: query)
 
@@ -256,6 +266,7 @@ class RTStoreActivitiesManager {
 
         privateDatabase.addOperation(queryOperation)
     }
+
 
     func fetchedActivitiesRecord(record: CKRecord!) {
         recordFetched = recordFetched + 1
@@ -293,16 +304,21 @@ class RTStoreActivitiesManager {
         self.activitiesSavedLocally = activities
     }
 
-    private func getLocationRecords(locations:[RTActivityLocation], activityId:Int) -> [CKRecord] {
+    private func getLocationRecords(activity:RTActivity) -> [CKRecord] {
+        let activityId = Int(activity.startTime)
+        let locations:[RTActivityLocation] = activity.getActivitiesCopy()
         var locationRecords = [CKRecord]()
+        let record = CKRecord(recordType: "Locations2")
+        record.setValue(activityId, forKey: "activityid")
+
+        var locationsList = [CLLocation]()
+        let locationsAfterResumed = activity.locationsAfterResumed
         for location in locations {
-            let record = CKRecord(recordType: "Locations")
-            record.setValue(activityId, forKey: "activityid")
-            record.setValue(location.firstAfterResumed, forKey: "firstafterresumed")
-            record.setValue(location.location, forKey: "location")
-            record.setValue(Int(location.timestamp), forKey: "timestamp")
-            locationRecords.append(record)
+            locationsList.append(location.location)
         }
+        record.setValue(locationsList, forKey:"locationslist")
+        record.setValue(locationsAfterResumed, forKey:"locationsafterresumed")
+        locationRecords.append(record)
         return locationRecords
     }
 
@@ -312,10 +328,11 @@ class RTStoreActivitiesManager {
     }
 
     private func createRecordByActivity(activity:RTActivity) -> CKRecord {
-        let record = CKRecord(recordType: "Activities")
+        let record = CKRecord(recordType: "Activities2")
         record.setValue(Int(activity.startTime), forKey: "starttime")
         record.setValue(Int(activity.finishTime), forKey: "endtime")
         record.setValue(Int(activity.pausedTime), forKey: "pausedtime")
+        record.setValue(Int(activity.distance), forKey: "distance")
         return record
     }
 

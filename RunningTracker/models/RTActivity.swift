@@ -11,6 +11,8 @@ struct ActivityPropertyKey{
     static let startTimeKey = "startTime"
     static let endTimeKey = "endTime"
     static let pausedTimeKey = "pausedTime"
+    static let distanceKey = "distance"
+    static let afterResumedKey = "locationsafterresumed"
 }
 
 class RTActivity:NSObject , NSCoding {
@@ -22,18 +24,22 @@ class RTActivity:NSObject , NSCoding {
     var distance : Double = 0
     private(set) var checkMarks = [Int:CLLocation]()
     private var nextMarker = 1000
+    private(set) var locationsAfterResumed = [CLLocation]()
 
-    init?(activities:[RTActivityLocation], startTime:Double, finishTime:Double, pausedTime2:Double){
+    init?(activities:[RTActivityLocation], startTime:Double, finishTime:Double, pausedTime2:Double, distance:Double, locationsAfterResumed:[CLLocation]){
         self.startTime = startTime
         self.finishTime = finishTime
         self.pausedTime = pausedTime2
+        self.distance = distance
+        self.locationsAfterResumed = locationsAfterResumed
+        self.activities = activities.sort({$0.timestamp < $1.timestamp})
         super.init()
+        self.setMarkers()
+    }
 
-        var sortedActivities = activities.sort({$0.timestamp < $1.timestamp})
-        for i in 0..<sortedActivities.count {
-            let activityLocation = sortedActivities[i]
-            addActivityLocation(activityLocation, checkMarkers:false)
-        }
+    init?(startTime:Double){
+        self.startTime = startTime
+        super.init()
     }
 
     func addActivityLocation(activityLocation:RTActivityLocation, checkMarkers:Bool) -> Bool{
@@ -61,6 +67,11 @@ class RTActivity:NSObject , NSCoding {
 
             activityLocation.distance = distanceDone
         }
+
+        if activityLocation.firstAfterResumed {
+            self.locationsAfterResumed.append(activityLocation.location)
+        }
+
         self.checkMarkers(checkMarkers)
         return true
     }
@@ -87,6 +98,27 @@ class RTActivity:NSObject , NSCoding {
         }
     }
 
+    private func setMarkers(){
+        var distance = 0.0
+        var index = 0
+        var nextMark = 0
+        var previousLocation:CLLocation!
+        for activityLocation : RTActivityLocation in self.activities {
+            let location = activityLocation.location
+            if previousLocation != nil {
+                distance += location.distanceFromLocation(previousLocation)
+            }
+
+            if Int(distance) >= nextMark {
+                checkMarks[index] = location
+                index = index + 1
+                nextMark = nextMark + 1000
+            }
+
+            previousLocation = location
+        }
+    }
+
     private func drawMarker(userInfo:[NSObject:AnyObject]?) {
         NSNotificationCenter.defaultCenter().postNotificationName("addKMMarker", object: nil, userInfo: userInfo)
     }
@@ -109,7 +141,7 @@ class RTActivity:NSObject , NSCoding {
     }
 
     func getPace() -> Double {
-        let totalTime = self.finishTime - startTime
+        let totalTime = self.getDuration()
         if totalTime <= 0 || distance <= 0 {
             return 0.00
         }
@@ -125,15 +157,19 @@ class RTActivity:NSObject , NSCoding {
         aCoder.encodeDouble(startTime, forKey:ActivityPropertyKey.startTimeKey)
         aCoder.encodeDouble(finishTime, forKey:ActivityPropertyKey.endTimeKey)
         aCoder.encodeDouble(pausedTime, forKey:ActivityPropertyKey.pausedTimeKey)
+        aCoder.encodeDouble(distance, forKey:ActivityPropertyKey.distanceKey)
         aCoder.encodeObject(activities, forKey:ActivityPropertyKey.locationsKey)
+        aCoder.encodeObject(locationsAfterResumed, forKey:ActivityPropertyKey.afterResumedKey)
     }
 
     required convenience init?(coder aDecoder: NSCoder){
         let activities = aDecoder.decodeObjectForKey(ActivityPropertyKey.locationsKey) as! [RTActivityLocation]
+        let locationsAfterResumed = aDecoder.decodeObjectForKey(ActivityPropertyKey.afterResumedKey) as! [CLLocation]
         let startTime = aDecoder.decodeDoubleForKey(ActivityPropertyKey.startTimeKey)
         let endTime = aDecoder.decodeDoubleForKey(ActivityPropertyKey.endTimeKey)
         let pausedTime = aDecoder.decodeDoubleForKey(ActivityPropertyKey.pausedTimeKey)
-        self.init(activities: activities, startTime:startTime, finishTime:endTime, pausedTime2: pausedTime)
+        let distance = aDecoder.decodeDoubleForKey(ActivityPropertyKey.distanceKey)
+        self.init(activities: activities, startTime:startTime, finishTime:endTime, pausedTime2: pausedTime, distance:distance, locationsAfterResumed:locationsAfterResumed)
     }
 
 }

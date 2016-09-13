@@ -16,6 +16,9 @@ class RTDeleteRecordsOperation {
 
 
     func deleteRecords(records:[CKRecord]){
+        guard records.count > 0 else {
+            return
+        }
         self.allRecords = self.getRecordsIDs(records)
         self.allBatchedRecords = self.allRecords.splitBy(batchSize)
         self.deleteBatch()

@@ -253,7 +253,6 @@ class RTActivitiesModelTest:XCTestCase{
         model.addActivityLocation(location1)
         model.addActivityLocation(location2)
 
-        let pace1 = model.getPaceLastKM()
         model.fakeNow = now + 15
         model.endActivity()
 
@@ -287,7 +286,6 @@ class RTActivitiesModelTest:XCTestCase{
         model.addActivityLocation(location1)
         model.addActivityLocation(location2)
 
-        let distance1 = location2.distance
         model.fakeNow = now + 15
         model.endActivity()
 
