@@ -6,6 +6,7 @@ target 'RunningTracker' do
   pod 'GoogleMaps'
   pod 'Fabric'
   pod 'Crashlytics'
+  pod 'PromiseKit', '~> 3.5'
 end
 
 target 'RunningTrackerTests' do
@@ -13,4 +14,5 @@ target 'RunningTrackerTests' do
   pod 'GoogleMaps'
   pod 'Fabric'
   pod 'Crashlytics'
+  pod 'PromiseKit', '~> 3.5'
 end
