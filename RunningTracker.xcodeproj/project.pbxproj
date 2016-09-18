@@ -40,6 +40,7 @@
 		45BAFD1F6D4218B82994D6C5 /* RTDeleteActivityICloudOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45BAFD5EC27E5A1715090DA7 /* RTDeleteActivityICloudOperation.swift */; };
 		45BAFDB74A04267B17CF9E29 /* RTActivityLocationTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45BAF28DA446F982A3545F62 /* RTActivityLocationTest.swift */; };
 		45BAFDBC28133607D3EA6FCC /* RTActivityHeaderViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 45BAF32F5183A52E746D1DD0 /* RTActivityHeaderViewCell.xib */; };
+		45BAFE033AA27EEB23DCCFA7 /* RTActivitiesAndRecordsHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45BAF52136FCFD1F45DAC7DC /* RTActivitiesAndRecordsHelper.swift */; };
 		45BAFE0B6EBDD698B321EFF1 /* RTFetchActivitiesOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45BAF7322C77649389A7D7AC /* RTFetchActivitiesOperation.swift */; };
 		45BAFEBC5370968F3009A9C9 /* RTSaveLocallyOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45BAFE1158731738592B7DB0 /* RTSaveLocallyOperation.swift */; };
 		45BAFEC841E867803F2F6514 /* RTActivityViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 45BAFD57B853AA77BDE7B464 /* RTActivityViewCell.xib */; };
@@ -127,6 +128,7 @@
 		45BAF28DA446F982A3545F62 /* RTActivityLocationTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RTActivityLocationTest.swift; sourceTree = "<group>"; };
 		45BAF2C37717F11F6EEA023D /* RTStoreActivitiesManager2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RTStoreActivitiesManager2.swift; sourceTree = "<group>"; };
 		45BAF32F5183A52E746D1DD0 /* RTActivityHeaderViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RTActivityHeaderViewCell.xib; sourceTree = "<group>"; };
+		45BAF52136FCFD1F45DAC7DC /* RTActivitiesAndRecordsHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RTActivitiesAndRecordsHelper.swift; sourceTree = "<group>"; };
 		45BAF53B4EEA07F450845DC5 /* CachedDateFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CachedDateFormatter.swift; sourceTree = "<group>"; };
 		45BAF70584E78946E836A5AD /* RTStoreActivitiesManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RTStoreActivitiesManager.swift; sourceTree = "<group>"; };
 		45BAF71705BB05254A84B302 /* RTGlobalModels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RTGlobalModels.swift; sourceTree = "<group>"; };
@@ -256,6 +258,7 @@
 				45BAF71705BB05254A84B302 /* RTGlobalModels.swift */,
 				45BAFDEB4685EAE4A5C307D5 /* RTSaveRecordsOperation.swift */,
 				45BAFB2F7A1A7D71317B8061 /* RTDeleteRecordsOperation.swift */,
+				45BAF52136FCFD1F45DAC7DC /* RTActivitiesAndRecordsHelper.swift */,
 			);
 			path = models;
 			sourceTree = "<group>";
@@ -760,6 +763,7 @@
 				45BAFD1F6D4218B82994D6C5 /* RTDeleteActivityICloudOperation.swift in Sources */,
 				45BAF256DE7D81E7C1A5284E /* RTFetchActivitiesLocallyOperation.swift in Sources */,
 				45BAFE0B6EBDD698B321EFF1 /* RTFetchActivitiesOperation.swift in Sources */,
+				45BAFE033AA27EEB23DCCFA7 /* RTActivitiesAndRecordsHelper.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

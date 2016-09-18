@@ -38,5 +38,23 @@ class RTStoreActivitiesManager2 {
         }
     }
 
+    func saveActivities(activities:[RTActivity], path:String) -> Promise<[RTActivity]> {
+        self.activitiesSavedLocally = activities
+
+        return Promise {
+            fulfill, reject in
+
+            let recordsHelper = RTGlobalModels.sharedInstance.activitiesAndRecordsHelper
+            RTSaveLocallyOperation().execute(activities, path:path)
+            RTSaveICloudOperation().execute(recordsHelper.createRecordsForActivity(activities[activities.count - 1])).then {
+                success in
+                fulfill(self.activitiesSavedLocally!)
+            }.error(policy:.AllErrors){
+                error in
+                fulfill(self.activitiesSavedLocally!)
+            }
+        }
+    }
+
 
 }

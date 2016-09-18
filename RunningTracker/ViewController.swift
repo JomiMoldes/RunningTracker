@@ -39,7 +39,7 @@ class ViewController: UIViewController {
     func iCloudReady() {
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(activitiesFromICloudLoaded), name: "activitiesLoaded", object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(activitiesFromICloudLoaded), name: "activitiesSaved", object: nil)
-        activitiesModel.loadActivities(RTActivitiesModel.ArchiveURL.path!, storeManager: RTGlobalModels.sharedInstance.storeActivitiesManager)
+        activitiesModel.loadActivities(RTActivitiesModel.ArchiveURL.path!, storeManager: RTGlobalModels.sharedInstance.storeActivitiesManager2)
     }
 
     func activitiesFromICloudLoaded(notification:NSNotification){

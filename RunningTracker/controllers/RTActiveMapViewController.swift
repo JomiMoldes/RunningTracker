@@ -201,7 +201,7 @@ class RTActiveMapViewController : UIViewController, CLLocationManagerDelegate, G
 
     private func endActivity() {
         if self.activitiesModel.endActivity() {
-            self.activitiesModel.saveActivities(RTActivitiesModel.ArchiveURL.path!, storeManager: RTGlobalModels.sharedInstance.storeActivitiesManager)
+            self.activitiesModel.saveActivities(RTActivitiesModel.ArchiveURL.path!, storeManager: RTGlobalModels.sharedInstance.storeActivitiesManager2)
             self.addEndFlagMarker()
             updatePaceLabel()
         }

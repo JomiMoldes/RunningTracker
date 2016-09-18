@@ -25,8 +25,8 @@ class RTSyncOperation {
         return Promise {
             fulfill, reject in
 
-            var recordsMissingLocally = self.getRecordsMissingLocally(iCloudActivities)
-            let recordsToAddOnICloud = [CKRecord]()
+            let recordsMissingLocally = self.getRecordsMissingLocally(iCloudActivities)
+            var recordsToAddOnICloud = [CKRecord]()
 
             RTFetchLocationsICloudOperation().execute(recordsMissingLocally).then {
                 records -> Promise<Bool> in
@@ -65,21 +65,18 @@ class RTSyncOperation {
             self.savedLocalActivities.append(activity!)
         }
 
-        return saveLocally(self.savedLocalActivities)
-    }
-
-    private func saveLocally(localActivities: [RTActivity]) -> Bool {
-        return NSKeyedArchiver.archiveRootObject(localActivities, toFile: path)
+        return RTSaveLocallyOperation().execute(self.savedLocalActivities, path:self.path)
     }
 
     private func getRecordsMissingOnICloud(localActivities: [RTActivity], iCloudActivities: [CKRecord]) -> [CKRecord] {
         var recordsToAdd = [CKRecord]()
+        let recordsHelper = RTGlobalModels.sharedInstance.activitiesAndRecordsHelper
         for activity: RTActivity in localActivities {
             let activityId = Int(activity.startTime)
             if iCloudActivitiesDic[activityId] == nil {
-                let newRecord = self.createRecordByActivity(activity)
+                let newRecord = recordsHelper.createRecordByActivity(activity)
                 recordsToAdd.append(newRecord)
-                recordsToAdd += self.createLocationRecords(activity)
+                recordsToAdd += recordsHelper.createLocationRecords(activity)
             }
         }
         return recordsToAdd
@@ -96,33 +93,6 @@ class RTSyncOperation {
         }
 
         return recordsIds
-    }
-
-    private func createRecordByActivity(activity: RTActivity) -> CKRecord {
-        let record = CKRecord(recordType: "Activities2")
-        record.setValue(Int(activity.startTime), forKey: "starttime")
-        record.setValue(Int(activity.finishTime), forKey: "endtime")
-        record.setValue(Int(activity.pausedTime), forKey: "pausedtime")
-        record.setValue(Int(activity.distance), forKey: "distance")
-        return record
-    }
-
-    private func createLocationRecords(activity: RTActivity) -> [CKRecord] {
-        let activityId = Int(activity.startTime)
-        let locations: [RTActivityLocation] = activity.getActivitiesCopy()
-        var locationRecords = [CKRecord]()
-        let record = CKRecord(recordType: "Locations2")
-        record.setValue(activityId, forKey: "activityid")
-
-        let locationsAfterResumed = activity.locationsAfterResumed
-        var locationsList = [CLLocation]()
-        for location in locations {
-            locationsList.append(location.location)
-        }
-        record.setValue(locationsList, forKey: "locationslist")
-        record.setValue(locationsAfterResumed, forKey: "locationsafterresumed")
-        locationRecords.append(record)
-        return locationRecords
     }
 
     private func getLocationsLists(activityId: Int) -> (activities:[RTActivityLocation], afterLocations:[CLLocation]) {

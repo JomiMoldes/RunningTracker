@@ -49,16 +49,19 @@ class RTActivitiesModel {
         return true
     }
 
-    func saveActivities(path:String, storeManager:RTStoreActivitiesManager) -> Bool {
+    func saveActivities(path:String, storeManager:RTStoreActivitiesManager2) -> Bool {
         if(self.activities.count == 0){
             return false
         }
 
-        storeManager.saveActivities(self.activities, completion: {
-            activities in
+        storeManager.saveActivities(self.activities, path:path).then {
+            activities -> Void in
             self.activities = activities
             NSNotificationCenter.defaultCenter().postNotification(NSNotification(name:"activitiesSaved", object:nil))
-        })
+        }.error(policy:.AllErrors){
+            error in
+            print(error)
+        }
 
         return true
     }
@@ -74,8 +77,8 @@ class RTActivitiesModel {
 
     }
 
-    func loadActivities(path:String, storeManager:RTStoreActivitiesManager) {
-        RTGlobalModels.sharedInstance.storeActivitiesManager2.start(path).then {
+    func loadActivities(path:String, storeManager:RTStoreActivitiesManager2) {
+        storeManager.start(path).then {
             activities -> Void in
             self.activities = activities
             NSNotificationCenter.defaultCenter().postNotification(NSNotification(name:"activitiesLoaded", object:nil))
