@@ -6,6 +6,7 @@
 import Foundation
 import CloudKit
 import CoreLocation
+import PromiseKit
 
 enum RTActivitiesError:ErrorType {
     case RTActivityAlreadySet
@@ -74,12 +75,14 @@ class RTActivitiesModel {
     }
 
     func loadActivities(path:String, storeManager:RTStoreActivitiesManager) {
-        storeManager.start(path, completion: {
-            activities in
+        RTGlobalModels.sharedInstance.storeActivitiesManager2.start(path).then {
+            activities -> Void in
             self.activities = activities
             NSNotificationCenter.defaultCenter().postNotification(NSNotification(name:"activitiesLoaded", object:nil))
-        })
-        return
+        }.error(policy:.AllErrors){
+            error in
+            print(error)
+        }
     }
 
     func endActivity() -> Bool {
