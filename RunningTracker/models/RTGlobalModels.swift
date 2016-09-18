@@ -10,14 +10,12 @@ class RTGlobalModels {
     static let sharedInstance = RTGlobalModels()
 
     let activitiesModel : RTActivitiesModel
-    let storeActivitiesManager : RTStoreActivitiesManager
-    let storeActivitiesManager2 : RTStoreActivitiesManager2
+    let storeActivitiesManager2 : RTStoreActivitiesManager
     let activitiesAndRecordsHelper : RTActivitiesAndRecordsHelper
 
     private init(){
         self.activitiesModel = RTActivitiesModel()
-        self.storeActivitiesManager = RTStoreActivitiesManager()
-        self.storeActivitiesManager2 = RTStoreActivitiesManager2()
+        self.storeActivitiesManager2 = RTStoreActivitiesManager()
         self.activitiesAndRecordsHelper = RTActivitiesAndRecordsHelper()
     }
 

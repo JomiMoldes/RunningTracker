@@ -132,18 +132,23 @@ class RTSaveICloudOperation {
     private func retrySaving() -> Promise<Bool> {
         self.retryTimes = self.retryTimes + 1
         if self.retryTimes == self.maxRetryTimes {
-            self.rollback()
+
             return Promise {
                 fulfill, reject in
-                fulfill(true)
+                self.rollback().then{
+                    success in
+                    fulfill(true)
+                }.error(policy:.AllErrors){
+                    error in
+                    fulfill(false)
+                }
             }
         }
         return self.saveBatch()
     }
 
-    private func rollback() {
-        let deleteOperation = RTDeleteRecordsOperation()
-        deleteOperation.deleteRecords(self.allSavedRecords)
+    private func rollback() -> Promise<Bool> {
+        return RTDeleteActivityICloudOperation().execute(self.allSavedRecords)
     }
 
 }

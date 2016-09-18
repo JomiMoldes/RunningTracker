@@ -8,6 +8,16 @@ import CloudKit
 
 class RTActivitiesAndRecordsHelper {
 
+    func getRecordFromRecordsListByActivityId(activityId:Int, records:[CKRecord]) -> CKRecord {
+        for record in records {
+            let recordId = record.valueForKey("starttime") as! Int
+            if  recordId == activityId {
+                return record
+            }
+        }
+        return CKRecord(recordType:"FakeActivity")
+    }
+
     func createRecordByActivity(activity: RTActivity) -> CKRecord {
         let record = CKRecord(recordType: "Activities2")
         record.setValue(Int(activity.startTime), forKey: "starttime")

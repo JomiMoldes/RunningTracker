@@ -9,6 +9,8 @@
 import XCTest
 import Foundation
 import CoreLocation
+import PromiseKit
+
 @testable import RunningTracker
 
 class RTActivitiesModelTest:XCTestCase{
@@ -389,15 +391,21 @@ class RTActivitiesModelFake:RTActivitiesModel{
 
 }
 
-class RTSoreManagerFake:RTStoreActivitiesManager {
-    
-    override func start(path: String, completion: ([RTActivity]) -> Void) -> Bool {
-        completion([RTActivity]())
-        return true
+class RTSoreManagerFake: RTStoreActivitiesManager {
+
+    override func loadActivities(path:String) -> Promise<[RTActivity]> {
+        return Promise {
+            fulfill, reject in
+            fulfill([RTActivity]())
+        }
+
     }
     
-    override func saveActivities(activities: [RTActivity], completion: ([RTActivity]) -> Void) {
-        completion([RTActivity]())
+    override func saveActivities(activities:[RTActivity], path:String) -> Promise<[RTActivity]> {
+        return Promise {
+            fulfill, reject in
+            fulfill([RTActivity]())
+        }
     }
 }
 

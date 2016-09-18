@@ -49,7 +49,7 @@ class RTActivitiesModel {
         return true
     }
 
-    func saveActivities(path:String, storeManager:RTStoreActivitiesManager2) -> Bool {
+    func saveActivities(path:String, storeManager: RTStoreActivitiesManager) -> Bool {
         if(self.activities.count == 0){
             return false
         }
@@ -66,10 +66,16 @@ class RTActivitiesModel {
         return true
     }
 
-    func deleteActivity(activityToDelete:RTActivity, storeManager:RTStoreActivitiesManager) {
+    func deleteActivity(activityToDelete:RTActivity, storeManager: RTStoreActivitiesManager) {
         for activity:RTActivity in self.activities {
             if activity.startTime == activityToDelete.startTime {
-                storeManager.deleteActivity(activityToDelete)
+                storeManager.deleteActivity(activityToDelete, path:RTActivitiesModel.ArchiveURL.path!).then {
+                    success -> Void in
+
+                }.error(policy:.AllErrors){
+                    error in
+                    print(error)
+                }
                 self.activities.removeAtIndex(self.activities.indexOf(activity)!)
                 return
             }
@@ -77,8 +83,8 @@ class RTActivitiesModel {
 
     }
 
-    func loadActivities(path:String, storeManager:RTStoreActivitiesManager2) {
-        storeManager.start(path).then {
+    func loadActivities(path:String, storeManager: RTStoreActivitiesManager) {
+        storeManager.loadActivities(path).then {
             activities -> Void in
             self.activities = activities
             NSNotificationCenter.defaultCenter().postNotification(NSNotification(name:"activitiesLoaded", object:nil))
