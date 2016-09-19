@@ -44,7 +44,7 @@ class RTSyncOperation {
                 error in
 
                 print(error)
-                reject(error)
+                fulfill(self.savedLocalActivities)
             }
         }
     }

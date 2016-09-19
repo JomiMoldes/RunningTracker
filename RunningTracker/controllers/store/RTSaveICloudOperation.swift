@@ -49,6 +49,7 @@ class RTSaveICloudOperation {
             let uploadOperation = CKModifyRecordsOperation(recordsToSave: self.allBatchedRecords[0], recordIDsToDelete: nil)
             uploadOperation.atomic = false
             uploadOperation.database = privateDatabase
+            uploadOperation.qualityOfService = .UserInitiated
 
             uploadOperation.modifyRecordsCompletionBlock = { (savedRecords: [CKRecord]?, deletedRecords: [CKRecordID]?, operationError: NSError?) -> Void in
                 self.removeSavedElements(savedRecords)

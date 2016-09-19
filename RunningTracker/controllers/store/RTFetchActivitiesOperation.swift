@@ -29,7 +29,7 @@ class RTFetchActivitiesOperation {
                     print(error)
                     break
                 }
-                reject(error)
+                fulfill((self.activitiesSavedLocally, [CKRecord]()))
             }
         }
     }
