@@ -61,6 +61,7 @@ class RTActivitiesModel {
         }.error(policy:.AllErrors){
             error in
             print(error)
+            NSNotificationCenter.defaultCenter().postNotification(NSNotification(name:"activitiesSaved", object:nil))
         }
 
         return true
@@ -71,10 +72,12 @@ class RTActivitiesModel {
             if activity.startTime == activityToDelete.startTime {
                 storeManager.deleteActivity(activityToDelete, path:RTActivitiesModel.ArchiveURL.path!).then {
                     success -> Void in
+                    NSNotificationCenter.defaultCenter().postNotification(NSNotification(name:"activityDeleted", object:nil))
 
                 }.error(policy:.AllErrors){
                     error in
                     print(error)
+                    NSNotificationCenter.defaultCenter().postNotification(NSNotification(name:"activityDeleted", object:nil))
                 }
                 self.activities.removeAtIndex(self.activities.indexOf(activity)!)
                 return

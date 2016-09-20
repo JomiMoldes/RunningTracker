@@ -201,11 +201,17 @@ class RTActiveMapViewController : UIViewController, CLLocationManagerDelegate, G
 
     private func endActivity() {
         if self.activitiesModel.endActivity() {
+            showActivityIndicator()
+            NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(activitiesSaved), name: "activitiesSaved", object: nil)
             self.activitiesModel.saveActivities(RTActivitiesModel.ArchiveURL.path!, storeManager: RTGlobalModels.sharedInstance.storeActivitiesManager2)
             self.addEndFlagMarker()
             updatePaceLabel()
         }
         invalidateTimer()
+    }
+
+    func activitiesSaved(notification:NSNotification) {
+        hideActivityIndicator()
     }
 
     func showStopOptions() {

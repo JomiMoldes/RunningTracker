@@ -22,13 +22,20 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         self.activitiesModel = RTGlobalModels.sharedInstance.activitiesModel
+
         checkForICloud()
     }
 
     override func viewDidAppear(animated: Bool) {
         super.viewDidAppear(animated)
+        activityIndicator()
     }
 
+    func activityIndicator() {
+        let size = self.view.frame.size
+        let frame = CGRectMake(size.width / 2 , size.height / 2 + 120, size.width, size.height)
+        showActivityIndicatorWithFrame(frame)
+    }
 
     func loadInitialView() {
         let storyBoard = UIStoryboard(name:"Main", bundle: nil)
@@ -49,6 +56,7 @@ class ViewController: UIViewController {
         let delayTime = dispatch_time(DISPATCH_TIME_NOW, Int64(diff * Double(NSEC_PER_SEC)))
 
         dispatch_after(delayTime, dispatch_get_main_queue()) {
+            self.hideActivityIndicator()
             self.loadInitialView()
         }
     }

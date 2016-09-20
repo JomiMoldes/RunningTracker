@@ -46,6 +46,7 @@ class RTDeleteActivityICloudOperation {
 
             uploadOperation.atomic = false
             uploadOperation.database = privateDatabase
+            uploadOperation.qualityOfService = .UserInitiated
 
             uploadOperation.modifyRecordsCompletionBlock = {
                 (savedRecords: [CKRecord]?, deletedRecords: [CKRecordID]?, operationError: NSError?) -> Void in
@@ -68,6 +69,8 @@ class RTDeleteActivityICloudOperation {
                             error in
                             reject(error)
                         }
+                    }else{
+                        reject(error)
                     }
 
                     print(error)

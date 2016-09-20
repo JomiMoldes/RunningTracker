@@ -49,6 +49,10 @@ class RTActivitiesViewController : UIViewController, UITableViewDelegate, UITabl
         self.tableView.dataSource = self
     }
 
+    func activityDeleted(notification:NSNotification) {
+        self.hideActivityIndicator()
+    }
+
 // UITable delegate and source data
 
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -78,6 +82,8 @@ class RTActivitiesViewController : UIViewController, UITableViewDelegate, UITabl
 
     func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
         if editingStyle == UITableViewCellEditingStyle.Delete {
+            self.showActivityIndicator()
+            NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(activityDeleted), name: "activityDeleted", object: nil)
             let activity = self.activities[indexPath.item]
             self.activitiesModel.deleteActivity(activity, storeManager: RTGlobalModels.sharedInstance.storeActivitiesManager2)
             self.activities.removeAtIndex(indexPath.row)

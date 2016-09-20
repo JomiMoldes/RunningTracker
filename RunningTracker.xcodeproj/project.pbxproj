@@ -21,6 +21,7 @@
 		45BAF5820B27B8BED654057D /* RTBackButtonView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 45BAFA08C9349AD313AF6194 /* RTBackButtonView.xib */; };
 		45BAF6FD0CBB7477BB11BF56 /* background_ui.png in Resources */ = {isa = PBXBuildFile; fileRef = 48E4C0E71D7583670086AE54 /* background_ui.png */; };
 		45BAF798A150E21E22FCA8C0 /* RTNumbersExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45BAFBF0DE4F01A4E9D9FBDE /* RTNumbersExtensions.swift */; };
+		45BAF7A6F70A4E8C04018332 /* RTLoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45BAFE12613898103B015CC9 /* RTLoadingView.swift */; };
 		45BAF88F47593901FEED1DE0 /* RTActivityPathDoneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45BAF73453970E94E1200727 /* RTActivityPathDoneViewController.swift */; };
 		45BAF8E4078B617A903E1626 /* RTDeleteActivityLocallyOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45BAF92DBD275EAAF36A05B7 /* RTDeleteActivityLocallyOperation.swift */; };
 		45BAF8F4C078A9C15FB32890 /* RTActivityHeaderViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45BAF9536E3085FF4F532AFE /* RTActivityHeaderViewCell.swift */; };
@@ -32,6 +33,7 @@
 		45BAFA9219D11B7FF2A6263F /* RTSyncOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45BAF968636443E668477BB4 /* RTSyncOperation.swift */; };
 		45BAFAF03CBD364BF7879A65 /* RTActivityViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45BAF0F221338AE394DB097B /* RTActivityViewCell.swift */; };
 		45BAFB4954F5FC35FE3BDF03 /* RTUIImageExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45BAF26DFA84631ED88E908D /* RTUIImageExtensions.swift */; };
+		45BAFC01BBD4FBDE9EB148EC /* RTViewControllerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45BAF551640D416EF68663F9 /* RTViewControllerExtensions.swift */; };
 		45BAFC1E17D04D6F678D3556 /* RTActivitiesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45BAF7E2708014ED6B2508B8 /* RTActivitiesViewController.swift */; };
 		45BAFD1F6D4218B82994D6C5 /* RTDeleteActivityICloudOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45BAFD5EC27E5A1715090DA7 /* RTDeleteActivityICloudOperation.swift */; };
 		45BAFDB74A04267B17CF9E29 /* RTActivityLocationTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45BAF28DA446F982A3545F62 /* RTActivityLocationTest.swift */; };
@@ -126,6 +128,7 @@
 		45BAF32F5183A52E746D1DD0 /* RTActivityHeaderViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RTActivityHeaderViewCell.xib; sourceTree = "<group>"; };
 		45BAF52136FCFD1F45DAC7DC /* RTActivitiesAndRecordsHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RTActivitiesAndRecordsHelper.swift; sourceTree = "<group>"; };
 		45BAF53B4EEA07F450845DC5 /* CachedDateFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CachedDateFormatter.swift; sourceTree = "<group>"; };
+		45BAF551640D416EF68663F9 /* RTViewControllerExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RTViewControllerExtensions.swift; sourceTree = "<group>"; };
 		45BAF71705BB05254A84B302 /* RTGlobalModels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RTGlobalModels.swift; sourceTree = "<group>"; };
 		45BAF7322C77649389A7D7AC /* RTFetchActivitiesOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RTFetchActivitiesOperation.swift; sourceTree = "<group>"; };
 		45BAF73453970E94E1200727 /* RTActivityPathDoneViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RTActivityPathDoneViewController.swift; sourceTree = "<group>"; };
@@ -150,6 +153,7 @@
 		45BAFD5EC27E5A1715090DA7 /* RTDeleteActivityICloudOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RTDeleteActivityICloudOperation.swift; sourceTree = "<group>"; };
 		45BAFDE23DCDD457E4FD1821 /* RTBackButtonView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RTBackButtonView.swift; sourceTree = "<group>"; };
 		45BAFE1158731738592B7DB0 /* RTSaveLocallyOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RTSaveLocallyOperation.swift; sourceTree = "<group>"; };
+		45BAFE12613898103B015CC9 /* RTLoadingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RTLoadingView.swift; sourceTree = "<group>"; };
 		4805D4701D7CBB7C00A04879 /* AFNetworking.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AFNetworking.framework; path = "../../../../Library/Developer/Xcode/DerivedData/RunningTracker-cyobtvdaneufctbpnvgqhgylaxzi/Build/Products/Debug-iphonesimulator/AFNetworking/AFNetworking.framework"; sourceTree = "<group>"; };
 		4805D4841D7D8CEC00A04879 /* white_background@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "white_background@2x.png"; sourceTree = "<group>"; };
 		4805D4851D7D8CEC00A04879 /* white_background@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "white_background@3x.png"; sourceTree = "<group>"; };
@@ -262,6 +266,7 @@
 				45BAF32F5183A52E746D1DD0 /* RTActivityHeaderViewCell.xib */,
 				45BAFA08C9349AD313AF6194 /* RTBackButtonView.xib */,
 				45BAFDE23DCDD457E4FD1821 /* RTBackButtonView.swift */,
+				45BAFE12613898103B015CC9 /* RTLoadingView.swift */,
 			);
 			path = views;
 			sourceTree = "<group>";
@@ -331,6 +336,7 @@
 				45BAF26DFA84631ED88E908D /* RTUIImageExtensions.swift */,
 				45BAF899D03FA99C60DD92B9 /* RTUILabelExtensions.swift */,
 				45BAF95328EB8149682DB631 /* RTArrayExtensions.swift */,
+				45BAF551640D416EF68663F9 /* RTViewControllerExtensions.swift */,
 			);
 			path = utils;
 			sourceTree = "<group>";
@@ -749,6 +755,8 @@
 				45BAF256DE7D81E7C1A5284E /* RTFetchActivitiesLocallyOperation.swift in Sources */,
 				45BAFE0B6EBDD698B321EFF1 /* RTFetchActivitiesOperation.swift in Sources */,
 				45BAFE033AA27EEB23DCCFA7 /* RTActivitiesAndRecordsHelper.swift in Sources */,
+				45BAFC01BBD4FBDE9EB148EC /* RTViewControllerExtensions.swift in Sources */,
+				45BAF7A6F70A4E8C04018332 /* RTLoadingView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
