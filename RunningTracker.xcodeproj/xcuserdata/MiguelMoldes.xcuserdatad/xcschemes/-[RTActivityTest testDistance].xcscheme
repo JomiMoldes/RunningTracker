@@ -41,9 +41,6 @@
                   Identifier = "RTActivityTest/testAddActivityLocation()">
                </Test>
                <Test
-                  Identifier = "RTActivityTest/testDistance()">
-               </Test>
-               <Test
                   Identifier = "RTActivityTest/testGetDuration()">
                </Test>
                <Test
@@ -51,6 +48,9 @@
                </Test>
                <Test
                   Identifier = "RTActivityTest/testInit()">
+               </Test>
+               <Test
+                  Identifier = "RTActivityTest/testInitWithActivities()">
                </Test>
                <Test
                   Identifier = "RunningTrackerTests">

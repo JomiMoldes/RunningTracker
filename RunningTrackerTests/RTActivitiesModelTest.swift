@@ -99,7 +99,7 @@ class RTActivitiesModelTest:XCTestCase{
         model.endActivity()
         
         let sub = NSNotificationCenter.defaultCenter().addObserverForName("activitiesSaved", object: nil, queue: nil) { (not) -> Void in
-            XCTAssertEqual(self.model.activitiesLength(), 0)
+            XCTAssertEqual(self.model.activitiesLength(), 1)
         }
         expectationForNotification("activitiesSaved", object: nil, handler: nil)
         XCTAssertTrue(model.saveActivities(RTActivitiesModelTest.ArchiveURLTest.path!, storeManager: storeManager))
@@ -400,11 +400,11 @@ class RTSoreManagerFake: RTStoreActivitiesManager {
         }
 
     }
-    
+
     override func saveActivities(activities:[RTActivity], path:String) -> Promise<[RTActivity]> {
         return Promise {
             fulfill, reject in
-            fulfill([RTActivity]())
+            fulfill(activities)
         }
     }
 }

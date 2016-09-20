@@ -44,10 +44,19 @@
                   Identifier = "RTActivitiesModelTest/testGetActivities()">
                </Test>
                <Test
+                  Identifier = "RTActivitiesModelTest/testGetBestPace()">
+               </Test>
+               <Test
                   Identifier = "RTActivitiesModelTest/testGetDistanceDone()">
                </Test>
                <Test
                   Identifier = "RTActivitiesModelTest/testGetElapsedTime()">
+               </Test>
+               <Test
+                  Identifier = "RTActivitiesModelTest/testGetLongestDistance()">
+               </Test>
+               <Test
+                  Identifier = "RTActivitiesModelTest/testGetPaceLastKM()">
                </Test>
                <Test
                   Identifier = "RTActivitiesModelTest/testLoadActivities()">
@@ -60,9 +69,6 @@
                </Test>
                <Test
                   Identifier = "RTActivitiesModelTest/testResumeActivity()">
-               </Test>
-               <Test
-                  Identifier = "RTActivitiesModelTest/testSaveActivities()">
                </Test>
                <Test
                   Identifier = "RTActivitiesModelTest/testStartActivity()">
