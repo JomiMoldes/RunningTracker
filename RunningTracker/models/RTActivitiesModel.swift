@@ -70,7 +70,7 @@ class RTActivitiesModel {
     func deleteActivity(activityToDelete:RTActivity, storeManager: RTStoreActivitiesManager) {
         for activity:RTActivity in self.activities {
             if activity.startTime == activityToDelete.startTime {
-                storeManager.deleteActivity(activityToDelete, path:RTActivitiesModel.ArchiveURL.path!).then {
+                storeManager.deleteActivity(activityToDelete, path:RTActivitiesModel.ArchiveURL!.path!).then {
                     success -> Void in
                     NSNotificationCenter.defaultCenter().postNotification(NSNotification(name:"activityDeleted", object:nil))
 

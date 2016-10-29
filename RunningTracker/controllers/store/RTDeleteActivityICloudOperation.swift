@@ -44,7 +44,7 @@ class RTDeleteActivityICloudOperation {
 
             let uploadOperation = CKModifyRecordsOperation(recordsToSave: nil, recordIDsToDelete: self.allBatchedRecords[0])
 
-            uploadOperation.atomic = false
+//            uploadOperation.atomic = false
             uploadOperation.database = privateDatabase
             uploadOperation.qualityOfService = .UserInitiated
 

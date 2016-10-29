@@ -100,8 +100,8 @@ class RTInitialViewController:UIViewController, CLLocationManagerDelegate {
             UIGraphicsBeginImageContextWithOptions(bgImage.size, true, 0)
             let context = UIGraphicsGetCurrentContext()
 
-            CGContextSetFillColorWithColor(context, UIColor.whiteColor().CGColor)
-            CGContextFillRect(context, rect)
+            CGContextSetFillColorWithColor(context!, UIColor.whiteColor().CGColor)
+            CGContextFillRect(context!, rect)
             bgImage.drawInRect(rect, blendMode: .Luminosity, alpha: 1)
 
             let newUIImage = UIGraphicsGetImageFromCurrentImageContext()

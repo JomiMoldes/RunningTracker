@@ -47,7 +47,7 @@ class RTSaveICloudOperation {
             fulfill, reject in
 
             let uploadOperation = CKModifyRecordsOperation(recordsToSave: self.allBatchedRecords[0], recordIDsToDelete: nil)
-            uploadOperation.atomic = false
+//            uploadOperation.atomic = false
             uploadOperation.database = privateDatabase
             uploadOperation.qualityOfService = .UserInitiated
 
