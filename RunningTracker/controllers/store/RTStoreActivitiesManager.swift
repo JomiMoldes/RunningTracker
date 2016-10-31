@@ -7,9 +7,9 @@ import Foundation
 import CloudKit
 import PromiseKit
 
-enum RTStoreError:ErrorType {
-    case RTICloudNotAvailable
-    case RTUserDefaultsNotAvailable
+enum RTStoreError:Error {
+    case rtiCloudNotAvailable
+    case rtUserDefaultsNotAvailable
 
 }
 
@@ -20,7 +20,7 @@ class RTStoreActivitiesManager {
     var allLocationsRecords = [CKRecord]()
 
 
-    func loadActivities(path:String) -> Promise<[RTActivity]> {
+    func loadActivities(_ path:String) -> Promise<[RTActivity]> {
         return Promise {
             fulfill, reject in
 
@@ -32,14 +32,14 @@ class RTStoreActivitiesManager {
                 activities -> Void in
                 self.activitiesSavedLocally = activities
                 fulfill(self.activitiesSavedLocally!)
-            }.error(policy:.AllErrors) {
+            }.catch(policy:.allErrors) {
                 error in
                 reject(error)
             }
         }
     }
 
-    func saveActivities(activities:[RTActivity], path:String) -> Promise<[RTActivity]> {
+    func saveActivities(_ activities:[RTActivity], path:String) -> Promise<[RTActivity]> {
         self.activitiesSavedLocally = activities
 
         return Promise {
@@ -50,14 +50,14 @@ class RTStoreActivitiesManager {
             RTSaveICloudOperation().execute(recordsHelper.createRecordsForActivity(activities[activities.count - 1])).then {
                 success in
                 fulfill(self.activitiesSavedLocally!)
-            }.error(policy:.AllErrors){
+            }.catch(policy:.allErrors){
                 error in
                 fulfill(self.activitiesSavedLocally!)
             }
         }
     }
 
-    func deleteActivity(activity:RTActivity, path:String) -> Promise<Bool>{
+    func deleteActivity(_ activity:RTActivity, path:String) -> Promise<Bool>{
         return Promise {
             fulfill, reject in
 
@@ -78,7 +78,7 @@ class RTStoreActivitiesManager {
             }.then {
                 success in
                 fulfill(success)
-            }.error(policy:.AllErrors) {
+            }.catch(policy:.allErrors) {
                 error in
                 reject(error)
             }

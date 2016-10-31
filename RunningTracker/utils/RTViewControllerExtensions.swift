@@ -24,12 +24,12 @@ extension UIViewController {
         }
     }
 
-    func showActivityIndicatorWithFrame(frame:CGRect){
-        let indicatorView = UIActivityIndicatorView(activityIndicatorStyle: .WhiteLarge)
+    func showActivityIndicatorWithFrame(_ frame:CGRect){
+        let indicatorView = UIActivityIndicatorView(activityIndicatorStyle: .whiteLarge)
         indicatorView.hidesWhenStopped = true
         indicatorView.startAnimating()
         let size = indicatorView.frame.size
-        indicatorView.frame = CGRectMake(frame.origin.x - (size.width / 2), frame.origin.y, size.width, size.height)
+        indicatorView.frame = CGRect(x: frame.origin.x - (size.width / 2), y: frame.origin.y, width: size.width, height: size.height)
         self.view.addSubview(indicatorView)
     }
 

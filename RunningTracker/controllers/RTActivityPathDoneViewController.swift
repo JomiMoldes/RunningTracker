@@ -37,7 +37,7 @@ class RTActivityPathDoneViewController : UIViewController, GMSMapViewDelegate {
         updateInfo()
     }
 
-    override func viewDidAppear(animated: Bool) {
+    override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         drawPath()
         self.drawMarkers()
@@ -46,30 +46,30 @@ class RTActivityPathDoneViewController : UIViewController, GMSMapViewDelegate {
 
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        self.mapView.frame = CGRectMake(0,0,self.mapContainer.frame.size.width, self.mapContainer.frame.size.height)
+        self.mapView.frame = CGRect(x: 0,y: 0,width: self.mapContainer.frame.size.width, height: self.mapContainer.frame.size.height)
 
         let mapFrame = self.mapContainer.frame
         let bottomFrame = self.bottomBarView.frame
         let bottomYPos = mapFrame.origin.y + mapFrame.size.height - (bottomFrame.size.height / 2)
-        self.bottomBarView.frame = CGRectMake(bottomFrame.origin.x, bottomYPos, bottomFrame.size.width, bottomFrame.size.height)
+        self.bottomBarView.frame = CGRect(x: bottomFrame.origin.x, y: bottomYPos, width: bottomFrame.size.width, height: bottomFrame.size.height)
 
         let topFrame = self.topBarView.frame
         let topYPos = mapFrame.origin.y - (topFrame.size.height / 2)
-        self.topBarView.frame = CGRectMake(topFrame.origin.x, topYPos, topFrame.size.width, topFrame.size.height)
+        self.topBarView.frame = CGRect(x: topFrame.origin.x, y: topYPos, width: topFrame.size.width, height: topFrame.size.height)
     }
 
     func setupMap() {
         let activityLocation:RTActivityLocation = activity.getActivitiesCopy()[0]
 
-        let camera = GMSCameraPosition.cameraWithLatitude(activityLocation.location.coordinate.latitude, longitude: activityLocation.location.coordinate.longitude, zoom: initialZoom)
-        self.mapView = GMSMapView.mapWithFrame(CGRectMake(0,0,self.mapContainer.frame.size.width, self.mapContainer.frame.size.height), camera: camera)
-        self.mapView.myLocationEnabled = false
+        let camera = GMSCameraPosition.camera(withLatitude: activityLocation.location.coordinate.latitude, longitude: activityLocation.location.coordinate.longitude, zoom: initialZoom)
+        self.mapView = GMSMapView.map(withFrame: CGRect(x: 0,y: 0,width: self.mapContainer.frame.size.width, height: self.mapContainer.frame.size.height), camera: camera)
+        self.mapView.isMyLocationEnabled = false
         self.mapView.mapType = kGMSTypeNormal
         mapContainer.addSubview(self.mapView)
         self.mapView.delegate = self
     }
 
-    private func setupMapMarkers() {
+    fileprivate func setupMapMarkers() {
         self.mapMarkersManager = RTMapMarkersManager(mapView: self.mapView)
     }
 
@@ -79,7 +79,7 @@ class RTActivityPathDoneViewController : UIViewController, GMSMapViewDelegate {
     }
 
     func setupTopBar() {
-        self.topBarView.userInteractionEnabled = false
+        self.topBarView.isUserInteractionEnabled = false
         self.chronometerLabel.adjustsFontSizeToFitWidth = true
     }
 
@@ -100,23 +100,23 @@ class RTActivityPathDoneViewController : UIViewController, GMSMapViewDelegate {
     }
 
     func setupBottomBar() {
-        self.bottomBarView.userInteractionEnabled = false
+        self.bottomBarView.isUserInteractionEnabled = false
         self.distanceLabel.adjustsFontSizeToFitWidth = true
         self.distDescLabel.adjustsFontSizeToFitWidth = true
         self.paceLabel.adjustsFontSizeToFitWidth = true
         self.paceDescLabel.adjustsFontSizeToFitWidth = true
     }
 
-    func backTouched(sender:UITapGestureRecognizer){
-        self.navigationController!.popViewControllerAnimated(true)
+    func backTouched(_ sender:UITapGestureRecognizer){
+        self.navigationController!.popViewController(animated: true)
     }
 
-    private func drawPath() {
+    fileprivate func drawPath() {
         let path = GMSMutablePath()
         let activities = activity.getActivitiesCopy()
         
         for activityLocation in  activities{
-            path.addCoordinate(activityLocation.location.coordinate)
+            path.add(activityLocation.location.coordinate)
         }
 
         let polyline = GMSPolyline(path:path)
@@ -124,23 +124,23 @@ class RTActivityPathDoneViewController : UIViewController, GMSMapViewDelegate {
         polyline.map = self.mapView
     }
 
-    private func drawEndFlag() {
+    fileprivate func drawEndFlag() {
         let location = self.activity.getActivitiesCopy().last!.location
         let image = UIImage(named: "Flag_icon_end")
-        self.mapMarkersManager.addMarkerWithLocation(location, km: -1, markImage: image)
+        self.mapMarkersManager.addMarkerWithLocation(location!, km: -1, markImage: image)
     }
 
-    private func drawMarkers() {
+    fileprivate func drawMarkers() {
         self.mapMarkersManager.redrawMarkers(self.activity.checkMarks)
     }
 
 // Map View Delegate
 
-    func mapView(mapView: GMSMapView, didChangeCameraPosition position: GMSCameraPosition) {
+    func mapView(_ mapView: GMSMapView, didChange position: GMSCameraPosition) {
         let zoom = self.mapView.camera.zoom
         if zoom != lastZoom {
             lastZoom = zoom
-            dispatch_async(dispatch_get_main_queue()) {
+            DispatchQueue.main.async {
                 self.mapView.clear()
                 self.mapMarkersManager.drawPath(self.activity)
                 self.drawMarkers()

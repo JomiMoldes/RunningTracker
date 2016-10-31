@@ -29,7 +29,7 @@ class RTLoadingView : UIView {
 
     func setupActivityIndicator() {
         if indicatorView == nil {
-            indicatorView = UIActivityIndicatorView(activityIndicatorStyle: .WhiteLarge)
+            indicatorView = UIActivityIndicatorView(activityIndicatorStyle: .whiteLarge)
             indicatorView.hidesWhenStopped = true
             indicatorView.center = self.center
             indicatorView.startAnimating()

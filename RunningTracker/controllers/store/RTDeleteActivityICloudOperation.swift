@@ -16,7 +16,7 @@ class RTDeleteActivityICloudOperation {
     var allRecords = [CKRecordID]()
     var privateDatabase: CKDatabase!
 
-    func execute(records: [CKRecord]) -> Promise<Bool> {
+    func execute(_ records: [CKRecord]) -> Promise<Bool> {
         return Promise {
             fulfill, reject in
             guard records.count > 0 else {
@@ -24,13 +24,13 @@ class RTDeleteActivityICloudOperation {
                 return
             }
 
-            self.privateDatabase = CKContainer.defaultContainer().privateCloudDatabase
+            self.privateDatabase = CKContainer.default().privateCloudDatabase
             self.allRecords = self.getRecordsIDs(records)
             self.allBatchedRecords = self.allRecords.splitBy(batchSize)
             self.deleteBatch().then {
                 success in
                 fulfill(success)
-            }.error(policy: .AllErrors) {
+            }.catch(policy: .allErrors) {
                 error in
                 reject(error)
             }
@@ -38,7 +38,7 @@ class RTDeleteActivityICloudOperation {
 
     }
 
-    private func deleteBatch() -> Promise<Bool> {
+    fileprivate func deleteBatch() -> Promise<Bool> {
         return Promise {
             fulfill, reject in
 
@@ -46,14 +46,13 @@ class RTDeleteActivityICloudOperation {
 
 //            uploadOperation.atomic = false
             uploadOperation.database = privateDatabase
-            uploadOperation.qualityOfService = .UserInitiated
+            uploadOperation.qualityOfService = .userInitiated
 
-            uploadOperation.modifyRecordsCompletionBlock = {
-                (savedRecords: [CKRecord]?, deletedRecords: [CKRecordID]?, operationError: NSError?) -> Void in
+            uploadOperation.modifyRecordsCompletionBlock = { (savedRecords: [CKRecord]?, deletedRecords: [CKRecordID]?, operationError: Error?) -> Void in
                 self.removeDeletedElements(deletedRecords)
                 if let error = operationError {
-                    switch error.code {
-                    case CKErrorCode.LimitExceeded.rawValue:
+                    switch error {
+                    case CKError.limitExceeded:
                         print("Limit exceeded")
                         self.rebatch()
                         break
@@ -65,7 +64,7 @@ class RTDeleteActivityICloudOperation {
                         self.deleteBatch().then {
                             success in
                             fulfill(success)
-                        }.error(policy:.AllErrors){
+                        }.catch(policy:.allErrors){
                             error in
                             reject(error)
                         }
@@ -88,19 +87,19 @@ class RTDeleteActivityICloudOperation {
                     self.deleteBatch().then {
                         success in
                         fulfill(success)
-                    }.error(policy:.AllErrors){
+                    }.catch(policy:.allErrors){
                         error in
                         reject(error)
                     }
                 }
             }
 
-            NSOperationQueue().addOperation(uploadOperation)
+            OperationQueue().addOperation(uploadOperation)
 
         }
     }
 
-    private func getRecordsIDs(records: [CKRecord]) -> [CKRecordID] {
+    fileprivate func getRecordsIDs(_ records: [CKRecord]) -> [CKRecordID] {
         var recordsID = [CKRecordID]()
         for record: CKRecord in records {
             recordsID.append(record.recordID)
@@ -108,20 +107,20 @@ class RTDeleteActivityICloudOperation {
         return recordsID
     }
 
-    private func removeDeletedElements(deletedRecords: [CKRecordID]?) {
+    fileprivate func removeDeletedElements(_ deletedRecords: [CKRecordID]?) {
         if deletedRecords != nil && deletedRecords!.count > 0 {
             for record: CKRecordID in deletedRecords! {
                 if self.allBatchedRecords[0].contains(record) {
-                    self.allBatchedRecords[0].removeAtIndex(self.allBatchedRecords[0].indexOf(record)!)
+                    self.allBatchedRecords[0].remove(at: self.allBatchedRecords[0].index(of: record)!)
                 }
             }
         }
         if self.allBatchedRecords[0].count == 0 {
-            self.allBatchedRecords.removeAtIndex(0)
+            self.allBatchedRecords.remove(at: 0)
         }
     }
 
-    private func rebatch() {
+    fileprivate func rebatch() {
         self.batchSize = Int(self.batchSize / 2)
         var recordsToDelete = [CKRecordID]()
         for recordsBatch in self.allBatchedRecords {
@@ -133,7 +132,7 @@ class RTDeleteActivityICloudOperation {
         self.allBatchedRecords = recordsToDelete.splitBy(self.batchSize)
     }
 
-    private func retryDeleting() -> Bool {
+    fileprivate func retryDeleting() -> Bool {
         self.retryTimes = self.retryTimes + 1
         if self.retryTimes == self.maxRetryTimes {
             return false

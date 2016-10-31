@@ -7,9 +7,10 @@ import Foundation
 
 extension Array {
 
-    func splitBy(subSize: Int) -> [[Element]] {
-        return 0.stride(to: self.count, by: subSize).map { startIndex in
-            let endIndex = startIndex.advancedBy(subSize, limit: self.count)
+    func splitBy(_ subSize: Int) -> [[Element]] {
+        return stride(from: 0, to: self.count, by: subSize).map { startIndex in
+
+            let endIndex = (startIndex + subSize >= self.count) ? self.count : startIndex + subSize
             return Array(self[startIndex ..< endIndex])
         }
     }

@@ -8,9 +8,9 @@ import PromiseKit
 
 class RTFetchActivitiesLocallyOperation {
 
-    func execute(localPath:String) -> Promise<[RTActivity]> {
+    func execute(_ localPath:String) -> Promise<[RTActivity]> {
         return Promise { fulfill, reject in
-            var activities = NSKeyedUnarchiver.unarchiveObjectWithFile(localPath) as? [RTActivity]
+            var activities = NSKeyedUnarchiver.unarchiveObject(withFile: localPath) as? [RTActivity]
             if activities == nil {
                 activities = [RTActivity]()
             }

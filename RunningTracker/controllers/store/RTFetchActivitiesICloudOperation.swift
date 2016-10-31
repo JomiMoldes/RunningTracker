@@ -13,18 +13,18 @@ class RTFetchActivitiesICloudOperation {
     var database:CKDatabase!
 
     func execute() -> Promise <[CKRecord]> {
-        database = CKContainer.defaultContainer().privateCloudDatabase
+        database = CKContainer.default().privateCloudDatabase
         let query = CKQuery(recordType: "Activities2", predicate: NSPredicate(format: "TRUEPREDICATE", argumentArray: nil))
         let queryOperation = CKQueryOperation(query: query)
         return fetchRecordsWithQuery(queryOperation)
     }
 
-    private func fetchRecordsWithQuery(query:CKQueryOperation) -> Promise<[CKRecord]> {
+    fileprivate func fetchRecordsWithQuery(_ query:CKQueryOperation) -> Promise<[CKRecord]> {
         return Promise {
             fulfill, reject in
 
             let queryOperation = query
-            queryOperation.qualityOfService = .UserInitiated
+            queryOperation.qualityOfService = .userInitiated
             queryOperation.recordFetchedBlock = fetchedActivitiesRecord
 
             queryOperation.queryCompletionBlock = {
@@ -44,18 +44,18 @@ class RTFetchActivitiesICloudOperation {
                 self.fetchRecordsWithQuery(queryOperation).then {
                     activities in
                     fulfill(activities)
-                }.error(policy:.AllErrors){
+                }.catch(policy:.allErrors){
                     error in
                     reject(error)
                 }
 
             }
-            self.database.addOperation(queryOperation)
+            self.database.add(queryOperation)
         }
 
     }
 
-    func fetchedActivitiesRecord(record: CKRecord!) {
+    func fetchedActivitiesRecord(_ record: CKRecord!) {
         self.activitiesRecords.append(record)
     }
 

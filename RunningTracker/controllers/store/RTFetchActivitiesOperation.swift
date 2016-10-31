@@ -11,7 +11,7 @@ class RTFetchActivitiesOperation {
 
     var activitiesSavedLocally = [RTActivity]()
 
-    func execute(path:String) -> Promise<([RTActivity],[CKRecord])> {
+    func execute(_ path:String) -> Promise<([RTActivity],[CKRecord])> {
         return Promise {
             fulfill, reject in
 
@@ -22,7 +22,7 @@ class RTFetchActivitiesOperation {
             }.then {
                 (records:[CKRecord]) -> Void in
                 fulfill((self.activitiesSavedLocally, records))
-            }.error(policy: .AllErrors) {
+            }.catch(policy: .allErrors) {
                 error in
                 switch error {
                 default:

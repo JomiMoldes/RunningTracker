@@ -16,7 +16,7 @@ class RTSyncOperation {
 
     var path: String!
 
-    func execute(localActivities: [RTActivity], iCloudActivities: [CKRecord], path: String) -> Promise<[RTActivity]> {
+    func execute(_ localActivities: [RTActivity], iCloudActivities: [CKRecord], path: String) -> Promise<[RTActivity]> {
         savedLocalActivities = localActivities
         prepareLocalActivitiesDic(localActivities)
         prepareICloudActivitiesDic(iCloudActivities)
@@ -40,7 +40,7 @@ class RTSyncOperation {
                 success in
 
                 fulfill(self.savedLocalActivities)
-            }.error(policy: .AllErrors) {
+            }.catch(policy: .allErrors) {
                 error in
 
                 print(error)
@@ -49,7 +49,7 @@ class RTSyncOperation {
         }
     }
 
-    private func saveDifferencesLocally(activitiesRecordsIds: [Int]) -> Bool {
+    fileprivate func saveDifferencesLocally(_ activitiesRecordsIds: [Int]) -> Bool {
         for activityRecordId in activitiesRecordsIds {
             let activityRecord = iCloudActivitiesDic[activityRecordId]!
             let locations = self.getLocationsLists(activityRecordId)
@@ -68,7 +68,7 @@ class RTSyncOperation {
         return RTSaveLocallyOperation().execute(self.savedLocalActivities, path:self.path)
     }
 
-    private func getRecordsMissingOnICloud(localActivities: [RTActivity], iCloudActivities: [CKRecord]) -> [CKRecord] {
+    fileprivate func getRecordsMissingOnICloud(_ localActivities: [RTActivity], iCloudActivities: [CKRecord]) -> [CKRecord] {
         var recordsToAdd = [CKRecord]()
         let recordsHelper = RTGlobalModels.sharedInstance.activitiesAndRecordsHelper
         for activity: RTActivity in localActivities {
@@ -82,11 +82,11 @@ class RTSyncOperation {
         return recordsToAdd
     }
 
-    private func getRecordsMissingLocally(iCloudActivities: [CKRecord]) -> [Int] {
+    fileprivate func getRecordsMissingLocally(_ iCloudActivities: [CKRecord]) -> [Int] {
         var recordsIds = [Int]()
 
         for activityRecord in iCloudActivities {
-            let recordId = activityRecord.valueForKey("starttime") as! Int
+            let recordId = activityRecord.value(forKey: "starttime") as! Int
             if localActivitiesDic[recordId] == nil {
                 recordsIds.append(recordId)
             }
@@ -95,7 +95,7 @@ class RTSyncOperation {
         return recordsIds
     }
 
-    private func getLocationsLists(activityId: Int) -> (activities:[RTActivityLocation], afterLocations:[CLLocation]) {
+    fileprivate func getLocationsLists(_ activityId: Int) -> (activities:[RTActivityLocation], afterLocations:[CLLocation]) {
         var locations = [RTActivityLocation]()
         let locationRecord = iCloudLocationsDic[activityId]!
 
@@ -110,21 +110,21 @@ class RTSyncOperation {
         return (locations, afterResumedList)
     }
 
-    private func prepareLocalActivitiesDic(localActivities: [RTActivity]) {
+    fileprivate func prepareLocalActivitiesDic(_ localActivities: [RTActivity]) {
         for activity: RTActivity in localActivities {
             let activityId = Int(activity.startTime)
             localActivitiesDic[activityId] = activity
         }
     }
 
-    private func prepareICloudActivitiesDic(activities: [CKRecord]) {
+    fileprivate func prepareICloudActivitiesDic(_ activities: [CKRecord]) {
         for record in activities {
             let recordId = record["starttime"] as! Int
             iCloudActivitiesDic[recordId] = record
         }
     }
 
-    private func prepareICloudLocationsDic(locations: [CKRecord]) {
+    fileprivate func prepareICloudLocationsDic(_ locations: [CKRecord]) {
         for record: CKRecord in locations {
             let recordId = record["activityid"] as! Int
             iCloudLocationsDic[recordId] = record

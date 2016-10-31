@@ -21,10 +21,10 @@ class RTActivitiesViewController : UIViewController, UITableViewDelegate, UITabl
         self.activitiesModel = RTGlobalModels.sharedInstance.activitiesModel
         self.activities = self.activitiesModel.getActivitiesCopy()
 
-        self.activities = self.activities.sort({$0.startTime > $1.startTime})
+        self.activities = self.activities.sorted(by: {$0.startTime > $1.startTime})
         setupTable()
         setupBackButton()
-        noActivitiesLabel.hidden = self.activities.count > 0
+        noActivitiesLabel.isHidden = self.activities.count > 0
     }
 
     func setupBackButton() {
@@ -32,62 +32,62 @@ class RTActivitiesViewController : UIViewController, UITableViewDelegate, UITabl
         self.backButtonView.addGestureRecognizer(gesture)
     }
 
-    func backTouched(sender:UITapGestureRecognizer){
-        self.navigationController!.popViewControllerAnimated(true)
+    func backTouched(_ sender:UITapGestureRecognizer){
+        self.navigationController!.popViewController(animated: true)
     }
 
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        noActivitiesLabel.hidden = self.activities.count > 0
+        noActivitiesLabel.isHidden = self.activities.count > 0
     }
 
 
     func setupTable() {
-        self.tableView.hidden = self.activities.count == 0
-        self.tableView.registerNib(UINib(nibName:"RTActivityViewCell", bundle:nil), forCellReuseIdentifier: "activityViewCell")
+        self.tableView.isHidden = self.activities.count == 0
+        self.tableView.register(UINib(nibName:"RTActivityViewCell", bundle:nil), forCellReuseIdentifier: "activityViewCell")
         self.tableView.delegate = self
         self.tableView.dataSource = self
     }
 
-    func activityDeleted(notification:NSNotification) {
+    func activityDeleted(_ notification:Notification) {
         self.hideActivityIndicator()
     }
 
 // UITable delegate and source data
 
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.activities.count
     }
 
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell : UITableViewCell!
-        let activity = self.activities[indexPath.item]
-        cell = tableView.dequeueReusableCellWithIdentifier("activityViewCell", forIndexPath: indexPath) as! RTActivityViewCell
+        let activity = self.activities[(indexPath as NSIndexPath).item]
+        cell = tableView.dequeueReusableCell(withIdentifier: "activityViewCell", for: indexPath) as! RTActivityViewCell
         (cell as! RTActivityViewCell).setupInfo(activity)
-        cell.backgroundColor = UIColor.clearColor()
+        cell.backgroundColor = UIColor.clear
 
         let backgroundView = UIView()
-        backgroundView.backgroundColor = UIColor.clearColor()
+        backgroundView.backgroundColor = UIColor.clear
         cell.selectedBackgroundView = backgroundView
 
         return cell
     }
 
-    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        let activity = self.activities[indexPath.item]
-        let activityDoneMap = UIStoryboard(name:"Main", bundle:nil).instantiateViewControllerWithIdentifier("activityDoneMap") as? RTActivityPathDoneViewController
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let activity = self.activities[(indexPath as NSIndexPath).item]
+        let activityDoneMap = UIStoryboard(name:"Main", bundle:nil).instantiateViewController(withIdentifier: "activityDoneMap") as? RTActivityPathDoneViewController
         activityDoneMap!.activity = activity
         self.navigationController!.pushViewController(activityDoneMap!, animated:true)
     }
 
-    func tableView(tableView: UITableView, commitEditingStyle editingStyle: UITableViewCellEditingStyle, forRowAtIndexPath indexPath: NSIndexPath) {
-        if editingStyle == UITableViewCellEditingStyle.Delete {
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == UITableViewCellEditingStyle.delete {
             self.showActivityIndicator()
-            NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(activityDeleted), name: "activityDeleted", object: nil)
-            let activity = self.activities[indexPath.item]
+            NotificationCenter.default.addObserver(self, selector: #selector(activityDeleted), name: NSNotification.Name(rawValue: "activityDeleted"), object: nil)
+            let activity = self.activities[(indexPath as NSIndexPath).item]
             self.activitiesModel.deleteActivity(activity, storeManager: RTGlobalModels.sharedInstance.storeActivitiesManager2)
-            self.activities.removeAtIndex(indexPath.row)
-            self.tableView.deleteRowsAtIndexPaths([indexPath], withRowAnimation: UITableViewRowAnimation.Automatic)
+            self.activities.remove(at: (indexPath as NSIndexPath).row)
+            self.tableView.deleteRows(at: [indexPath], with: UITableViewRowAnimation.automatic)
             self.view.setNeedsUpdateConstraints()
         }
     }

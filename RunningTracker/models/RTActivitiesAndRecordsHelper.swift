@@ -8,9 +8,9 @@ import CloudKit
 
 class RTActivitiesAndRecordsHelper {
 
-    func getRecordFromRecordsListByActivityId(activityId:Int, records:[CKRecord]) -> CKRecord {
+    func getRecordFromRecordsListByActivityId(_ activityId:Int, records:[CKRecord]) -> CKRecord {
         for record in records {
-            let recordId = record.valueForKey("starttime") as! Int
+            let recordId = record.value(forKey: "starttime") as! Int
             if  recordId == activityId {
                 return record
             }
@@ -18,7 +18,7 @@ class RTActivitiesAndRecordsHelper {
         return CKRecord(recordType:"FakeActivity")
     }
 
-    func createRecordByActivity(activity: RTActivity) -> CKRecord {
+    func createRecordByActivity(_ activity: RTActivity) -> CKRecord {
         let record = CKRecord(recordType: "Activities2")
         record.setValue(Int(activity.startTime), forKey: "starttime")
         record.setValue(Int(activity.finishTime), forKey: "endtime")
@@ -27,7 +27,7 @@ class RTActivitiesAndRecordsHelper {
         return record
     }
 
-    func createLocationRecords(activity: RTActivity) -> [CKRecord] {
+    func createLocationRecords(_ activity: RTActivity) -> [CKRecord] {
         let activityId = Int(activity.startTime)
         let locations: [RTActivityLocation] = activity.getActivitiesCopy()
         var locationRecords = [CKRecord]()
@@ -45,7 +45,7 @@ class RTActivitiesAndRecordsHelper {
         return locationRecords
     }
 
-    func createRecordsForActivity(activity:RTActivity) -> [CKRecord] {
+    func createRecordsForActivity(_ activity:RTActivity) -> [CKRecord] {
         var records = [CKRecord]()
         records.append(createRecordByActivity(activity))
         records += createLocationRecords(activity)

@@ -5,12 +5,12 @@
 
 import Foundation
 
-extension NSDateFormatter {
+extension DateFormatter {
 
-    func getDateWithFormat(format:String, time:NSTimeInterval) -> String {
+    func getDateWithFormat(_ format:String, time:TimeInterval) -> String {
         self.dateFormat = format
-        let date = NSDate(timeIntervalSince1970: time)
-        let str = stringFromDate(date)
+        let date = Date(timeIntervalSince1970: time)
+        let str = string(from: date)
         return str
     }
 

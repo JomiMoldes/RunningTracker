@@ -15,8 +15,8 @@ struct ActivityLocationPropertyKey{
 
 class RTActivityLocation:NSObject , NSCoding {
 
-    private(set) var location : CLLocation!
-    private(set) var timestamp : Double = 0
+    fileprivate(set) var location : CLLocation!
+    fileprivate(set) var timestamp : Double = 0
     var distance : Double = 0
     var firstAfterResumed : Bool = false
 
@@ -31,18 +31,18 @@ class RTActivityLocation:NSObject , NSCoding {
 //MARK NSCoding
 
     required convenience init?(coder aDecoder: NSCoder) {
-        let location = aDecoder.decodeObjectForKey(ActivityLocationPropertyKey.locationKey) as! CLLocation
-        let timestamp = aDecoder.decodeDoubleForKey(ActivityLocationPropertyKey.timestampKey)
-        let distance = aDecoder.decodeDoubleForKey(ActivityLocationPropertyKey.distanceKey)
-        let firstAfterResumed = aDecoder.decodeBoolForKey(ActivityLocationPropertyKey.firstAfterResumedKey)
+        let location = aDecoder.decodeObject(forKey: ActivityLocationPropertyKey.locationKey) as! CLLocation
+        let timestamp = aDecoder.decodeDouble(forKey: ActivityLocationPropertyKey.timestampKey)
+        let distance = aDecoder.decodeDouble(forKey: ActivityLocationPropertyKey.distanceKey)
+        let firstAfterResumed = aDecoder.decodeBool(forKey: ActivityLocationPropertyKey.firstAfterResumedKey)
         self.init(location: location, timestamp:timestamp, firstAfterResumed:firstAfterResumed, distance:distance)
     }
 
-    internal func encodeWithCoder(aCoder: NSCoder) {
-        aCoder.encodeObject(location!, forKey:ActivityLocationPropertyKey.locationKey)
-        aCoder.encodeDouble(timestamp, forKey:ActivityLocationPropertyKey.timestampKey)
-        aCoder.encodeDouble(distance, forKey:ActivityLocationPropertyKey.distanceKey)
-        aCoder.encodeBool(firstAfterResumed, forKey:ActivityLocationPropertyKey.firstAfterResumedKey)
+    internal func encode(with aCoder: NSCoder) {
+        aCoder.encode(location!, forKey:ActivityLocationPropertyKey.locationKey)
+        aCoder.encode(timestamp, forKey:ActivityLocationPropertyKey.timestampKey)
+        aCoder.encode(distance, forKey:ActivityLocationPropertyKey.distanceKey)
+        aCoder.encode(firstAfterResumed, forKey:ActivityLocationPropertyKey.firstAfterResumedKey)
     }
 
 }

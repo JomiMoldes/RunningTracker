@@ -23,7 +23,7 @@ class RTActivityLocationTest : XCTestCase {
 
     func testInit() {
         let location = CLLocation(latitude:10.00, longitude: 11.00)
-        let now = NSDate().timeIntervalSince1970
+        let now = Date().timeIntervalSince1970
         self.activityLocation = RTActivityLocation(location:location, timestamp: now + 10)
         XCTAssertEqual(self.activityLocation.timestamp, now + 10)
         XCTAssertEqual(self.activityLocation.location, location)
@@ -32,7 +32,7 @@ class RTActivityLocationTest : XCTestCase {
 
     func testInit2() {
         let location = CLLocation(latitude:10.00, longitude: 11.00)
-        let now = NSDate().timeIntervalSince1970
+        let now = Date().timeIntervalSince1970
         let firstAfterResumed = true
         self.activityLocation = RTActivityLocation(location:location, timestamp: now, firstAfterResumed: firstAfterResumed)
         XCTAssertEqual(self.activityLocation.timestamp, now)
@@ -42,13 +42,13 @@ class RTActivityLocationTest : XCTestCase {
 
     func testInitWithCoder() {
         let location = CLLocation(latitude:10.00, longitude: 11.00)
-        let now = NSDate().timeIntervalSince1970
+        let now = Date().timeIntervalSince1970
         let firstAfterResumed = true
         self.activityLocation = RTActivityLocation(location:location, timestamp: now, firstAfterResumed: firstAfterResumed)
 
-        let data = NSKeyedArchiver.archivedDataWithRootObject(self.activityLocation)
+        let data = NSKeyedArchiver.archivedData(withRootObject: self.activityLocation)
         
-        let copyLocation : RTActivityLocation = NSKeyedUnarchiver.unarchiveObjectWithData(data) as! RTActivityLocation
+        let copyLocation : RTActivityLocation = NSKeyedUnarchiver.unarchiveObject(with: data) as! RTActivityLocation
 
         XCTAssertEqual(copyLocation.timestamp, now)
         XCTAssertEqual(copyLocation.location.coordinate.latitude, location.coordinate.latitude)

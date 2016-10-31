@@ -12,8 +12,8 @@ class RTFetchLocationsICloudOperation {
     var locationsRecords = [CKRecord]()
     var database: CKDatabase!
 
-    func execute(activitiesRecordsIds: [Int]) -> Promise<[CKRecord]> {
-        database = CKContainer.defaultContainer().privateCloudDatabase
+    func execute(_ activitiesRecordsIds: [Int]) -> Promise<[CKRecord]> {
+        database = CKContainer.default().privateCloudDatabase
         let predicate = NSPredicate(format: "activityid IN %@", activitiesRecordsIds)
         let query = CKQuery(recordType: "Locations2", predicate: predicate)
         let queryOperation = CKQueryOperation(query: query)
@@ -29,19 +29,19 @@ class RTFetchLocationsICloudOperation {
             fetchRecordsWithQuery(queryOperation).then {
                 records in
                 fulfill(records)
-            }.error(policy: .AllErrors) {
+            }.catch(policy: .allErrors) {
                 error in
                 fulfill([CKRecord]())
             }
         }
     }
 
-    private func fetchRecordsWithQuery(query: CKQueryOperation) -> Promise<[CKRecord]> {
+    fileprivate func fetchRecordsWithQuery(_ query: CKQueryOperation) -> Promise<[CKRecord]> {
         return Promise {
             fulfill, reject in
 
             let queryOperation = query
-            queryOperation.qualityOfService = .UserInitiated
+            queryOperation.qualityOfService = .userInitiated
             queryOperation.recordFetchedBlock = fetchedLocationsRecord
 
             queryOperation.queryCompletionBlock = {
@@ -61,18 +61,18 @@ class RTFetchLocationsICloudOperation {
                 self.fetchRecordsWithQuery(queryOperation).then {
                     locations in
                     fulfill(locations)
-                }.error(policy: .AllErrors) {
+                }.catch(policy: .allErrors) {
                     error in
                     reject(error)
                 }
 
             }
-            self.database.addOperation(queryOperation)
+            self.database.add(queryOperation)
         }
 
     }
 
-    func fetchedLocationsRecord(record: CKRecord!) {
+    func fetchedLocationsRecord(_ record: CKRecord!) {
         locationsRecords.append(record)
     }
 

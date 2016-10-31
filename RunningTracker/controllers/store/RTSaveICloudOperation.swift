@@ -17,7 +17,7 @@ class RTSaveICloudOperation {
     var retryTimes = 0
     var privateDatabase:CKDatabase!
 
-    func execute(records:[CKRecord]) -> Promise<Bool> {
+    func execute(_ records:[CKRecord]) -> Promise<Bool> {
 
         return Promise {
             fulfill, reject in
@@ -29,12 +29,12 @@ class RTSaveICloudOperation {
 
             self.allRecords = records
             self.allBatchedRecords = records.splitBy(batchSize)
-            privateDatabase = CKContainer.defaultContainer().privateCloudDatabase
+            privateDatabase = CKContainer.default().privateCloudDatabase
 
             saveBatch().then {
                 success in
                 fulfill(success)
-            }.error(policy:.AllErrors){
+            }.catch(policy:.allErrors){
                 error in
                 fulfill(false)
             }
@@ -42,26 +42,27 @@ class RTSaveICloudOperation {
         }
     }
 
-    private func saveBatch() -> Promise<Bool> {
+    fileprivate func saveBatch() -> Promise<Bool> {
         return Promise {
             fulfill, reject in
 
             let uploadOperation = CKModifyRecordsOperation(recordsToSave: self.allBatchedRecords[0], recordIDsToDelete: nil)
 //            uploadOperation.atomic = false
             uploadOperation.database = privateDatabase
-            uploadOperation.qualityOfService = .UserInitiated
+            uploadOperation.qualityOfService = .userInitiated
 
-            uploadOperation.modifyRecordsCompletionBlock = { (savedRecords: [CKRecord]?, deletedRecords: [CKRecordID]?, operationError: NSError?) -> Void in
+            uploadOperation.modifyRecordsCompletionBlock = {
+                (savedRecords: [CKRecord]?, deletedRecords: [CKRecordID]?, operationError: Error?) -> Void in
                 self.removeSavedElements(savedRecords)
                 if let error = operationError {
 
-                    switch error.code {
-                    case CKErrorCode.LimitExceeded.rawValue:
+                    switch error {
+                    case CKError.limitExceeded:
                         self.rebatch()
                         self.retrySaving().then{
                             success in
                             fulfill(true)
-                        }.error(policy:.AllErrors){
+                        }.catch(policy:.allErrors){
                             error in
                             reject(error)
                             return
@@ -71,7 +72,7 @@ class RTSaveICloudOperation {
                         self.retrySaving().then{
                             success in
                             fulfill(true)
-                        }.error(policy:.AllErrors){
+                        }.catch(policy:.allErrors){
                             error in
                             reject(error)
                             return
@@ -92,33 +93,33 @@ class RTSaveICloudOperation {
                 self.saveBatch().then {
                     success in
                     fulfill(true)
-                }.error(policy:.AllErrors){
+                }.catch(policy:.allErrors){
                     error in
                     reject(error)
                     return
                 }
             }
 
-            NSOperationQueue().addOperation(uploadOperation)
+            OperationQueue().addOperation(uploadOperation)
         }
 
     }
 
-    private func removeSavedElements(savedRecords: [CKRecord]?) {
+    fileprivate func removeSavedElements(_ savedRecords: [CKRecord]?) {
         if savedRecords != nil && savedRecords!.count > 0 {
             for record : CKRecord in savedRecords! {
                 if self.allBatchedRecords[0].contains(record) {
-                    self.allBatchedRecords[0].removeAtIndex(self.allBatchedRecords[0].indexOf(record)!)
+                    self.allBatchedRecords[0].remove(at: self.allBatchedRecords[0].index(of: record)!)
                 }
                 allSavedRecords.append(record)
             }
         }
         if self.allBatchedRecords[0].count == 0 {
-            self.allBatchedRecords.removeAtIndex(0)
+            self.allBatchedRecords.remove(at: 0)
         }
     }
 
-    private func rebatch(){
+    fileprivate func rebatch(){
         self.batchSize = self.batchSize >= 200 ? self.batchSize - 100 : self.batchSize
         var recordsToSave = [CKRecord]()
         for recordsBatch in self.allBatchedRecords {
@@ -130,7 +131,7 @@ class RTSaveICloudOperation {
         self.allBatchedRecords = recordsToSave.splitBy(self.batchSize)
     }
 
-    private func retrySaving() -> Promise<Bool> {
+    fileprivate func retrySaving() -> Promise<Bool> {
         self.retryTimes = self.retryTimes + 1
         if self.retryTimes == self.maxRetryTimes {
 
@@ -139,7 +140,7 @@ class RTSaveICloudOperation {
                 self.rollback().then{
                     success in
                     fulfill(true)
-                }.error(policy:.AllErrors){
+                }.catch(policy:.allErrors){
                     error in
                     fulfill(false)
                 }
@@ -148,7 +149,7 @@ class RTSaveICloudOperation {
         return self.saveBatch()
     }
 
-    private func rollback() -> Promise<Bool> {
+    fileprivate func rollback() -> Promise<Bool> {
         return RTDeleteActivityICloudOperation().execute(self.allSavedRecords)
     }
 

@@ -14,7 +14,7 @@ class RTActivityViewCell : UITableViewCell {
     @IBOutlet weak var seeMapButton: UIButton!
 
 
-    func setupInfo(activity:RTActivity) {
+    func setupInfo(_ activity:RTActivity) {
         let formatter = CachedDateFormatter.sharedInstance.formatterWith("dd/MM/YY")
         let dateString = formatter.getDateWithFormat("dd/MM/YY", time:activity.startTime)
 
@@ -31,22 +31,22 @@ class RTActivityViewCell : UITableViewCell {
         self.paceLabel.text = "\(dateString) - Pace: \(paceString)"
         self.distanceLabel.text = "\(distanceString) km - \(durationString)"
 
-        self.seeMapButton.enabled = false
+        self.seeMapButton.isEnabled = false
     }
 
     override func layoutSubviews ()
     {
         super.layoutSubviews()
-        let width = CGRectGetWidth( frame )
+        let width = frame.width
         if width > 0 {
             let buttonSize = self.seeMapButton.frame.size
             let insetsSize = CGFloat(10.0)
-            self.seeMapButton.titleLabel!.frame = CGRectMake(0.0, 0.0, buttonSize.width - insetsSize * 2, buttonSize.height)
+            self.seeMapButton.titleLabel!.frame = CGRect(x: 0.0, y: 0.0, width: buttonSize.width - insetsSize * 2, height: buttonSize.height)
 
             let insets = UIEdgeInsets(top: 0.0, left: insetsSize, bottom: 0.0, right: insetsSize)
             self.seeMapButton.titleEdgeInsets = insets
-            self.seeMapButton.titleLabel?.lineBreakMode = NSLineBreakMode.ByClipping
-            self.seeMapButton.titleLabel?.textAlignment = NSTextAlignment.Center
+            self.seeMapButton.titleLabel?.lineBreakMode = NSLineBreakMode.byClipping
+            self.seeMapButton.titleLabel?.textAlignment = NSTextAlignment.center
 
             self.seeMapButton.titleLabel!.shrinkFont()
 

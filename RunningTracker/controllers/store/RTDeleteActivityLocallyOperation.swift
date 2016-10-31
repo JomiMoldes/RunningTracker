@@ -9,12 +9,12 @@ import PromiseKit
 
 class RTDeleteActivityLocallyOperation {
 
-    func execute(activities:[RTActivity], activity:RTActivity,  path:String) -> [RTActivity] {
+    func execute(_ activities:[RTActivity], activity:RTActivity,  path:String) -> [RTActivity] {
         var activitiesToSave = activities
         for localActivity:RTActivity in activitiesToSave {
             if Int(localActivity.startTime) == Int(activity.startTime) {
-                let index = activitiesToSave.indexOf(localActivity)
-                activitiesToSave.removeAtIndex(index!)
+                let index = activitiesToSave.index(of: localActivity)
+                activitiesToSave.remove(at: index!)
                 RTSaveLocallyOperation().execute(activitiesToSave, path: path)
                 break
             }

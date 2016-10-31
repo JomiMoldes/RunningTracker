@@ -15,7 +15,7 @@ import PromiseKit
 
 class RTActivitiesModelTest:XCTestCase{
 
-    static let ArchiveURLTest = RTActivitiesModel.DocumentsDirectory.URLByAppendingPathComponent("activitiesTest")
+    static let ArchiveURLTest = RTActivitiesModel.DocumentsDirectory.appendingPathComponent("activitiesTest")
     
     var model:RTActivitiesModelFake!
     var storeManager : RTSoreManagerFake!
@@ -28,7 +28,7 @@ class RTActivitiesModelTest:XCTestCase{
     
     override func tearDown() {
         model.deleteAllActivities()
-        model.saveActivities(RTActivitiesModelTest.ArchiveURLTest.path!, storeManager: storeManager)
+        model.saveActivities(RTActivitiesModelTest.ArchiveURLTest.path, storeManager: storeManager)
         model.valuesRefreshed = false
         storeManager = nil
         super.tearDown()
@@ -51,7 +51,7 @@ class RTActivitiesModelTest:XCTestCase{
 
     func testEndActivity() {
         XCTAssertFalse(model.endActivity(), "you cannot end an activity when there is none active")
-        let now = NSDate().timeIntervalSince1970
+        let now = Date().timeIntervalSince1970
         model.fakeNow = now
         mockStartActivity()
         addLocationToCurrentActivity()
@@ -74,7 +74,7 @@ class RTActivitiesModelTest:XCTestCase{
     }
 
     func testResumeActivity() {
-        let now = NSDate().timeIntervalSince1970
+        let now = Date().timeIntervalSince1970
         model.fakeNow = now
         mockStartActivity()
         model.fakeNow = now + 5
@@ -87,10 +87,10 @@ class RTActivitiesModelTest:XCTestCase{
     }
 
     func testSaveActivities() {
-        let now = NSDate().timeIntervalSince1970
+        let now = Date().timeIntervalSince1970
         model.fakeNow = now
         XCTAssertEqual(model.activitiesLength(), 0)
-        XCTAssertFalse(model.saveActivities(RTActivitiesModelTest.ArchiveURLTest.path!, storeManager: storeManager))
+        XCTAssertFalse(model.saveActivities(RTActivitiesModelTest.ArchiveURLTest.path, storeManager: storeManager))
         mockStartActivity()
         let location1 = mockActivityLocation(now + 10, lat:12.55555, long:13)
         let location2 = mockActivityLocation(now + 15, lat:12.55555, long:14)
@@ -98,18 +98,18 @@ class RTActivitiesModelTest:XCTestCase{
         model.addActivityLocation(location2)
         model.endActivity()
         
-        let sub = NSNotificationCenter.defaultCenter().addObserverForName("activitiesSaved", object: nil, queue: nil) { (not) -> Void in
+        let sub = NotificationCenter.default.addObserver(forName: NSNotification.Name(rawValue: "activitiesSaved"), object: nil, queue: nil) { (not) -> Void in
             XCTAssertEqual(self.model.activitiesLength(), 1)
         }
-        expectationForNotification("activitiesSaved", object: nil, handler: nil)
-        XCTAssertTrue(model.saveActivities(RTActivitiesModelTest.ArchiveURLTest.path!, storeManager: storeManager))
-        waitForExpectationsWithTimeout(0.1, handler: nil)
+        expectation(forNotification: "activitiesSaved", object: nil, handler: nil)
+        XCTAssertTrue(model.saveActivities(RTActivitiesModelTest.ArchiveURLTest.path, storeManager: storeManager))
+        waitForExpectations(timeout: 0.1, handler: nil)
         
-        NSNotificationCenter.defaultCenter().removeObserver(sub)
+        NotificationCenter.default.removeObserver(sub)
     }
 
     func testLoadActivities() {
-        let now = NSDate().timeIntervalSince1970
+        let now = Date().timeIntervalSince1970
         model.fakeNow = now
         XCTAssertEqual(model.activitiesLength(), 0)
         mockStartActivity()
@@ -119,16 +119,16 @@ class RTActivitiesModelTest:XCTestCase{
         model.addActivityLocation(location2)
         model.endActivity()
         
-        let sub = NSNotificationCenter.defaultCenter().addObserverForName("activitiesSaved", object: nil, queue: nil) { (not) -> Void in
-            self.expectationForNotification("activitiesLoaded", object: nil, handler: nil)
-            self.model.loadActivities(RTActivitiesModelTest.ArchiveURLTest.path!, storeManager: self.storeManager)
+        let sub = NotificationCenter.default.addObserver(forName: NSNotification.Name(rawValue: "activitiesSaved"), object: nil, queue: nil) { (not) -> Void in
+            self.expectation(forNotification: "activitiesLoaded", object: nil, handler: nil)
+            self.model.loadActivities(RTActivitiesModelTest.ArchiveURLTest.path, storeManager: self.storeManager)
             
-            self.waitForExpectationsWithTimeout(0.1, handler: nil)
+            self.waitForExpectations(timeout: 0.1, handler: nil)
         }        
         
-        XCTAssertTrue(model.saveActivities(RTActivitiesModelTest.ArchiveURLTest.path!, storeManager: storeManager))
+        XCTAssertTrue(model.saveActivities(RTActivitiesModelTest.ArchiveURLTest.path, storeManager: storeManager))
         
-        NSNotificationCenter.defaultCenter().removeObserver(sub)
+        NotificationCenter.default.removeObserver(sub)
     }
 
     func testRefreshValues() {
@@ -175,7 +175,7 @@ class RTActivitiesModelTest:XCTestCase{
     }
 
     func testGetElapsedTime() {
-        let now = NSDate().timeIntervalSince1970
+        let now = Date().timeIntervalSince1970
         model.fakeNow = now
 
         do{
@@ -199,7 +199,7 @@ class RTActivitiesModelTest:XCTestCase{
     }
 
     func testGetDistanceDone() {
-        let now = NSDate().timeIntervalSince1970
+        let now = Date().timeIntervalSince1970
         model.fakeNow = now
 
         mockStartActivity()
@@ -214,7 +214,7 @@ class RTActivitiesModelTest:XCTestCase{
     }
 
     func testGetPaceLastKM() {
-        let now = NSDate().timeIntervalSince1970
+        let now = Date().timeIntervalSince1970
         model.fakeNow = now
 
         mockStartActivity()
@@ -232,7 +232,7 @@ class RTActivitiesModelTest:XCTestCase{
     }
 
     func testPauseActivity() {
-        let now = NSDate().timeIntervalSince1970
+        let now = Date().timeIntervalSince1970
         model.fakeNow = now
         mockStartActivity()
         
@@ -245,7 +245,7 @@ class RTActivitiesModelTest:XCTestCase{
 
     func testGetBestPace() {
 
-        var now = NSDate().timeIntervalSince1970
+        var now = Date().timeIntervalSince1970
         model.fakeNow = now
 
         mockStartActivity()
@@ -278,7 +278,7 @@ class RTActivitiesModelTest:XCTestCase{
 
     func testGetLongestDistance() {
 
-        var now = NSDate().timeIntervalSince1970
+        var now = Date().timeIntervalSince1970
         model.fakeNow = now
 
         mockStartActivity()
@@ -316,7 +316,7 @@ class RTActivitiesModelTest:XCTestCase{
         model.endActivity()
         XCTAssertEqual(model.activitiesLength(), 0)
         
-        let now = NSDate().timeIntervalSince1970
+        let now = Date().timeIntervalSince1970
         model.fakeNow = now
         mockStartActivity()
         let location1 = mockActivityLocation(now + 10, lat:12.55555, long:13)
@@ -329,7 +329,7 @@ class RTActivitiesModelTest:XCTestCase{
     }
 
     func testGetActivities() {
-        let now = NSDate().timeIntervalSince1970
+        let now = Date().timeIntervalSince1970
         model.fakeNow = now
         
         let location1 = mockActivityLocation(now + 10, lat:12.55555, long:13)
@@ -362,7 +362,7 @@ class RTActivitiesModelTest:XCTestCase{
     
     
 
-    func mockActivityLocation(now:NSTimeInterval, lat:Double = 111.22, long:Double = 333.3) -> RTActivityLocation {
+    func mockActivityLocation(_ now:TimeInterval, lat:Double = 111.22, long:Double = 333.3) -> RTActivityLocation {
         let location = CLLocation(latitude:lat, longitude: long)
         let activityLocation : RTActivityLocation? = RTActivityLocation(location: location, timestamp: now)
         return activityLocation!
@@ -374,7 +374,7 @@ class RTActivitiesModelFake:RTActivitiesModel{
 
     var valuesRefreshed:Bool = false
 
-    var fakeNow:NSTimeInterval = NSDate().timeIntervalSince1970
+    var fakeNow:TimeInterval = Date().timeIntervalSince1970
     
     override init() {
         super.init()
@@ -385,7 +385,7 @@ class RTActivitiesModelFake:RTActivitiesModel{
         super.refreshValues()
     }
 
-    override func getNow() -> NSTimeInterval {
+    override func getNow() -> TimeInterval {
         return fakeNow
     }
 
@@ -393,7 +393,7 @@ class RTActivitiesModelFake:RTActivitiesModel{
 
 class RTSoreManagerFake: RTStoreActivitiesManager {
 
-    override func loadActivities(path:String) -> Promise<[RTActivity]> {
+    override func loadActivities(_ path:String) -> Promise<[RTActivity]> {
         return Promise {
             fulfill, reject in
             fulfill([RTActivity]())
@@ -401,7 +401,7 @@ class RTSoreManagerFake: RTStoreActivitiesManager {
 
     }
 
-    override func saveActivities(activities:[RTActivity], path:String) -> Promise<[RTActivity]> {
+    override func saveActivities(_ activities:[RTActivity], path:String) -> Promise<[RTActivity]> {
         return Promise {
             fulfill, reject in
             fulfill(activities)

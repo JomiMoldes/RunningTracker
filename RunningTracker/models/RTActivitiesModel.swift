@@ -8,48 +8,47 @@ import CloudKit
 import CoreLocation
 import PromiseKit
 
-enum RTActivitiesError:ErrorType {
-    case RTActivityAlreadySet
-    case RTActivityNotSet
+enum RTActivitiesError:Error {
+    case rtActivityAlreadySet
+    case rtActivityNotSet
 
 }
 
 class RTActivitiesModel {
 
-    static let DocumentsDirectory = NSFileManager().URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask).first!
+    static let DocumentsDirectory = FileManager().urls(for: .documentDirectory, in: .userDomainMask).first!
 #if DEBUG
-    static let ArchiveURL = DocumentsDirectory.URLByAppendingPathComponent("debug_activities")
+    static let ArchiveURL = DocumentsDirectory.appendingPathComponent("debug_activities")
 #else
-    static let ArchiveURL = DocumentsDirectory.URLByAppendingPathComponent("activities")
+    static let ArchiveURL = DocumentsDirectory.appendingPathComponent("activities")
 #endif
 
-    private var activities:[RTActivity]!
+    fileprivate var activities:[RTActivity]!
 
-    private var currentActivity : RTActivity!
-    private(set) var checkMarks = [Int:CLLocation]()
+    fileprivate var currentActivity : RTActivity!
+    fileprivate(set) var checkMarks = [Int:CLLocation]()
 
-    private(set) var currentActivityPaused : Bool = false
-    private(set) var currentActivityJustResumed : Bool = false
-    private(set) var activityRunning : Bool = false
-    private(set) var currentActivityPausedAt : NSTimeInterval = 0
-    private var nextMarker = 1000
+    fileprivate(set) var currentActivityPaused : Bool = false
+    fileprivate(set) var currentActivityJustResumed : Bool = false
+    fileprivate(set) var activityRunning : Bool = false
+    fileprivate(set) var currentActivityPausedAt : TimeInterval = 0
+    fileprivate var nextMarker = 1000
 
     init(){
         self.activities = [RTActivity]()
     }
 
-    func startActivity() throws -> Bool {
+    func startActivity() throws {
         guard currentActivity == nil else {
             print("Trying to start activity before ending previous one")
-            throw RTActivitiesError.RTActivityAlreadySet
+            throw RTActivitiesError.rtActivityAlreadySet
         }
 //        self.currentActivity = RTActivity(activities: [RTActivityLocation](), startTime: getNow(), finishTime: 0, pausedTime2: 0, distance: 0, locationsAfterResumed: [CLLocation]())
         self.currentActivity = RTActivity(startTime:getNow())
         activityRunning = true
-        return true
     }
 
-    func saveActivities(path:String, storeManager: RTStoreActivitiesManager) -> Bool {
+    func saveActivities(_ path:String, storeManager: RTStoreActivitiesManager) -> Bool {
         if(self.activities.count == 0){
             return false
         }
@@ -57,41 +56,46 @@ class RTActivitiesModel {
         storeManager.saveActivities(self.activities, path:path).then {
             activities -> Void in
             self.activities = activities
-            NSNotificationCenter.defaultCenter().postNotification(NSNotification(name:"activitiesSaved", object:nil))
-        }.error(policy:.AllErrors){
+            let notificationName = NSNotification.Name(rawValue:"activitiesSaved")
+            
+            NotificationCenter.default.post(name:notificationName, object:nil)
+        }.catch(policy:.allErrors){
             error in
             print(error)
-            NSNotificationCenter.defaultCenter().postNotification(NSNotification(name:"activitiesSaved", object:nil))
+            let notificationSavedName = NSNotification.Name(rawValue: "activitiesSaved")
+            NotificationCenter.default.post(name:notificationSavedName, object:nil)
         }
 
         return true
     }
 
-    func deleteActivity(activityToDelete:RTActivity, storeManager: RTStoreActivitiesManager) {
+    func deleteActivity(_ activityToDelete:RTActivity, storeManager: RTStoreActivitiesManager) {
+        let notificationName = NSNotification.Name(rawValue: "activityDeleted")
         for activity:RTActivity in self.activities {
             if activity.startTime == activityToDelete.startTime {
-                storeManager.deleteActivity(activityToDelete, path:RTActivitiesModel.ArchiveURL!.path!).then {
+                storeManager.deleteActivity(activityToDelete, path:RTActivitiesModel.ArchiveURL.path).then {
                     success -> Void in
-                    NSNotificationCenter.defaultCenter().postNotification(NSNotification(name:"activityDeleted", object:nil))
+                    NotificationCenter.default.post(name:notificationName, object:nil)
 
-                }.error(policy:.AllErrors){
+                }.catch(policy:.allErrors){
                     error in
                     print(error)
-                    NSNotificationCenter.defaultCenter().postNotification(NSNotification(name:"activityDeleted", object:nil))
+                    NotificationCenter.default.post(name:notificationName, object:nil)
                 }
-                self.activities.removeAtIndex(self.activities.indexOf(activity)!)
+                self.activities.remove(at: self.activities.index(of: activity)!)
                 return
             }
         }
 
     }
 
-    func loadActivities(path:String, storeManager: RTStoreActivitiesManager) {
+    func loadActivities(_ path:String, storeManager: RTStoreActivitiesManager) {
         storeManager.loadActivities(path).then {
             activities -> Void in
             self.activities = activities
-            NSNotificationCenter.defaultCenter().postNotification(NSNotification(name:"activitiesLoaded", object:nil))
-        }.error(policy:.AllErrors){
+            let notificationName = NSNotification.Name(rawValue: "activitiesLoaded")
+            NotificationCenter.default.post(name:notificationName, object:nil)
+        }.catch(policy:.allErrors){
             error in
             print(error)
         }
@@ -128,7 +132,7 @@ class RTActivitiesModel {
         currentActivityPausedAt = 0
     }
 
-    func addActivityLocation(activity:RTActivityLocation) -> Bool {
+    func addActivityLocation(_ activity:RTActivityLocation) -> Bool {
         if currentActivityPaused || currentActivity == nil {
             return false
         }
@@ -140,7 +144,7 @@ class RTActivitiesModel {
         return currentActivity.addActivityLocation(activity, checkMarkers: true)
     }
 
-    func getElapsedTime() -> NSTimeInterval {
+    func getElapsedTime() -> TimeInterval {
         var elapsedTime = 0.0
         if let activity = currentActivity {
             elapsedTime = activity.pausedTime + activity.startTime
@@ -159,14 +163,14 @@ class RTActivitiesModel {
             return 0.00
         }
         var totalDistance:Double = 0
-        var startTime:NSTimeInterval = 0
-        var endTime:NSTimeInterval = 0
-        var totalTime:NSTimeInterval = 0
+        var startTime:TimeInterval = 0
+        var endTime:TimeInterval = 0
+        var totalTime:TimeInterval = 0
         var firstActivityLocation:RTActivityLocation?
         let lastActivityLocation:RTActivityLocation = activityLocations[activityLocations.count - 1]
 
         let maxValue = activityLocations.count - 1
-        for i in maxValue.stride(through: 0, by: -1)  {
+        for i in stride(from: maxValue, through: 0, by: -1)  {
 
             firstActivityLocation = activityLocations[i]
             let distance = firstActivityLocation!.distance
@@ -208,7 +212,7 @@ class RTActivitiesModel {
     }
 
     func getActivitiesCopy()->[RTActivity]{
-        let copyArray : [RTActivity] = NSKeyedUnarchiver.unarchiveObjectWithData(NSKeyedArchiver.archivedDataWithRootObject(activities)) as! [RTActivity]
+        let copyArray : [RTActivity] = NSKeyedUnarchiver.unarchiveObject(with: NSKeyedArchiver.archivedData(withRootObject: activities)) as! [RTActivity]
         return copyArray
     }
 
@@ -219,11 +223,11 @@ class RTActivitiesModel {
             }
             return self.getActivitiesCopy().last!
         }
-        let copyActivity : RTActivity = NSKeyedUnarchiver.unarchiveObjectWithData(NSKeyedArchiver.archivedDataWithRootObject(self.currentActivity)) as! RTActivity
+        let copyActivity : RTActivity = NSKeyedUnarchiver.unarchiveObject(with: NSKeyedArchiver.archivedData(withRootObject: self.currentActivity)) as! RTActivity
         return copyActivity
     }
 
-    private func currentActivitiesLocationsLength() -> Int {
+    fileprivate func currentActivitiesLocationsLength() -> Int {
         if currentActivity == nil {
             return 0
         }
@@ -234,8 +238,8 @@ class RTActivitiesModel {
         self.activities = [RTActivity]()
     }
 
-    func getNow() -> NSTimeInterval {
-        return NSDate().timeIntervalSince1970
+    func getNow() -> TimeInterval {
+        return Date().timeIntervalSince1970
     }
 
     func getBestPace() -> Double {

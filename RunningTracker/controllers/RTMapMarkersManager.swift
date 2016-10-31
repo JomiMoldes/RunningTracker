@@ -16,23 +16,23 @@ class RTMapMarkersManager {
         self.mapView = mapView
     }
 
-    func addMarkerWithLocation(location:CLLocation, km:Int, markImage: UIImage?){
+    func addMarkerWithLocation(_ location:CLLocation, km:Int, markImage: UIImage?){
         let icon = UIImageView()
         let maxHeight = CGFloat(getMaxMarkerSize())
         let markerWidth = maxHeight * markImage!.size.width / markImage!.size.height
-        icon.frame = CGRectMake(0, 0, markerWidth, maxHeight)
+        icon.frame = CGRect(x: 0, y: 0, width: markerWidth, height: maxHeight)
         icon.image = markImage!
 
         let marker = GMSMarker(position:location.coordinate)
 
         if km > -1 {
             let kmLabel = UILabel()
-            kmLabel.frame = CGRectMake(0, 2, icon.frame.size.width, CGFloat(icon.frame.size.height * 0.7))
-            kmLabel.textAlignment = .Center
+            kmLabel.frame = CGRect(x: 0, y: 2, width: icon.frame.size.width, height: CGFloat(icon.frame.size.height * 0.7))
+            kmLabel.textAlignment = .center
             icon.addSubview(kmLabel)
 
             let labelFont =  UIFont(name: "OpenSans-Semibold", size: 20)
-            let stringAttributes = [ NSForegroundColorAttributeName: UIColor.whiteColor(), NSFontAttributeName: labelFont! ]
+            let stringAttributes = [ NSForegroundColorAttributeName: UIColor.white, NSFontAttributeName: labelFont! ]
             let attString = NSAttributedString(string: String(format: "%ld", km), attributes: stringAttributes)
             kmLabel.attributedText = attString
         }
@@ -44,7 +44,7 @@ class RTMapMarkersManager {
         marker.map = self.mapView
     }
 
-    private func getMaxMarkerSize() -> Float {
+    fileprivate func getMaxMarkerSize() -> Float {
         let zoom = self.mapView.camera.zoom
         let maxZoom : Float = 21
         let minZoom : Float = 2
@@ -60,19 +60,19 @@ class RTMapMarkersManager {
         return maxHeight
     }
 
-    func redrawMarkers(markers:[Int:CLLocation]) {
+    func redrawMarkers(_ markers:[Int:CLLocation]) {
         let image = UIImage(named: "Flag_icon_KM")
         for (km, location) in markers {
             addMarkerWithLocation(location, km: km, markImage: image)
         }
     }
 
-    func drawPath(activity:RTActivity) {
+    func drawPath(_ activity:RTActivity) {
         let path = GMSMutablePath()
         let activities = activity.getActivitiesCopy()
 
         for activityLocation in  activities{
-            path.addCoordinate(activityLocation.location.coordinate)
+            path.add(activityLocation.location.coordinate)
         }
 
         let polyline = GMSPolyline(path:path)

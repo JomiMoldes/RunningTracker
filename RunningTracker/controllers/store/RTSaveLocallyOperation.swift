@@ -7,7 +7,7 @@ import Foundation
 
 class RTSaveLocallyOperation {
 
-    func execute(activities: [RTActivity], path:String) -> Bool {
+    func execute(_ activities: [RTActivity], path:String) -> Bool {
         return NSKeyedArchiver.archiveRootObject(activities, toFile: path)
     }
 

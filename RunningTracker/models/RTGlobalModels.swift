@@ -13,7 +13,7 @@ class RTGlobalModels {
     let storeActivitiesManager2 : RTStoreActivitiesManager
     let activitiesAndRecordsHelper : RTActivitiesAndRecordsHelper
 
-    private init(){
+    fileprivate init(){
         self.activitiesModel = RTActivitiesModel()
         self.storeActivitiesManager2 = RTStoreActivitiesManager()
         self.activitiesAndRecordsHelper = RTActivitiesAndRecordsHelper()

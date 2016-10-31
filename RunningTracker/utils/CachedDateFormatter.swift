@@ -4,17 +4,17 @@ class CachedDateFormatter {
 
     static let sharedInstance = CachedDateFormatter()
 
-    var cachedDateFormatters = [String: NSDateFormatter]()
+    var cachedDateFormatters = [String: DateFormatter]()
 
-    private init(){}
+    fileprivate init(){}
 
-    func formatterWith(format:String, timeZone:NSTimeZone = NSTimeZone.localTimeZone(), locale:NSLocale = NSLocale(localeIdentifier:"en_US")) -> NSDateFormatter {
+    func formatterWith(_ format:String, timeZone:TimeZone = TimeZone.autoupdatingCurrent, locale:Locale = Locale(identifier:"en_US")) -> DateFormatter {
         let key = "\(format.hashValue)\(timeZone.hashValue)\(locale.hashValue)"
 
         if let cachedDateFormatter = cachedDateFormatters[key] {
             return cachedDateFormatter
         } else {
-            let newDateFormatter = NSDateFormatter()
+            let newDateFormatter = DateFormatter()
             newDateFormatter.dateFormat = format
             newDateFormatter.timeZone = timeZone
             newDateFormatter.locale = locale
