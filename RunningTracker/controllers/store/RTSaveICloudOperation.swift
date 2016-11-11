@@ -80,7 +80,6 @@ class RTSaveICloudOperation {
                         break
                     }
 
-                    print(operationError)
                     return
                 }
 

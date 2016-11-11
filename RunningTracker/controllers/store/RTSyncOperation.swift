@@ -33,7 +33,7 @@ class RTSyncOperation {
                 if records.count > 0 {
                     self.prepareICloudLocationsDic(records)
                 }
-                self.saveDifferencesLocally(recordsMissingLocally)
+                _ = self.saveDifferencesLocally(recordsMissingLocally)
                 recordsToAddOnICloud = self.getRecordsMissingOnICloud(self.savedLocalActivities, iCloudActivities: iCloudActivities)
                 return RTSaveICloudOperation().execute(recordsToAddOnICloud)
             }.then {

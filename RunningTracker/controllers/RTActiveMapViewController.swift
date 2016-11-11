@@ -203,7 +203,7 @@ class RTActiveMapViewController : UIViewController, CLLocationManagerDelegate, G
         if self.activitiesModel.endActivity() {
             showActivityIndicator()
             NotificationCenter.default.addObserver(self, selector: #selector(activitiesSaved), name: NSNotification.Name(rawValue: "activitiesSaved"), object: nil)
-            self.activitiesModel.saveActivities(RTActivitiesModel.ArchiveURL.path, storeManager: RTGlobalModels.sharedInstance.storeActivitiesManager2)
+            _ = self.activitiesModel.saveActivities(RTActivitiesModel.ArchiveURL.path, storeManager: RTGlobalModels.sharedInstance.storeActivitiesManager2)
             self.addEndFlagMarker()
             updatePaceLabel()
         }

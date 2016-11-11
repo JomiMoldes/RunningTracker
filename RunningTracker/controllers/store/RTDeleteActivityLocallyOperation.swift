@@ -15,7 +15,7 @@ class RTDeleteActivityLocallyOperation {
             if Int(localActivity.startTime) == Int(activity.startTime) {
                 let index = activitiesToSave.index(of: localActivity)
                 activitiesToSave.remove(at: index!)
-                RTSaveLocallyOperation().execute(activitiesToSave, path: path)
+                _ = RTSaveLocallyOperation().execute(activitiesToSave, path: path)
                 break
             }
         }

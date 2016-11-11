@@ -46,7 +46,7 @@ class RTStoreActivitiesManager {
             fulfill, reject in
 
             let recordsHelper = RTGlobalModels.sharedInstance.activitiesAndRecordsHelper
-            RTSaveLocallyOperation().execute(activities, path:path)
+            _ = RTSaveLocallyOperation().execute(activities, path:path)
             RTSaveICloudOperation().execute(recordsHelper.createRecordsForActivity(activities[activities.count - 1])).then {
                 success in
                 fulfill(self.activitiesSavedLocally!)
