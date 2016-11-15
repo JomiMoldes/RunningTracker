@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		45BAF0DE930DFEAD5E238D9E /* RTActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45BAF0CB67C24E3DF1344558 /* RTActivity.swift */; };
+		45BAF127E1EF38FB038E1749 /* RTInitialView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 45BAF4AD561AF997CEB5FD1D /* RTInitialView.xib */; };
 		45BAF21B280B8DFDAD002E56 /* RTArrayExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45BAF95328EB8149682DB631 /* RTArrayExtensions.swift */; };
 		45BAF256DE7D81E7C1A5284E /* RTFetchActivitiesLocallyOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45BAF952778E0DA7A4B4AB2A /* RTFetchActivitiesLocallyOperation.swift */; };
 		45BAF25DD41B74D53B77D2A5 /* RTActivityTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45BAFC31489610B135A32E38 /* RTActivityTest.swift */; };
@@ -17,8 +18,10 @@
 		45BAF35FF38665A31336D7CA /* RTActiveMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45BAF9A0DF51888F7D92705D /* RTActiveMapViewController.swift */; };
 		45BAF39C7FD3375EBEF05126 /* RTStoreActivitiesManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45BAF2C37717F11F6EEA023D /* RTStoreActivitiesManager.swift */; };
 		45BAF3F97EBCED19E1E145A3 /* RTGlobalModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45BAF71705BB05254A84B302 /* RTGlobalModels.swift */; };
+		45BAF4FB460A832A62D43944 /* RTInitialLocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45BAF4E1D1EC3213B66C17A8 /* RTInitialLocationManager.swift */; };
 		45BAF54B0B3E8CA0CBF55B86 /* RTFetchLocationsICloudOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45BAF97CADB8DFCCAECA5360 /* RTFetchLocationsICloudOperation.swift */; };
 		45BAF5820B27B8BED654057D /* RTBackButtonView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 45BAFA08C9349AD313AF6194 /* RTBackButtonView.xib */; };
+		45BAF66B99FF5437A6C2FAC8 /* RTInitialView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45BAFD00AEC055DDADC7D82E /* RTInitialView.swift */; };
 		45BAF6FD0CBB7477BB11BF56 /* background_ui.png in Resources */ = {isa = PBXBuildFile; fileRef = 48E4C0E71D7583670086AE54 /* background_ui.png */; };
 		45BAF798A150E21E22FCA8C0 /* RTNumbersExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45BAFBF0DE4F01A4E9D9FBDE /* RTNumbersExtensions.swift */; };
 		45BAF7A6F70A4E8C04018332 /* RTLoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45BAFE12613898103B015CC9 /* RTLoadingView.swift */; };
@@ -26,6 +29,7 @@
 		45BAF8E4078B617A903E1626 /* RTDeleteActivityLocallyOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45BAF92DBD275EAAF36A05B7 /* RTDeleteActivityLocallyOperation.swift */; };
 		45BAF8F4C078A9C15FB32890 /* RTActivityHeaderViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45BAF9536E3085FF4F532AFE /* RTActivityHeaderViewCell.swift */; };
 		45BAF93B4E2030994CF73146 /* CachedDateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45BAF53B4EEA07F450845DC5 /* CachedDateFormatter.swift */; };
+		45BAF9886CC1BE6BAB2E7C30 /* RTInitialViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45BAF97F77733501D78A942C /* RTInitialViewModel.swift */; };
 		45BAF98FED4665549212C685 /* RTActivityLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45BAF7D64C5B42DC4D6CFF92 /* RTActivityLocation.swift */; };
 		45BAFA25955E0634529193CB /* RTFetchActivitiesICloudOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45BAF18848647237A7649649 /* RTFetchActivitiesICloudOperation.swift */; };
 		45BAFA63A080F2D499536142 /* RTActivitiesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45BAF9623FF8D4BDF06E463C /* RTActivitiesModel.swift */; };
@@ -57,6 +61,7 @@
 		4805D4A71D7F3A8800A04879 /* Flag_icon_end@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4805D4A31D7F3A8800A04879 /* Flag_icon_end@3x.png */; };
 		4805D4A81D7F3A8800A04879 /* Flag_icon_KM@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4805D4A41D7F3A8800A04879 /* Flag_icon_KM@2x.png */; };
 		4805D4A91D7F3A8800A04879 /* Flag_icon_KM@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4805D4A51D7F3A8800A04879 /* Flag_icon_KM@3x.png */; };
+		4828EF161DD8E15500CC8F3C /* RTInitialViewController2.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4828EF151DD8E15500CC8F3C /* RTInitialViewController2.swift */; };
 		48650E8B1D6DEF36006BE423 /* OpenSans-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 48650E811D6DEF36006BE423 /* OpenSans-Bold.ttf */; };
 		48650E8C1D6DEF36006BE423 /* OpenSans-BoldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 48650E821D6DEF36006BE423 /* OpenSans-BoldItalic.ttf */; };
 		48650E8D1D6DEF36006BE423 /* OpenSans-ExtraBold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 48650E831D6DEF36006BE423 /* OpenSans-ExtraBold.ttf */; };
@@ -126,6 +131,8 @@
 		45BAF28DA446F982A3545F62 /* RTActivityLocationTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RTActivityLocationTest.swift; sourceTree = "<group>"; };
 		45BAF2C37717F11F6EEA023D /* RTStoreActivitiesManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RTStoreActivitiesManager.swift; sourceTree = "<group>"; };
 		45BAF32F5183A52E746D1DD0 /* RTActivityHeaderViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RTActivityHeaderViewCell.xib; sourceTree = "<group>"; };
+		45BAF4AD561AF997CEB5FD1D /* RTInitialView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RTInitialView.xib; sourceTree = "<group>"; };
+		45BAF4E1D1EC3213B66C17A8 /* RTInitialLocationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RTInitialLocationManager.swift; sourceTree = "<group>"; };
 		45BAF52136FCFD1F45DAC7DC /* RTActivitiesAndRecordsHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RTActivitiesAndRecordsHelper.swift; sourceTree = "<group>"; };
 		45BAF53B4EEA07F450845DC5 /* CachedDateFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CachedDateFormatter.swift; sourceTree = "<group>"; };
 		45BAF551640D416EF68663F9 /* RTViewControllerExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RTViewControllerExtensions.swift; sourceTree = "<group>"; };
@@ -144,11 +151,13 @@
 		45BAF968636443E668477BB4 /* RTSyncOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RTSyncOperation.swift; sourceTree = "<group>"; };
 		45BAF9781FF433244C273369 /* RTSaveICloudOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RTSaveICloudOperation.swift; sourceTree = "<group>"; };
 		45BAF97CADB8DFCCAECA5360 /* RTFetchLocationsICloudOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RTFetchLocationsICloudOperation.swift; sourceTree = "<group>"; };
+		45BAF97F77733501D78A942C /* RTInitialViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RTInitialViewModel.swift; sourceTree = "<group>"; };
 		45BAF9A0DF51888F7D92705D /* RTActiveMapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RTActiveMapViewController.swift; sourceTree = "<group>"; };
 		45BAFA08C9349AD313AF6194 /* RTBackButtonView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RTBackButtonView.xib; sourceTree = "<group>"; };
 		45BAFA7969CD4F51B9558C45 /* RTMapMarkersManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RTMapMarkersManager.swift; sourceTree = "<group>"; };
 		45BAFBF0DE4F01A4E9D9FBDE /* RTNumbersExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RTNumbersExtensions.swift; sourceTree = "<group>"; };
 		45BAFC31489610B135A32E38 /* RTActivityTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RTActivityTest.swift; sourceTree = "<group>"; };
+		45BAFD00AEC055DDADC7D82E /* RTInitialView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RTInitialView.swift; sourceTree = "<group>"; };
 		45BAFD57B853AA77BDE7B464 /* RTActivityViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RTActivityViewCell.xib; sourceTree = "<group>"; };
 		45BAFD5EC27E5A1715090DA7 /* RTDeleteActivityICloudOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RTDeleteActivityICloudOperation.swift; sourceTree = "<group>"; };
 		45BAFDE23DCDD457E4FD1821 /* RTBackButtonView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RTBackButtonView.swift; sourceTree = "<group>"; };
@@ -166,6 +175,7 @@
 		4805D4A31D7F3A8800A04879 /* Flag_icon_end@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Flag_icon_end@3x.png"; sourceTree = "<group>"; };
 		4805D4A41D7F3A8800A04879 /* Flag_icon_KM@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Flag_icon_KM@2x.png"; sourceTree = "<group>"; };
 		4805D4A51D7F3A8800A04879 /* Flag_icon_KM@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Flag_icon_KM@3x.png"; sourceTree = "<group>"; };
+		4828EF151DD8E15500CC8F3C /* RTInitialViewController2.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RTInitialViewController2.swift; sourceTree = "<group>"; };
 		48650E811D6DEF36006BE423 /* OpenSans-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-Bold.ttf"; sourceTree = "<group>"; };
 		48650E821D6DEF36006BE423 /* OpenSans-BoldItalic.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-BoldItalic.ttf"; sourceTree = "<group>"; };
 		48650E831D6DEF36006BE423 /* OpenSans-ExtraBold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "OpenSans-ExtraBold.ttf"; sourceTree = "<group>"; };
@@ -245,6 +255,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		45BAF5369F426BC12E43C82A /* initialView */ = {
+			isa = PBXGroup;
+			children = (
+				45BAF4AD561AF997CEB5FD1D /* RTInitialView.xib */,
+				45BAFD00AEC055DDADC7D82E /* RTInitialView.swift */,
+				45BAF97F77733501D78A942C /* RTInitialViewModel.swift */,
+				45BAF4E1D1EC3213B66C17A8 /* RTInitialLocationManager.swift */,
+			);
+			path = initialView;
+			sourceTree = "<group>";
+		};
 		45BAF66256242D52BA8F83A8 /* models */ = {
 			isa = PBXGroup;
 			children = (
@@ -267,6 +288,7 @@
 				45BAFA08C9349AD313AF6194 /* RTBackButtonView.xib */,
 				45BAFDE23DCDD457E4FD1821 /* RTBackButtonView.swift */,
 				45BAFE12613898103B015CC9 /* RTLoadingView.swift */,
+				45BAF5369F426BC12E43C82A /* initialView */,
 			);
 			path = views;
 			sourceTree = "<group>";
@@ -350,6 +372,7 @@
 				45BAF73453970E94E1200727 /* RTActivityPathDoneViewController.swift */,
 				45BAFA7969CD4F51B9558C45 /* RTMapMarkersManager.swift */,
 				45BAFEAAFA061D6A35C070B6 /* store */,
+				4828EF151DD8E15500CC8F3C /* RTInitialViewController2.swift */,
 			);
 			path = controllers;
 			sourceTree = "<group>";
@@ -603,6 +626,7 @@
 				45BAFEC841E867803F2F6514 /* RTActivityViewCell.xib in Resources */,
 				45BAFDBC28133607D3EA6FCC /* RTActivityHeaderViewCell.xib in Resources */,
 				45BAF5820B27B8BED654057D /* RTBackButtonView.xib in Resources */,
+				45BAF127E1EF38FB038E1749 /* RTInitialView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -745,6 +769,7 @@
 				45BAFAF03CBD364BF7879A65 /* RTActivityViewCell.swift in Sources */,
 				45BAF8F4C078A9C15FB32890 /* RTActivityHeaderViewCell.swift in Sources */,
 				45BAFF27CFB9B02E5CEAB8CE /* RTBackButtonView.swift in Sources */,
+				4828EF161DD8E15500CC8F3C /* RTInitialViewController2.swift in Sources */,
 				45BAF21B280B8DFDAD002E56 /* RTArrayExtensions.swift in Sources */,
 				45BAF39C7FD3375EBEF05126 /* RTStoreActivitiesManager.swift in Sources */,
 				45BAFA25955E0634529193CB /* RTFetchActivitiesICloudOperation.swift in Sources */,
@@ -759,6 +784,9 @@
 				45BAFE033AA27EEB23DCCFA7 /* RTActivitiesAndRecordsHelper.swift in Sources */,
 				45BAFC01BBD4FBDE9EB148EC /* RTViewControllerExtensions.swift in Sources */,
 				45BAF7A6F70A4E8C04018332 /* RTLoadingView.swift in Sources */,
+				45BAF66B99FF5437A6C2FAC8 /* RTInitialView.swift in Sources */,
+				45BAF9886CC1BE6BAB2E7C30 /* RTInitialViewModel.swift in Sources */,
+				45BAF4FB460A832A62D43944 /* RTInitialLocationManager.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
