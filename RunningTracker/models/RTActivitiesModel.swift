@@ -7,6 +7,8 @@ import Foundation
 import CloudKit
 import CoreLocation
 import PromiseKit
+import RxCocoa
+import RxSwift
 
 enum RTActivitiesError:Error {
     case rtActivityAlreadySet
@@ -33,6 +35,8 @@ class RTActivitiesModel {
     fileprivate(set) var activityRunning : Bool = false
     fileprivate(set) var currentActivityPausedAt : TimeInterval = 0
     fileprivate var nextMarker = 1000
+
+    let activitiesVariable = Variable<[RTActivity?]>([])
 
     init(){
         self.activities = [RTActivity]()
@@ -108,9 +112,9 @@ class RTActivitiesModel {
             return false
         }
 
-//        if currentActivitesLocationsLenght() == 0 {
+//        if self.currentActivitiesLocationsLength() == 1 {
 //            let now = NSDate().timeIntervalSince1970
-//            let location = CLLocation(coordinate:CLLocationCoordinate2DMake(CLLocationDegrees(12.9), CLLocationDegrees(13)), altitude: 10.0, horizontalAccuracy: 5, verticalAccuracy: 50, timestamp: NSDate())
+//            let location = CLLocation(coordinate:CLLocationCoordinate2DMake(CLLocationDegrees(12.9), CLLocationDegrees(13)), altitude: 10.0, horizontalAccuracy: 5, verticalAccuracy: 50, timestamp: Date())
 //            let activityLocation : RTActivityLocation? = RTActivityLocation(location: location, timestamp: now)
 //            self.addActivityLocation(activityLocation!)
 //        }
@@ -118,6 +122,7 @@ class RTActivitiesModel {
         if self.currentActivitiesLocationsLength() > 1 {
             activities.append(self.currentActivity)
             success = true
+//            activitiesVariable.value.append(self.currentActivity)
         }
         activityRunning = false
         currentActivity.activityFinished(getNow())
