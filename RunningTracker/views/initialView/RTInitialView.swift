@@ -8,6 +8,8 @@
 
 import Foundation
 import UIKit
+import RxSwift
+import RxCocoa
 
 class RTInitialView : UIView {
 
@@ -28,8 +30,11 @@ class RTInitialView : UIView {
     @IBOutlet weak var gpsImageView: UIImageView!
     @IBOutlet weak var startViewBGImageView: UIImageView!
 
+    private let disposeBag = DisposeBag()
+
     var model:RTInitialViewModel! {
         didSet {
+            self.bind()
             self.refresh()
         }
     }
@@ -39,18 +44,46 @@ class RTInitialView : UIView {
         setup()
     }
 
-    func setup(){
-        setupButtons()
-        setupWhiteBackgrounds()
-        refreshWithBoolean(false)
-    }
-
     override func layoutSubviews() {
         super.layoutSubviews()
         self.refresh()
     }
 
-    func setupButtons(){
+    private func bind() {
+        _ = self.model.gpsRunningVariable.asObservable()
+                .subscribe(onNext: { active in
+                    self.refresh()
+                })
+
+        self.model.distanceVariable.asObservable()
+                .bindTo(self.distanceLabel.rx.text)
+                .addDisposableTo(self.disposeBag)
+
+        self.model.paceVariable.asObservable()
+                .bindTo(self.paceLabel.rx.text)
+                .addDisposableTo(self.disposeBag)
+
+        self.model.gpsRunningVariable.asObservable()
+                .bindTo(self.startButton.rx.isEnabled)
+                .addDisposableTo(self.disposeBag)
+
+        self.model.gpsRunningVariable.asObservable()
+                .bindTo(self.turnOnGPSLabel.rx.isHidden)
+                .addDisposableTo(self.disposeBag)
+
+        self.model.gpsImageVariable.asObservable()
+                .bindTo(self.gpsImageView.rx.image)
+                .addDisposableTo(self.disposeBag)
+
+    }
+
+    private func setup(){
+        setupButtons()
+        setupWhiteBackgrounds()
+        setupLabels()
+    }
+
+    private func setupButtons(){
         self.myActivitiesButton.titleLabel?.numberOfLines = 1
         let sideInsetsForActivitiesButton = CGFloat(Int(55 * self.frame.size.width / 414))
         self.myActivitiesButton.titleEdgeInsets = UIEdgeInsets(top: 0.0, left: sideInsetsForActivitiesButton, bottom: 0.0, right: sideInsetsForActivitiesButton)
@@ -80,7 +113,7 @@ class RTInitialView : UIView {
         }
     }
 
-    func setupWhiteBackgrounds() {
+    private func setupWhiteBackgrounds() {
         let insetSize = CGFloat(20.0)
         let insets = UIEdgeInsets(top: insetSize, left: insetSize, bottom: insetSize, right: insetSize)
         let bgImage = UIImage(named: "white_background")
@@ -89,36 +122,25 @@ class RTInitialView : UIView {
         self.bestPaceBGImageView.image = bgImage!.resizableImage(withCapInsets: insets, resizingMode: .stretch)
     }
 
-    func refresh() {
-        refreshWithBoolean(model.gpsRunning)
-        updateTexts()
+    private func refresh() {
         updateButtons()
         updateButtonsLabels()
     }
 
-    func refreshWithBoolean(_ isRunning:Bool) {
-        self.startButton.isEnabled = isRunning
-        gpsImageView.image = isRunning ? UIImage(named:"GPSgreen.png") : UIImage(named:"GPSblack.png")
-        self.turnOnGPSLabel.isHidden = isRunning
-    }
-
-    func updateTexts() {
+    private func setupLabels() {
         self.distanceDescLabel.adjustsFontSizeToFitWidth = true
         self.paceDescLabel.adjustsFontSizeToFitWidth = true
         self.distanceLabel.adjustsFontSizeToFitWidth = true
         self.turnOnGPSLabel.adjustsFontSizeToFitWidth = true
-
-        self.paceLabel.text = model.paceText
-        self.distanceLabel.text = model.distanceText
     }
 
-    func updateButtons() {
+    private func updateButtons() {
         let button = self.myActivitiesButton
         let insets = UIEdgeInsets(top: 0.0, left: 20.0, bottom: 0.0, right: 20.0)
         button?.setBackgroundImage(UIImage(named: "white_borders_bg")!.resizableImage(withCapInsets: insets, resizingMode: .stretch), for: UIControlState())
     }
 
-    func updateButtonsLabels() {
+    private func updateButtonsLabels() {
         let label = self.startButton.titleLabel!
         if label.frame.size.width > 0 {
             label.shrinkFont()

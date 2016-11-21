@@ -2,8 +2,10 @@ import Foundation
 import UIKit
 import CoreLocation
 import CoreImage
+import RxSwift
+import RxCocoa
 
-class RTInitialViewController2:UIViewController, CLLocationManagerDelegate {
+class RTInitialViewController2 : UIViewController, RTLocationServiceDelegate {
 
     var initialView:RTInitialView {
         get {
@@ -11,85 +13,65 @@ class RTInitialViewController2:UIViewController, CLLocationManagerDelegate {
         }
     }
 
-    var activitiesModel : RTActivitiesModel!
-    var locationManager : CLLocationManager!
-
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.activitiesModel = RTGlobalModels.sharedInstance.activitiesModel
-        self.initialView.model = RTInitialViewModel(model:self.activitiesModel)
+        self.initialView.model = RTInitialViewModel(model:RTGlobalModels.sharedInstance.activitiesModel)
+        self.initialView.model.permissionsDelegate = self
     }
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        self.startLocation()
-    }
-
-    func startLocation(){
-        locationManager = CLLocationManager()
-        locationManager.delegate = self
-        switch (CLLocationManager.authorizationStatus()){
-            case .notDetermined:
-                locationManager.requestWhenInUseAuthorization()
-                break
-            case .authorizedAlways, .restricted, .denied:
-                let alertController = UIAlertController(
-                        title:"Location Access Disabled",
-                        message:"In order to track your paths, please open this app's settings and set location access to 'While using the app'",
-                        preferredStyle: .alert)
-
-                let cancelAction = UIAlertAction(title:"Cancel", style: .cancel, handler: nil)
-                alertController.addAction(cancelAction)
-
-                let openAction = UIAlertAction(title:"Open", style: .default) {
-                    (action) in
-                    if let url = URL(string:UIApplicationOpenSettingsURLString) {
-                        UIApplication.shared.openURL(url)
-                    }
-                }
-                alertController.addAction(openAction)
-
-                self.present(alertController, animated:true, completion:nil)
-
-                break
-            default:
-                break
-        }
-
+        self.initialView.model.startLocation()
     }
 
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        locationManager.delegate = nil
-        locationManager = nil
+        self.initialView.model.killLocation()
     }
 
-// MARK Location Manager
+//MARK IBActions
 
-    func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus){
-        if status == .authorizedWhenInUse {
-            locationManager.startUpdatingLocation()
+    @IBAction func myActivitiesTouched(_ sender: UIButton) {
+        let activitiesController = UIStoryboard(name:"Main", bundle:nil).instantiateViewController(withIdentifier: "activitiesView") as? RTActivitiesViewController
+        self.navigationController!.pushViewController(activitiesController!, animated:true)
+    }
+
+    @IBAction func startTouched(_ sender: UIButton) {
+        let mapViewController = UIStoryboard(name:"Main", bundle:nil).instantiateViewController(withIdentifier: "activeMapView") as? RTActiveMapViewController
+
+        do {
+            try RTGlobalModels.sharedInstance.activitiesModel.startActivity()
+        } catch {
+            print("the activity was not possible to start")
+            return
         }
+
+        self.navigationController!.pushViewController(mapViewController!, animated:true)
     }
 
-    func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]){
-        self.initialView.model.gpsRunning = true
+//MARK RTLocationServiceDelegate
+
+    func shouldChangePermissions() {
+        let alertController = UIAlertController(
+                title:"Location Access Disabled",
+                message:"In order to track your paths, please open this app's settings and set location access to 'While using the app'",
+                preferredStyle: .alert)
+
+        let cancelAction = UIAlertAction(title:"Cancel", style: .cancel, handler: nil)
+        alertController.addAction(cancelAction)
+
+        let openAction = UIAlertAction(title:"Open", style: .default) {
+            (action) in
+            if let url = URL(string:UIApplicationOpenSettingsURLString) {
+                UIApplication.shared.openURL(url)
+            }
+        }
+        alertController.addAction(openAction)
+
         DispatchQueue.main.async {
-            self.initialView.refresh()
+            self.present(alertController, animated: true, completion: nil)
         }
 
     }
-
-    func locationManager(_ manager: CLLocationManager, didFailWithError error: Error){
-        self.initialView.model.gpsRunning = false
-        DispatchQueue.main.async {
-            self.initialView.refresh()
-        }
-        if(CLLocationManager.authorizationStatus() == .authorizedWhenInUse){
-            locationManager.startUpdatingLocation()
-        }
-    }
-
-
 
 }

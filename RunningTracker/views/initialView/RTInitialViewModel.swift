@@ -4,28 +4,74 @@
 //
 
 import Foundation
+import RxSwift
+import RxCocoa
+import CoreLocation
 
-class RTInitialViewModel : NSObject {
+class RTInitialViewModel : NSObject, RTLocationServiceDelegate {
 
-    var gpsRunning : Bool = false
+    var gpsRunningVariable = Variable<Bool>(false)
+    var distanceVariable = Variable<String>("")
+    var paceVariable = Variable<String>("")
+    var gpsImageVariable = Variable(UIImage())
+    let disposable = DisposeBag()
+
     let model:RTActivitiesModel!
+    var locationManager:RTLocationService? = RTLocationService()
+    weak var permissionsDelegate : RTLocationServiceDelegate?
 
     init?(model:RTActivitiesModel){
         self.model = model
+        super.init()
+        self.setup()
     }
 
-    var paceText: String {
-        get {
-            let pace = self.model.getBestPace()
-            return pace.getMinutes() + ":" + pace.getSeconds()
+    private func setup() {
+        self.distanceVariable.value = self.getDistance()
+        self.paceVariable.value = self.getPace()
+
+        _ = self.gpsRunningVariable.asObservable()
+                .map ({
+                    return $0 ? UIImage(named:"GPSgreen.png")! : UIImage(named:"GPSblack.png")!
+
+                })
+                .bindTo(self.gpsImageVariable)
+    }
+
+    func startLocation() {
+        locationManager?.delegate = self
+        locationManager?.requestPermissions()
+    }
+
+    private func getPace() -> String {
+        let pace = self.model.getBestPace()
+        return pace.getMinutes() + ":" + pace.getSeconds()
+    }
+
+    private func getDistance() -> String {
+        let distance = self.model.getLongestDistance()
+        return String(format:"%.2f km", distance / 1000)
+    }
+
+    func killLocation() {
+        locationManager?.delegate = nil
+        locationManager = nil
+    }
+
+// MARK RTLocationServiceDelegate
+
+    func didUpdateLocation(location:CLLocation) {
+        if self.gpsRunningVariable.value == false {
+            self.gpsRunningVariable.value = true
         }
     }
 
-    var distanceText : String {
-        get {
-            let distance = self.model.getLongestDistance()
-            return String(format:"%.2f km", distance / 1000)
-        }
+    func didFail() {
+        self.gpsRunningVariable.value = false
+    }
+
+    func shouldChangePermissions() {
+        self.permissionsDelegate?.shouldChangePermissions?()
     }
 
 }
