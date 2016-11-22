@@ -5,7 +5,7 @@ import CoreImage
 import RxSwift
 import RxCocoa
 
-class RTInitialViewController2 : UIViewController, RTLocationServiceDelegate {
+class RTInitialViewController: UIViewController, RTLocationServiceDelegate {
 
     var initialView:RTInitialView {
         get {

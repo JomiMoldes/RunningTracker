@@ -38,11 +38,8 @@ class ViewController: UIViewController {
     }
 
     func loadInitialView() {
-//        let storyBoard = UIStoryboard(name:"Main", bundle: nil)
-//        let initialViewController = storyBoard.instantiateViewController(withIdentifier: "InitialView") as? RTInitialViewController
-//        self.navigationController?.pushViewController(initialViewController!, animated: true )
-        let initialViewController2 = RTInitialViewController2(nibName:"RTInitialView", bundle:nil)
-        self.navigationController?.pushViewController(initialViewController2, animated: true )
+        let initialViewController = RTInitialViewController(nibName:"RTInitialView", bundle:nil)
+        self.navigationController?.pushViewController(initialViewController, animated: true )
     }
 
     func iCloudReady() {

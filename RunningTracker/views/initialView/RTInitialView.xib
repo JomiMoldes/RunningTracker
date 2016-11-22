@@ -22,7 +22,7 @@
         </array>
     </customFonts>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="RTInitialViewController2" customModule="RunningTracker" customModuleProvider="target">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="RTInitialViewController" customModule="RunningTracker" customModuleProvider="target">
             <connections>
                 <outlet property="view" destination="TTZ-8x-lXt" id="lGY-7x-Y8E"/>
             </connections>
