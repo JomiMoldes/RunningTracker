@@ -6,24 +6,40 @@
 import Foundation
 import CloudKit
 
+struct RecordProperty {
+    static let startTime = "starttime"
+    static let endTime = "endtime"
+    static let pausedTime = "pausedtime"
+    static let distance = "distance"
+    static let activityId = "activityid"
+    static let locationsList = "locationslist"
+    static let locationsAfterResumed = "locationsafterresumed"
+    static let activitiesTableName = "Activities2"
+    static let locationsTableName = "Locations2"
+    static let fakeActivityTableName = "FakeActivity"
+    static let location = "location"
+    static let timestamp = "timestamp"
+    static let firstAfterResumed = "firstAfterResumed"
+}
+
 class RTActivitiesAndRecordsHelper {
 
     func getRecordFromRecordsListByActivityId(_ activityId:Int, records:[CKRecord]) -> CKRecord {
         for record in records {
-            let recordId = record.value(forKey: "starttime") as! Int
+            let recordId = record.value(forKey: RecordProperty.startTime) as! Int
             if  recordId == activityId {
                 return record
             }
         }
-        return CKRecord(recordType:"FakeActivity")
+        return CKRecord(recordType:RecordProperty.fakeActivityTableName)
     }
 
     func createRecordByActivity(_ activity: RTActivity) -> CKRecord {
-        let record = CKRecord(recordType: "Activities2")
-        record.setValue(Int(activity.startTime), forKey: "starttime")
-        record.setValue(Int(activity.finishTime), forKey: "endtime")
-        record.setValue(Int(activity.pausedTime), forKey: "pausedtime")
-        record.setValue(Int(activity.distance), forKey: "distance")
+        let record = CKRecord(recordType: RecordProperty.activitiesTableName)
+        record.setValue(Int(activity.startTime), forKey: RecordProperty.startTime)
+        record.setValue(Int(activity.finishTime), forKey: RecordProperty.endTime)
+        record.setValue(Int(activity.pausedTime), forKey: RecordProperty.pausedTime)
+        record.setValue(Int(activity.distance), forKey: RecordProperty.distance)
         return record
     }
 
@@ -31,16 +47,16 @@ class RTActivitiesAndRecordsHelper {
         let activityId = Int(activity.startTime)
         let locations: [RTActivityLocation] = activity.getActivitiesCopy()
         var locationRecords = [CKRecord]()
-        let record = CKRecord(recordType: "Locations2")
-        record.setValue(activityId, forKey: "activityid")
+        let record = CKRecord(recordType: RecordProperty.locationsTableName)
+        record.setValue(activityId, forKey: RecordProperty.activityId)
 
         let locationsAfterResumed = activity.locationsAfterResumed
         var locationsList = [CLLocation]()
         for location in locations {
             locationsList.append(location.location)
         }
-        record.setValue(locationsList, forKey: "locationslist")
-        record.setValue(locationsAfterResumed, forKey: "locationsafterresumed")
+        record.setValue(locationsList, forKey: RecordProperty.locationsList)
+        record.setValue(locationsAfterResumed, forKey: RecordProperty.locationsAfterResumed)
         locationRecords.append(record)
         return locationRecords
     }

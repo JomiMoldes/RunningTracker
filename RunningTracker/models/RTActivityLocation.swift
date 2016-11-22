@@ -6,13 +6,6 @@
 import Foundation
 import CoreLocation
 
-struct ActivityLocationPropertyKey{
-    static let locationKey = "location"
-    static let timestampKey = "timestamp"
-    static let firstAfterResumedKey = "firstAfterResumed"
-    static let distanceKey = "distance"
-}
-
 class RTActivityLocation:NSObject , NSCoding {
 
     fileprivate(set) var location : CLLocation!
@@ -31,18 +24,18 @@ class RTActivityLocation:NSObject , NSCoding {
 //MARK NSCoding
 
     required convenience init?(coder aDecoder: NSCoder) {
-        let location = aDecoder.decodeObject(forKey: ActivityLocationPropertyKey.locationKey) as! CLLocation
-        let timestamp = aDecoder.decodeDouble(forKey: ActivityLocationPropertyKey.timestampKey)
-        let distance = aDecoder.decodeDouble(forKey: ActivityLocationPropertyKey.distanceKey)
-        let firstAfterResumed = aDecoder.decodeBool(forKey: ActivityLocationPropertyKey.firstAfterResumedKey)
+        let location = aDecoder.decodeObject(forKey: RecordProperty.location) as! CLLocation
+        let timestamp = aDecoder.decodeDouble(forKey: RecordProperty.timestamp)
+        let distance = aDecoder.decodeDouble(forKey: RecordProperty.distance)
+        let firstAfterResumed = aDecoder.decodeBool(forKey: RecordProperty.firstAfterResumed)
         self.init(location: location, timestamp:timestamp, firstAfterResumed:firstAfterResumed, distance:distance)
     }
 
     internal func encode(with aCoder: NSCoder) {
-        aCoder.encode(location!, forKey:ActivityLocationPropertyKey.locationKey)
-        aCoder.encode(timestamp, forKey:ActivityLocationPropertyKey.timestampKey)
-        aCoder.encode(distance, forKey:ActivityLocationPropertyKey.distanceKey)
-        aCoder.encode(firstAfterResumed, forKey:ActivityLocationPropertyKey.firstAfterResumedKey)
+        aCoder.encode(location!, forKey:RecordProperty.location)
+        aCoder.encode(timestamp, forKey:RecordProperty.timestamp)
+        aCoder.encode(distance, forKey:RecordProperty.distance)
+        aCoder.encode(firstAfterResumed, forKey:RecordProperty.firstAfterResumed)
     }
 
 }
