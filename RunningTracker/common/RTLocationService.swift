@@ -18,22 +18,25 @@ class RTLocationService : NSObject {
 
     weak var delegate : RTLocationServiceDelegate?
 
-    private let locationManager  = CLLocationManager()
+    let locationMgr = CLLocationManager()
+    var requested = false
+    var started = false
 
     override init() {
         super.init()
-        locationManager.delegate = self
-        locationManager.desiredAccuracy = kCLLocationAccuracyBestForNavigation
-        locationManager.distanceFilter = 20.0
-        locationManager.activityType = CLActivityType.fitness
-        locationManager.allowsBackgroundLocationUpdates = true
-        locationManager.pausesLocationUpdatesAutomatically = false
+        locationMgr.delegate = self
+        locationMgr.desiredAccuracy = kCLLocationAccuracyBestForNavigation
+        locationMgr.distanceFilter = 20.0
+        locationMgr.activityType = CLActivityType.fitness
+        locationMgr.allowsBackgroundLocationUpdates = true
+        locationMgr.pausesLocationUpdatesAutomatically = false
     }
 
     func requestPermissions() {
-        switch (CLLocationManager.authorizationStatus()){
+        let status = getLocationStatus()
+        switch (status){
             case .notDetermined:
-                locationManager.requestWhenInUseAuthorization()
+                self.askForWhenInUseAuthorization()
                 break
             case .authorizedAlways, .restricted, .denied:
                 self.delegate?.shouldChangePermissions?()
@@ -43,13 +46,27 @@ class RTLocationService : NSObject {
         }
     }
 
+    func getLocationStatus() -> CLAuthorizationStatus {
+        return CLLocationManager.authorizationStatus()
+    }
+
+    private func askForWhenInUseAuthorization() {
+        locationMgr.requestWhenInUseAuthorization()
+        requested = true
+    }
+
+    fileprivate func startUpdating() {
+        locationMgr.startUpdatingLocation()
+        started = true
+    }
+
 }
 
 extension RTLocationService : CLLocationManagerDelegate {
 
     func locationManager(_ manager: CLLocationManager, didChangeAuthorization status: CLAuthorizationStatus){
         if status == .authorizedWhenInUse {
-            manager.startUpdatingLocation()
+            self.startUpdating()
         }
     }
 
@@ -60,8 +77,8 @@ extension RTLocationService : CLLocationManagerDelegate {
 
     func locationManager(_ manager: CLLocationManager, didFailWithError error: Error){
         self.delegate?.didFail?()
-        if(CLLocationManager.authorizationStatus() == .authorizedWhenInUse){
-            manager.startUpdatingLocation()
+        if(getLocationStatus() == .authorizedWhenInUse){
+            self.startUpdating()
         }
     }
 

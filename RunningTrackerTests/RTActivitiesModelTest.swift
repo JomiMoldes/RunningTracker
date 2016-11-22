@@ -103,7 +103,7 @@ class RTActivitiesModelTest:XCTestCase{
         }
         expectation(forNotification: "activitiesSaved", object: nil, handler: nil)
         XCTAssertTrue(model.saveActivities(RTActivitiesModelTest.ArchiveURLTest.path, storeManager: storeManager))
-        waitForExpectations(timeout: 0.1, handler: nil)
+        waitForExpectations(timeout: 1.0, handler: nil)
         
         NotificationCenter.default.removeObserver(sub)
     }

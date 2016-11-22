@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Scheme
+   version = "1.3">
+   <BuildAction>
+      <BuildActionEntries>
+         <BuildActionEntry
+            buildForRunning = "YES"
+            buildForTesting = "YES">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "48E0E2F31D2EC7360036F56B"
+               BuildableName = "RunningTrackerTests.xctest"
+               BlueprintName = "RunningTrackerTests"
+               ReferencedContainer = "container:RunningTracker.xcodeproj">
+            </BuildableReference>
+         </BuildActionEntry>
+      </BuildActionEntries>
+   </BuildAction>
+   <TestAction
+      buildConfiguration = "Debug">
+      <Testables>
+         <TestableReference>
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "48E0E2F31D2EC7360036F56B"
+               BuildableName = "RunningTrackerTests.xctest"
+               BlueprintName = "RunningTrackerTests"
+               ReferencedContainer = "container:RunningTracker.xcodeproj">
+            </BuildableReference>
+            <SkippedTests>
+               <Test
+                  Identifier = "RTActivitiesModelTest">
+               </Test>
+               <Test
+                  Identifier = "RTActivityLocationTest">
+               </Test>
+               <Test
+                  Identifier = "RTActivityTest">
+               </Test>
+               <Test
+                  Identifier = "RunningTrackerTests">
+               </Test>
+            </SkippedTests>
+         </TestableReference>
+      </Testables>
+   </TestAction>
+   <LaunchAction
+      useCustomWorkingDirectory = "NO">
+   </LaunchAction>
+</Scheme>

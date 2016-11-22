@@ -17,4 +17,6 @@ target 'RunningTrackerTests' do
   pod 'Fabric'
   pod 'Crashlytics'
   pod 'PromiseKit',   '~> 4.0'
+  pod 'RxSwift',      '~> 3.0'
+  pod 'RxCocoa',      '~> 3.0'
 end

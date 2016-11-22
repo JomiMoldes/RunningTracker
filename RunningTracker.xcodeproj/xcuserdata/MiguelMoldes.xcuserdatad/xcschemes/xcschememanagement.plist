@@ -14,40 +14,40 @@
 			<key>orderHint</key>
 			<integer>1</integer>
 		</dict>
-		<key>-[RTActivitiesModelTest testGetBestPace].xcscheme</key>
+		<key>-[RTActivitiesModelTest testSaveActivities].xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false />
 			<key>orderHint</key>
 			<integer>2</integer>
 		</dict>
-		<key>-[RTActivitiesModelTest testGetLongestDistance].xcscheme</key>
+		<key>-[RTActivityTest testDistance].xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false />
 			<key>orderHint</key>
 			<integer>3</integer>
 		</dict>
-		<key>-[RTActivitiesModelTest testEndActivity].xcscheme</key>
+		<key>All in RTLocationServiceTest.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false />
 			<key>orderHint</key>
 			<integer>4</integer>
 		</dict>
-		<key>-[RTActivitiesModelTest testSaveActivities].xcscheme</key>
+		<key>-[RTLocationServiceTest testInitialization].xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false />
 			<key>orderHint</key>
-			<integer>5</integer>
+			<integer>11</integer>
 		</dict>
-		<key>-[RTActivityTest testDistance].xcscheme</key>
+		<key>-[RTLocationServiceTest testShouldCallDidFail].xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false />
 			<key>orderHint</key>
-			<integer>6</integer>
+			<integer>12</integer>
 		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
