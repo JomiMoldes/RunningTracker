@@ -14,35 +14,35 @@
 			<key>orderHint</key>
 			<integer>1</integer>
 		</dict>
-		<key>-[RTActivitiesModelTest testSaveActivities].xcscheme</key>
+		<key>-[RTInitialViewControllerTest testViewType].xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false />
 			<key>orderHint</key>
-			<integer>2</integer>
+			<integer>8</integer>
 		</dict>
-		<key>-[RTActivityTest testDistance].xcscheme</key>
+		<key>All in RTInitialViewControllerTest.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false />
 			<key>orderHint</key>
-			<integer>3</integer>
+			<integer>9</integer>
 		</dict>
-		<key>All in RTLocationServiceTest.xcscheme</key>
+		<key>-[RTInitialViewControllerTest testActivitiesTouched].xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false />
 			<key>orderHint</key>
-			<integer>4</integer>
+			<integer>10</integer>
 		</dict>
-		<key>-[RTLocationServiceTest testInitialization].xcscheme</key>
+		<key>-[RTInitialViewControllerTest testStartActivityTouched].xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false />
 			<key>orderHint</key>
 			<integer>11</integer>
 		</dict>
-		<key>-[RTLocationServiceTest testShouldCallDidFail].xcscheme</key>
+		<key>-[RTInitialViewControllerTest testShouldShowAlertForPermissions].xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false />

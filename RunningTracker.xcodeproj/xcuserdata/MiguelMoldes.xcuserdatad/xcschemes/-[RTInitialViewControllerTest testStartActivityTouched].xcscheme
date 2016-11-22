@@ -38,6 +38,21 @@
                   Identifier = "RTActivityTest">
                </Test>
                <Test
+                  Identifier = "RTInitialViewControllerTest/testActivitiesTouched()">
+               </Test>
+               <Test
+                  Identifier = "RTInitialViewControllerTest/testInitialSetup()">
+               </Test>
+               <Test
+                  Identifier = "RTInitialViewControllerTest/testShouldStartLocationManager()">
+               </Test>
+               <Test
+                  Identifier = "RTInitialViewControllerTest/testShouldStopLocationManager()">
+               </Test>
+               <Test
+                  Identifier = "RTLocationServiceTest">
+               </Test>
+               <Test
                   Identifier = "RunningTrackerTests">
                </Test>
             </SkippedTests>

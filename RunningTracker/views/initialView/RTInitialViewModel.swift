@@ -19,6 +19,7 @@ class RTInitialViewModel : NSObject {
     let model:RTActivitiesModel!
     var locationManager:RTLocationService? = RTLocationService()
     weak var permissionsDelegate : RTLocationServiceDelegate?
+    var locationManagerStarted = false
 
     init?(model:RTActivitiesModel){
         self.model = model
@@ -41,6 +42,7 @@ class RTInitialViewModel : NSObject {
     func startLocation() {
         locationManager?.delegate = self
         locationManager?.requestPermissions()
+        locationManagerStarted = true
     }
 
     private func getPace() -> String {
@@ -54,6 +56,7 @@ class RTInitialViewModel : NSObject {
     }
 
     func killLocation() {
+        locationManagerStarted = false
         locationManager?.delegate = nil
         locationManager = nil
     }

@@ -38,25 +38,16 @@
                   Identifier = "RTActivityTest">
                </Test>
                <Test
-                  Identifier = "RTLocationServiceTest/testInitialization()">
+                  Identifier = "RTInitialViewControllerTest/testInitialSetup()">
                </Test>
                <Test
-                  Identifier = "RTLocationServiceTest/testShouldChangePermissionsWhenAuthorizedAlways()">
+                  Identifier = "RTInitialViewControllerTest/testShouldStartLocationManager()">
                </Test>
                <Test
-                  Identifier = "RTLocationServiceTest/testShouldChangePermissionsWhenDenied()">
+                  Identifier = "RTInitialViewControllerTest/testShouldStopLocationManager()">
                </Test>
                <Test
-                  Identifier = "RTLocationServiceTest/testShouldChangePermissionsWhenRestricted()">
-               </Test>
-               <Test
-                  Identifier = "RTLocationServiceTest/testShouldRequestForAuthorization()">
-               </Test>
-               <Test
-                  Identifier = "RTLocationServiceTest/testShouldStartUpdating()">
-               </Test>
-               <Test
-                  Identifier = "RTLocationServiceTest/testShouldUpdateLocations()">
+                  Identifier = "RTLocationServiceTest">
                </Test>
                <Test
                   Identifier = "RunningTrackerTests">

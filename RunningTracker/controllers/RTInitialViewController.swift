@@ -71,7 +71,7 @@ extension RTInitialViewController : RTLocationServiceDelegate {
         alertController.addAction(openAction)
 
         DispatchQueue.main.async {
-            self.present(alertController, animated: true, completion: nil)
+            self.navigationController?.present(alertController, animated: true, completion: nil)
         }
 
     }
