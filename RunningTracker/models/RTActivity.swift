@@ -6,15 +6,6 @@
 import Foundation
 import CoreLocation
 
-struct ActivityPropertyKey{
-    static let locationsKey = "locations"
-    static let startTimeKey = "startTime"
-    static let endTimeKey = "endTime"
-    static let pausedTimeKey = "pausedTime"
-    static let distanceKey = "distance"
-    static let afterResumedKey = "locationsafterresumed"
-}
-
 class RTActivity:NSObject , NSCoding {
 
     fileprivate(set) var activities = [RTActivityLocation]()
@@ -154,21 +145,21 @@ class RTActivity:NSObject , NSCoding {
 // MARK NSCoding
 
     internal func encode(with aCoder: NSCoder){
-        aCoder.encode(startTime, forKey:ActivityPropertyKey.startTimeKey)
-        aCoder.encode(finishTime, forKey:ActivityPropertyKey.endTimeKey)
-        aCoder.encode(pausedTime, forKey:ActivityPropertyKey.pausedTimeKey)
-        aCoder.encode(distance, forKey:ActivityPropertyKey.distanceKey)
-        aCoder.encode(activities, forKey:ActivityPropertyKey.locationsKey)
-        aCoder.encode(locationsAfterResumed, forKey:ActivityPropertyKey.afterResumedKey)
+        aCoder.encode(startTime, forKey:RecordProperty.startTime)
+        aCoder.encode(finishTime, forKey:RecordProperty.endTime)
+        aCoder.encode(pausedTime, forKey:RecordProperty.pausedTime)
+        aCoder.encode(distance, forKey:RecordProperty.distance)
+        aCoder.encode(activities, forKey:RecordProperty.locations)
+        aCoder.encode(locationsAfterResumed, forKey:RecordProperty.locationsAfterResumed)
     }
 
     required convenience init?(coder aDecoder: NSCoder){
-        let activities = aDecoder.decodeObject(forKey: ActivityPropertyKey.locationsKey) as! [RTActivityLocation]
-        let locationsAfterResumed = aDecoder.decodeObject(forKey: ActivityPropertyKey.afterResumedKey) as! [CLLocation]
-        let startTime = aDecoder.decodeDouble(forKey: ActivityPropertyKey.startTimeKey)
-        let endTime = aDecoder.decodeDouble(forKey: ActivityPropertyKey.endTimeKey)
-        let pausedTime = aDecoder.decodeDouble(forKey: ActivityPropertyKey.pausedTimeKey)
-        let distance = aDecoder.decodeDouble(forKey: ActivityPropertyKey.distanceKey)
+        let activities = aDecoder.decodeObject(forKey: RecordProperty.locations) as! [RTActivityLocation]
+        let locationsAfterResumed = aDecoder.decodeObject(forKey: RecordProperty.locationsAfterResumed) as! [CLLocation]
+        let startTime = aDecoder.decodeDouble(forKey: RecordProperty.startTime)
+        let endTime = aDecoder.decodeDouble(forKey: RecordProperty.endTime)
+        let pausedTime = aDecoder.decodeDouble(forKey: RecordProperty.pausedTime)
+        let distance = aDecoder.decodeDouble(forKey: RecordProperty.distance)
         self.init(activities: activities, startTime:startTime, finishTime:endTime, pausedTime2: pausedTime, distance:distance, locationsAfterResumed:locationsAfterResumed)
     }
 

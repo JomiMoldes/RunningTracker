@@ -8,7 +8,7 @@ import RxSwift
 import RxCocoa
 import CoreLocation
 
-class RTInitialViewModel : NSObject, RTLocationServiceDelegate {
+class RTInitialViewModel : NSObject {
 
     var gpsRunningVariable = Variable<Bool>(false)
     var distanceVariable = Variable<String>("")
@@ -58,7 +58,9 @@ class RTInitialViewModel : NSObject, RTLocationServiceDelegate {
         locationManager = nil
     }
 
-// MARK RTLocationServiceDelegate
+}
+
+extension RTInitialViewModel : RTLocationServiceDelegate {
 
     func didUpdateLocation(location:CLLocation) {
         if self.gpsRunningVariable.value == false {

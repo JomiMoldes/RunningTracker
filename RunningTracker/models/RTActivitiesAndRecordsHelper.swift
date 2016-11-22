@@ -18,6 +18,7 @@ struct RecordProperty {
     static let locationsTableName = "Locations2"
     static let fakeActivityTableName = "FakeActivity"
     static let location = "location"
+    static let locations = "locations"
     static let timestamp = "timestamp"
     static let firstAfterResumed = "firstAfterResumed"
 }

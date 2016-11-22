@@ -5,7 +5,7 @@ import CoreImage
 import RxSwift
 import RxCocoa
 
-class RTInitialViewController: UIViewController, RTLocationServiceDelegate {
+class RTInitialViewController: UIViewController {
 
     var initialView:RTInitialView {
         get {
@@ -49,7 +49,9 @@ class RTInitialViewController: UIViewController, RTLocationServiceDelegate {
         self.navigationController!.pushViewController(mapViewController!, animated:true)
     }
 
-//MARK RTLocationServiceDelegate
+}
+
+extension RTInitialViewController : RTLocationServiceDelegate {
 
     func shouldChangePermissions() {
         let alertController = UIAlertController(
