@@ -17,12 +17,13 @@ class RTInitialViewModel : NSObject {
     let disposable = DisposeBag()
 
     let model:RTActivitiesModel!
-    var locationManager:RTLocationService? = RTLocationService()
+    var locationManager:RTLocationServiceProtocol?
     weak var permissionsDelegate : RTLocationServiceDelegate?
     var locationManagerStarted = false
 
-    init?(model:RTActivitiesModel){
+    init?(model:RTActivitiesModel, locationService: RTLocationServiceProtocol){
         self.model = model
+        self.locationManager = locationService
         super.init()
         self.setup()
     }
@@ -34,7 +35,6 @@ class RTInitialViewModel : NSObject {
         _ = self.gpsRunningVariable.asObservable()
                 .map ({
                     return $0 ? UIImage(named:"GPSgreen.png")! : UIImage(named:"GPSblack.png")!
-
                 })
                 .bindTo(self.gpsImageVariable)
     }

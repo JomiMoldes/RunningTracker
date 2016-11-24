@@ -37,7 +37,7 @@ class RTActivitiesModelTest:XCTestCase{
     func testStartActivity() {
         XCTAssertEqual(model.activitiesLength(), 0)
         XCTAssertTrue(!model.isCurrentActivityDefined(), "currentActivity shouldn't be defined")
-        mockStartActivity()
+        model.tryStartActivity()
 
         XCTAssertTrue(model.isCurrentActivityDefined(), "currentActivity should be defined")
         do{
@@ -53,9 +53,9 @@ class RTActivitiesModelTest:XCTestCase{
         XCTAssertFalse(model.endActivity(), "you cannot end an activity when there is none active")
         let now = Date().timeIntervalSince1970
         model.fakeNow = now
-        mockStartActivity()
-        addLocationToCurrentActivity()
-        let location2 = mockActivityLocation(now + 11, lat:12.55560, long:14)
+        model.tryStartActivity()
+        model.addLocationToCurrentActivity()
+        let location2 = model.mockActivityLocation(now + 11, lat:12.55560, long:14)
         _ = model.addActivityLocation(location2)
         XCTAssertTrue(model.activityRunning, "activityRunning should be true")
 
@@ -66,24 +66,17 @@ class RTActivitiesModelTest:XCTestCase{
         XCTAssertFalse(model.isCurrentActivityDefined(), "current activity should not be defined")
         XCTAssertTrue(model.valuesRefreshed)
     }
-    
-    func addLocationToCurrentActivity() {
-        let location = CLLocation(latitude:1111.22, longitude: 3333.3)
-        let activityLocation : RTActivityLocation? = RTActivityLocation(location: location, timestamp: 100)
-        _ = model.addActivityLocation(activityLocation!)
-    }
 
     func testResumeActivity() {
         let now = Date().timeIntervalSince1970
         model.fakeNow = now
-        mockStartActivity()
+        model.tryStartActivity()
         model.fakeNow = now + 5
         model.pauseActivity()
         model.fakeNow = now + 10
         model.resumeActivity()
 
         XCTAssertEqual(model.getCurrentActivityCopy()!.pausedTime, 5)
-
     }
 
     func testSaveActivities() {
@@ -91,20 +84,15 @@ class RTActivitiesModelTest:XCTestCase{
         model.fakeNow = now
         XCTAssertEqual(model.activitiesLength(), 0)
         XCTAssertFalse(model.saveActivities(RTActivitiesModelTest.ArchiveURLTest.path, storeManager: storeManager))
-        mockStartActivity()
-        let location1 = mockActivityLocation(now + 10, lat:12.55555, long:13)
-        let location2 = mockActivityLocation(now + 15, lat:12.55555, long:14)
-        _ = model.addActivityLocation(location1)
-        _ = model.addActivityLocation(location2)
-        _ = model.endActivity()
-        
+        model.mockActivityWithTwoLocations()
+
         let sub = NotificationCenter.default.addObserver(forName: NSNotification.Name(rawValue: "activitiesSaved"), object: nil, queue: nil) { (not) -> Void in
             XCTAssertEqual(self.model.activitiesLength(), 1)
         }
         expectation(forNotification: "activitiesSaved", object: nil, handler: nil)
         XCTAssertTrue(model.saveActivities(RTActivitiesModelTest.ArchiveURLTest.path, storeManager: storeManager))
         waitForExpectations(timeout: 1.0, handler: nil)
-        
+
         NotificationCenter.default.removeObserver(sub)
     }
 
@@ -112,22 +100,17 @@ class RTActivitiesModelTest:XCTestCase{
         let now = Date().timeIntervalSince1970
         model.fakeNow = now
         XCTAssertEqual(model.activitiesLength(), 0)
-        mockStartActivity()
-        let location1 = mockActivityLocation(now + 10, lat:12.55555, long:13)
-        let location2 = mockActivityLocation(now + 15, lat:12.55555, long:14)
-        _ = model.addActivityLocation(location1)
-        _ = model.addActivityLocation(location2)
-        _ = model.endActivity()
-        
+        model.mockActivityWithTwoLocations()
+
         let sub = NotificationCenter.default.addObserver(forName: NSNotification.Name(rawValue: "activitiesSaved"), object: nil, queue: nil) { (not) -> Void in
             self.expectation(forNotification: "activitiesLoaded", object: nil, handler: nil)
             self.model.loadActivities(RTActivitiesModelTest.ArchiveURLTest.path, storeManager: self.storeManager)
-            
+
             self.waitForExpectations(timeout: 0.1, handler: nil)
-        }        
-        
+        }
+
         XCTAssertTrue(model.saveActivities(RTActivitiesModelTest.ArchiveURLTest.path, storeManager: storeManager))
-        
+
         NotificationCenter.default.removeObserver(sub)
     }
 
@@ -143,7 +126,7 @@ class RTActivitiesModelTest:XCTestCase{
 
         XCTAssertFalse(model.addActivityLocation(activityLocation!), "current activity is not set yet")
 
-        mockStartActivity()
+        model.tryStartActivity()
 
         model.pauseActivity()
         XCTAssertFalse(model.addActivityLocation(activityLocation!))
@@ -161,14 +144,14 @@ class RTActivitiesModelTest:XCTestCase{
     }
 
     func testCurrentActivityLocations() {
-        mockStartActivity()
+        model.tryStartActivity()
         let activity = model.getCurrentActivityCopy()
         var locations:[RTActivityLocation] = activity!.getActivitiesCopy()
         XCTAssertEqual(locations.count, 0)
         let location = CLLocation(latitude:1111.22, longitude: 3333.3)
         let activityLocation : RTActivityLocation? = RTActivityLocation(location: location, timestamp: 100)
         _ = model.addActivityLocation(activityLocation!)
-        
+
         locations = model.getCurrentActivityCopy()!.getActivitiesCopy()
 
         XCTAssertEqual(locations.count, 1)
@@ -202,10 +185,10 @@ class RTActivitiesModelTest:XCTestCase{
         let now = Date().timeIntervalSince1970
         model.fakeNow = now
 
-        mockStartActivity()
+        model.tryStartActivity()
 
-        let location1 = mockActivityLocation(now + 10, lat:12.55555, long:13)
-        let location2 = mockActivityLocation(now + 15, lat:12.55560, long:13)
+        let location1 = model.mockActivityLocation(now + 10, lat:12.55555, long:13)
+        let location2 = model.mockActivityLocation(now + 15, lat:12.55560, long:13)
         _ = model.addActivityLocation(location1)
         _ = model.addActivityLocation(location2)
 
@@ -217,10 +200,10 @@ class RTActivitiesModelTest:XCTestCase{
         let now = Date().timeIntervalSince1970
         model.fakeNow = now
 
-        mockStartActivity()
+        model.tryStartActivity()
 
-        let location1 = mockActivityLocation(now + 10, lat:12.55555, long:13)
-        let location2 = mockActivityLocation(now + 15, lat:12.55560, long:13)
+        let location1 = model.mockActivityLocation(now + 10, lat:12.55555, long:13)
+        let location2 = model.mockActivityLocation(now + 15, lat:12.55560, long:13)
         _ = model.addActivityLocation(location1)
         _ = model.addActivityLocation(location2)
 
@@ -234,8 +217,8 @@ class RTActivitiesModelTest:XCTestCase{
     func testPauseActivity() {
         let now = Date().timeIntervalSince1970
         model.fakeNow = now
-        mockStartActivity()
-        
+        model.tryStartActivity()
+
         model.fakeNow = now + 5
         model.pauseActivity()
 
@@ -248,10 +231,10 @@ class RTActivitiesModelTest:XCTestCase{
         var now = Date().timeIntervalSince1970
         model.fakeNow = now
 
-        mockStartActivity()
+        model.tryStartActivity()
 
-        let location1 = mockActivityLocation(now, lat:12.55555, long:13)
-        let location2 = mockActivityLocation(now + 15, lat:12.55560, long:13)
+        let location1 = model.mockActivityLocation(now, lat:12.55555, long:13)
+        let location2 = model.mockActivityLocation(now + 15, lat:12.55560, long:13)
         _ = model.addActivityLocation(location1)
         _ = model.addActivityLocation(location2)
 
@@ -261,10 +244,10 @@ class RTActivitiesModelTest:XCTestCase{
         now = now + 20
         model.fakeNow = now
 
-        mockStartActivity()
+        model.tryStartActivity()
 
-        let location3 = mockActivityLocation(now, lat:12.55555, long:13)
-        let location4 = mockActivityLocation(now + 11, lat:12.55560, long:13)
+        let location3 = model.mockActivityLocation(now, lat:12.55555, long:13)
+        let location4 = model.mockActivityLocation(now + 11, lat:12.55560, long:13)
         _ = model.addActivityLocation(location3)
         _ = model.addActivityLocation(location4)
 
@@ -281,10 +264,10 @@ class RTActivitiesModelTest:XCTestCase{
         var now = Date().timeIntervalSince1970
         model.fakeNow = now
 
-        mockStartActivity()
+        model.tryStartActivity()
 
-        let location1 = mockActivityLocation(now, lat:12.55555, long:13)
-        let location2 = mockActivityLocation(now + 15, lat:12.55560, long:13)
+        let location1 = model.mockActivityLocation(now, lat:12.55555, long:13)
+        let location2 = model.mockActivityLocation(now + 15, lat:12.55560, long:13)
         _ = model.addActivityLocation(location1)
         _ = model.addActivityLocation(location2)
 
@@ -294,10 +277,10 @@ class RTActivitiesModelTest:XCTestCase{
         now = now + 20
         model.fakeNow = now
 
-        mockStartActivity()
+        model.tryStartActivity()
 
-        let location3 = mockActivityLocation(now, lat:12.55555, long:13)
-        let location4 = mockActivityLocation(now + 11, lat:12.55600, long:13)
+        let location3 = model.mockActivityLocation(now, lat:12.55555, long:13)
+        let location4 = model.mockActivityLocation(now + 11, lat:12.55600, long:13)
         _ = model.addActivityLocation(location3)
         _ = model.addActivityLocation(location4)
 
@@ -312,37 +295,37 @@ class RTActivitiesModelTest:XCTestCase{
 
     func testActivitiesLenght() {
         XCTAssertEqual(model.activitiesLength(), 0)
-        mockStartActivity()
+        model.tryStartActivity()
         _ = model.endActivity()
         XCTAssertEqual(model.activitiesLength(), 0)
-        
+
         let now = Date().timeIntervalSince1970
         model.fakeNow = now
-        mockStartActivity()
-        let location1 = mockActivityLocation(now + 10, lat:12.55555, long:13)
-        let location2 = mockActivityLocation(now + 15, lat:12.55555, long:14)
+        model.tryStartActivity()
+        let location1 = model.mockActivityLocation(now + 10, lat:12.55555, long:13)
+        let location2 = model.mockActivityLocation(now + 15, lat:12.55555, long:14)
         _ = model.addActivityLocation(location1)
         _ = model.addActivityLocation(location2)
         _ = model.endActivity()
         XCTAssertEqual(model.activitiesLength(), 1)
-        
+
     }
 
     func testGetActivities() {
         let now = Date().timeIntervalSince1970
         model.fakeNow = now
-        
-        let location1 = mockActivityLocation(now + 10, lat:12.55555, long:13)
-        let location2 = mockActivityLocation(now + 11, lat:12.55560, long:14)
 
-        mockStartActivity()
+        let location1 = model.mockActivityLocation(now + 10, lat:12.55555, long:13)
+        let location2 = model.mockActivityLocation(now + 11, lat:12.55560, long:14)
+
+        model.tryStartActivity()
         _ = model.addActivityLocation(location1)
         _ = model.addActivityLocation(location2)
         _ = model.endActivity()
         model.fakeNow = now + 20
-        let location3 = mockActivityLocation(now, lat:12.55560, long:13)
-        let location4 = mockActivityLocation(now, lat:12.55565, long:15)
-        mockStartActivity()
+        let location3 = model.mockActivityLocation(now, lat:12.55560, long:13)
+        let location4 = model.mockActivityLocation(now, lat:12.55565, long:15)
+        model.tryStartActivity()
         _ = model.addActivityLocation(location3)
         _ = model.addActivityLocation(location4)
         _ = model.endActivity()
@@ -352,71 +335,4 @@ class RTActivitiesModelTest:XCTestCase{
         XCTAssertEqual(activities[1].startTime, now + 20)
     }
 
-    func mockStartActivity() {
-        do{
-            try model.startActivity()
-        } catch {
-            XCTAssertTrue(false, "it should be possible to start activity")
-        }
-    }
-    
-    
-
-    func mockActivityLocation(_ now:TimeInterval, lat:Double = 111.22, long:Double = 333.3) -> RTActivityLocation {
-        let location = CLLocation(latitude:lat, longitude: long)
-        let activityLocation : RTActivityLocation? = RTActivityLocation(location: location, timestamp: now)
-        return activityLocation!
-    }
-
 }
-
-class RTActivitiesModelFake:RTActivitiesModel{
-
-    var valuesRefreshed:Bool = false
-
-    var fakeNow:TimeInterval = Date().timeIntervalSince1970
-    
-    override init() {
-        super.init()
-    }
-
-    override func refreshValues() {
-        valuesRefreshed = true
-        super.refreshValues()
-    }
-
-    override func getNow() -> TimeInterval {
-        return fakeNow
-    }
-
-}
-
-class RTSoreManagerFake: RTStoreActivitiesManager {
-
-    override func loadActivities(_ path:String) -> Promise<[RTActivity]> {
-        return Promise {
-            fulfill, reject in
-            fulfill([RTActivity]())
-        }
-
-    }
-
-    override func saveActivities(_ activities:[RTActivity], path:String) -> Promise<[RTActivity]> {
-        return Promise {
-            fulfill, reject in
-            fulfill(activities)
-        }
-    }
-}
-
-class RTActivityFake:RTActivity {
-
-    var fakePace = 0.0
-
-    override func getPace() -> Double {
-        return fakePace
-    }
-
-}
-
-

@@ -14,7 +14,7 @@ import CoreLocation
 
 }
 
-class RTLocationService : NSObject {
+class RTLocationService : NSObject, RTLocationServiceProtocol {
 
     weak var delegate : RTLocationServiceDelegate?
 

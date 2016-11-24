@@ -15,7 +15,7 @@ class RTInitialViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.initialView.model = RTInitialViewModel(model:RTGlobalModels.sharedInstance.activitiesModel)
+        self.initialView.model = RTInitialViewModel(model:RTGlobalModels.sharedInstance.activitiesModel, locationService: RTLocationService())
         self.initialView.model.permissionsDelegate = self
     }
 

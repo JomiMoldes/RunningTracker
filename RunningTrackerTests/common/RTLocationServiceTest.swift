@@ -9,15 +9,15 @@ import RxSwift
 import RxCocoa
 import CoreLocation
 
-//@testable import RunningTracker
+@testable import RunningTracker
 
 class RTLocationServiceTest : XCTestCase {
 
-    var service : RTTestLocationService!
+    var service : RTLocationServiceFake!
 
     override func setUp() {
         super.setUp()
-        self.service = RTTestLocationService()
+        self.service = RTLocationServiceFake()
     }
 
     override func tearDown() {
@@ -176,16 +176,6 @@ class RTLocationServiceTest : XCTestCase {
 
 enum LocationError : Error {
     case denied
-}
-
-class RTTestLocationService : RTLocationService {
-
-    var authorizationStatus : CLAuthorizationStatus = .denied
-
-    override func getLocationStatus() -> CLAuthorizationStatus {
-        return authorizationStatus
-    }
-
 }
 
 class RTTestServiceDelegate : RTLocationServiceDelegate {

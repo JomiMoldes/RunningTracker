@@ -29,28 +29,16 @@
             </BuildableReference>
             <SkippedTests>
                <Test
-                  Identifier = "RTActivitiesModelTest">
-               </Test>
-               <Test
                   Identifier = "RTActivityLocationTest">
                </Test>
                <Test
                   Identifier = "RTActivityTest">
                </Test>
                <Test
-                  Identifier = "RTInitialViewControllerTest/testActivitiesTouched()">
+                  Identifier = "RTInitialViewControllerTest">
                </Test>
                <Test
-                  Identifier = "RTInitialViewControllerTest/testInitialSetup()">
-               </Test>
-               <Test
-                  Identifier = "RTInitialViewControllerTest/testShouldStartLocationManager()">
-               </Test>
-               <Test
-                  Identifier = "RTInitialViewControllerTest/testShouldStopLocationManager()">
-               </Test>
-               <Test
-                  Identifier = "RTInitialViewControllerTest/testStartActivityTouched()">
+                  Identifier = "RTInitialViewModelTest">
                </Test>
                <Test
                   Identifier = "RTLocationServiceTest">
