@@ -41,6 +41,9 @@
                   Identifier = "RTInitialViewControllerTest">
                </Test>
                <Test
+                  Identifier = "RTInitialViewModelTest">
+               </Test>
+               <Test
                   Identifier = "RTLocationServiceTest">
                </Test>
                <Test

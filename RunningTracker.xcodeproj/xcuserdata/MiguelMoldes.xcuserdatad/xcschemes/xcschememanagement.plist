@@ -14,35 +14,35 @@
 			<key>orderHint</key>
 			<integer>1</integer>
 		</dict>
-		<key>-[RTInitialViewModelTest testInitial].xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false />
-			<key>orderHint</key>
-			<integer>2</integer>
-		</dict>
-		<key>All in RTInitialViewModelTest.xcscheme</key>
-		<dict>
-			<key>isShown</key>
-			<false />
-			<key>orderHint</key>
-			<integer>10</integer>
-		</dict>
 		<key>All in RTActivitiesModelTest.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false />
 			<key>orderHint</key>
-			<integer>11</integer>
+			<integer>9</integer>
 		</dict>
 		<key>-[RTActivitiesModelTest testSaveActivities].xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false />
 			<key>orderHint</key>
-			<integer>12</integer>
+			<integer>10</integer>
 		</dict>
 		<key>-[RTActivitiesModelTest testLoadActivities].xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false />
+			<key>orderHint</key>
+			<integer>11</integer>
+		</dict>
+		<key>All in RTInitialViewTest.xcscheme</key>
+		<dict>
+			<key>isShown</key>
+			<false />
+			<key>orderHint</key>
+			<integer>12</integer>
+		</dict>
+		<key>-[RTInitialViewTest testBinding].xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false />

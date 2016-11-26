@@ -32,10 +32,12 @@ class RTInitialView : UIView {
 
     private let disposeBag = DisposeBag()
 
+    var refreshedAfterGPS : Bool = false
+
     var model:RTInitialViewModel! {
         didSet {
             self.bind()
-            self.refresh()
+            _ = self.refresh()
         }
     }
 
@@ -46,13 +48,13 @@ class RTInitialView : UIView {
 
     override func layoutSubviews() {
         super.layoutSubviews()
-        self.refresh()
+        _ = self.refresh()
     }
 
     private func bind() {
         _ = self.model.gpsRunningVariable.asObservable()
                 .subscribe(onNext: { active in
-                    self.refresh()
+                    self.refreshedAfterGPS = self.refresh()
                 })
 
         self.model.distanceVariable.asObservable()
@@ -122,9 +124,10 @@ class RTInitialView : UIView {
         self.bestPaceBGImageView.image = bgImage!.resizableImage(withCapInsets: insets, resizingMode: .stretch)
     }
 
-    private func refresh() {
+    private func refresh() -> Bool {
         updateButtons()
         updateButtonsLabels()
+        return true
     }
 
     private func setupLabels() {
