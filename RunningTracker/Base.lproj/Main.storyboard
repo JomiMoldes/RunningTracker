@@ -375,7 +375,7 @@
                         <viewControllerLayoutGuide type="top" id="chv-ji-QQz"/>
                         <viewControllerLayoutGuide type="bottom" id="q48-f5-Y9K"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="tKn-Vd-V3Y">
+                    <view key="view" contentMode="scaleToFill" id="tKn-Vd-V3Y" customClass="RTActiveMapView" customModule="RunningTracker" customModuleProvider="target">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -557,19 +557,19 @@
                             <constraint firstItem="PbB-rF-OMt" firstAttribute="width" secondItem="tKn-Vd-V3Y" secondAttribute="width" id="qgM-jb-Buv"/>
                             <constraint firstItem="rnE-kQ-sLy" firstAttribute="width" secondItem="tKn-Vd-V3Y" secondAttribute="width" id="xda-qW-CjX"/>
                         </constraints>
+                        <connections>
+                            <outlet property="backButtonView" destination="khd-Eb-LTg" id="rBw-FQ-2oi"/>
+                            <outlet property="bottomBarView" destination="PbB-rF-OMt" id="PjZ-iy-HaX"/>
+                            <outlet property="chronometerLabel" destination="AdO-rg-2i0" id="FvU-ih-6Px"/>
+                            <outlet property="distDescLabel" destination="VTH-mY-5Gh" id="Xuh-3t-fcj"/>
+                            <outlet property="distanceLabel" destination="MgH-Pg-X2C" id="5jd-Bh-dhy"/>
+                            <outlet property="mapContainer" destination="rnE-kQ-sLy" id="s9u-7b-FSw"/>
+                            <outlet property="paceDescLabel" destination="TjI-wv-KOd" id="1l1-fA-5Jp"/>
+                            <outlet property="paceLabel" destination="JGK-wU-aGr" id="b0h-rH-0P2"/>
+                            <outlet property="pauseButton" destination="bWA-0R-bDZ" id="awi-1a-UAW"/>
+                            <outlet property="topBarView" destination="T9u-mZ-Bxx" id="47b-QA-TLQ"/>
+                        </connections>
                     </view>
-                    <connections>
-                        <outlet property="backButtonView" destination="khd-Eb-LTg" id="hZF-ob-rNj"/>
-                        <outlet property="bottomBarView" destination="PbB-rF-OMt" id="Fem-El-nbe"/>
-                        <outlet property="chronometerLabel" destination="AdO-rg-2i0" id="5gr-Is-1Wz"/>
-                        <outlet property="distDescLabel" destination="VTH-mY-5Gh" id="kGz-oG-Jm4"/>
-                        <outlet property="distanceLabel" destination="MgH-Pg-X2C" id="YIk-PW-VAx"/>
-                        <outlet property="mapContainer" destination="rnE-kQ-sLy" id="dYl-Db-eDQ"/>
-                        <outlet property="paceDescLabel" destination="TjI-wv-KOd" id="0TX-Ix-Kcn"/>
-                        <outlet property="paceLabel" destination="JGK-wU-aGr" id="qTC-65-WUl"/>
-                        <outlet property="pauseButton" destination="bWA-0R-bDZ" id="gy9-qK-Cff"/>
-                        <outlet property="topBarView" destination="T9u-mZ-Bxx" id="OzB-PV-JEA"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wFQ-S0-G8c" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
