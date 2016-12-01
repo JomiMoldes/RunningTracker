@@ -48,11 +48,11 @@ class RTActivitiesModelFake:RTActivitiesModel{
         let location1 = mockActivityLocation(fakeNow, lat:100.2, long:100.2)
         fakeNow = fakeNow + 10000
         let location2 = mockActivityLocation(fakeNow, lat:101.2, long:100.2)
-        addActivityLocation(location1)
-        addActivityLocation(location2)
+        _ = addActivityLocation(location1)
+        _ = addActivityLocation(location2)
         fakeNow = fakeNow + 10000
         if withFinishing {
-            endActivity()
+            _ = endActivity()
         }
 
     }

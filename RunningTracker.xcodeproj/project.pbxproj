@@ -23,9 +23,12 @@
 		45BAF30E9C3223CE41E2373B /* RTActivityLocationTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45BAFD9A99A2100487A40CFA /* RTActivityLocationTest.swift */; };
 		45BAF35FF38665A31336D7CA /* RTActiveMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45BAF9A0DF51888F7D92705D /* RTActiveMapViewController.swift */; };
 		45BAF362D4C32BFA3A19C44E /* RTSyncOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45BAF9E1D9ECF9E9CFE54332 /* RTSyncOperation.swift */; };
+		45BAF36C181ECEED5FAB734F /* RTUITapGestureRecognizerFake.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45BAFB87D6256C6DF06C8E05 /* RTUITapGestureRecognizerFake.swift */; };
+		45BAF3C3F1CEF8F79A07697E /* RTNavigationControllerMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45BAF1F0969C108559D84064 /* RTNavigationControllerMock.swift */; };
 		45BAF3F97EBCED19E1E145A3 /* RTGlobalModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45BAF71705BB05254A84B302 /* RTGlobalModels.swift */; };
 		45BAF42AF834F7CF785C2517 /* RTUIViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45BAF076ED14506A781B99C6 /* RTUIViewExtensions.swift */; };
 		45BAF47669EBAA392F1EC11B /* RTInitialViewModelFake.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45BAF388D5860AFA5EB530FE /* RTInitialViewModelFake.swift */; };
+		45BAF47EA6AC1E0BF9DC70B6 /* RTActiveMapViewControllerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45BAFBC629706F950182F42E /* RTActiveMapViewControllerTest.swift */; };
 		45BAF48B6B5574CABD5AD364 /* RTLocationManagerFake.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45BAF58615B5A526478FA92C /* RTLocationManagerFake.swift */; };
 		45BAF532A25ABCC01DE1F5F9 /* RTDeleteActivityICloudOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45BAF9F92FDA7227A86BA5FB /* RTDeleteActivityICloudOperation.swift */; };
 		45BAF5613AC649D55CAE4ED7 /* RTLocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45BAFFBE745DDB55C417FE06 /* RTLocationService.swift */; };
@@ -57,6 +60,7 @@
 		45BAFC01BBD4FBDE9EB148EC /* RTViewControllerExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45BAF551640D416EF68663F9 /* RTViewControllerExtensions.swift */; };
 		45BAFC1E17D04D6F678D3556 /* RTActivitiesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45BAF7E2708014ED6B2508B8 /* RTActivitiesViewController.swift */; };
 		45BAFCE8622F40D3507C7F1D /* RTActivityFake.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45BAF7F88EBD6D884DA9F3F1 /* RTActivityFake.swift */; };
+		45BAFD63A28794916628837A /* RTActiveMapViewModelFake.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45BAF21FA56B21ED5E41E269 /* RTActiveMapViewModelFake.swift */; };
 		45BAFDBC28133607D3EA6FCC /* RTActivityHeaderViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 45BAF32F5183A52E746D1DD0 /* RTActivityHeaderViewCell.xib */; };
 		45BAFDD3AA54E8C6CD67F02A /* RTInitialViewControllerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45BAF8DDB877BEB2AF74FD6F /* RTInitialViewControllerTest.swift */; };
 		45BAFE033AA27EEB23DCCFA7 /* RTActivitiesAndRecordsHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45BAF52136FCFD1F45DAC7DC /* RTActivitiesAndRecordsHelper.swift */; };
@@ -139,6 +143,8 @@
 		45BAF076ED14506A781B99C6 /* RTUIViewExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RTUIViewExtensions.swift; sourceTree = "<group>"; };
 		45BAF0CB67C24E3DF1344558 /* RTActivity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RTActivity.swift; sourceTree = "<group>"; };
 		45BAF0F221338AE394DB097B /* RTActivityViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RTActivityViewCell.swift; sourceTree = "<group>"; };
+		45BAF1F0969C108559D84064 /* RTNavigationControllerMock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RTNavigationControllerMock.swift; sourceTree = "<group>"; };
+		45BAF21FA56B21ED5E41E269 /* RTActiveMapViewModelFake.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RTActiveMapViewModelFake.swift; sourceTree = "<group>"; };
 		45BAF26DFA84631ED88E908D /* RTUIImageExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RTUIImageExtensions.swift; sourceTree = "<group>"; };
 		45BAF32F5183A52E746D1DD0 /* RTActivityHeaderViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RTActivityHeaderViewCell.xib; sourceTree = "<group>"; };
 		45BAF358E36695E70356F58D /* RTActivitiesModelFake.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RTActivitiesModelFake.swift; sourceTree = "<group>"; };
@@ -180,7 +186,9 @@
 		45BAFA7969CD4F51B9558C45 /* RTMapMarkersManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RTMapMarkersManager.swift; sourceTree = "<group>"; };
 		45BAFA90A0834E6E0607B9F6 /* RTLocationServiceFake.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RTLocationServiceFake.swift; sourceTree = "<group>"; };
 		45BAFAA1045A2A2A30D26353 /* RTInitialViewModelTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RTInitialViewModelTest.swift; sourceTree = "<group>"; };
+		45BAFB87D6256C6DF06C8E05 /* RTUITapGestureRecognizerFake.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RTUITapGestureRecognizerFake.swift; sourceTree = "<group>"; };
 		45BAFBA57DE88CBC215C69EA /* RTActiveMapView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RTActiveMapView.swift; sourceTree = "<group>"; };
+		45BAFBC629706F950182F42E /* RTActiveMapViewControllerTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RTActiveMapViewControllerTest.swift; sourceTree = "<group>"; };
 		45BAFBF0DE4F01A4E9D9FBDE /* RTNumbersExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RTNumbersExtensions.swift; sourceTree = "<group>"; };
 		45BAFD00AEC055DDADC7D82E /* RTInitialView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RTInitialView.swift; sourceTree = "<group>"; };
 		45BAFD57B853AA77BDE7B464 /* RTActivityViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RTActivityViewCell.xib; sourceTree = "<group>"; };
@@ -321,6 +329,13 @@
 			path = store;
 			sourceTree = "<group>";
 		};
+		45BAF4A0A2CF5B8FCFBAA6BF /* ui */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ui;
+			sourceTree = "<group>";
+		};
 		45BAF5369F426BC12E43C82A /* initialView */ = {
 			isa = PBXGroup;
 			children = (
@@ -335,6 +350,7 @@
 			isa = PBXGroup;
 			children = (
 				45BAFCB4E5E86DE97F72228D /* initialView */,
+				45BAF92371D440CC5F341C92 /* activeMap */,
 			);
 			path = views;
 			sourceTree = "<group>";
@@ -433,6 +449,14 @@
 			path = UI;
 			sourceTree = "<group>";
 		};
+		45BAF92371D440CC5F341C92 /* activeMap */ = {
+			isa = PBXGroup;
+			children = (
+				45BAF21FA56B21ED5E41E269 /* RTActiveMapViewModelFake.swift */,
+			);
+			path = activeMap;
+			sourceTree = "<group>";
+		};
 		45BAFA37A848EFBEC1405556 /* utils */ = {
 			isa = PBXGroup;
 			children = (
@@ -444,6 +468,7 @@
 				45BAF95328EB8149682DB631 /* RTArrayExtensions.swift */,
 				45BAF551640D416EF68663F9 /* RTViewControllerExtensions.swift */,
 				45BAF076ED14506A781B99C6 /* RTUIViewExtensions.swift */,
+				45BAF4A0A2CF5B8FCFBAA6BF /* ui */,
 			);
 			path = utils;
 			sourceTree = "<group>";
@@ -461,6 +486,8 @@
 			isa = PBXGroup;
 			children = (
 				45BAF8DDB877BEB2AF74FD6F /* RTInitialViewControllerTest.swift */,
+				45BAFBC629706F950182F42E /* RTActiveMapViewControllerTest.swift */,
+				45BAF1F0969C108559D84064 /* RTNavigationControllerMock.swift */,
 			);
 			path = controllers;
 			sourceTree = "<group>";
@@ -493,6 +520,14 @@
 				45BAF8A918FC0E09EDE8CA29 /* UI */,
 			);
 			path = Material;
+			sourceTree = "<group>";
+		};
+		45BAFED514A609972B0637FF /* utils */ = {
+			isa = PBXGroup;
+			children = (
+				45BAFB87D6256C6DF06C8E05 /* RTUITapGestureRecognizerFake.swift */,
+			);
+			path = utils;
 			sourceTree = "<group>";
 		};
 		48E0E2D71D2EC7360036F56B = {
@@ -544,6 +579,7 @@
 				45BAFC9CDF1B58730D462038 /* controllers */,
 				45BAF5A37F0FED6BA28D74CD /* views */,
 				45BAF1FA4B858926B3CBA647 /* models */,
+				45BAFED514A609972B0637FF /* utils */,
 			);
 			path = RunningTrackerTests;
 			sourceTree = "<group>";
@@ -906,6 +942,10 @@
 				45BAF47669EBAA392F1EC11B /* RTInitialViewModelFake.swift in Sources */,
 				45BAF05467A7EAB0B3CC8575 /* RTLocationServiceFake.swift in Sources */,
 				45BAF48B6B5574CABD5AD364 /* RTLocationManagerFake.swift in Sources */,
+				45BAF47EA6AC1E0BF9DC70B6 /* RTActiveMapViewControllerTest.swift in Sources */,
+				45BAF3C3F1CEF8F79A07697E /* RTNavigationControllerMock.swift in Sources */,
+				45BAF36C181ECEED5FAB734F /* RTUITapGestureRecognizerFake.swift in Sources */,
+				45BAFD63A28794916628837A /* RTActiveMapViewModelFake.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

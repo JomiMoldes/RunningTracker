@@ -63,7 +63,7 @@ class RTInitialViewTest : XCTestCase {
 
         XCTAssertNotNil(view.gpsImageView.image)
 
-        let success = view.gpsImageView.image?.isEqual(greenImage)
+        _ = view.gpsImageView.image?.isEqual(greenImage)
         XCTAssertTrue((view.gpsImageView.image?.isEqual(greenImage))!)
 
         view.model.gpsRunningVariable.value = false

@@ -74,8 +74,7 @@ class RTActivityPathDoneViewController : UIViewController, GMSMapViewDelegate {
     }
 
     func setupBackButton() {
-        let gesture = UITapGestureRecognizer(target: self, action: #selector(backTouched))
-        self.backButtonView.addGestureRecognizer(gesture)
+        backButtonView.areaButton.addTarget(self, action: #selector(backTouched), for: .touchUpInside)
     }
 
     func setupTopBar() {
@@ -107,7 +106,7 @@ class RTActivityPathDoneViewController : UIViewController, GMSMapViewDelegate {
         self.paceDescLabel.adjustsFontSizeToFitWidth = true
     }
 
-    func backTouched(_ sender:UITapGestureRecognizer){
+    func backTouched(_ sender:UIButton){
         self.navigationController!.popViewController(animated: true)
     }
 

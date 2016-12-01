@@ -8,6 +8,8 @@ import UIKit
 
 @IBDesignable class RTBackButtonView : UIView {
 
+    @IBOutlet weak var areaButton: UIButton!
+    
     var view:UIView!
 
     required init?(coder aDecoder: NSCoder) {
@@ -22,11 +24,9 @@ import UIKit
 
     func xibSetup() {
         view = loadViewFromNib()
-
         view.frame = bounds
-
         view.autoresizingMask = [UIViewAutoresizing.flexibleWidth, UIViewAutoresizing.flexibleHeight]
-
+        areaButton.setTitle("", for: .normal)
         addSubview(view)
     }
 

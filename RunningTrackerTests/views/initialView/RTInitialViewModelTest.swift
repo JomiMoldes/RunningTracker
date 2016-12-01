@@ -68,8 +68,8 @@ class RTInitialViewModelTest : XCTestCase {
     }
 
     func testLocationServiceDelegate () {
-        let myProtocol = viewModel as! RTLocationServiceDelegate
-        XCTAssertNotNil(myProtocol)
+        let myProtocol:RTLocationServiceDelegate! = viewModel
+        XCTAssertNotNil(viewModel)
 
         viewModel.gpsRunningVariable.value = false
         myProtocol.didUpdateLocation?(location: CLLocation(latitude:100.22, longitude: 100.2))

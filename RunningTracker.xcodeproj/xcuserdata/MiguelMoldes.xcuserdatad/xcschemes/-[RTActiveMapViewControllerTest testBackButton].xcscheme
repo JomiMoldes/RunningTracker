@@ -29,49 +29,10 @@
             </BuildableReference>
             <SkippedTests>
                <Test
-                  Identifier = "RTActivitiesModelTest/testActivitiesLenght()">
+                  Identifier = "RTActiveMapViewControllerTest/testSetup()">
                </Test>
                <Test
-                  Identifier = "RTActivitiesModelTest/testAddActivityLocation()">
-               </Test>
-               <Test
-                  Identifier = "RTActivitiesModelTest/testCurrentActivityLocations()">
-               </Test>
-               <Test
-                  Identifier = "RTActivitiesModelTest/testEndActivity()">
-               </Test>
-               <Test
-                  Identifier = "RTActivitiesModelTest/testGetActivities()">
-               </Test>
-               <Test
-                  Identifier = "RTActivitiesModelTest/testGetBestPace()">
-               </Test>
-               <Test
-                  Identifier = "RTActivitiesModelTest/testGetDistanceDone()">
-               </Test>
-               <Test
-                  Identifier = "RTActivitiesModelTest/testGetElapsedTime()">
-               </Test>
-               <Test
-                  Identifier = "RTActivitiesModelTest/testGetLongestDistance()">
-               </Test>
-               <Test
-                  Identifier = "RTActivitiesModelTest/testGetPaceLastKM()">
-               </Test>
-               <Test
-                  Identifier = "RTActivitiesModelTest/testLoadActivities()">
-               </Test>
-               <Test
-                  Identifier = "RTActivitiesModelTest/testPauseActivity()">
-               </Test>
-               <Test
-                  Identifier = "RTActivitiesModelTest/testRefreshValues()">
-               </Test>
-               <Test
-                  Identifier = "RTActivitiesModelTest/testResumeActivity()">
-               </Test>
-               <Test
-                  Identifier = "RTActivitiesModelTest/testStartActivity()">
+                  Identifier = "RTActivitiesModelTest">
                </Test>
                <Test
                   Identifier = "RTActivityLocationTest">
@@ -84,6 +45,9 @@
                </Test>
                <Test
                   Identifier = "RTInitialViewModelTest">
+               </Test>
+               <Test
+                  Identifier = "RTInitialViewTest">
                </Test>
                <Test
                   Identifier = "RTLocationServiceTest">

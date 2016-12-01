@@ -37,8 +37,8 @@ class RTInitialViewController: UIViewController {
     }
 
     @IBAction func startTouched(_ sender: UIButton) {
-        let mapViewController = UIStoryboard(name:"Main", bundle:nil).instantiateViewController(withIdentifier: "activeMapView") as? RTActiveMapViewController
-
+        let mapViewController = UIStoryboard(name:"Main", bundle:nil).instantiateViewController(withIdentifier: "activeMapView") as! RTActiveMapViewController
+        mapViewController.viewModel = RTActiveMapViewModel(model:RTGlobalModels.sharedInstance.activitiesModel, locationService: RTLocationService())
         do {
             try RTGlobalModels.sharedInstance.activitiesModel.startActivity()
         } catch {
@@ -46,7 +46,7 @@ class RTInitialViewController: UIViewController {
             return
         }
 
-        self.navigationController!.pushViewController(mapViewController!, animated:true)
+        self.navigationController!.pushViewController(mapViewController, animated:true)
     }
 
 }

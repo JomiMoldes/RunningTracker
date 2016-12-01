@@ -1,7 +1,5 @@
 import Foundation
 import UIKit
-import CoreLocation
-import GoogleMaps
 
 class RTActiveMapViewController : UIViewController {
 
@@ -11,27 +9,28 @@ class RTActiveMapViewController : UIViewController {
         }
     }
 
+    var viewModel:RTActiveMapViewModel!
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.activeMapView.model = RTActiveMapViewModel(model:RTGlobalModels.sharedInstance.activitiesModel, locationService: RTLocationService())
+        self.activeMapView.model = self.viewModel
         setupBackButton()
     }
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        self.activeMapView.model.startLocation()
-        self.activeMapView.model.setupTimer()
+        self.viewModel.startLocation()
+        self.viewModel.setupTimer()
     }
 
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        self.activeMapView.model.killLocation()
-        self.activeMapView.model.removeObservers()
+        self.viewModel.killLocation()
+        self.viewModel.removeObservers()
     }
 
-    func setupBackButton() {
-        let gesture = UITapGestureRecognizer(target: self, action: #selector(backTouched))
-        activeMapView.backButtonView.addGestureRecognizer(gesture)
+    private func setupBackButton() {
+        activeMapView.backButtonView.areaButton.addTarget(self, action: #selector(backTouched), for: .touchUpInside)
     }
 
     func showStopOptions() {
@@ -47,10 +46,10 @@ class RTActiveMapViewController : UIViewController {
         }
         alert.addAction(okAction)
 
-        self.present(alert, animated: true, completion:nil)
+        self.navigationController!.present(alert, animated: true, completion:nil)
     }
 
-    func backTouched(_ sender:UITapGestureRecognizer){
+    func backTouched(_ sender:UIButton){
         if self.activeMapView.model.model.activityRunning {
             showStopOptions()
             return
@@ -67,7 +66,7 @@ class RTActiveMapViewController : UIViewController {
     }
     
     @IBAction func pauseTouched(_ sender: UIButton) {
-        self.activeMapView.model.pauseTouched()
+        self.viewModel.pauseTouched()
     }
 
 }

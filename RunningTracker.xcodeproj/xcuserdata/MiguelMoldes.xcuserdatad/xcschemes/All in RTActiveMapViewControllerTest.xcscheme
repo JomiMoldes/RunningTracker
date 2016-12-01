@@ -29,6 +29,9 @@
             </BuildableReference>
             <SkippedTests>
                <Test
+                  Identifier = "RTActivitiesModelTest">
+               </Test>
+               <Test
                   Identifier = "RTActivityLocationTest">
                </Test>
                <Test
@@ -39,6 +42,9 @@
                </Test>
                <Test
                   Identifier = "RTInitialViewModelTest">
+               </Test>
+               <Test
+                  Identifier = "RTInitialViewTest">
                </Test>
                <Test
                   Identifier = "RTLocationServiceTest">

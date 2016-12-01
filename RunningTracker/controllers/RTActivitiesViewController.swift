@@ -28,11 +28,10 @@ class RTActivitiesViewController : UIViewController, UITableViewDelegate, UITabl
     }
 
     func setupBackButton() {
-        let gesture = UITapGestureRecognizer(target: self, action: #selector(backTouched))
-        self.backButtonView.addGestureRecognizer(gesture)
+        backButtonView.areaButton.addTarget(self, action: #selector(backTouched), for: .touchUpInside)
     }
 
-    func backTouched(_ sender:UITapGestureRecognizer){
+    func backTouched(_ sender:UIButton){
         self.navigationController!.popViewController(animated: true)
     }
 

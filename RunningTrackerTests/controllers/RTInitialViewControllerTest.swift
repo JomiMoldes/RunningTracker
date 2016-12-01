@@ -70,7 +70,7 @@ class RTInitialViewControllerTest : XCTestCase {
                 return
             }
 
-            XCTAssertTrue(self.navigationController!.lastAlertController! is UIAlertController)
+            XCTAssertTrue(self.navigationController.lastAlertController! is UIAlertController)
         }
     }
 
