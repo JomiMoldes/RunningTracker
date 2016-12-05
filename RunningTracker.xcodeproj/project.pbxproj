@@ -52,6 +52,7 @@
 		45BAFA4165D35C4B708970C0 /* RTDeleteActivityLocallyOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45BAF43C99EEF8AFE0D13BCE /* RTDeleteActivityLocallyOperation.swift */; };
 		45BAFA63A080F2D499536142 /* RTActivitiesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45BAF9623FF8D4BDF06E463C /* RTActivitiesModel.swift */; };
 		45BAFA89DE5B959EF495628A /* RTDateFormatterExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45BAF89C5CBD8617A2CACFD8 /* RTDateFormatterExtensions.swift */; };
+		45BAFA993F5051780B8FA748 /* RTActiveMapViewTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45BAF1F2551A20501489D22C /* RTActiveMapViewTest.swift */; };
 		45BAFAB1302DA00C9BEFE61D /* RTInitialViewTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45BAF78EB6CAA46FEC884401 /* RTInitialViewTest.swift */; };
 		45BAFABEA05ED9EA388F91DB /* RTInitialViewModelTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45BAFAA1045A2A2A30D26353 /* RTInitialViewModelTest.swift */; };
 		45BAFAF03CBD364BF7879A65 /* RTActivityViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45BAF0F221338AE394DB097B /* RTActivityViewCell.swift */; };
@@ -94,6 +95,7 @@
 		48650E941D6DEF36006BE423 /* OpenSans-SemiboldItalic.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 48650E8A1D6DEF36006BE423 /* OpenSans-SemiboldItalic.ttf */; };
 		487BE86B1D6AF37300ABC1ED /* Flag_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 487BE8691D6AF37300ABC1ED /* Flag_icon.png */; };
 		487BE86C1D6AF37300ABC1ED /* Km_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 487BE86A1D6AF37300ABC1ED /* Km_icon.png */; };
+		488C722E1DF5BEF500D79DDC /* RTActiveMapView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 488C722D1DF5BEF500D79DDC /* RTActiveMapView.xib */; };
 		48E0E2E41D2EC7360036F56B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48E0E2E31D2EC7360036F56B /* AppDelegate.swift */; };
 		48E0E2E61D2EC7360036F56B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48E0E2E51D2EC7360036F56B /* ViewController.swift */; };
 		48E0E2E91D2EC7360036F56B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 48E0E2E71D2EC7360036F56B /* Main.storyboard */; };
@@ -146,6 +148,7 @@
 		45BAF0CB67C24E3DF1344558 /* RTActivity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RTActivity.swift; sourceTree = "<group>"; };
 		45BAF0F221338AE394DB097B /* RTActivityViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RTActivityViewCell.swift; sourceTree = "<group>"; };
 		45BAF1F0969C108559D84064 /* RTNavigationControllerMock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RTNavigationControllerMock.swift; sourceTree = "<group>"; };
+		45BAF1F2551A20501489D22C /* RTActiveMapViewTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RTActiveMapViewTest.swift; sourceTree = "<group>"; };
 		45BAF21FA56B21ED5E41E269 /* RTActiveMapViewModelFake.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RTActiveMapViewModelFake.swift; sourceTree = "<group>"; };
 		45BAF26DFA84631ED88E908D /* RTUIImageExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RTUIImageExtensions.swift; sourceTree = "<group>"; };
 		45BAF32F5183A52E746D1DD0 /* RTActivityHeaderViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RTActivityHeaderViewCell.xib; sourceTree = "<group>"; };
@@ -229,6 +232,7 @@
 		487BE8681D55F11000ABC1ED /* RunningTracker.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = RunningTracker.entitlements; sourceTree = "<group>"; };
 		487BE8691D6AF37300ABC1ED /* Flag_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Flag_icon.png; sourceTree = "<group>"; };
 		487BE86A1D6AF37300ABC1ED /* Km_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Km_icon.png; sourceTree = "<group>"; };
+		488C722D1DF5BEF500D79DDC /* RTActiveMapView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RTActiveMapView.xib; sourceTree = "<group>"; };
 		48E0E2E01D2EC7360036F56B /* RunningTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RunningTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		48E0E2E31D2EC7360036F56B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		48E0E2E51D2EC7360036F56B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -393,6 +397,7 @@
 			children = (
 				45BAFBA57DE88CBC215C69EA /* RTActiveMapView.swift */,
 				45BAF5D2CFA9376A2CA80F12 /* RTActiveMapViewModel.swift */,
+				488C722D1DF5BEF500D79DDC /* RTActiveMapView.xib */,
 			);
 			path = activeMap;
 			sourceTree = "<group>";
@@ -458,6 +463,7 @@
 			children = (
 				45BAF21FA56B21ED5E41E269 /* RTActiveMapViewModelFake.swift */,
 				45BAF7E12D9121A7135432AB /* RTActiveMapViewModelTest.swift */,
+				45BAF1F2551A20501489D22C /* RTActiveMapViewTest.swift */,
 			);
 			path = activeMap;
 			sourceTree = "<group>";
@@ -743,6 +749,7 @@
 				48E0E3191D2ECD2B0036F56B /* MyTrackerRed.png in Resources */,
 				48E4C0FC1D7583670086AE54 /* isologo.png in Resources */,
 				4805D4911D7DFA7B00A04879 /* show_activ_button_bg@2x.png in Resources */,
+				488C722E1DF5BEF500D79DDC /* RTActiveMapView.xib in Resources */,
 				48650E911D6DEF36006BE423 /* OpenSans-LightItalic.ttf in Resources */,
 				48FFAFFC1D789F320005906A /* white_background.png in Resources */,
 				48E0E3181D2ECD2B0036F56B /* MyTrackerGray.png in Resources */,
@@ -954,6 +961,7 @@
 				45BAFD63A28794916628837A /* RTActiveMapViewModelFake.swift in Sources */,
 				45BAFFB813047E89A658056E /* RTActiveMapViewModelTest.swift in Sources */,
 				45BAF30BB7EE52D5D233774B /* RTGoogleMapViewFake.swift in Sources */,
+				45BAFA993F5051780B8FA748 /* RTActiveMapViewTest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

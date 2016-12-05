@@ -28,21 +28,21 @@
 			<key>orderHint</key>
 			<integer>10</integer>
 		</dict>
-		<key>-[RTActiveMapViewModelTest testPauseTouched].xcscheme</key>
+		<key>-[RTActiveMapViewModelTest testDidUpdateLocation].xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false />
 			<key>orderHint</key>
 			<integer>11</integer>
 		</dict>
-		<key>-[RTActiveMapViewModelTest testDidUpdateLocation].xcscheme</key>
+		<key>-[RTActiveMapViewModelTest testMapView].xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false />
 			<key>orderHint</key>
 			<integer>12</integer>
 		</dict>
-		<key>-[RTActiveMapViewModelTest testMapView].xcscheme</key>
+		<key>All in RTActiveMapViewTest.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false />
