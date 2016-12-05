@@ -84,7 +84,7 @@ class RTActivitiesViewController : UIViewController, UITableViewDelegate, UITabl
             self.showActivityIndicator()
             NotificationCenter.default.addObserver(self, selector: #selector(activityDeleted), name: NSNotification.Name(rawValue: "activityDeleted"), object: nil)
             let activity = self.activities[(indexPath as NSIndexPath).item]
-            self.activitiesModel.deleteActivity(activity, storeManager: RTGlobalModels.sharedInstance.storeActivitiesManager2)
+            self.activitiesModel.deleteActivity(activity, storeManager: RTGlobalModels.sharedInstance.storeActivitiesManager)
             self.activities.remove(at: (indexPath as NSIndexPath).row)
             self.tableView.deleteRows(at: [indexPath], with: UITableViewRowAnimation.automatic)
             self.view.setNeedsUpdateConstraints()

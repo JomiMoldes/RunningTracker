@@ -81,7 +81,7 @@ class RTActiveMapViewModel : NSObject, RTLocationServiceDelegate, GMSMapViewDele
         if self.model.endActivity() {
             showActivityIndicatorVariable.value = true
             NotificationCenter.default.addObserver(self, selector: #selector(activitiesSaved), name: NSNotification.Name(rawValue: "activitiesSaved"), object: nil)
-            _ = self.model.saveActivities(getSavingPath(), storeManager: RTGlobalModels.sharedInstance.storeActivitiesManager2)
+            _ = self.model.saveActivities(getSavingPath(), storeManager: RTGlobalModels.sharedInstance.storeActivitiesManager)
             addEndFlagMarker()
             setFinalPaceLabel()
         }

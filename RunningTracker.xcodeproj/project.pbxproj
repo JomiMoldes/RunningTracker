@@ -7,7 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		45BAF04B4B1F04F23DECD864 /* RTActiveMapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45BAF62D75EFDA58FF8F6C80 /* RTActiveMapViewModel.swift */; };
+		45BAF00AAF4151968E4A07E0 /* RTActiveMapViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45BAF5D2CFA9376A2CA80F12 /* RTActiveMapViewModel.swift */; };
 		45BAF05467A7EAB0B3CC8575 /* RTLocationServiceFake.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45BAFA90A0834E6E0607B9F6 /* RTLocationServiceFake.swift */; };
 		45BAF0AC180F6B56999A5EAF /* RTSaveLocallyOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45BAF459EF763CC7A1FE1AD2 /* RTSaveLocallyOperation.swift */; };
 		45BAF0DE930DFEAD5E238D9E /* RTActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45BAF0CB67C24E3DF1344558 /* RTActivity.swift */; };
@@ -160,8 +160,8 @@
 		45BAF551640D416EF68663F9 /* RTViewControllerExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RTViewControllerExtensions.swift; sourceTree = "<group>"; };
 		45BAF58615B5A526478FA92C /* RTLocationManagerFake.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RTLocationManagerFake.swift; sourceTree = "<group>"; };
 		45BAF5A2711F245A17DBBAFD /* RTSoreManagerFake.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RTSoreManagerFake.swift; sourceTree = "<group>"; };
+		45BAF5D2CFA9376A2CA80F12 /* RTActiveMapViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RTActiveMapViewModel.swift; sourceTree = "<group>"; };
 		45BAF61899E031D7BAB73EEE /* RTLocationServiceTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RTLocationServiceTest.swift; sourceTree = "<group>"; };
-		45BAF62D75EFDA58FF8F6C80 /* RTActiveMapViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RTActiveMapViewModel.swift; sourceTree = "<group>"; };
 		45BAF71705BB05254A84B302 /* RTGlobalModels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RTGlobalModels.swift; sourceTree = "<group>"; };
 		45BAF73453970E94E1200727 /* RTActivityPathDoneViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RTActivityPathDoneViewController.swift; sourceTree = "<group>"; };
 		45BAF77F6C307E401E1DA2B4 /* RTActivityTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RTActivityTest.swift; sourceTree = "<group>"; };
@@ -392,7 +392,7 @@
 			isa = PBXGroup;
 			children = (
 				45BAFBA57DE88CBC215C69EA /* RTActiveMapView.swift */,
-				45BAF62D75EFDA58FF8F6C80 /* RTActiveMapViewModel.swift */,
+				45BAF5D2CFA9376A2CA80F12 /* RTActiveMapViewModel.swift */,
 			);
 			path = activeMap;
 			sourceTree = "<group>";
@@ -925,8 +925,8 @@
 				45BAF16177EDC624FA37577B /* RTFetchActivitiesLocallyOperation.swift in Sources */,
 				45BAF5D48DA8DE45AB620998 /* RTFetchActivitiesOperation.swift in Sources */,
 				45BAF739F11D8ED729153D3B /* RTActiveMapView.swift in Sources */,
-				45BAF04B4B1F04F23DECD864 /* RTActiveMapViewModel.swift in Sources */,
 				45BAF42AF834F7CF785C2517 /* RTUIViewExtensions.swift in Sources */,
+				45BAF00AAF4151968E4A07E0 /* RTActiveMapViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

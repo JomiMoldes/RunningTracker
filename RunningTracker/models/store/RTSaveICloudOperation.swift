@@ -18,8 +18,6 @@ class RTSaveICloudOperation {
     var privateDatabase:CKDatabase!
 
     func execute(_ records:[CKRecord]) -> Promise<Bool> {
-        print("execute", records.count)
-
         return Promise {
             fulfill, reject in
 
@@ -54,11 +52,6 @@ class RTSaveICloudOperation {
 
             uploadOperation.modifyRecordsCompletionBlock = {
                 (savedRecords: [CKRecord]?, deletedRecords: [CKRecordID]?, operationError: Error?) -> Void in
-                if let saved = savedRecords {
-                    print("savedRecords:", saved.count)
-                }else {
-                    print("savedRecords nil")
-                }
                 self.removeSavedElements(savedRecords)
                 if let error = operationError {
 
