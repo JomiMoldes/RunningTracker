@@ -33,8 +33,8 @@ class RTInitialViewModelTest : XCTestCase {
 
     func testInitial() {
         XCTAssertNotNil(viewModel.model)
-        XCTAssertEqual(viewModel.distanceVariable.value, "111.66 km")
-        XCTAssertEqual(viewModel.paceVariable.value, "02:59")
+        XCTAssertEqual(viewModel.distanceVariable.value, "0.06 km")
+        XCTAssertEqual(viewModel.paceVariable.value, "08:57")
 
         let blackImage = UIImage(named:"GPSblack.png")
         XCTAssertTrue(viewModel.gpsImageVariable.value.isEqual(blackImage))

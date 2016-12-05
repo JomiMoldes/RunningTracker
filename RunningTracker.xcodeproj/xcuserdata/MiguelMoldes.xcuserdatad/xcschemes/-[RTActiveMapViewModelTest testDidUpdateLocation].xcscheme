@@ -29,6 +29,27 @@
             </BuildableReference>
             <SkippedTests>
                <Test
+                  Identifier = "RTActiveMapViewControllerTest">
+               </Test>
+               <Test
+                  Identifier = "RTActiveMapViewModelTest/testEndActivity()">
+               </Test>
+               <Test
+                  Identifier = "RTActiveMapViewModelTest/testKillLocationService()">
+               </Test>
+               <Test
+                  Identifier = "RTActiveMapViewModelTest/testLocationService()">
+               </Test>
+               <Test
+                  Identifier = "RTActiveMapViewModelTest/testPauseTouched()">
+               </Test>
+               <Test
+                  Identifier = "RTActiveMapViewModelTest/testSetup()">
+               </Test>
+               <Test
+                  Identifier = "RTActiveMapViewModelTest/testTimer()">
+               </Test>
+               <Test
                   Identifier = "RTActivitiesModelTest">
                </Test>
                <Test
@@ -44,7 +65,7 @@
                   Identifier = "RTInitialViewModelTest">
                </Test>
                <Test
-                  Identifier = "RTInitialViewTest/testSetup()">
+                  Identifier = "RTInitialViewTest">
                </Test>
                <Test
                   Identifier = "RTLocationServiceTest">

@@ -46,11 +46,6 @@ class RTActiveMapViewModel : NSObject, RTLocationServiceDelegate, GMSMapViewDele
         self.model = model
         self.locationManager = locationService
         super.init()
-        self.setup()
-    }
-
-    private func setup() {
-
     }
 
     func startLocation() {
@@ -86,11 +81,15 @@ class RTActiveMapViewModel : NSObject, RTLocationServiceDelegate, GMSMapViewDele
         if self.model.endActivity() {
             showActivityIndicatorVariable.value = true
             NotificationCenter.default.addObserver(self, selector: #selector(activitiesSaved), name: NSNotification.Name(rawValue: "activitiesSaved"), object: nil)
-            _ = self.model.saveActivities(RTActivitiesModel.ArchiveURL.path, storeManager: RTGlobalModels.sharedInstance.storeActivitiesManager2)
+            _ = self.model.saveActivities(getSavingPath(), storeManager: RTGlobalModels.sharedInstance.storeActivitiesManager2)
             addEndFlagMarker()
             setFinalPaceLabel()
         }
         invalidateTimer()
+    }
+
+    func getSavingPath() -> String {
+        return RTActivitiesModel.ArchiveURL.path
     }
 
     func removeObservers() {

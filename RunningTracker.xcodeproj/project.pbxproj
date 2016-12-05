@@ -20,6 +20,7 @@
 		45BAF29F13374069ABF9F333 /* RTUILabelExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45BAF899D03FA99C60DD92B9 /* RTUILabelExtensions.swift */; };
 		45BAF2C2EB8DEBE5CC1BF1F8 /* RTMapMarkersManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45BAFA7969CD4F51B9558C45 /* RTMapMarkersManager.swift */; };
 		45BAF2D96BFAF76167F408F0 /* RTFetchActivitiesICloudOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45BAFE69A2251E9BB85A85EE /* RTFetchActivitiesICloudOperation.swift */; };
+		45BAF30BB7EE52D5D233774B /* RTGoogleMapViewFake.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45BAFFF01D5998623F20F856 /* RTGoogleMapViewFake.swift */; };
 		45BAF30E9C3223CE41E2373B /* RTActivityLocationTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45BAFD9A99A2100487A40CFA /* RTActivityLocationTest.swift */; };
 		45BAF35FF38665A31336D7CA /* RTActiveMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45BAF9A0DF51888F7D92705D /* RTActiveMapViewController.swift */; };
 		45BAF362D4C32BFA3A19C44E /* RTSyncOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45BAF9E1D9ECF9E9CFE54332 /* RTSyncOperation.swift */; };
@@ -66,6 +67,7 @@
 		45BAFE033AA27EEB23DCCFA7 /* RTActivitiesAndRecordsHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45BAF52136FCFD1F45DAC7DC /* RTActivitiesAndRecordsHelper.swift */; };
 		45BAFEC841E867803F2F6514 /* RTActivityViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 45BAFD57B853AA77BDE7B464 /* RTActivityViewCell.xib */; };
 		45BAFF27CFB9B02E5CEAB8CE /* RTBackButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45BAFDE23DCDD457E4FD1821 /* RTBackButtonView.swift */; };
+		45BAFFB813047E89A658056E /* RTActiveMapViewModelTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45BAF7E12D9121A7135432AB /* RTActiveMapViewModelTest.swift */; };
 		4805D4781D7CBE4B00A04879 /* AFNetworking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4805D4701D7CBB7C00A04879 /* AFNetworking.framework */; };
 		4805D4791D7CBE5100A04879 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 487BE8651D55F01D00ABC1ED /* CloudKit.framework */; };
 		4805D4861D7D8CEC00A04879 /* white_background@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4805D4841D7D8CEC00A04879 /* white_background@2x.png */; };
@@ -167,6 +169,7 @@
 		45BAF7B6E0EB81615B88EE95 /* RTFetchActivitiesLocallyOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RTFetchActivitiesLocallyOperation.swift; sourceTree = "<group>"; };
 		45BAF7C5953C7920494859BC /* RTStoreActivitiesManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RTStoreActivitiesManager.swift; sourceTree = "<group>"; };
 		45BAF7D64C5B42DC4D6CFF92 /* RTActivityLocation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RTActivityLocation.swift; sourceTree = "<group>"; };
+		45BAF7E12D9121A7135432AB /* RTActiveMapViewModelTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RTActiveMapViewModelTest.swift; sourceTree = "<group>"; };
 		45BAF7E1CD5B2F7185B19B05 /* RTLocationServiceProtocol.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RTLocationServiceProtocol.swift; sourceTree = "<group>"; };
 		45BAF7E2708014ED6B2508B8 /* RTActivitiesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RTActivitiesViewController.swift; sourceTree = "<group>"; };
 		45BAF7F88EBD6D884DA9F3F1 /* RTActivityFake.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RTActivityFake.swift; sourceTree = "<group>"; };
@@ -198,6 +201,7 @@
 		45BAFE12613898103B015CC9 /* RTLoadingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RTLoadingView.swift; sourceTree = "<group>"; };
 		45BAFE69A2251E9BB85A85EE /* RTFetchActivitiesICloudOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RTFetchActivitiesICloudOperation.swift; sourceTree = "<group>"; };
 		45BAFFBE745DDB55C417FE06 /* RTLocationService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RTLocationService.swift; sourceTree = "<group>"; };
+		45BAFFF01D5998623F20F856 /* RTGoogleMapViewFake.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RTGoogleMapViewFake.swift; sourceTree = "<group>"; };
 		4805D4701D7CBB7C00A04879 /* AFNetworking.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AFNetworking.framework; path = "../../../../Library/Developer/Xcode/DerivedData/RunningTracker-cyobtvdaneufctbpnvgqhgylaxzi/Build/Products/Debug-iphonesimulator/AFNetworking/AFNetworking.framework"; sourceTree = "<group>"; };
 		4805D4841D7D8CEC00A04879 /* white_background@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "white_background@2x.png"; sourceTree = "<group>"; };
 		4805D4851D7D8CEC00A04879 /* white_background@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "white_background@3x.png"; sourceTree = "<group>"; };
@@ -453,6 +457,7 @@
 			isa = PBXGroup;
 			children = (
 				45BAF21FA56B21ED5E41E269 /* RTActiveMapViewModelFake.swift */,
+				45BAF7E12D9121A7135432AB /* RTActiveMapViewModelTest.swift */,
 			);
 			path = activeMap;
 			sourceTree = "<group>";
@@ -478,6 +483,7 @@
 			children = (
 				45BAFFBE745DDB55C417FE06 /* RTLocationService.swift */,
 				45BAF7E1CD5B2F7185B19B05 /* RTLocationServiceProtocol.swift */,
+				45BAFFF01D5998623F20F856 /* RTGoogleMapViewFake.swift */,
 			);
 			path = common;
 			sourceTree = "<group>";
@@ -946,6 +952,8 @@
 				45BAF3C3F1CEF8F79A07697E /* RTNavigationControllerMock.swift in Sources */,
 				45BAF36C181ECEED5FAB734F /* RTUITapGestureRecognizerFake.swift in Sources */,
 				45BAFD63A28794916628837A /* RTActiveMapViewModelFake.swift in Sources */,
+				45BAFFB813047E89A658056E /* RTActiveMapViewModelTest.swift in Sources */,
+				45BAF30BB7EE52D5D233774B /* RTGoogleMapViewFake.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

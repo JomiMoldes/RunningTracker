@@ -12,8 +12,10 @@ import XCTest
 class RTActivitiesModelFake:RTActivitiesModel{
 
     var valuesRefreshed:Bool = false
+    var activitiesSaved:Bool = false
 
     var fakeNow:TimeInterval = Date().timeIntervalSince1970
+    let storeManagerFake = RTSoreManagerFake()
 
     override init() {
         super.init()
@@ -27,6 +29,12 @@ class RTActivitiesModelFake:RTActivitiesModel{
     override func getNow() -> TimeInterval {
         return fakeNow
     }
+
+    override func saveActivities(_ path: String, storeManager: RTStoreActivitiesManager) -> Bool {
+        activitiesSaved = true
+        return super.saveActivities(path, storeManager: self.storeManagerFake)
+    }
+
 
     func tryStartActivity() {
         do{
@@ -42,25 +50,26 @@ class RTActivitiesModelFake:RTActivitiesModel{
         return activityLocation!
     }
 
-    func mockActivityWithTwoLocations(_ withFinishing:Bool = true) {
+    func mockActivityWithTwoLocations(_ withFinishing:Bool = true, _ gpsTickTime:Double = 10.0) {
         tryStartActivity()
-        fakeNow = fakeNow + 5
+        fakeNow = fakeNow + gpsTickTime
         let location1 = mockActivityLocation(fakeNow, lat:100.2, long:100.2)
-        fakeNow = fakeNow + 10000
-        let location2 = mockActivityLocation(fakeNow, lat:101.2, long:100.2)
+        fakeNow = fakeNow + gpsTickTime
+        let location2 = mockActivityLocation(fakeNow, lat:100.2005, long:100.2)
         _ = addActivityLocation(location1)
         _ = addActivityLocation(location2)
-        fakeNow = fakeNow + 10000
+        fakeNow = fakeNow + gpsTickTime
         if withFinishing {
             _ = endActivity()
         }
 
     }
 
-    func addLocationToCurrentActivity() {
+    func addLocationToCurrentActivity() -> RTActivityLocation? {
         let location = CLLocation(latitude:1111.22, longitude: 3333.3)
         let activityLocation : RTActivityLocation? = RTActivityLocation(location: location, timestamp: 100)
         _ = addActivityLocation(activityLocation!)
+        return activityLocation
     }
 
 }

@@ -54,7 +54,7 @@ class RTActivitiesModelTest:XCTestCase{
         let now = Date().timeIntervalSince1970
         model.fakeNow = now
         model.tryStartActivity()
-        model.addLocationToCurrentActivity()
+        _ = model.addLocationToCurrentActivity()
         let location2 = model.mockActivityLocation(now + 11, lat:12.55560, long:14)
         _ = model.addActivityLocation(location2)
         XCTAssertTrue(model.activityRunning, "activityRunning should be true")

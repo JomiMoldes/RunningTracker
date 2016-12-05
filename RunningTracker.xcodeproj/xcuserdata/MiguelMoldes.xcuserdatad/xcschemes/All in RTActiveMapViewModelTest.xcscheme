@@ -44,19 +44,7 @@
                   Identifier = "RTInitialViewControllerTest">
                </Test>
                <Test
-                  Identifier = "RTInitialViewModelTest/testInitial()">
-               </Test>
-               <Test
-                  Identifier = "RTInitialViewModelTest/testKillLocations()">
-               </Test>
-               <Test
-                  Identifier = "RTInitialViewModelTest/testLocationStarted()">
-               </Test>
-               <Test
-                  Identifier = "RTInitialViewModelTest/testShouldChangeGPSImage()">
-               </Test>
-               <Test
-                  Identifier = "RTInitialViewModelTest/testShouldChangePermissions()">
+                  Identifier = "RTInitialViewModelTest">
                </Test>
                <Test
                   Identifier = "RTInitialViewTest">
