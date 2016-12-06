@@ -115,8 +115,10 @@ class RTActiveMapView : UIView {
     }
 
     private func setupMap(){
-        let camera = GMSCameraPosition.camera(withLatitude: 52.52356, longitude: 13.45097995, zoom: model.initialZoom)
-        self.mapView = GMSMapView.map(withFrame: CGRect(x: 0,y: 0,width: self.mapContainer.frame.size.width, height: self.mapContainer.frame.size.height), camera: camera)
+        if self.mapView == nil {
+            let camera = GMSCameraPosition.camera(withLatitude: 52.52356, longitude: 13.45097995, zoom: model.initialZoom)
+            self.mapView = GMSMapView.map(withFrame: CGRect(x: 0,y: 0,width: self.mapContainer.frame.size.width, height: self.mapContainer.frame.size.height), camera: camera)
+        }
         self.mapView.isMyLocationEnabled = true
         self.mapView.mapType = kGMSTypeNormal
         mapContainer.addSubview(self.mapView)
@@ -124,7 +126,9 @@ class RTActiveMapView : UIView {
     }
 
     private func setupMapMarkers() {
-        self.mapMarkersManager = RTMapMarkersManager(mapView: self.mapView)
+        if self.mapMarkersManager == nil {
+            self.mapMarkersManager = RTMapMarkersManager(mapView: self.mapView)
+        }
     }
 
     private func setupTopBar() {

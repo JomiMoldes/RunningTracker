@@ -17,6 +17,7 @@
 		45BAF16177EDC624FA37577B /* RTFetchActivitiesLocallyOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45BAF7B6E0EB81615B88EE95 /* RTFetchActivitiesLocallyOperation.swift */; };
 		45BAF21B280B8DFDAD002E56 /* RTArrayExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45BAF95328EB8149682DB631 /* RTArrayExtensions.swift */; };
 		45BAF27E6CC9B05614F2A05A /* RTSoreManagerFake.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45BAF5A2711F245A17DBBAFD /* RTSoreManagerFake.swift */; };
+		45BAF29561A86F01E26C4A66 /* RTMapMarkersManagerFake.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45BAFAC24D17807DBB890836 /* RTMapMarkersManagerFake.swift */; };
 		45BAF29F13374069ABF9F333 /* RTUILabelExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45BAF899D03FA99C60DD92B9 /* RTUILabelExtensions.swift */; };
 		45BAF2C2EB8DEBE5CC1BF1F8 /* RTMapMarkersManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45BAFA7969CD4F51B9558C45 /* RTMapMarkersManager.swift */; };
 		45BAF2D96BFAF76167F408F0 /* RTFetchActivitiesICloudOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45BAFE69A2251E9BB85A85EE /* RTFetchActivitiesICloudOperation.swift */; };
@@ -41,6 +42,7 @@
 		45BAF784C21FD73D64132D07 /* RTLocationServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45BAF7E1CD5B2F7185B19B05 /* RTLocationServiceProtocol.swift */; };
 		45BAF798A150E21E22FCA8C0 /* RTNumbersExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45BAFBF0DE4F01A4E9D9FBDE /* RTNumbersExtensions.swift */; };
 		45BAF7A6F70A4E8C04018332 /* RTLoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45BAFE12613898103B015CC9 /* RTLoadingView.swift */; };
+		45BAF86163F9AAF2065E3462 /* RTGMSMapViewFake.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45BAF97625183E5B17950B7A /* RTGMSMapViewFake.swift */; };
 		45BAF88F47593901FEED1DE0 /* RTActivityPathDoneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45BAF73453970E94E1200727 /* RTActivityPathDoneViewController.swift */; };
 		45BAF8C5780D14595F52BA0D /* RTActivitiesModelTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45BAF4A9181822E5D1708080 /* RTActivitiesModelTest.swift */; };
 		45BAF8F4C078A9C15FB32890 /* RTActivityHeaderViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45BAF9536E3085FF4F532AFE /* RTActivityHeaderViewCell.swift */; };
@@ -184,6 +186,7 @@
 		45BAF95328EB8149682DB631 /* RTArrayExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RTArrayExtensions.swift; sourceTree = "<group>"; };
 		45BAF9536E3085FF4F532AFE /* RTActivityHeaderViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RTActivityHeaderViewCell.swift; sourceTree = "<group>"; };
 		45BAF9623FF8D4BDF06E463C /* RTActivitiesModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RTActivitiesModel.swift; sourceTree = "<group>"; };
+		45BAF97625183E5B17950B7A /* RTGMSMapViewFake.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RTGMSMapViewFake.swift; sourceTree = "<group>"; };
 		45BAF97F77733501D78A942C /* RTInitialViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RTInitialViewModel.swift; sourceTree = "<group>"; };
 		45BAF9A0DF51888F7D92705D /* RTActiveMapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RTActiveMapViewController.swift; sourceTree = "<group>"; };
 		45BAF9E1D9ECF9E9CFE54332 /* RTSyncOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RTSyncOperation.swift; sourceTree = "<group>"; };
@@ -192,6 +195,7 @@
 		45BAFA7969CD4F51B9558C45 /* RTMapMarkersManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RTMapMarkersManager.swift; sourceTree = "<group>"; };
 		45BAFA90A0834E6E0607B9F6 /* RTLocationServiceFake.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RTLocationServiceFake.swift; sourceTree = "<group>"; };
 		45BAFAA1045A2A2A30D26353 /* RTInitialViewModelTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RTInitialViewModelTest.swift; sourceTree = "<group>"; };
+		45BAFAC24D17807DBB890836 /* RTMapMarkersManagerFake.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RTMapMarkersManagerFake.swift; sourceTree = "<group>"; };
 		45BAFB87D6256C6DF06C8E05 /* RTUITapGestureRecognizerFake.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RTUITapGestureRecognizerFake.swift; sourceTree = "<group>"; };
 		45BAFBA57DE88CBC215C69EA /* RTActiveMapView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RTActiveMapView.swift; sourceTree = "<group>"; };
 		45BAFBC629706F950182F42E /* RTActiveMapViewControllerTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RTActiveMapViewControllerTest.swift; sourceTree = "<group>"; };
@@ -316,6 +320,8 @@
 				45BAF61899E031D7BAB73EEE /* RTLocationServiceTest.swift */,
 				45BAFA90A0834E6E0607B9F6 /* RTLocationServiceFake.swift */,
 				45BAF58615B5A526478FA92C /* RTLocationManagerFake.swift */,
+				45BAFAC24D17807DBB890836 /* RTMapMarkersManagerFake.swift */,
+				45BAF97625183E5B17950B7A /* RTGMSMapViewFake.swift */,
 			);
 			path = common;
 			sourceTree = "<group>";
@@ -962,6 +968,8 @@
 				45BAFFB813047E89A658056E /* RTActiveMapViewModelTest.swift in Sources */,
 				45BAF30BB7EE52D5D233774B /* RTGoogleMapViewFake.swift in Sources */,
 				45BAFA993F5051780B8FA748 /* RTActiveMapViewTest.swift in Sources */,
+				45BAF29561A86F01E26C4A66 /* RTMapMarkersManagerFake.swift in Sources */,
+				45BAF86163F9AAF2065E3462 /* RTGMSMapViewFake.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

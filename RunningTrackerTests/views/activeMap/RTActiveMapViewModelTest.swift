@@ -136,7 +136,7 @@ class RTActiveMapViewModelTest : XCTestCase {
         waitForExpectations(timeout: 1.0){
             error in
             if error != nil {
-                print("map clear was not called")
+                XCTFail("map clear was not called")
                 return
             }
 

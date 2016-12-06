@@ -19,7 +19,7 @@ class RTActiveMapViewControllerTest : XCTestCase {
     override func setUp() {
         super.setUp()
         self.fakeModel = RTActivitiesModelFake()
-        vc = UIStoryboard(name:"Main", bundle:nil).instantiateViewController(withIdentifier: "activeMapView") as? RTActiveMapViewController
+        vc = RTActiveMapViewController(nibName: "RTActiveMapView", bundle: nil)
         self.fakeViewModel = RTActiveMapViewModelFake(model:self.fakeModel, locationService: RTLocationService())
         vc.viewModel = self.fakeViewModel
         navigationController = RTNavigationControllerMock(rootViewController:vc)

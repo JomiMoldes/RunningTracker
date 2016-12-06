@@ -37,7 +37,6 @@ class RTInitialViewController: UIViewController {
     }
 
     @IBAction func startTouched(_ sender: UIButton) {
-//        let mapViewController = UIStoryboard(name:"Main", bundle:nil).instantiateViewController(withIdentifier: "activeMapView") as! RTActiveMapViewController
         let mapViewController = RTActiveMapViewController(nibName: "RTActiveMapView", bundle: nil)
         mapViewController.viewModel = RTActiveMapViewModel(model:RTGlobalModels.sharedInstance.activitiesModel, locationService: RTLocationService())
         do {
