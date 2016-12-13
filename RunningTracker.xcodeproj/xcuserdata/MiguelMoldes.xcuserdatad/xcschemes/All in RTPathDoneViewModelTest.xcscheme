@@ -35,6 +35,9 @@
                   Identifier = "RTActiveMapViewModelTest">
                </Test>
                <Test
+                  Identifier = "RTActiveMapViewTest">
+               </Test>
+               <Test
                   Identifier = "RTActivitiesModelTest">
                </Test>
                <Test
@@ -54,6 +57,12 @@
                </Test>
                <Test
                   Identifier = "RTLocationServiceTest">
+               </Test>
+               <Test
+                  Identifier = "RTPathDoneViewControllerTest">
+               </Test>
+               <Test
+                  Identifier = "RTPathDoneViewTest">
                </Test>
                <Test
                   Identifier = "RunningTrackerTests">

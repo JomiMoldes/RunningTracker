@@ -13,6 +13,7 @@ import GoogleMaps
 class RTActiveMapViewModel : NSObject, RTLocationServiceDelegate, GMSMapViewDelegate {
 
     let model:RTActivitiesModel!
+    var storeManager = RTGlobalModels.sharedInstance.storeActivitiesManager
     var locationManager:RTLocationServiceProtocol?
     var locationManagerStarted = false
     var locationToAnimateVariable = Variable(CLLocationCoordinate2D())
@@ -81,7 +82,7 @@ class RTActiveMapViewModel : NSObject, RTLocationServiceDelegate, GMSMapViewDele
         if self.model.endActivity() {
             showActivityIndicatorVariable.value = true
             NotificationCenter.default.addObserver(self, selector: #selector(activitiesSaved), name: NSNotification.Name(rawValue: "activitiesSaved"), object: nil)
-            _ = self.model.saveActivities(getSavingPath(), storeManager: RTGlobalModels.sharedInstance.storeActivitiesManager)
+            _ = self.model.saveActivities(getSavingPath(), storeManager: self.storeManager)
             addEndFlagMarker()
             setFinalPaceLabel()
         }

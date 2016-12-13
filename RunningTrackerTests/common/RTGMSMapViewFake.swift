@@ -5,18 +5,22 @@
 
 import Foundation
 import GoogleMaps
+import XCTest
 
 class RTGMSMapViewFake : GMSMapView {
 
     var animated : Bool = false
+    var clearExpectation : XCTestExpectation?
 
     override open func animate(toLocation location: CLLocationCoordinate2D) {
         animated = true
         super.animate(toLocation:location)
     }
 
-
-
+    override func clear() {
+        super.clear()
+        clearExpectation?.fulfill()
+    }
 
 
 }

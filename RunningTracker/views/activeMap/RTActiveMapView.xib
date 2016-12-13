@@ -43,7 +43,7 @@
                     <color key="backgroundColor" red="0.66666666669999997" green="0.66666666669999997" blue="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                 </view>
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="e2v-hN-mVM" userLabel="TopBar">
-                    <rect key="frame" x="0.0" y="41.333333333333343" width="414" height="138"/>
+                    <rect key="frame" x="0.0" y="41" width="414" height="138"/>
                     <subviews>
                         <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="triangle.png" translatesAutoresizingMaskIntoConstraints="NO" id="VjB-l0-TIp" userLabel="triangle">
                             <rect key="frame" x="-4.3333333333333428" y="-1" width="422.66666666666663" height="141"/>
@@ -52,7 +52,7 @@
                             </constraints>
                         </imageView>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00:00:00" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="F90-Hd-yfM" userLabel="ChronometerLabel">
-                            <rect key="frame" x="189.66666666666663" y="35.999999999999993" width="206.33333333333337" height="56.333333333333321"/>
+                            <rect key="frame" x="189.66666666666663" y="36" width="206.33333333333337" height="56.333333333333343"/>
                             <constraints>
                                 <constraint firstAttribute="width" secondItem="F90-Hd-yfM" secondAttribute="height" multiplier="106:29" id="nI9-Py-DZG"/>
                             </constraints>
@@ -82,30 +82,30 @@
                             </constraints>
                         </imageView>
                         <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="yEi-Vv-uFK" userLabel="labelsContainer">
-                            <rect key="frame" x="0.0" y="35" width="414" height="62.666666666666629"/>
+                            <rect key="frame" x="0.0" y="35" width="414" height="63"/>
                             <subviews>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="15,21" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mpd-w5-Moy" userLabel="DistanceLabel">
-                                    <rect key="frame" x="13" y="-6" width="124.33333333333334" height="63"/>
+                                    <rect key="frame" x="13" y="-6" width="124" height="63"/>
                                     <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                     <fontDescription key="fontDescription" name="OpenSans-Light" family="Open Sans" pointSize="46"/>
                                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="kms" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iVi-30-XQC" userLabel="KmsLabel">
-                                    <rect key="frame" x="18" y="42" width="51" height="25"/>
+                                    <rect key="frame" x="18" y="42" width="47" height="25"/>
                                     <fontDescription key="fontDescription" name="OpenSans-Light" family="Open Sans" pointSize="18"/>
                                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="00:00" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Xxn-l6-FZ0" userLabel="PaceLabel">
-                                    <rect key="frame" x="142.33333333333334" y="5" width="91" height="50"/>
+                                    <rect key="frame" x="142" y="5" width="91" height="50"/>
                                     <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
                                     <fontDescription key="fontDescription" name="OpenSans-Light" family="Open Sans" pointSize="36"/>
                                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="pace" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9zB-aI-YOm" userLabel="PaceNameLabel">
-                                    <rect key="frame" x="142.33333333333334" y="41" width="61.333333333333314" height="25"/>
+                                    <rect key="frame" x="142" y="41" width="61" height="25"/>
                                     <fontDescription key="fontDescription" name="OpenSans-Light" family="Open Sans" pointSize="18"/>
                                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                     <nil key="highlightedColor"/>
@@ -120,10 +120,10 @@
                                 <constraint firstItem="Xxn-l6-FZ0" firstAttribute="width" secondItem="yEi-Vv-uFK" secondAttribute="width" multiplier="0.22" id="HGW-4x-shX"/>
                                 <constraint firstItem="Mpd-w5-Moy" firstAttribute="width" secondItem="yEi-Vv-uFK" secondAttribute="width" multiplier="0.3" id="IjP-zX-7BW"/>
                                 <constraint firstItem="9zB-aI-YOm" firstAttribute="top" secondItem="Xxn-l6-FZ0" secondAttribute="bottom" constant="-14" id="MrP-nU-pTV"/>
-                                <constraint firstItem="iVi-30-XQC" firstAttribute="width" secondItem="yEi-Vv-uFK" secondAttribute="width" multiplier="0.08" constant="18" id="SoR-0X-OAP"/>
-                                <constraint firstAttribute="width" secondItem="yEi-Vv-uFK" secondAttribute="height" multiplier="46:7" constant="1.2857142857142776" id="VOQ-12-ke4"/>
-                                <constraint firstItem="9zB-aI-YOm" firstAttribute="width" secondItem="yEi-Vv-uFK" secondAttribute="width" multiplier="0.095" constant="21.375" id="VYc-Km-6tv"/>
-                                <constraint firstItem="Xxn-l6-FZ0" firstAttribute="centerY" secondItem="yEi-Vv-uFK" secondAttribute="centerY" multiplier="0.7" constant="8.0499999999999368" id="cXR-aT-KQi"/>
+                                <constraint firstItem="iVi-30-XQC" firstAttribute="width" secondItem="yEi-Vv-uFK" secondAttribute="width" multiplier="0.08" constant="13.880000000000003" id="SoR-0X-OAP"/>
+                                <constraint firstAttribute="width" secondItem="yEi-Vv-uFK" secondAttribute="height" multiplier="46:7" id="VOQ-12-ke4"/>
+                                <constraint firstItem="9zB-aI-YOm" firstAttribute="width" secondItem="yEi-Vv-uFK" secondAttribute="width" multiplier="0.095" constant="21" id="VYc-Km-6tv"/>
+                                <constraint firstItem="Xxn-l6-FZ0" firstAttribute="centerY" secondItem="yEi-Vv-uFK" secondAttribute="centerY" multiplier="0.7" constant="8" id="cXR-aT-KQi"/>
                                 <constraint firstItem="Mpd-w5-Moy" firstAttribute="centerY" secondItem="yEi-Vv-uFK" secondAttribute="centerY" multiplier="0.8" id="nVC-g5-Tjx"/>
                                 <constraint firstItem="iVi-30-XQC" firstAttribute="leading" secondItem="yEi-Vv-uFK" secondAttribute="leading" constant="18" id="whg-am-NeX"/>
                             </constraints>

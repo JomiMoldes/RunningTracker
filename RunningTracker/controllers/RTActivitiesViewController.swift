@@ -74,9 +74,10 @@ class RTActivitiesViewController : UIViewController, UITableViewDelegate, UITabl
 
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let activity = self.activities[(indexPath as NSIndexPath).item]
-        let activityDoneMap = UIStoryboard(name:"Main", bundle:nil).instantiateViewController(withIdentifier: "activityDoneMap") as? RTActivityPathDoneViewController
-        activityDoneMap!.activity = activity
-        self.navigationController!.pushViewController(activityDoneMap!, animated:true)
+        let activityDoneMap = RTPathDoneViewController(nibName: "RTPathDoneView", bundle: nil)
+        activityDoneMap.pathDoneViewModel = RTPathDoneViewModel(model:RTGlobalModels.sharedInstance.activitiesModel, activity: activity)
+
+        self.navigationController!.pushViewController(activityDoneMap, animated:true)
     }
 
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {

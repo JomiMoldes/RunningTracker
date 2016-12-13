@@ -16,6 +16,7 @@ class RTActiveMapViewModelFake : RTActiveMapViewModel {
     var timerStarted = false
     var observersRemoved = false
     var mapViewAsyncExpectation:XCTestExpectation?
+    var activitiesSavedExpectation:XCTestExpectation?
 
     override func startLocation() {
         super.startLocation()
@@ -23,7 +24,6 @@ class RTActiveMapViewModelFake : RTActiveMapViewModel {
     }
 
     override func setupTimer() {
-//        super.setupTimer()
         timerStarted = true
     }
 

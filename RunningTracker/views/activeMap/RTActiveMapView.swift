@@ -47,7 +47,6 @@ class RTActiveMapView : UIView {
         _ = self.refresh()
     }
 
-
     private func setup() {
         setupLabels()
         setupTopBar()

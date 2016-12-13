@@ -12,17 +12,21 @@ import XCTest
 class RTMapMarkersManagerFake : RTMapMarkersManager {
 
     var endFlagExpectation: XCTestExpectation?
+    var redrawMarkersExpectation: XCTestExpectation?
+    var drawPathExpectation: XCTestExpectation?
     var activityDrawn : RTActivity?
     var checkMarksToDraw  : [Int:CLLocation]?
 
     override func drawPath(_ activity: RTActivity) {
         activityDrawn = activity
         super.drawPath(activity)
+        drawPathExpectation?.fulfill()
     }
 
     override func redrawMarkers(_ markers: [Int: CLLocation]) {
         checkMarksToDraw = markers
         super.redrawMarkers(markers)
+        redrawMarkersExpectation?.fulfill()
     }
 
     override func addMarkerWithLocation(_ location: CLLocation, km: Int, markImage: UIImage?) {

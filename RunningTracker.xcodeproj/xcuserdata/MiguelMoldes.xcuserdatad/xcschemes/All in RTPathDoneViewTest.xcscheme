@@ -32,22 +32,10 @@
                   Identifier = "RTActiveMapViewControllerTest">
                </Test>
                <Test
-                  Identifier = "RTActiveMapViewModelTest/testEndActivity()">
+                  Identifier = "RTActiveMapViewModelTest">
                </Test>
                <Test
-                  Identifier = "RTActiveMapViewModelTest/testKillLocationService()">
-               </Test>
-               <Test
-                  Identifier = "RTActiveMapViewModelTest/testLocationService()">
-               </Test>
-               <Test
-                  Identifier = "RTActiveMapViewModelTest/testPauseTouched()">
-               </Test>
-               <Test
-                  Identifier = "RTActiveMapViewModelTest/testSetup()">
-               </Test>
-               <Test
-                  Identifier = "RTActiveMapViewModelTest/testTimer()">
+                  Identifier = "RTActiveMapViewTest">
                </Test>
                <Test
                   Identifier = "RTActivitiesModelTest">
@@ -69,6 +57,9 @@
                </Test>
                <Test
                   Identifier = "RTLocationServiceTest">
+               </Test>
+               <Test
+                  Identifier = "RTPathDoneViewControllerTest">
                </Test>
                <Test
                   Identifier = "RunningTrackerTests">

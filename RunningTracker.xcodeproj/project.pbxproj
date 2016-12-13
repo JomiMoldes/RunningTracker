@@ -25,31 +25,36 @@
 		45BAF30E9C3223CE41E2373B /* RTActivityLocationTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45BAFD9A99A2100487A40CFA /* RTActivityLocationTest.swift */; };
 		45BAF35FF38665A31336D7CA /* RTActiveMapViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45BAF9A0DF51888F7D92705D /* RTActiveMapViewController.swift */; };
 		45BAF362D4C32BFA3A19C44E /* RTSyncOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45BAF9E1D9ECF9E9CFE54332 /* RTSyncOperation.swift */; };
-		45BAF36C181ECEED5FAB734F /* RTUITapGestureRecognizerFake.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45BAFB87D6256C6DF06C8E05 /* RTUITapGestureRecognizerFake.swift */; };
 		45BAF3C3F1CEF8F79A07697E /* RTNavigationControllerMock.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45BAF1F0969C108559D84064 /* RTNavigationControllerMock.swift */; };
 		45BAF3F97EBCED19E1E145A3 /* RTGlobalModels.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45BAF71705BB05254A84B302 /* RTGlobalModels.swift */; };
 		45BAF42AF834F7CF785C2517 /* RTUIViewExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45BAF076ED14506A781B99C6 /* RTUIViewExtensions.swift */; };
 		45BAF47669EBAA392F1EC11B /* RTInitialViewModelFake.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45BAF388D5860AFA5EB530FE /* RTInitialViewModelFake.swift */; };
 		45BAF47EA6AC1E0BF9DC70B6 /* RTActiveMapViewControllerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45BAFBC629706F950182F42E /* RTActiveMapViewControllerTest.swift */; };
 		45BAF48B6B5574CABD5AD364 /* RTLocationManagerFake.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45BAF58615B5A526478FA92C /* RTLocationManagerFake.swift */; };
+		45BAF4D40017183C82860DA0 /* RTPathDoneViewControllerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45BAF4B45F544655E6481DA3 /* RTPathDoneViewControllerTest.swift */; };
 		45BAF532A25ABCC01DE1F5F9 /* RTDeleteActivityICloudOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45BAF9F92FDA7227A86BA5FB /* RTDeleteActivityICloudOperation.swift */; };
 		45BAF5613AC649D55CAE4ED7 /* RTLocationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45BAFFBE745DDB55C417FE06 /* RTLocationService.swift */; };
 		45BAF5820B27B8BED654057D /* RTBackButtonView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 45BAFA08C9349AD313AF6194 /* RTBackButtonView.xib */; };
 		45BAF5D48DA8DE45AB620998 /* RTFetchActivitiesOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45BAFE04A85DEC4ED014C2B9 /* RTFetchActivitiesOperation.swift */; };
 		45BAF66B99FF5437A6C2FAC8 /* RTInitialView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45BAFD00AEC055DDADC7D82E /* RTInitialView.swift */; };
+		45BAF67F99CEA4AA1876F956 /* RTPathDoneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45BAF3193702858C38083F12 /* RTPathDoneViewController.swift */; };
 		45BAF6FD0CBB7477BB11BF56 /* background_ui.png in Resources */ = {isa = PBXBuildFile; fileRef = 48E4C0E71D7583670086AE54 /* background_ui.png */; };
+		45BAF71A2508FA00EA0A097A /* RTPathDoneView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45BAF97E12FB1DC2BD52B504 /* RTPathDoneView.swift */; };
 		45BAF739F11D8ED729153D3B /* RTActiveMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45BAFBA57DE88CBC215C69EA /* RTActiveMapView.swift */; };
 		45BAF784C21FD73D64132D07 /* RTLocationServiceProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45BAF7E1CD5B2F7185B19B05 /* RTLocationServiceProtocol.swift */; };
 		45BAF798A150E21E22FCA8C0 /* RTNumbersExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45BAFBF0DE4F01A4E9D9FBDE /* RTNumbersExtensions.swift */; };
 		45BAF7A6F70A4E8C04018332 /* RTLoadingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45BAFE12613898103B015CC9 /* RTLoadingView.swift */; };
+		45BAF8494F79D91A205BF178 /* RTPathDoneViewTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45BAF254D88BB677BB866184 /* RTPathDoneViewTest.swift */; };
 		45BAF86163F9AAF2065E3462 /* RTGMSMapViewFake.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45BAF97625183E5B17950B7A /* RTGMSMapViewFake.swift */; };
-		45BAF88F47593901FEED1DE0 /* RTActivityPathDoneViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45BAF73453970E94E1200727 /* RTActivityPathDoneViewController.swift */; };
 		45BAF8C5780D14595F52BA0D /* RTActivitiesModelTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45BAF4A9181822E5D1708080 /* RTActivitiesModelTest.swift */; };
 		45BAF8F4C078A9C15FB32890 /* RTActivityHeaderViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45BAF9536E3085FF4F532AFE /* RTActivityHeaderViewCell.swift */; };
 		45BAF902A1DA5C23D2DA8018 /* RTFetchLocationsICloudOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45BAF86069916006A827B54E /* RTFetchLocationsICloudOperation.swift */; };
+		45BAF903A6A89CF1E3628EE9 /* RTPathDoneViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45BAFDB1C9976D7622E24A20 /* RTPathDoneViewModel.swift */; };
 		45BAF93B4E2030994CF73146 /* CachedDateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45BAF53B4EEA07F450845DC5 /* CachedDateFormatter.swift */; };
+		45BAF93D10CC02246660D488 /* RTPathDoneViewModelTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45BAFBDF8FABABE0E1A550D5 /* RTPathDoneViewModelTest.swift */; };
 		45BAF97F7B410AEAEE4DC4C3 /* RTStoreActivitiesManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45BAF7C5953C7920494859BC /* RTStoreActivitiesManager.swift */; };
 		45BAF9886CC1BE6BAB2E7C30 /* RTInitialViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45BAF97F77733501D78A942C /* RTInitialViewModel.swift */; };
+		45BAF98EF6525C96CDFE16DD /* RTDictionaryExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45BAF7A8638D541738C0BE38 /* RTDictionaryExtensions.swift */; };
 		45BAF98FED4665549212C685 /* RTActivityLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45BAF7D64C5B42DC4D6CFF92 /* RTActivityLocation.swift */; };
 		45BAFA4165D35C4B708970C0 /* RTDeleteActivityLocallyOperation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45BAF43C99EEF8AFE0D13BCE /* RTDeleteActivityLocallyOperation.swift */; };
 		45BAFA63A080F2D499536142 /* RTActivitiesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45BAF9623FF8D4BDF06E463C /* RTActivitiesModel.swift */; };
@@ -66,10 +71,12 @@
 		45BAFCE8622F40D3507C7F1D /* RTActivityFake.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45BAF7F88EBD6D884DA9F3F1 /* RTActivityFake.swift */; };
 		45BAFD63A28794916628837A /* RTActiveMapViewModelFake.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45BAF21FA56B21ED5E41E269 /* RTActiveMapViewModelFake.swift */; };
 		45BAFDBC28133607D3EA6FCC /* RTActivityHeaderViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 45BAF32F5183A52E746D1DD0 /* RTActivityHeaderViewCell.xib */; };
+		45BAFDCEACF44C40A924912B /* RTPathDoneViewModelFake.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45BAFF64C69310005AF3AEFD /* RTPathDoneViewModelFake.swift */; };
 		45BAFDD3AA54E8C6CD67F02A /* RTInitialViewControllerTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45BAF8DDB877BEB2AF74FD6F /* RTInitialViewControllerTest.swift */; };
 		45BAFE033AA27EEB23DCCFA7 /* RTActivitiesAndRecordsHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45BAF52136FCFD1F45DAC7DC /* RTActivitiesAndRecordsHelper.swift */; };
 		45BAFEC841E867803F2F6514 /* RTActivityViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 45BAFD57B853AA77BDE7B464 /* RTActivityViewCell.xib */; };
 		45BAFF27CFB9B02E5CEAB8CE /* RTBackButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45BAFDE23DCDD457E4FD1821 /* RTBackButtonView.swift */; };
+		45BAFF3A436BC042EF8CE341 /* RTCLLocationExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45BAF3776FE2588B954417FF /* RTCLLocationExtensions.swift */; };
 		45BAFFB813047E89A658056E /* RTActiveMapViewModelTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 45BAF7E12D9121A7135432AB /* RTActiveMapViewModelTest.swift */; };
 		4805D4781D7CBE4B00A04879 /* AFNetworking.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4805D4701D7CBB7C00A04879 /* AFNetworking.framework */; };
 		4805D4791D7CBE5100A04879 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 487BE8651D55F01D00ABC1ED /* CloudKit.framework */; };
@@ -98,6 +105,7 @@
 		487BE86B1D6AF37300ABC1ED /* Flag_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 487BE8691D6AF37300ABC1ED /* Flag_icon.png */; };
 		487BE86C1D6AF37300ABC1ED /* Km_icon.png in Resources */ = {isa = PBXBuildFile; fileRef = 487BE86A1D6AF37300ABC1ED /* Km_icon.png */; };
 		488C722E1DF5BEF500D79DDC /* RTActiveMapView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 488C722D1DF5BEF500D79DDC /* RTActiveMapView.xib */; };
+		488C72311DF8166300D79DDC /* RTPathDoneView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 488C72301DF8166300D79DDC /* RTPathDoneView.xib */; };
 		48E0E2E41D2EC7360036F56B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48E0E2E31D2EC7360036F56B /* AppDelegate.swift */; };
 		48E0E2E61D2EC7360036F56B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 48E0E2E51D2EC7360036F56B /* ViewController.swift */; };
 		48E0E2E91D2EC7360036F56B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 48E0E2E71D2EC7360036F56B /* Main.storyboard */; };
@@ -152,14 +160,18 @@
 		45BAF1F0969C108559D84064 /* RTNavigationControllerMock.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RTNavigationControllerMock.swift; sourceTree = "<group>"; };
 		45BAF1F2551A20501489D22C /* RTActiveMapViewTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RTActiveMapViewTest.swift; sourceTree = "<group>"; };
 		45BAF21FA56B21ED5E41E269 /* RTActiveMapViewModelFake.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RTActiveMapViewModelFake.swift; sourceTree = "<group>"; };
+		45BAF254D88BB677BB866184 /* RTPathDoneViewTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RTPathDoneViewTest.swift; sourceTree = "<group>"; };
 		45BAF26DFA84631ED88E908D /* RTUIImageExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RTUIImageExtensions.swift; sourceTree = "<group>"; };
+		45BAF3193702858C38083F12 /* RTPathDoneViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RTPathDoneViewController.swift; sourceTree = "<group>"; };
 		45BAF32F5183A52E746D1DD0 /* RTActivityHeaderViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RTActivityHeaderViewCell.xib; sourceTree = "<group>"; };
 		45BAF358E36695E70356F58D /* RTActivitiesModelFake.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RTActivitiesModelFake.swift; sourceTree = "<group>"; };
+		45BAF3776FE2588B954417FF /* RTCLLocationExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RTCLLocationExtensions.swift; sourceTree = "<group>"; };
 		45BAF388D5860AFA5EB530FE /* RTInitialViewModelFake.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RTInitialViewModelFake.swift; sourceTree = "<group>"; };
 		45BAF43C99EEF8AFE0D13BCE /* RTDeleteActivityLocallyOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RTDeleteActivityLocallyOperation.swift; sourceTree = "<group>"; };
 		45BAF459EF763CC7A1FE1AD2 /* RTSaveLocallyOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RTSaveLocallyOperation.swift; sourceTree = "<group>"; };
 		45BAF4A9181822E5D1708080 /* RTActivitiesModelTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RTActivitiesModelTest.swift; sourceTree = "<group>"; };
 		45BAF4AD561AF997CEB5FD1D /* RTInitialView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RTInitialView.xib; sourceTree = "<group>"; };
+		45BAF4B45F544655E6481DA3 /* RTPathDoneViewControllerTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RTPathDoneViewControllerTest.swift; sourceTree = "<group>"; };
 		45BAF52136FCFD1F45DAC7DC /* RTActivitiesAndRecordsHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RTActivitiesAndRecordsHelper.swift; sourceTree = "<group>"; };
 		45BAF53B4EEA07F450845DC5 /* CachedDateFormatter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CachedDateFormatter.swift; sourceTree = "<group>"; };
 		45BAF551640D416EF68663F9 /* RTViewControllerExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RTViewControllerExtensions.swift; sourceTree = "<group>"; };
@@ -168,9 +180,9 @@
 		45BAF5D2CFA9376A2CA80F12 /* RTActiveMapViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RTActiveMapViewModel.swift; sourceTree = "<group>"; };
 		45BAF61899E031D7BAB73EEE /* RTLocationServiceTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RTLocationServiceTest.swift; sourceTree = "<group>"; };
 		45BAF71705BB05254A84B302 /* RTGlobalModels.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RTGlobalModels.swift; sourceTree = "<group>"; };
-		45BAF73453970E94E1200727 /* RTActivityPathDoneViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RTActivityPathDoneViewController.swift; sourceTree = "<group>"; };
 		45BAF77F6C307E401E1DA2B4 /* RTActivityTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RTActivityTest.swift; sourceTree = "<group>"; };
 		45BAF78EB6CAA46FEC884401 /* RTInitialViewTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RTInitialViewTest.swift; sourceTree = "<group>"; };
+		45BAF7A8638D541738C0BE38 /* RTDictionaryExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RTDictionaryExtensions.swift; sourceTree = "<group>"; };
 		45BAF7B6E0EB81615B88EE95 /* RTFetchActivitiesLocallyOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RTFetchActivitiesLocallyOperation.swift; sourceTree = "<group>"; };
 		45BAF7C5953C7920494859BC /* RTStoreActivitiesManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RTStoreActivitiesManager.swift; sourceTree = "<group>"; };
 		45BAF7D64C5B42DC4D6CFF92 /* RTActivityLocation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RTActivityLocation.swift; sourceTree = "<group>"; };
@@ -187,6 +199,7 @@
 		45BAF9536E3085FF4F532AFE /* RTActivityHeaderViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RTActivityHeaderViewCell.swift; sourceTree = "<group>"; };
 		45BAF9623FF8D4BDF06E463C /* RTActivitiesModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RTActivitiesModel.swift; sourceTree = "<group>"; };
 		45BAF97625183E5B17950B7A /* RTGMSMapViewFake.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RTGMSMapViewFake.swift; sourceTree = "<group>"; };
+		45BAF97E12FB1DC2BD52B504 /* RTPathDoneView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RTPathDoneView.swift; sourceTree = "<group>"; };
 		45BAF97F77733501D78A942C /* RTInitialViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RTInitialViewModel.swift; sourceTree = "<group>"; };
 		45BAF9A0DF51888F7D92705D /* RTActiveMapViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RTActiveMapViewController.swift; sourceTree = "<group>"; };
 		45BAF9E1D9ECF9E9CFE54332 /* RTSyncOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RTSyncOperation.swift; sourceTree = "<group>"; };
@@ -196,17 +209,19 @@
 		45BAFA90A0834E6E0607B9F6 /* RTLocationServiceFake.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RTLocationServiceFake.swift; sourceTree = "<group>"; };
 		45BAFAA1045A2A2A30D26353 /* RTInitialViewModelTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RTInitialViewModelTest.swift; sourceTree = "<group>"; };
 		45BAFAC24D17807DBB890836 /* RTMapMarkersManagerFake.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RTMapMarkersManagerFake.swift; sourceTree = "<group>"; };
-		45BAFB87D6256C6DF06C8E05 /* RTUITapGestureRecognizerFake.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RTUITapGestureRecognizerFake.swift; sourceTree = "<group>"; };
 		45BAFBA57DE88CBC215C69EA /* RTActiveMapView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RTActiveMapView.swift; sourceTree = "<group>"; };
 		45BAFBC629706F950182F42E /* RTActiveMapViewControllerTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RTActiveMapViewControllerTest.swift; sourceTree = "<group>"; };
+		45BAFBDF8FABABE0E1A550D5 /* RTPathDoneViewModelTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RTPathDoneViewModelTest.swift; sourceTree = "<group>"; };
 		45BAFBF0DE4F01A4E9D9FBDE /* RTNumbersExtensions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RTNumbersExtensions.swift; sourceTree = "<group>"; };
 		45BAFD00AEC055DDADC7D82E /* RTInitialView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RTInitialView.swift; sourceTree = "<group>"; };
 		45BAFD57B853AA77BDE7B464 /* RTActivityViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RTActivityViewCell.xib; sourceTree = "<group>"; };
 		45BAFD9A99A2100487A40CFA /* RTActivityLocationTest.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RTActivityLocationTest.swift; sourceTree = "<group>"; };
+		45BAFDB1C9976D7622E24A20 /* RTPathDoneViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RTPathDoneViewModel.swift; sourceTree = "<group>"; };
 		45BAFDE23DCDD457E4FD1821 /* RTBackButtonView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RTBackButtonView.swift; sourceTree = "<group>"; };
 		45BAFE04A85DEC4ED014C2B9 /* RTFetchActivitiesOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RTFetchActivitiesOperation.swift; sourceTree = "<group>"; };
 		45BAFE12613898103B015CC9 /* RTLoadingView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RTLoadingView.swift; sourceTree = "<group>"; };
 		45BAFE69A2251E9BB85A85EE /* RTFetchActivitiesICloudOperation.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RTFetchActivitiesICloudOperation.swift; sourceTree = "<group>"; };
+		45BAFF64C69310005AF3AEFD /* RTPathDoneViewModelFake.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RTPathDoneViewModelFake.swift; sourceTree = "<group>"; };
 		45BAFFBE745DDB55C417FE06 /* RTLocationService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RTLocationService.swift; sourceTree = "<group>"; };
 		45BAFFF01D5998623F20F856 /* RTGoogleMapViewFake.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RTGoogleMapViewFake.swift; sourceTree = "<group>"; };
 		4805D4701D7CBB7C00A04879 /* AFNetworking.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AFNetworking.framework; path = "../../../../Library/Developer/Xcode/DerivedData/RunningTracker-cyobtvdaneufctbpnvgqhgylaxzi/Build/Products/Debug-iphonesimulator/AFNetworking/AFNetworking.framework"; sourceTree = "<group>"; };
@@ -237,6 +252,7 @@
 		487BE8691D6AF37300ABC1ED /* Flag_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Flag_icon.png; sourceTree = "<group>"; };
 		487BE86A1D6AF37300ABC1ED /* Km_icon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Km_icon.png; sourceTree = "<group>"; };
 		488C722D1DF5BEF500D79DDC /* RTActiveMapView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RTActiveMapView.xib; sourceTree = "<group>"; };
+		488C72301DF8166300D79DDC /* RTPathDoneView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RTPathDoneView.xib; sourceTree = "<group>"; };
 		48E0E2E01D2EC7360036F56B /* RunningTracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RunningTracker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		48E0E2E31D2EC7360036F56B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		48E0E2E51D2EC7360036F56B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -314,6 +330,16 @@
 			path = models;
 			sourceTree = "<group>";
 		};
+		45BAF2F1D553AC74B3091BE4 /* pathDone */ = {
+			isa = PBXGroup;
+			children = (
+				45BAF254D88BB677BB866184 /* RTPathDoneViewTest.swift */,
+				45BAFBDF8FABABE0E1A550D5 /* RTPathDoneViewModelTest.swift */,
+				45BAFF64C69310005AF3AEFD /* RTPathDoneViewModelFake.swift */,
+			);
+			path = pathDone;
+			sourceTree = "<group>";
+		};
 		45BAF461CCE55B0D87ED1E87 /* common */ = {
 			isa = PBXGroup;
 			children = (
@@ -365,6 +391,7 @@
 			children = (
 				45BAFCB4E5E86DE97F72228D /* initialView */,
 				45BAF92371D440CC5F341C92 /* activeMap */,
+				45BAF2F1D553AC74B3091BE4 /* pathDone */,
 			);
 			path = views;
 			sourceTree = "<group>";
@@ -394,8 +421,19 @@
 				45BAFE12613898103B015CC9 /* RTLoadingView.swift */,
 				45BAF5369F426BC12E43C82A /* initialView */,
 				45BAF89466808BD6E8488353 /* activeMap */,
+				45BAF7F14F244C35539EFE63 /* pathDone */,
 			);
 			path = views;
+			sourceTree = "<group>";
+		};
+		45BAF7F14F244C35539EFE63 /* pathDone */ = {
+			isa = PBXGroup;
+			children = (
+				488C72301DF8166300D79DDC /* RTPathDoneView.xib */,
+				45BAF97E12FB1DC2BD52B504 /* RTPathDoneView.swift */,
+				45BAFDB1C9976D7622E24A20 /* RTPathDoneViewModel.swift */,
+			);
+			path = pathDone;
 			sourceTree = "<group>";
 		};
 		45BAF89466808BD6E8488353 /* activeMap */ = {
@@ -486,6 +524,8 @@
 				45BAF551640D416EF68663F9 /* RTViewControllerExtensions.swift */,
 				45BAF076ED14506A781B99C6 /* RTUIViewExtensions.swift */,
 				45BAF4A0A2CF5B8FCFBAA6BF /* ui */,
+				45BAF3776FE2588B954417FF /* RTCLLocationExtensions.swift */,
+				45BAF7A8638D541738C0BE38 /* RTDictionaryExtensions.swift */,
 			);
 			path = utils;
 			sourceTree = "<group>";
@@ -506,6 +546,7 @@
 				45BAF8DDB877BEB2AF74FD6F /* RTInitialViewControllerTest.swift */,
 				45BAFBC629706F950182F42E /* RTActiveMapViewControllerTest.swift */,
 				45BAF1F0969C108559D84064 /* RTNavigationControllerMock.swift */,
+				45BAF4B45F544655E6481DA3 /* RTPathDoneViewControllerTest.swift */,
 			);
 			path = controllers;
 			sourceTree = "<group>";
@@ -525,9 +566,9 @@
 			children = (
 				45BAF9A0DF51888F7D92705D /* RTActiveMapViewController.swift */,
 				45BAF7E2708014ED6B2508B8 /* RTActivitiesViewController.swift */,
-				45BAF73453970E94E1200727 /* RTActivityPathDoneViewController.swift */,
 				45BAFA7969CD4F51B9558C45 /* RTMapMarkersManager.swift */,
 				4828EF151DD8E15500CC8F3C /* RTInitialViewController.swift */,
+				45BAF3193702858C38083F12 /* RTPathDoneViewController.swift */,
 			);
 			path = controllers;
 			sourceTree = "<group>";
@@ -543,7 +584,6 @@
 		45BAFED514A609972B0637FF /* utils */ = {
 			isa = PBXGroup;
 			children = (
-				45BAFB87D6256C6DF06C8E05 /* RTUITapGestureRecognizerFake.swift */,
 			);
 			path = utils;
 			sourceTree = "<group>";
@@ -775,6 +815,7 @@
 				45BAF6FD0CBB7477BB11BF56 /* background_ui.png in Resources */,
 				45BAFEC841E867803F2F6514 /* RTActivityViewCell.xib in Resources */,
 				45BAFDBC28133607D3EA6FCC /* RTActivityHeaderViewCell.xib in Resources */,
+				488C72311DF8166300D79DDC /* RTPathDoneView.xib in Resources */,
 				45BAF5820B27B8BED654057D /* RTBackButtonView.xib in Resources */,
 				45BAF127E1EF38FB038E1749 /* RTInitialView.xib in Resources */,
 			);
@@ -911,7 +952,6 @@
 				45BAF3F97EBCED19E1E145A3 /* RTGlobalModels.swift in Sources */,
 				45BAFA89DE5B959EF495628A /* RTDateFormatterExtensions.swift in Sources */,
 				45BAF93B4E2030994CF73146 /* CachedDateFormatter.swift in Sources */,
-				45BAF88F47593901FEED1DE0 /* RTActivityPathDoneViewController.swift in Sources */,
 				45BAFB4954F5FC35FE3BDF03 /* RTUIImageExtensions.swift in Sources */,
 				45BAF2C2EB8DEBE5CC1BF1F8 /* RTMapMarkersManager.swift in Sources */,
 				45BAF29F13374069ABF9F333 /* RTUILabelExtensions.swift in Sources */,
@@ -940,6 +980,11 @@
 				45BAF739F11D8ED729153D3B /* RTActiveMapView.swift in Sources */,
 				45BAF42AF834F7CF785C2517 /* RTUIViewExtensions.swift in Sources */,
 				45BAF00AAF4151968E4A07E0 /* RTActiveMapViewModel.swift in Sources */,
+				45BAF71A2508FA00EA0A097A /* RTPathDoneView.swift in Sources */,
+				45BAF903A6A89CF1E3628EE9 /* RTPathDoneViewModel.swift in Sources */,
+				45BAF67F99CEA4AA1876F956 /* RTPathDoneViewController.swift in Sources */,
+				45BAFF3A436BC042EF8CE341 /* RTCLLocationExtensions.swift in Sources */,
+				45BAF98EF6525C96CDFE16DD /* RTDictionaryExtensions.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -963,13 +1008,16 @@
 				45BAF48B6B5574CABD5AD364 /* RTLocationManagerFake.swift in Sources */,
 				45BAF47EA6AC1E0BF9DC70B6 /* RTActiveMapViewControllerTest.swift in Sources */,
 				45BAF3C3F1CEF8F79A07697E /* RTNavigationControllerMock.swift in Sources */,
-				45BAF36C181ECEED5FAB734F /* RTUITapGestureRecognizerFake.swift in Sources */,
 				45BAFD63A28794916628837A /* RTActiveMapViewModelFake.swift in Sources */,
 				45BAFFB813047E89A658056E /* RTActiveMapViewModelTest.swift in Sources */,
 				45BAF30BB7EE52D5D233774B /* RTGoogleMapViewFake.swift in Sources */,
 				45BAFA993F5051780B8FA748 /* RTActiveMapViewTest.swift in Sources */,
 				45BAF29561A86F01E26C4A66 /* RTMapMarkersManagerFake.swift in Sources */,
 				45BAF86163F9AAF2065E3462 /* RTGMSMapViewFake.swift in Sources */,
+				45BAF4D40017183C82860DA0 /* RTPathDoneViewControllerTest.swift in Sources */,
+				45BAF8494F79D91A205BF178 /* RTPathDoneViewTest.swift in Sources */,
+				45BAF93D10CC02246660D488 /* RTPathDoneViewModelTest.swift in Sources */,
+				45BAFDCEACF44C40A924912B /* RTPathDoneViewModelFake.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

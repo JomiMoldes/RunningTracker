@@ -28,7 +28,7 @@ class RTActivity:NSObject , NSCoding {
         self.setMarkers()
     }
 
-    init?(startTime:Double){
+    init(startTime:Double){
         self.startTime = startTime
         super.init()
     }

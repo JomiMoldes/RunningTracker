@@ -42,7 +42,7 @@ class RTActiveMapViewModelTest : XCTestCase {
 
     func testLocationService() {
         self.viewModel.startLocation()
-        XCTAssertEqual(locationService.delegate! as! RTActiveMapViewModel, viewModel)
+        XCTAssertEqual(locationService.delegate as! RTActiveMapViewModel, viewModel)
         XCTAssertTrue(locationService.requestedPermissions)
         XCTAssertTrue(viewModel.locationManagerStarted)
     }
@@ -54,12 +54,18 @@ class RTActiveMapViewModelTest : XCTestCase {
     }
 
     func testEndActivity() {
+        viewModel.storeManager = RTSoreManagerFake()
         self.model.mockActivityWithTwoLocations(false)
         let lastActivity = self.model.addLocationToCurrentActivity()
+
+        let sub = NotificationCenter.default.addObserver(forName: NSNotification.Name(rawValue: "activitiesSaved"), object: nil, queue: nil) { (not) -> Void in
+            XCTAssertTrue(true)
+        }
+        let asyncExpectation = expectation(forNotification: "activitiesSaved", object: nil, handler: nil)
+
         self.viewModel.endActivity()
         XCTAssertTrue(viewModel.showActivityIndicatorVariable.value)
 
-        let asyncExpectation = expectation(forNotification: "activitiesSaved", object: nil, handler: nil)
         waitForExpectations(timeout: 3.0) {
             error in
 
@@ -70,6 +76,9 @@ class RTActiveMapViewModelTest : XCTestCase {
 
             XCTAssertTrue(true)
         }
+
+        NotificationCenter.default.removeObserver(sub)
+
 
         let locations:[CLLocation] = self.viewModel.endFlagLocationVariable.value
         let flagLocation: CLLocation = locations[locations.count - 1]
@@ -146,13 +155,7 @@ class RTActiveMapViewModelTest : XCTestCase {
             let checkMarks = self.viewModel.checkMarksVariable.value[0]
             let activityCheckMarks = activity.checkMarks
 
-            for (key, value) in checkMarks {
-                let location1 = value
-                let location2:CLLocation = activity.checkMarks[key]!
-                XCTAssertNotNil(location2)
-                XCTAssertTrue(location2.distance(from: location1).isZero)
-            }
-
+            XCTAssertTrue(activityCheckMarks.customCompareLocationsByDistance(dic2: checkMarks))
 
         }
 
