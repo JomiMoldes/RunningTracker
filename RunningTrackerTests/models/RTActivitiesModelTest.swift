@@ -76,7 +76,7 @@ class RTActivitiesModelTest:XCTestCase{
         model.fakeNow = now + 10
         model.resumeActivity()
 
-        XCTAssertEqual(model.getCurrentActivityCopy()!.pausedTime, 5)
+        XCTAssertEqual(model.currentActivityCopy()!.pausedTime, 5)
     }
 
     func testSaveActivities() {
@@ -140,19 +140,19 @@ class RTActivitiesModelTest:XCTestCase{
         XCTAssertTrue(model.addActivityLocation(activityLocation2!))
         XCTAssertFalse(activityLocation2!.firstAfterResumed)
 
-        XCTAssertEqual(model.getCurrentActivityCopy()!.getActivitiesCopy().count, 2)
+        XCTAssertEqual(model.currentActivityCopy()!.getActivitiesCopy().count, 2)
     }
 
     func testCurrentActivityLocations() {
         model.tryStartActivity()
-        let activity = model.getCurrentActivityCopy()
+        let activity = model.currentActivityCopy()
         var locations:[RTActivityLocation] = activity!.getActivitiesCopy()
         XCTAssertEqual(locations.count, 0)
         let location = CLLocation(latitude:1111.22, longitude: 3333.3)
         let activityLocation : RTActivityLocation? = RTActivityLocation(location: location, timestamp: 100)
         _ = model.addActivityLocation(activityLocation!)
 
-        locations = model.getCurrentActivityCopy()!.getActivitiesCopy()
+        locations = model.currentActivityCopy()!.getActivitiesCopy()
 
         XCTAssertEqual(locations.count, 1)
     }
@@ -329,7 +329,7 @@ class RTActivitiesModelTest:XCTestCase{
         _ = model.addActivityLocation(location3)
         _ = model.addActivityLocation(location4)
         _ = model.endActivity()
-        let activities = model.getActivitiesCopy()
+        let activities = model.activitiesCopy()
         XCTAssertEqual(2, activities.count)
         XCTAssertEqual(activities[0].startTime, now)
         XCTAssertEqual(activities[1].startTime, now + 20)

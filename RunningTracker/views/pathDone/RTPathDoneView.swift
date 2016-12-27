@@ -21,7 +21,7 @@ class RTPathDoneView : UIView {
     @IBOutlet weak var paceDescLabel: UILabel!
     @IBOutlet weak var distDescLabel: UILabel!
 
-    var model:RTPathDoneViewModel! {
+    weak var model:RTPathDoneViewModel! {
         didSet {
             self.setupMap()
             self.setupMarkersManager()

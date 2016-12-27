@@ -28,12 +28,13 @@ class RTActiveMapView : UIView {
 
     let disposable = DisposeBag()
 
-    var model:RTActiveMapViewModel! {
+    weak var model:RTActiveMapViewModel! {
         didSet {
             self.setupMap()
             self.setupMapMarkers()
             self.bind()
             _ = self.refresh()
+            addObservers()
         }
     }
 
@@ -51,7 +52,6 @@ class RTActiveMapView : UIView {
         setupLabels()
         setupTopBar()
         setupBottomBar()
-        addObservers()
     }
 
     private func bind() {
@@ -157,18 +157,19 @@ class RTActiveMapView : UIView {
     func addMarker(_ notification:Notification) {
         let location = (notification as NSNotification).userInfo!["location"] as! CLLocation
         let index = (notification as NSNotification).userInfo!["km"] as! Int
-
-        DispatchQueue.main.async {
-            self.mapMarkersManager.addMarkerWithLocation(location, km: index, markImage: self.model.kmFlagImage)
-        }
+        self.mapMarkersManager.addMarkerWithLocation(location, km: index, markImage: self.model.kmFlagImage)
     }
 
     private func addEndFlagMarker(location:CLLocation){
-        DispatchQueue.main.async {
-            self.mapMarkersManager.addMarkerWithLocation(location, km: -1, markImage: self.model.endFlagImage)
-        }
+        self.mapMarkersManager.addMarkerWithLocation(location, km: -1, markImage: self.model.endFlagImage)
     }
 
+    override func removeFromSuperview() {
+        NotificationCenter.default.removeObserver(self)
+        self.mapView.delegate = nil
+        self.mapView = nil
+        super.removeFromSuperview()
+    }
 
 //MARK refresh
     private func refresh() -> Bool {
@@ -195,6 +196,5 @@ class RTActiveMapView : UIView {
     private func refreshMap() {
         self.mapView.frame = CGRect(x: 0,y: 0,width: self.mapContainer.frame.size.width, height: self.mapContainer.frame.size.height)
     }
-
 
 }

@@ -113,7 +113,7 @@ class RTActiveMapViewModel : NSObject, RTLocationServiceDelegate, GMSMapViewDele
     }
 
     private func setFinalPaceLabel() {
-        if let currentActivity = self.model.getCurrentActivityCopy() {
+        if let currentActivity = self.model.currentActivityCopy() {
             let pace = currentActivity.getPace()
             self.paceVariable.value = pace.getMinutes() + ":" + pace.getSeconds()
         }
@@ -131,13 +131,13 @@ class RTActiveMapViewModel : NSObject, RTLocationServiceDelegate, GMSMapViewDele
     }
 
     private func drawNewPath() {
-        if let activityToDraw = self.model.getCurrentActivityCopy() {
+        if let activityToDraw = self.model.currentActivityCopy() {
             self.activityToDrawVariable.value = [activityToDraw]
         }
     }
 
     private func drawCheckMarks() {
-        if let activity = self.model.getCurrentActivityCopy() {
+        if let activity = self.model.currentActivityCopy() {
             self.checkMarksVariable.value = [activity.checkMarks]
         }
         if self.model.activityRunning == false {
@@ -146,7 +146,7 @@ class RTActiveMapViewModel : NSObject, RTLocationServiceDelegate, GMSMapViewDele
     }
 
     private func addEndFlagMarker() {
-        guard let activity = self.model.getCurrentActivityCopy() else {
+        guard let activity = self.model.currentActivityCopy() else {
             return
         }
         guard let activityLocation = activity.getActivitiesCopy().last else {

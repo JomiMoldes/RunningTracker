@@ -33,6 +33,7 @@ class RTInitialViewModelTest : XCTestCase {
 
     func testInitial() {
         XCTAssertNotNil(viewModel.model)
+        viewModel.updateBestValues()
         XCTAssertEqual(viewModel.distanceVariable.value, "0.06 km")
         XCTAssertEqual(viewModel.paceVariable.value, "08:57")
 

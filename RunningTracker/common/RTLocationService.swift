@@ -83,5 +83,3 @@ extension RTLocationService : CLLocationManagerDelegate {
     }
 
 }
-
-

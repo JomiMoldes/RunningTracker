@@ -22,16 +22,20 @@ class RTActiveMapViewTest : XCTestCase {
     var model = RTActivitiesModelFake()
 
     override func setUp() {
-        super.setUp()
         GMSServices.provideAPIKey("AIzaSyBxz-aX7rUCM_YhKVHsAuv-oae6ivkGtmk")
-        view = Bundle.main.loadNibNamed("RTActiveMapView", owner: self)?[0] as! RTActiveMapView
-        viewModel = RTActiveMapViewModelFake(model:model, locationService: locationService)
+            self.view = Bundle.main.loadNibNamed("RTActiveMapView", owner: self)?[0] as! RTActiveMapView
+            self.viewModel = RTActiveMapViewModelFake(model: self.model, locationService: self.locationService)
+            super.setUp()
     }
 
     override func tearDown() {
-        super.tearDown()
-        view = nil
-        viewModel = nil
+        DispatchQueue.main.async {
+            self.viewModel.removeObservers()
+            self.view.removeFromSuperview()
+            self.view = nil
+            self.viewModel = nil
+            super.tearDown()
+        }
     }
 
     func testInit() {
@@ -75,7 +79,7 @@ class RTActiveMapViewTest : XCTestCase {
 
         model.mockActivityWithTwoLocations(false)
         viewModel.didUpdateLocation(location: CLLocation(latitude: 100.2, longitude: 102.1))
-        let activity = model.getCurrentActivityCopy()
+        let activity = model.currentActivityCopy()
         XCTAssertEqual((view.mapMarkersManager as! RTMapMarkersManagerFake).activityDrawn?.startTime, activity!.startTime)
         _ = model.endActivity()
 
@@ -150,7 +154,7 @@ class RTActiveMapViewTest : XCTestCase {
                 XCTFail("no zoom was called")
                 return
             }
-            let activity = self.model.getCurrentActivityCopy()
+            let activity = self.model.currentActivityCopy()
             XCTAssertEqual((self.view.mapMarkersManager as! RTMapMarkersManagerFake).activityDrawn?.startTime, activity!.startTime)
 
             let checkMarks = self.viewModel.checkMarksVariable.value[0]

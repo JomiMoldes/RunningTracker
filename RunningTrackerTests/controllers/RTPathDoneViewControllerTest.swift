@@ -14,6 +14,7 @@ class RTPathDoneViewControllerTest : XCTestCase {
     var vc : RTPathDoneViewController!
     var navigationController : RTNavigationControllerMock!
     var model : RTActivitiesModelFake!
+    var viewModel : RTPathDoneViewModel!
 
     override func setUp() {
         super.setUp()
@@ -37,7 +38,8 @@ class RTPathDoneViewControllerTest : XCTestCase {
     }
 
     func setupViewModel() {
-        vc.pathDoneView.model = RTPathDoneViewModel(model:model, activity:model.fakeActivity())
+        viewModel = RTPathDoneViewModel(model:model, activity:model.fakeActivity())
+        vc.pathDoneView.model = viewModel
     }
 
     func testBackButton() {

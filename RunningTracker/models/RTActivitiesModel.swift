@@ -28,7 +28,6 @@ class RTActivitiesModel {
     fileprivate var activities:[RTActivity]!
 
     fileprivate var currentActivity : RTActivity!
-    fileprivate(set) var checkMarks = [Int:CLLocation]()
 
     fileprivate(set) var currentActivityPaused : Bool = false
     fileprivate(set) var currentActivityJustResumed : Bool = false
@@ -215,17 +214,17 @@ class RTActivitiesModel {
         return self.activities.count
     }
 
-    func getActivitiesCopy()->[RTActivity]{
+    func activitiesCopy()->[RTActivity]{
         let copyArray : [RTActivity] = NSKeyedUnarchiver.unarchiveObject(with: NSKeyedArchiver.archivedData(withRootObject: activities)) as! [RTActivity]
         return copyArray
     }
 
-    func getCurrentActivityCopy() -> RTActivity? {
+    func currentActivityCopy() -> RTActivity? {
         if self.currentActivity == nil {
-            guard self.getActivitiesCopy().count > 0 else {
+            guard self.activitiesCopy().count > 0 else {
                 return nil
             }
-            return self.getActivitiesCopy().last!
+            return self.activitiesCopy().last!
         }
         let copyActivity : RTActivity = NSKeyedUnarchiver.unarchiveObject(with: NSKeyedArchiver.archivedData(withRootObject: self.currentActivity)) as! RTActivity
         return copyActivity

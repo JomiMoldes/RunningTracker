@@ -32,6 +32,9 @@
                   Identifier = "RTActiveMapViewControllerTest">
                </Test>
                <Test
+                  Identifier = "RTActiveMapViewModelTest">
+               </Test>
+               <Test
                   Identifier = "RTActiveMapViewTest">
                </Test>
                <Test
@@ -45,9 +48,6 @@
                </Test>
                <Test
                   Identifier = "RTInitialViewControllerTest">
-               </Test>
-               <Test
-                  Identifier = "RTInitialViewModelTest">
                </Test>
                <Test
                   Identifier = "RTInitialViewTest">

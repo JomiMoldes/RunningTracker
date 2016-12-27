@@ -10,38 +10,40 @@ import CoreLocation
 
 class RTMapMarkersManager {
 
-    let mapView : GMSMapView
+    weak var mapView : GMSMapView!
 
     init?(mapView : GMSMapView) {
         self.mapView = mapView
     }
 
     func addMarkerWithLocation(_ location:CLLocation, km:Int, markImage: UIImage?){
-        let icon = UIImageView()
-        let maxHeight = CGFloat(getMaxMarkerSize())
-        let markerWidth = maxHeight * markImage!.size.width / markImage!.size.height
-        icon.frame = CGRect(x: 0, y: 0, width: markerWidth, height: maxHeight)
-        icon.image = markImage!
+        DispatchQueue.main.async {
+            let icon = UIImageView()
+            let maxHeight = CGFloat(self.getMaxMarkerSize())
+            let markerWidth = maxHeight * markImage!.size.width / markImage!.size.height
+            icon.frame = CGRect(x: 0, y: 0, width: markerWidth, height: maxHeight)
+            icon.image = markImage!
 
-        let marker = GMSMarker(position:location.coordinate)
+            let marker = GMSMarker(position: location.coordinate)
 
-        if km > -1 {
-            let kmLabel = UILabel()
-            kmLabel.frame = CGRect(x: 0, y: 2, width: icon.frame.size.width, height: CGFloat(icon.frame.size.height * 0.7))
-            kmLabel.textAlignment = .center
-            icon.addSubview(kmLabel)
+            if km > -1 {
+                let kmLabel = UILabel()
+                kmLabel.frame = CGRect(x: 0, y: 2, width: icon.frame.size.width, height: CGFloat(icon.frame.size.height * 0.7))
+                kmLabel.textAlignment = .center
+                icon.addSubview(kmLabel)
 
-            let labelFont =  UIFont(name: "OpenSans-Semibold", size: 20)
-            let stringAttributes = [ NSForegroundColorAttributeName: UIColor.white, NSFontAttributeName: labelFont! ]
-            let attString = NSAttributedString(string: String(format: "%ld", km), attributes: stringAttributes)
-            kmLabel.attributedText = attString
+                let labelFont = UIFont(name: "OpenSans-Semibold", size: 20)
+                let stringAttributes = [NSForegroundColorAttributeName: UIColor.white, NSFontAttributeName: labelFont!]
+                let attString = NSAttributedString(string: String(format: "%ld", km), attributes: stringAttributes)
+                kmLabel.attributedText = attString
+            }
+            marker.zIndex = km + 1
+
+            marker.appearAnimation = kGMSMarkerAnimationPop
+            marker.iconView = icon
+
+            marker.map = self.mapView
         }
-        marker.zIndex = km + 1
-
-        marker.appearAnimation = kGMSMarkerAnimationPop
-        marker.iconView = icon
-
-        marker.map = self.mapView
     }
 
     fileprivate func getMaxMarkerSize() -> Float {

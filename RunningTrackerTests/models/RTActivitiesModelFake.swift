@@ -74,7 +74,7 @@ class RTActivitiesModelFake:RTActivitiesModel{
 
     func fakeActivity() -> RTActivity {
         mockActivityWithTwoLocations()
-        return getCurrentActivityCopy()!
+        return currentActivityCopy()!
     }
 
 }

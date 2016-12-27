@@ -29,14 +29,16 @@ class RTInitialViewModel : NSObject {
     }
 
     private func setup() {
-        self.distanceVariable.value = self.getDistance()
-        self.paceVariable.value = self.getPace()
-
         _ = self.gpsRunningVariable.asObservable()
                 .map ({
                     return $0 ? UIImage(named:"GPSgreen.png")! : UIImage(named:"GPSblack.png")!
                 })
                 .bindTo(self.gpsImageVariable)
+    }
+
+    func updateBestValues() {
+        self.distanceVariable.value = self.getDistance()
+        self.paceVariable.value = self.getPace()
     }
 
     func startLocation() {

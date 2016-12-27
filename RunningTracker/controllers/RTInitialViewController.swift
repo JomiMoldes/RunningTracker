@@ -22,6 +22,7 @@ class RTInitialViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         self.initialView.model.startLocation()
+        self.initialView.model.updateBestValues()
     }
 
     override func viewWillDisappear(_ animated: Bool) {
@@ -32,8 +33,9 @@ class RTInitialViewController: UIViewController {
 //MARK IBActions
 
     @IBAction func myActivitiesTouched(_ sender: UIButton) {
-        let activitiesController = UIStoryboard(name:"Main", bundle:nil).instantiateViewController(withIdentifier: "activitiesView") as? RTActivitiesViewController
-        self.navigationController!.pushViewController(activitiesController!, animated:true)
+        let activitiesController = RTActivitiesViewController(nibName: "RTActivitiesView", bundle: nil)
+        activitiesController.activitiesViewModel = RTActivitiesViewModel(model:RTGlobalModels.sharedInstance.activitiesModel)
+        self.navigationController!.pushViewController(activitiesController, animated:true)
     }
 
     @IBAction func startTouched(_ sender: UIButton) {

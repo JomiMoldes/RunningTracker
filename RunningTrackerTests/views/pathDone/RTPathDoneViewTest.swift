@@ -13,11 +13,7 @@ import GoogleMaps
 class RTPathDoneViewTest : XCTestCase {
 
     var view:RTPathDoneView!
-    var viewModel:RTPathDoneViewModelFake {
-        get {
-            return view.model as! RTPathDoneViewModelFake
-        }
-    }
+    var viewModel:RTPathDoneViewModelFake!
 
     var markersManager : RTMapMarkersManagerFake {
         get {
@@ -31,7 +27,8 @@ class RTPathDoneViewTest : XCTestCase {
         super.setUp()
         GMSServices.provideAPIKey("AIzaSyBxz-aX7rUCM_YhKVHsAuv-oae6ivkGtmk")
         view = Bundle.main.loadNibNamed("RTPathDoneView", owner: self)?[0] as! RTPathDoneView
-        view.model = RTPathDoneViewModelFake(model:activitiesModel, activity: activitiesModel.fakeActivity())
+        viewModel = RTPathDoneViewModelFake(model:activitiesModel, activity: activitiesModel.fakeActivity())
+        view.model = viewModel
         view.markersManager = RTMapMarkersManagerFake(mapView: view.mapView)
     }
 
@@ -80,7 +77,7 @@ class RTPathDoneViewTest : XCTestCase {
     }
 
     func testLabels() {
-        let activity:RTActivity! = viewModel.model.getCurrentActivityCopy()
+        let activity:RTActivity! = viewModel.model.currentActivityCopy()
 
         let duration = activity.getDuration()
         let durationString = duration.getHours() + ":" + duration.getMinutes() + ":" + duration.getSeconds()

@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11542" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina5_5" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11524"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <array key="OpenSans-Light.ttf">
+            <string>OpenSans-Light</string>
+        </array>
+        <array key="OpenSans-Semibold.ttf">
+            <string>OpenSans-Semibold</string>
+        </array>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="RTActivitiesViewController" customModule="RunningTracker" customModuleProvider="target">
+            <connections>
+                <outlet property="view" destination="icC-EL-I3P" id="wdQ-sp-Esd"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" restorationIdentifier="RTActivitiesView" id="icC-EL-I3P" customClass="RTActivitiesView" customModule="RunningTracker" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="background_ui.png" translatesAutoresizingMaskIntoConstraints="NO" id="r0R-xn-J5M">
+                    <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
+                </imageView>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="TTz-9A-D6k" userLabel="HeaderView">
+                    <rect key="frame" x="0.0" y="40" width="414" height="47"/>
+                    <subviews>
+                        <view alpha="0.80000001192092896" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Mf6-wl-wAW" customClass="RTBackButtonView" customModule="RunningTracker" customModuleProvider="target">
+                            <rect key="frame" x="18" y="0.0" width="93" height="47"/>
+                            <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="47" id="c8B-ng-hUx"/>
+                                <constraint firstAttribute="width" constant="93" id="pVf-yk-2km"/>
+                            </constraints>
+                        </view>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="My activities" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Lbw-CD-9Fa">
+                            <rect key="frame" x="253" y="10" width="142" height="28"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="142" id="OjS-Bu-YBF"/>
+                                <constraint firstAttribute="height" constant="28" id="Wam-m3-k1P"/>
+                            </constraints>
+                            <fontDescription key="fontDescription" name="OpenSans-Light" family="Open Sans" pointSize="23"/>
+                            <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                    </subviews>
+                    <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="trailing" secondItem="Lbw-CD-9Fa" secondAttribute="trailing" constant="19" id="5v5-bl-g3g"/>
+                        <constraint firstItem="Lbw-CD-9Fa" firstAttribute="centerY" secondItem="TTz-9A-D6k" secondAttribute="centerY" id="7aS-s7-I1q">
+                            <variation key="heightClass=compact-widthClass=compact" constant="-14.5"/>
+                        </constraint>
+                        <constraint firstItem="Mf6-wl-wAW" firstAttribute="top" secondItem="TTz-9A-D6k" secondAttribute="top" id="N1L-X2-VjS"/>
+                        <constraint firstItem="Mf6-wl-wAW" firstAttribute="leading" secondItem="TTz-9A-D6k" secondAttribute="leading" constant="18" id="NQA-jj-QcR"/>
+                        <constraint firstAttribute="height" constant="47" id="zqn-9H-7Ak"/>
+                    </constraints>
+                </view>
+                <tableView clipsSubviews="YES" alpha="0.80000001192092896" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="70" sectionHeaderHeight="1" sectionFooterHeight="1" translatesAutoresizingMaskIntoConstraints="NO" id="HGy-YZ-lt1">
+                    <rect key="frame" x="0.0" y="103" width="414" height="613"/>
+                    <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                    <color key="separatorColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                    <color key="sectionIndexBackgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                </tableView>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="You have no activities yet." lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aJk-Gs-FbQ" userLabel="NoActivities">
+                    <rect key="frame" x="6" y="116" width="329" height="28"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="28" id="3Xl-G9-Vle"/>
+                        <constraint firstAttribute="width" constant="329" id="wOV-Wd-5xR"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" name="OpenSans-Semibold" family="Open Sans" pointSize="20"/>
+                    <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <nil key="highlightedColor"/>
+                </label>
+            </subviews>
+            <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstItem="r0R-xn-J5M" firstAttribute="centerY" secondItem="icC-EL-I3P" secondAttribute="centerY" id="1aN-WA-VdK"/>
+                <constraint firstItem="aJk-Gs-FbQ" firstAttribute="top" secondItem="icC-EL-I3P" secondAttribute="top" constant="116" id="7Pt-gV-KaG"/>
+                <constraint firstItem="TTz-9A-D6k" firstAttribute="width" secondItem="icC-EL-I3P" secondAttribute="width" id="HnM-pe-n0j"/>
+                <constraint firstItem="HGy-YZ-lt1" firstAttribute="centerX" secondItem="icC-EL-I3P" secondAttribute="centerX" id="ITu-Qn-2Kr"/>
+                <constraint firstAttribute="bottom" secondItem="HGy-YZ-lt1" secondAttribute="bottom" constant="20" id="Mh4-6K-Gp9"/>
+                <constraint firstItem="HGy-YZ-lt1" firstAttribute="width" secondItem="icC-EL-I3P" secondAttribute="width" id="XUS-Cl-Wn0"/>
+                <constraint firstItem="TTz-9A-D6k" firstAttribute="top" secondItem="icC-EL-I3P" secondAttribute="top" constant="40" id="Yeb-Gg-rGw"/>
+                <constraint firstItem="r0R-xn-J5M" firstAttribute="centerX" secondItem="icC-EL-I3P" secondAttribute="centerX" id="Yxb-hN-cIc"/>
+                <constraint firstItem="HGy-YZ-lt1" firstAttribute="top" secondItem="TTz-9A-D6k" secondAttribute="bottom" constant="16" id="bQo-vc-Cbq">
+                    <variation key="heightClass=compact-widthClass=compact" constant="-1"/>
+                </constraint>
+                <constraint firstItem="r0R-xn-J5M" firstAttribute="height" secondItem="icC-EL-I3P" secondAttribute="height" id="fr2-Ev-pXb"/>
+                <constraint firstItem="TTz-9A-D6k" firstAttribute="centerX" secondItem="icC-EL-I3P" secondAttribute="centerX" id="nTd-1Z-VJB"/>
+                <constraint firstItem="r0R-xn-J5M" firstAttribute="width" secondItem="icC-EL-I3P" secondAttribute="width" id="yKN-vz-vfo"/>
+                <constraint firstItem="aJk-Gs-FbQ" firstAttribute="leading" secondItem="icC-EL-I3P" secondAttribute="leadingMargin" constant="-2" id="ylA-HL-eFv"/>
+            </constraints>
+            <connections>
+                <outlet property="backButtonView" destination="Mf6-wl-wAW" id="P5D-Oc-I8k"/>
+                <outlet property="noActivitiesLabel" destination="aJk-Gs-FbQ" id="hUQ-8x-Teh"/>
+                <outlet property="tableView" destination="HGy-YZ-lt1" id="Gtc-W8-eF4"/>
+            </connections>
+            <point key="canvasLocation" x="20" y="-20"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="background_ui.png" width="1242" height="2208"/>
+    </resources>
+</document>

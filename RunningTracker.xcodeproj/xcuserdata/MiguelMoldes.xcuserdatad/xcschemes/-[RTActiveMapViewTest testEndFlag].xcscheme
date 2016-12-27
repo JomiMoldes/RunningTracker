@@ -35,7 +35,19 @@
                   Identifier = "RTActiveMapViewModelTest">
                </Test>
                <Test
-                  Identifier = "RTActiveMapViewTest">
+                  Identifier = "RTActiveMapViewTest/testBind()">
+               </Test>
+               <Test
+                  Identifier = "RTActiveMapViewTest/testInit()">
+               </Test>
+               <Test
+                  Identifier = "RTActiveMapViewTest/testPauseButton()">
+               </Test>
+               <Test
+                  Identifier = "RTActiveMapViewTest/testSetupModel()">
+               </Test>
+               <Test
+                  Identifier = "RTActiveMapViewTest/testZoomReaction()">
                </Test>
                <Test
                   Identifier = "RTActivitiesModelTest">
@@ -60,6 +72,9 @@
                </Test>
                <Test
                   Identifier = "RTPathDoneViewControllerTest">
+               </Test>
+               <Test
+                  Identifier = "RTPathDoneViewModelTest">
                </Test>
                <Test
                   Identifier = "RTPathDoneViewTest">

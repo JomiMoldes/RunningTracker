@@ -42,7 +42,7 @@ class RTActiveMapViewModelTest : XCTestCase {
 
     func testLocationService() {
         self.viewModel.startLocation()
-        XCTAssertEqual(locationService.delegate as! RTActiveMapViewModel, viewModel)
+        XCTAssertEqual(locationService.delegate as? RTActiveMapViewModel, viewModel)
         XCTAssertTrue(locationService.requestedPermissions)
         XCTAssertTrue(viewModel.locationManagerStarted)
     }
@@ -61,7 +61,7 @@ class RTActiveMapViewModelTest : XCTestCase {
         let sub = NotificationCenter.default.addObserver(forName: NSNotification.Name(rawValue: "activitiesSaved"), object: nil, queue: nil) { (not) -> Void in
             XCTAssertTrue(true)
         }
-        let asyncExpectation = expectation(forNotification: "activitiesSaved", object: nil, handler: nil)
+        _ = expectation(forNotification: "activitiesSaved", object: nil, handler: nil)
 
         self.viewModel.endActivity()
         XCTAssertTrue(viewModel.showActivityIndicatorVariable.value)
@@ -120,16 +120,15 @@ class RTActiveMapViewModelTest : XCTestCase {
     func testDidUpdateLocation() {
         self.model.mockActivityWithTwoLocations(false)
         let location = CLLocation(latitude:110.2, longitude:100.2)
-        XCTAssertEqual((viewModel.activityToDrawVariable.value as! [RTActivity]).count, 0)
+        XCTAssertEqual(viewModel.activityToDrawVariable.value.count, 0)
         viewModel.didUpdateLocation(location: location)
-        XCTAssertEqual((viewModel.activityToDrawVariable.value as! [RTActivity]).count, 1)
-        XCTAssertEqual(self.model.getCurrentActivityCopy()!.getActivitiesCopy().count,3)
+        XCTAssertEqual(viewModel.activityToDrawVariable.value.count, 1)
+        XCTAssertEqual(self.model.currentActivityCopy()!.getActivitiesCopy().count,3)
     }
 
     func testMapView() {
         self.model.mockActivityWithTwoLocations(false)
-        let activity:RTActivity! = self.model.getCurrentActivityCopy()
-        let location = CLLocation(latitude:110.2, longitude:100.2)
+        let activity:RTActivity! = self.model.currentActivityCopy()
         let camera = GMSCameraPosition.camera(withLatitude: 52.52356, longitude: 13.45097995, zoom: 10)
         let mapView = RTGoogleMapViewFake.map(withFrame: CGRect(x: 0,y: 0,width: 400, height: 400), camera: camera)
 
@@ -150,7 +149,7 @@ class RTActiveMapViewModelTest : XCTestCase {
             }
 
             XCTAssertTrue(mapView.mapCleared)
-            XCTAssertEqual((self.viewModel.activityToDrawVariable.value[0] as! RTActivity).startTime, activity.startTime)
+            XCTAssertEqual(self.viewModel.activityToDrawVariable.value[0].startTime, activity.startTime)
 
             let checkMarks = self.viewModel.checkMarksVariable.value[0]
             let activityCheckMarks = activity.checkMarks
