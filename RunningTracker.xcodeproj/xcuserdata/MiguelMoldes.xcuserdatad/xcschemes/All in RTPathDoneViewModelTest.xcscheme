@@ -72,22 +72,7 @@
                   Identifier = "RTPathDoneViewControllerTest">
                </Test>
                <Test
-                  Identifier = "RTPathDoneViewModelTest">
-               </Test>
-               <Test
-                  Identifier = "RTPathDoneViewTest/testInitialSetup()">
-               </Test>
-               <Test
-                  Identifier = "RTPathDoneViewTest/testLabels()">
-               </Test>
-               <Test
-                  Identifier = "RTPathDoneViewTest/testMap()">
-               </Test>
-               <Test
-                  Identifier = "RTPathDoneViewTest/testModelSetup()">
-               </Test>
-               <Test
-                  Identifier = "RTPathDoneViewTest/testRedrawMarkers()">
+                  Identifier = "RTPathDoneViewTest">
                </Test>
                <Test
                   Identifier = "RunningTrackerTests">

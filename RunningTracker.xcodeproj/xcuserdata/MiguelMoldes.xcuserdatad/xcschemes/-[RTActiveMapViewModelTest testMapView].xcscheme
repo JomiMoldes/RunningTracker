@@ -42,10 +42,25 @@
                   Identifier = "RTActiveMapViewControllerTest">
                </Test>
                <Test
-                  Identifier = "RTActiveMapViewModelTest">
+                  Identifier = "RTActiveMapViewModelTest/testDidUpdateLocation()">
                </Test>
                <Test
-                  Identifier = "RTActiveMapViewTest">
+                  Identifier = "RTActiveMapViewModelTest/testEndActivity()">
+               </Test>
+               <Test
+                  Identifier = "RTActiveMapViewModelTest/testKillLocationService()">
+               </Test>
+               <Test
+                  Identifier = "RTActiveMapViewModelTest/testLocationService()">
+               </Test>
+               <Test
+                  Identifier = "RTActiveMapViewModelTest/testPauseTouched()">
+               </Test>
+               <Test
+                  Identifier = "RTActiveMapViewModelTest/testSetup()">
+               </Test>
+               <Test
+                  Identifier = "RTActiveMapViewModelTest/testTimer()">
                </Test>
                <Test
                   Identifier = "RTActivitiesModelTest">
@@ -67,27 +82,6 @@
                </Test>
                <Test
                   Identifier = "RTLocationServiceTest">
-               </Test>
-               <Test
-                  Identifier = "RTPathDoneViewControllerTest">
-               </Test>
-               <Test
-                  Identifier = "RTPathDoneViewModelTest">
-               </Test>
-               <Test
-                  Identifier = "RTPathDoneViewTest/testInitialSetup()">
-               </Test>
-               <Test
-                  Identifier = "RTPathDoneViewTest/testLabels()">
-               </Test>
-               <Test
-                  Identifier = "RTPathDoneViewTest/testMap()">
-               </Test>
-               <Test
-                  Identifier = "RTPathDoneViewTest/testModelSetup()">
-               </Test>
-               <Test
-                  Identifier = "RTPathDoneViewTest/testRedrawMarkers()">
                </Test>
                <Test
                   Identifier = "RunningTrackerTests">
