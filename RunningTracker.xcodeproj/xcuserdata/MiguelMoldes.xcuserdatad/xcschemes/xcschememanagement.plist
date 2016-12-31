@@ -14,35 +14,35 @@
 			<key>orderHint</key>
 			<integer>1</integer>
 		</dict>
-		<key>All in RTPathDoneViewTest.xcscheme</key>
+		<key>-[RTActiveMapViewTest testEndFlag].xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false />
 			<key>orderHint</key>
-			<integer>2</integer>
+			<integer>9</integer>
 		</dict>
-		<key>-[RTPathDoneViewTest testZoomBinding].xcscheme</key>
+		<key>All in RTActiveMapViewTest.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false />
 			<key>orderHint</key>
-			<integer>3</integer>
+			<integer>10</integer>
 		</dict>
-		<key>All in RTInitialViewModelTest.xcscheme</key>
+		<key>All in RTActivitiesViewControllerTest.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false />
 			<key>orderHint</key>
 			<integer>11</integer>
 		</dict>
-		<key>-[RTActiveMapViewTest testEndFlag].xcscheme</key>
+		<key>All in RTActivitiesViewModelTest.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false />
 			<key>orderHint</key>
 			<integer>12</integer>
 		</dict>
-		<key>All in RTActiveMapViewTest.xcscheme</key>
+		<key>All in RTActivitiesViewTest.xcscheme</key>
 		<dict>
 			<key>isShown</key>
 			<false />

@@ -34,7 +34,7 @@ class RTInitialViewController: UIViewController {
 
     @IBAction func myActivitiesTouched(_ sender: UIButton) {
         let activitiesController = RTActivitiesViewController(nibName: "RTActivitiesView", bundle: nil)
-        activitiesController.activitiesViewModel = RTActivitiesViewModel(model:RTGlobalModels.sharedInstance.activitiesModel)
+        activitiesController.activitiesViewModel = RTActivitiesViewModel(model:RTGlobalModels.sharedInstance.activitiesModel, notificationCenter: NotificationCenter.default)
         self.navigationController!.pushViewController(activitiesController, animated:true)
     }
 

@@ -41,6 +41,12 @@
                   Identifier = "RTActivitiesModelTest">
                </Test>
                <Test
+                  Identifier = "RTActivitiesViewControllerTest">
+               </Test>
+               <Test
+                  Identifier = "RTActivitiesViewModelTest">
+               </Test>
+               <Test
                   Identifier = "RTActivityLocationTest">
                </Test>
                <Test
@@ -48,6 +54,9 @@
                </Test>
                <Test
                   Identifier = "RTInitialViewControllerTest">
+               </Test>
+               <Test
+                  Identifier = "RTInitialViewModelTest">
                </Test>
                <Test
                   Identifier = "RTInitialViewTest">

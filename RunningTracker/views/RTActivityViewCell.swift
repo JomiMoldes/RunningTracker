@@ -13,8 +13,10 @@ class RTActivityViewCell : UITableViewCell {
     @IBOutlet weak var distanceLabel: UILabel!
     @IBOutlet weak var seeMapButton: UIButton!
 
+    var startTime : Double!
 
     func setupInfo(_ activity:RTActivity) {
+        self.startTime = activity.startTime
         let formatter = CachedDateFormatter.sharedInstance.formatterWith("dd/MM/YY")
         let dateString = formatter.getDateWithFormat("dd/MM/YY", time:activity.startTime)
 

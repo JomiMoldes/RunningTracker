@@ -26,4 +26,11 @@ class RTSoreManagerFake: RTStoreActivitiesManager {
             fulfill(activities)
         }
     }
+
+    override func deleteActivity(_ activity:RTActivity, path:String) -> Promise<Bool>{
+        return Promise {
+            fulfill, reject in
+            fulfill(true)
+        }
+    }
 }

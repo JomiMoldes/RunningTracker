@@ -17,7 +17,6 @@ class RTActivitiesViewController : UIViewController {
     }
 
     var activitiesViewModel:RTActivitiesViewModel!
-//  weak var activitiesModel : RTActivitiesModel!
     let disposable = DisposeBag()
 
     override func viewDidLoad() {

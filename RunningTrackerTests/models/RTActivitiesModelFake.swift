@@ -35,6 +35,10 @@ class RTActivitiesModelFake:RTActivitiesModel{
         return super.saveActivities(path, storeManager: self.storeManagerFake)
     }
 
+    override func deleteActivity(_ activityToDelete:RTActivity, storeManager: RTStoreActivitiesManager) {
+        super.deleteActivity(activityToDelete, storeManager: self.storeManagerFake)
+    }
+
 
     func tryStartActivity() {
         do{

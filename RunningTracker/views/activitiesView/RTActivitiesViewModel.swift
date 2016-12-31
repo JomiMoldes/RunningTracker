@@ -10,14 +10,16 @@ import RxCocoa
 
 class RTActivitiesViewModel : NSObject, UITableViewDelegate, UITableViewDataSource {
 
+    let notificationCenter : NotificationCenter!
     var activities:[RTActivity] = [RTActivity]()
     let model : RTActivitiesModel!
     var activitySelected  = PublishSubject<RTActivity>()
     var deletingActivity  = PublishSubject<RTActivity>()
     var activityDeleted   = PublishSubject<String>()
 
-    init?(model:RTActivitiesModel) {
+    init?(model:RTActivitiesModel, notificationCenter:NotificationCenter) {
         self.model = model
+        self.notificationCenter = notificationCenter
         self.activities = model.activitiesCopy()
         self.activities = self.activities.sorted(by: {$0.startTime > $1.startTime})
     }
@@ -27,7 +29,7 @@ class RTActivitiesViewModel : NSObject, UITableViewDelegate, UITableViewDataSour
     }
 
     func removeObservers() {
-        NotificationCenter.default.removeObserver(self)
+        self.notificationCenter.removeObserver(self)
     }
 
 //Protocol
@@ -57,7 +59,7 @@ class RTActivitiesViewModel : NSObject, UITableViewDelegate, UITableViewDataSour
 
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == UITableViewCellEditingStyle.delete {
-            NotificationCenter.default.addObserver(self, selector: #selector(activityWasDeleted), name: NSNotification.Name(rawValue: "activityDeleted"), object: nil)
+            self.notificationCenter.addObserver(self, selector: #selector(activityWasDeleted), name: Notification.Name(rawValue: "activityDeleted"), object: nil)
             let activity = self.activities[(indexPath as NSIndexPath).item]
             self.model.deleteActivity(activity, storeManager: RTGlobalModels.sharedInstance.storeActivitiesManager)
             self.activities.remove(at: (indexPath as NSIndexPath).row)

@@ -48,7 +48,7 @@
                                 </constraints>
                             </view>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Fetching activities from iCloud..." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JF0-q7-l08" userLabel="FetchingLabel">
-                                <rect key="frame" x="58" y="448.66666666666669" width="306" height="21"/>
+                                <rect key="frame" x="58" y="449" width="306" height="21"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="21" id="Flg-DH-V2I"/>
                                     <constraint firstAttribute="width" constant="306" id="Z2B-Sd-oMp"/>

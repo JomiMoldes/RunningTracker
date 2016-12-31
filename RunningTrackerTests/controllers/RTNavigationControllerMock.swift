@@ -15,10 +15,13 @@ class RTNavigationControllerMock : UINavigationController {
     var lastAlertController : UIViewController?
 
     var asyncExpectation : XCTestExpectation?
+    var pushExpectation : XCTestExpectation?
 
     override func pushViewController(_ viewController: UIViewController, animated: Bool) {
         super.pushViewController(viewController, animated: animated)
         lastViewController = viewController
+
+        pushExpectation?.fulfill()
     }
 
     override func popViewController(animated: Bool) -> UIViewController? {
