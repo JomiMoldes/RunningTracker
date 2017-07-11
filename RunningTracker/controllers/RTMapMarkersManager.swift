@@ -37,7 +37,7 @@ class RTMapMarkersManager {
                 let attString = NSAttributedString(string: String(format: "%ld", km), attributes: stringAttributes)
                 kmLabel.attributedText = attString
             }
-            marker.zIndex = km + 1
+            marker.zIndex = Int32(km + 1)
 
             marker.appearAnimation = kGMSMarkerAnimationPop
             marker.iconView = icon
