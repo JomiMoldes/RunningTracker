@@ -39,7 +39,7 @@ class RTMapMarkersManager {
             }
             marker.zIndex = Int32(km + 1)
 
-            marker.appearAnimation = kGMSMarkerAnimationPop
+            marker.appearAnimation = GMSMarkerAnimation.pop
             marker.iconView = icon
 
             marker.map = self.mapView
